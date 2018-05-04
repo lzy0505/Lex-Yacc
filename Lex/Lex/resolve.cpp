@@ -218,6 +218,8 @@ vector<string> split(const string& str, const string& delim) {
 		res.push_back(s); //存入结果数组  
 		p = strtok(NULL, d);
 	}
+	delete strs;
+	delete d;
 	
 	return res;
 }
@@ -244,6 +246,8 @@ void removeComment(string& s)
 	if (p1 == NULL)return;
 	int k = p1 - p;
 	s = s.substr(0, k);
+	delete p;
+	
 	
 }
 void resolve_test()
@@ -280,8 +284,6 @@ void resolve_test()
 		cout << *i3 << endl;
 
 	}
-	system("pause");
-
-
+	
 
 }

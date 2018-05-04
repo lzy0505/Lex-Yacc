@@ -86,7 +86,7 @@ void translate(vector<Rules>& reVec, map<string, string>& reMap) {
 
 void dot(vector<Rules>& reVec) {
 	for (auto &re : reVec) {
-		string oldExp = re.expression;
+		string oldExp = re.pattern;
 		string dotedExp,suffixedExp;
 		for (auto oldExpIt = oldExp.cbegin() ; oldExpIt != oldExp.cend() ; ++oldExpIt) {
 			dotedExp += (*oldExpIt);
@@ -101,14 +101,14 @@ void dot(vector<Rules>& reVec) {
 
 
 
-int main()
-{
-	vector<Rules> test;
-	Rules re;
-	re.pattern = "{D}+{E}{FS}\?";
-	test.push_back(re);
-	map<string, string> m = { {"D","[0-9]"},{"E","([Ee][+-]?{D}+)"},{"FS","(f|F|l|L)"} };
-	translate(test, m);
-	system("pause");
-	return 0;
-}
+//int main()
+//{
+//	vector<Rules> test;
+//	Rules re;
+//	re.pattern = "{D}+{E}{FS}\?";
+//	test.push_back(re);
+//	map<string, string> m = { {"D","[0-9]"},{"E","([Ee][+-]?{D}+)"},{"FS","(f|F|l|L)"} };
+//	translate(test, m);
+//	system("pause");
+//	return 0;
+//}

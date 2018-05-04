@@ -4,7 +4,7 @@
 #include<map>
 #include<fstream>
 #include<string>
-#include"rules.h"
+#include"structs.h"
 using namespace std;
 vector<string> split(const string& str, const string& delim);
 string& trim(string &s);
@@ -255,7 +255,7 @@ void resolve_test()
 	string filePath("lex.l");
 	resolve(filePath, m, rules, P1, P4);
 	vector<Rules>::iterator i1 = rules.begin();
-	vector<string>::iterator i2 = i1->action.begin();
+	vector<string>::iterator i2 = i1->actions.begin();
 	vector<string>::iterator i3 = P1.begin();
 	for (; i3 != P1.end(); i3++)
 	{
@@ -266,7 +266,7 @@ void resolve_test()
 	for (; i1 != rules.end(); i1++)
 	{
 		
-		for (i2 = i1->action.begin(); i2 != i1->action.end(); i2++)
+		for (i2 = i1->actions.begin(); i2 != i1->actions.end(); i2++)
 		{
 			
 			cout << i1->pattern << "\t" << *i2 << endl;

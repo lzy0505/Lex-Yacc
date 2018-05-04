@@ -246,7 +246,7 @@ void removeComment(string& s)
 	s = s.substr(0, k);
 	
 }
-void resolve_test()
+void resolve_test()//print
 {
 
 	map<string, string> m;
@@ -280,8 +280,5 @@ void resolve_test()
 		cout << *i3 << endl;
 
 	}
-	system("pause");
-
-
 
 }

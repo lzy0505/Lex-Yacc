@@ -21,10 +21,10 @@ void suffixRE(vector<Rules>& rules) {
 		stack<char> s;	//操作数栈
 		for (int i = 0; i < pattern.size();++i) {
 			char now = pattern[i];
-			//(优先级最低，压就完事了
+			//(优先级最低，压栈
 			if (now == '(') {
 				s.push(now);
-			}else if (now == ')') { //)弹就完事
+			}else if (now == ')') { 
 				while (s.top() != '(') {
 					q.push(s.top());
 					s.pop();
@@ -34,7 +34,7 @@ void suffixRE(vector<Rules>& rules) {
 				if (s.empty()) {
 					s.push(now);
 				}else if (s.top() == '.' || s.top() == '|'||s.top()=='*') {
-					//如果自己是个小老弟，遇到优先级高的，带哥恰根烟
+					//遇到优先级高的
 					do {
 						q.push(s.top());
 						s.pop();
@@ -48,7 +48,7 @@ void suffixRE(vector<Rules>& rules) {
 				if (s.empty()) {
 					s.push(now);
 				}else if (s.top() == '.' || s.top() == '*') {
-					//如果自己是个小老弟，遇到优先级高的，带哥恰根烟
+					//遇到优先级高的
 					do {
 						q.push(s.top());
 						s.pop();
@@ -59,13 +59,13 @@ void suffixRE(vector<Rules>& rules) {
 				}
 			}else if (now == '*') {
 					q.push(now);
-			}//防止数组越界嗷铁汁
-			else if (now == '\\' && (i + 1 == pattern.size())) {
+			}//防止数组越界
+			else if (now == '`' && (i + 1 == pattern.size())) {
 				q.push(now);
 			}
-			//如果是自己定义的一些哈批转义字符，直接传给正确队列就阔以啦
-			else if (now == '\\' && (pattern[i + 1] == '(' || pattern[i + 1] == ')'
-				|| pattern[i + 1] == '|' || pattern[i + 1] == '.')) {
+			//如果是自己定义的一些哈批转义字符，直接传给正确队列
+			else if (now == '`' && (pattern[i + 1] == '(' || pattern[i + 1] == ')'
+				|| pattern[i + 1] == '|' || pattern[i + 1] == '.'||pattern[i+1]=='?'||pattern[i+1]=='+')) {
 				q.push(now);
 				q.push(pattern[i + 1]);
 				++i;

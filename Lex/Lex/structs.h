@@ -24,12 +24,16 @@ struct state {
 typedef struct {
 	state* startState = nullptr;
 	map<state*, vector<string>> endStates;
+	state* statesArray = nullptr;
+	int numOfstates = 0;
 }NFA;
 
 typedef struct {
 	state* startState = nullptr;
 	state* endState=nullptr;
 	vector<string> *actions = nullptr;
+	state* statesArray = nullptr;
+	int numOfstates = 0;
 }ReNFA;
 
 #endif 

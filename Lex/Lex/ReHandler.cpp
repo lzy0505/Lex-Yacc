@@ -375,6 +375,13 @@ void translate(vector<Rules>& reVec, map<string, string>& reMap) {
 		addDot(e.pattern);
 	}
 	
-	
+}
 
+void translate(string& s) {
+	handleQuote(s);
+	replaceSquareBrace(s);
+	replaceDot(s);
+	replaceQuestionAndAdd(s);
+	handleEscape(s, false);
+	addDot(s);
 }

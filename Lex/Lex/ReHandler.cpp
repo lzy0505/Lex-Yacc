@@ -11,9 +11,9 @@ using std::isdigit;
 using std::cout;
 
 const string ALLSET("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#%'()*+,-./:;<=>\?[\\]^{|}_ \n\t\v\f~&");
-const set<char> ESCAPEDCHARS{'.','|','*','(',')'};
+const set<char> ESCAPEDCHARS{'.','|','*','(',')','+','?'};
 
-
+void handleEscape(string& exp, bool in);
 
 //替换{X}
 void replaceBrace(string& exp, const map<string, string>& reMap) {
@@ -56,42 +56,13 @@ void replaceBrace(string& exp, const map<string, string>& reMap) {
 	for (const auto &e : charVec) {
 		exp += e;
 	}
+	//cout << "REPLACE BRACE:"<<exp << "\n";
 }
-
-
 
 // 替换[X]
 void constructCharSet(set<char> &s, const string &content, bool n) {
-	bool flag = false;
-	string stemp;
-	for (auto &c : content) {//先把[]里的转义
-		if (flag) {
-			switch (c) {
-			case 'n':
-				stemp += '\n';
-				break;
-			case 't':
-				stemp += '\t';
-				break;
-			case 'v':
-				stemp += '\v';
-				break;
-			case 'f':
-				stemp += '\f';
-				break;
-			case '\\':
-				stemp += '\\';
-				break;
-			}
-			flag = false;
-			continue;
-		}
-		if (c == '\\') {
-			flag = true;
-			continue;
-		}
-		stemp += c;
-	}
+	string stemp(content);
+	handleEscape(stemp, true);
 	//处理[a-z]
 	auto it = stemp.cbegin();
 	set<char> temp;
@@ -150,7 +121,7 @@ void replaceSquareBrace(string& exp) {
 			}
 			for (const auto &c : s) {
 				if(ESCAPEDCHARS.find(c)!= ESCAPEDCHARS.cend())//转义
-					charVec.push_back('\\');
+					charVec.push_back('`');
 				charVec.push_back(c);
 				charVec.push_back('|');
 			}
@@ -174,48 +145,236 @@ void replaceSquareBrace(string& exp) {
 	for (const auto &e : charVec) {
 		exp += e;
 	}
-	cout << exp;
+	//cout << "REPLACE SB:"<<exp << "\n";
 }
 
 
-// NEXT: 处理引号问题
-void handleQuote(string& exp) {}
+// 处理引号
+void handleQuote(string& exp) {
+	bool inQuote = false;
+	const auto sexpIt = exp.begin();
+	auto expIt = sexpIt;
+	vector<char> charVec;
+	while (expIt != exp.end()) {
+		if (*expIt == '\"'&&( (expIt != sexpIt && *(expIt - 1) != '\\')|| (expIt == sexpIt))) {// 是",且不是\"
+			if (!inQuote) {
+				inQuote = true;
+				++expIt;
+				continue;
+			}
+			else {
+				inQuote = false;
+				++expIt;
+				continue;
+			}
+		}
+		else if(inQuote && ESCAPEDCHARS.find(*expIt) != ESCAPEDCHARS.cend()){ //转义引号里边可能的操作符需要被转义
+			charVec.push_back('`');
+		}
+		charVec.push_back(*expIt);
+		++expIt;
+	}
+	exp = "";
+	for (const auto &c : charVec) {
+		exp += c;
+	}
+	//cout << "HANDLE QUOTE:"<<exp << "\n";
+}
 
-// NEXT: 替换？和+ (同时处理括号)
-void replaceQuestionAndAdd(string& exp){}
+//处理\转义字符
+void handleEscape(string& exp,bool in) {
+	string stemp;
+	bool flag = false;
+	for (auto &c : exp) {
+		if (in) {//转义[]内的所有可能字符
+			if (flag) {
+				switch (c) {
+				case 'n':
+					stemp += '\n';
+					break;
+				case 't':
+					stemp += '\t';
+					break;
+				case 'v':
+					stemp += '\v';
+					break;
+				case 'f':
+					stemp += '\f';
+					break;
+				case '\\':
+					stemp += '\\';
+					break;
+				}
+				flag = false;
+				continue;
+			}
+			if (c == '\\') {
+				flag = true;
+				continue;
+			}
+		}
+		else {/*在[]外，只转义 \"和\\*/
+			if (flag) {
+				flag = false;
+				if (c == '\"' || c == '\\') stemp = stemp.substr(0, stemp.size() - 1);
+			}else if (c == '\\') {
+				flag = true;
+			}
+		}
+		stemp += c;
+	}
+	exp = stemp;
+	//cout << "HANDLE ESCAPE:" << exp << "\n";
+}
+
+//处理. (匹配除了\n之外所有单个字符)
+void replaceDot(string &exp) {
+	vector<char> charVec;
+	auto expIt = exp.begin();
+	while (expIt != exp.end()) {
+		if (*expIt == '.' && (expIt== exp.begin() || (expIt != exp.begin() && *(expIt-1)!='`'))){
+			charVec.push_back('(');
+			set<char> s;//保存转换过的字符
+			constructCharSet(s, "\n", true);
+			for (const auto &c : s) {
+				if (ESCAPEDCHARS.find(c) != ESCAPEDCHARS.cend())//转义
+					charVec.push_back('`');
+				charVec.push_back(c);
+				charVec.push_back('|');
+			}
+			charVec.pop_back();
+			charVec.push_back(')');
+			++expIt;
+			continue;
+		}
+		charVec.push_back(*expIt);
+		++expIt;
+	}
+	//输出vector的内容
+
+	exp = "";
+	for (const auto &e : charVec) {
+		exp += e;
+	}
+	//cout << "REPLACE DOT:" << exp << "\n";
+}
+
+// 替换？和+ (同时处理括号)
+void replaceQuestionAndAdd(string& exp){
+	vector<char> charVec;
+	auto expIt = exp.begin();
+	while (expIt != exp.end()) {
+		if ((*expIt == '+' || *expIt == '?') && (expIt == exp.begin() || (expIt != exp.begin() && *(expIt - 1) != '`'))) {
+			int counter = 0;
+			if ((expIt) != exp.begin() && *(expIt - 1) == ')' && (((expIt-1) != exp.begin()&& *(expIt - 2)!='`')|| (expIt - 1) == exp.begin())){//如果前面是)且不是`），找到整个括号的部分
+				const auto preExpIt = expIt;//记录之前+/?的位置	
+				--expIt;
+				charVec.pop_back();
+				++counter;
+				do{
+					charVec.pop_back();
+					--expIt;
+					if (*expIt == '(' && (((expIt) != exp.begin() && *(expIt - 1) != '`') || (expIt) == exp.begin())) {//是(且不是`(
+						--counter;
+					}
+					else if (*expIt == ')' && (((expIt) != exp.begin() && *(expIt - 1) != '`') || (expIt) == exp.begin())) {//是)且不是`)
+						++counter;
+					}
+				} while (counter > 0);
+				if (*preExpIt == '?') { //a? -> (@|a)
+					charVec.push_back('(');
+					charVec.push_back('@');
+					charVec.push_back('|');
+					while (expIt != preExpIt) {
+						charVec.push_back(*expIt);
+						++expIt;
+					}
+					charVec.push_back(')');
+				}
+				else { //a+ -> aa*
+					const auto startIt = expIt;
+					for (int i = 0; i < 2; i++) {
+						expIt = startIt;
+						while (expIt != preExpIt) {
+							charVec.push_back(*expIt);
+							++expIt;
+						}
+					}
+					charVec.push_back('*');
+				}
+			}
+			else {
+				char c = charVec.back();
+				if (*expIt == '?') { //a? -> (@|a)
+					charVec.pop_back();
+					charVec.push_back('(');
+					charVec.push_back('@');
+					charVec.push_back('|');
+					charVec.push_back(c);
+					charVec.push_back(')');
+				}
+				else {//a+ -> aa*
+					charVec.push_back(c);
+					charVec.push_back('*');
+				}
+			}
+			++expIt;
+			continue;
+		}
+		charVec.push_back(*expIt);
+		++expIt;
+	}
+	//输出vector的内容
+
+	exp = "";
+	for (const auto &e : charVec) {
+		exp += e;
+	}
+	//cout << "REPLACE QS&A:" << exp << "\n";
+}
 
 
-// TODO: 加点
+// 加点
 void  addDot(string &exp) {
 	string oldExp = exp;
-	string dotedExp, suffixedExp;
+	string dotedExp;
 	for (auto oldExpIt = oldExp.cbegin(); oldExpIt != oldExp.cend(); ++oldExpIt) {
 		dotedExp += (*oldExpIt);
-		if ((*oldExpIt == '\\' && *(oldExpIt - 1) != '\\') || *oldExpIt == '(' || *(oldExpIt) == '|' || (*(oldExpIt) == '.' && *(oldExpIt - 1) != '\\')) continue; // 转义字符或操作符或左括号,不加点看下一个
+		if (*oldExpIt == '`')continue;// 是转义字符，直接跳过
+		if ((*oldExpIt == '(' || *oldExpIt == '|' )&& (oldExpIt == oldExp.cbegin() || *(oldExpIt - 1) != '`'))
+			continue;// |或(,且前面不是`
 		if ((oldExpIt + 1) == oldExp.cend()) continue; //最后一个字符，不加点
-		if (*(oldExpIt + 1) == '|' || *(oldExpIt + 1) == '*' || *(oldExpIt + 1) == '.' || *(oldExpIt + 1) == ')') continue; //下一个字符已经是操作符或右括号，不加点
-		dotedExp += '@';//as dot
+		if (*(oldExpIt + 1) == '|' || *(oldExpIt + 1) == '*' ||  *(oldExpIt + 1) == ')') continue; //下一个字符已经是操作符或右括号，不加点
+		dotedExp += '.';//加点
 	}
-	cout << "formal:" << oldExp << "\tdoted:" << dotedExp << "\n";
+	exp = dotedExp;
+	//cout << "ADD DOT:" << exp << "\n";
 }
 
 
 void translate(vector<Rules>& reVec, map<string, string>& reMap) {
-	// TODO: 先处理map里面的
-	//for (auto & e : reMap) {
-	//	replace(e.second, reMap);
-	//}
+	//先处理map里面的
+	for (auto & p : reMap) {
+		replaceBrace(p.second, reMap);
+		handleQuote(p.second);
+		replaceSquareBrace(p.second);
+		replaceDot(p.second);
+		replaceQuestionAndAdd(p.second);
+		handleEscape(p.second, false);
+		addDot(p.second);
+	}
 
-	//再处理vector里面的
+	//再处理Vector里面的
 	for (auto & e : reVec) {
 		replaceBrace(e.pattern, reMap);
-		replaceSquareBrace(e.pattern);
-		cout << "\n";
 		handleQuote(e.pattern);
-		cout << "\n";
+		replaceSquareBrace(e.pattern);
+		replaceDot(e.pattern);
 		replaceQuestionAndAdd(e.pattern);
-		cout << "\n";
+		handleEscape(e.pattern, false);
 		addDot(e.pattern);
 	}
- 
+	
+	
+
 }

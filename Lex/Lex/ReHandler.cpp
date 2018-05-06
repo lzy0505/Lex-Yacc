@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "structs.h"
+#include "globalData.hpp"
 using std::stack;
 using std::vector;
 using std::map;
@@ -9,8 +10,6 @@ using std::isalnum;
 using std::isalpha;
 using std::isdigit;
 using std::cout;
-
-const string ALLSET("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#%'()*+,-./:;<=>\?[\\]^{|}_ \n\t\v\f~&");
 const set<char> ESCAPEDCHARS{'.','|','*','(',')','+','?'};
 
 void handleEscape(string& exp, bool in);

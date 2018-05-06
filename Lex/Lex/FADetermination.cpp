@@ -76,6 +76,7 @@ void convert_to_DFA(const NFA &nfa,DFA &dfa) {
 				}
 				if (!has) {//不存在，要新建一个state
 					DFAstate newState;
+					cout << counter << endl;
 					newState.number = counter++;//新标号
 					newState.identitySet = tempSet;
 					dfa.statesVec.push_back(newState);

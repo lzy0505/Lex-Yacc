@@ -65,11 +65,15 @@ void suffixRE(vector<Rules>& rules) {
 			}
 			//如果是自己定义的一些哈批转义字符，直接传给正确队列
 			else if (now == '`' && (pattern[i + 1] == '(' || pattern[i + 1] == ')'
-				|| pattern[i + 1] == '|' || pattern[i + 1] == '.'||pattern[i+1]=='?'||pattern[i+1]=='+' || pattern[i + 1] == '{' || pattern[i + 1] == '}')) {
+				|| pattern[i + 1] == '|' || pattern[i + 1] == '.' || pattern[i + 1] == '*' )){
 				q.push(now);
 				q.push(pattern[i + 1]);
 				++i;
-			}//其他的都是字符，建议直接放进正确队列
+			}
+			else if (now == '`' && (pattern[i + 1] == '?' || pattern[i + 1] == '+' || pattern[i + 1] == '{' || pattern[i + 1] == '}' || pattern[i + 1] == '[' || pattern[i + 1] == ']')) {//其他的都是字符，建议直接放进正确队列
+				q.push(pattern[i + 1]);
+				++i;
+			}
 			else {
 				q.push(now);
 			}
@@ -81,13 +85,12 @@ void suffixRE(vector<Rules>& rules) {
 		}
 		//把正确队列转化为字符串
 		while (!q.empty()) {
-			char abb(q.front());
+			char abb (q.front());
 			string a{abb};
 			temp.append(a);
 			q.pop();		
 		}
 		rule.pattern = temp;
-		cout <<"temp:" <<temp<<endl;
 	}
 
 

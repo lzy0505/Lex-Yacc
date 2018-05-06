@@ -18,18 +18,17 @@ using std::pair;
 int number = 0;
 
 //将后缀表达式转化为NFA
-void suffix_To_NFA(vector<Rules>& suffixRules) {
+void suffix_To_NFA(vector<Rules>& suffixRules,NFA& finalNfa) {
 	stack<NFA> nfaStack;//用于构建NFA的工具栈,也是
-	NFA finalNfa;//最终的NFA
 	for (auto &rule : suffixRules) {
 		string pattern = rule.pattern; //已经后缀化后的pattern
+		cout <<"NFA pattern:" <<pattern<<endl;
 		vector<string> tempActionVec;//临时终态动作数组
 		for (auto it = pattern.cbegin() ; it != pattern.cend(); ++it)
 		{
 			NFA upNFA,downNFA;
 			NFAstate start, end,temp1;
 			char now = *it;
-			cout << *it;
 			switch (now) {
 			case'|':
 				//取出最上面的NFA进行操作
@@ -44,7 +43,7 @@ void suffix_To_NFA(vector<Rules>& suffixRules) {
 				//将down的终态和up的终态都连接到end
 				upNFA.statesMap.find(upNFA.endStatesMap.begin()->first)->
 					second.exEdgesMultiMap.insert(pair<char, int>('@', end.number));
-				downNFA.statesMap.find(upNFA.endStatesMap.begin()->first)->
+				downNFA.statesMap.find(downNFA.endStatesMap.begin()->first)->
 					second.exEdgesMultiMap.insert(pair<char, int>('@', end.number));
 				//将start连接到down和up的初态
 				start.exEdgesMultiMap.insert(pair<char, int>('@', upNFA.startState));
@@ -77,6 +76,10 @@ void suffix_To_NFA(vector<Rules>& suffixRules) {
 				//将upNFA的终态和初态连接
 				upNFA.statesMap.find(upNFA.endStatesMap.begin()->first)->
 					second.exEdgesMultiMap.insert(pair<char, int>('@', upNFA.startState));
+				upNFA.statesMap.find(upNFA.endStatesMap.begin()->first)->
+					second.exEdgesMultiMap.insert(pair<char, int>('@', end.number));
+				//更改初态
+				upNFA.startState = start.number;
 				//连接关系定义好后存入map
 				upNFA.statesMap.insert(pair<int, NFAstate>(start.number, start));
 				upNFA.statesMap.insert(pair<int, NFAstate>(end.number, end));
@@ -111,6 +114,8 @@ void suffix_To_NFA(vector<Rules>& suffixRules) {
 				NFA pushNFA;//用于压栈的NFA
 				//新建一个起始状态
 				start.number = number;
+				//更改初态
+				pushNFA.startState = start.number;
 				++number;
 				//新建一个终止状态
 				end.number = number;
@@ -131,7 +136,8 @@ void suffix_To_NFA(vector<Rules>& suffixRules) {
 		nfaStack.top().endStatesMap.begin()->second = rule.actions;
 	}
 	//现在得到了装着所有NFA的nfaStack,合并为一个大的NFA。
-	NFA finalNfa =nfaStack.top() , downNFA;
+	finalNfa = nfaStack.top();
+	NFA downNFA;
 	nfaStack.pop();
 	NFAstate start;
 	while (!nfaStack.empty()) {
@@ -148,7 +154,7 @@ void suffix_To_NFA(vector<Rules>& suffixRules) {
 		finalNfa.startState = start.number;
 		finalNfa.statesMap.insert(pair<int, NFAstate>(start.number, start));
 		//添加finalNFA的终止状态
-		finalNfa.endStatesMap.insert(*downNFA.endStatesMap.begin());
+		finalNfa.endStatesMap.insert(downNFA.endStatesMap.begin(), downNFA.endStatesMap.end());
 		//把downNFA的状态map拷贝到finalNFA中
 		finalNfa.statesMap.insert(downNFA.statesMap.begin(), downNFA.statesMap.end());
 	}

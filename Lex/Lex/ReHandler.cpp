@@ -10,7 +10,7 @@ using std::isalnum;
 using std::isalpha;
 using std::isdigit;
 using std::cout;
-const set<char> ESCAPEDCHARS{'.','|','*','(',')','+','?','{','}'};
+const set<char> ESCAPEDCHARS{'.','|','*','(',')','+','?','{','}','[',']'};
 
 void handleEscape(string& exp, bool in);
 
@@ -102,13 +102,13 @@ void replaceSquareBrace(string& exp) {
 	bool inSquareBrackes = false;
 	auto expIt = exp.begin();
 	while (expIt != exp.end()) {
-		if ((*expIt) == '[') {
+		if ((*expIt) == '[' && ((expIt) == exp.begin() || *(expIt - 1) != '`')) {
 			inSquareBrackes = true;
 			sbcontent = "";
 			++expIt;
 			continue;
 		}
-		else if ((*expIt) == ']') {
+		else if ((*expIt) == ']' &&inSquareBrackes && ((expIt) == exp.begin() || *(expIt - 1) != '`')) {
 			inSquareBrackes = false;
 			charVec.push_back('(');
 			set<char> s;//保存转换过的字符

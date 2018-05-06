@@ -131,26 +131,29 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 				//若不处于{}之间
 				if (!findUpperPar)
 				{
-					findUPPerBrackets = true;
+					
 					//对[和"开头的作特殊处理
 					if (line[0] == '[')
 					{
+						findUPPerBrackets = true;
 						int i = 1;
 						for (i = 1; i < line.size(); i++)
 						{
-							if (line[i] == ']'&&line[i + 1] == ' ')
+							if (line[i] == ']')
 							{
-								!findUPPerBrackets;
+								findUPPerBrackets=!findUPPerBrackets;
 							}
-							if (line[i + 1] == ' '&&findUPPerBrackets == false)
+							if ((line[i + 1]  == ' '|| line[i + 1] == '\t') &&findUPPerBrackets == false)
 							{
 								break;
 							}
 
 						}
 						lhd = line.substr(0, i+1);
-						rhd = split(line, "]").at(1);
+						rhd = line.substr(i+1);
 						trim(rhd);
+
+
 
 					}
 					if (line[0] == '\"')
@@ -159,19 +162,19 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 						int i = 1;
 						for (i = 1; i < line.size(); i++)
 						{
-							if (line[i] == '\"'&&line[i + 1] == ' ')
+							if (line[i] == '\"')
 							{
-								!findUpperMarks;
+								findUpperMarks=!findUpperMarks;
 							}
 
-							if (line[i+1] == ' '&&findUpperMarks == false)
+							if ((line[i+1] == ' '||line[i+1]=='\t')&&findUpperMarks == false)
 							{
 								break;
 							}
 
 						}
 						lhd = line.substr(0, i+1);
-						rhd = split(line, "\"").at(1);
+						rhd = line.substr(i + 1);
 						trim(rhd);
 
 					}

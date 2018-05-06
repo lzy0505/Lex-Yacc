@@ -271,7 +271,7 @@ void removeComment(string& s)
 	
 	
 }
-void resolve_test()
+void resolve_test()//print
 {
 
 	map<string, string> m;

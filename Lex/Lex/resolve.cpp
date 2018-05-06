@@ -79,10 +79,13 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 			else
 			{
 				//去掉句尾注释
-				line = split(line, "/*").at(0);
+			//	line = split(line, "/*").at(0);
 				//分割成两部分
 				vBuf = split(line, " ");
-			
+				if (vBuf.size() == 1)
+				{
+					vBuf = split(line, "\t");
+				}
 				if (vBuf.size() == 2)
 				{
 					m.insert(pair<string, string>(vBuf[0], vBuf[1]));

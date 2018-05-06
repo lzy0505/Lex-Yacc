@@ -167,6 +167,7 @@
     <ClCompile Include="suffixToNFA.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="fakelex.l" />
     <None Include="lex.l" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

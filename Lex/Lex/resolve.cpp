@@ -28,6 +28,8 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 	int lineCount=0;	//保存行号，用于错误提示
 	bool hasError=false;	//标识是否有错误，有错误立即终止解析
 	bool findUpperPar=false;	//是否发现上括弧
+	bool findUpperMarks = false; //是否发现上引号
+	bool findUPPerBrackets = false;//是否发现上中括号
 	string lhd;	//存储左边的字符串
 	string rhd;	//存储右边的字符串
 	vector<string>action;//存储动作
@@ -77,7 +79,7 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 			else
 			{
 				//去掉句尾注释
-				line = split(line, "\\*").at(0);
+				line = split(line, "/*").at(0);
 				//分割成两部分
 				vBuf = split(line, " ");
 			
@@ -103,7 +105,7 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 			{
 				
 				//去掉句尾注释
-				removeComment(line);
+				//removeComment(line);
 				//去掉首尾空格
 				trim(line);
 
@@ -129,14 +131,22 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 				//若不处于{}之间
 				if (!findUpperPar)
 				{
+					findUPPerBrackets = true;
 					//对[和"开头的作特殊处理
 					if (line[0] == '[')
 					{
 						int i = 1;
 						for (i = 1; i < line.size(); i++)
 						{
-							if (line[i] == ']')
+							if (line[i] == ']'&&line[i + 1] == ' ')
+							{
+								!findUPPerBrackets;
+							}
+							if (line[i + 1] == ' '&&findUPPerBrackets == false)
+							{
 								break;
+							}
+
 						}
 						lhd = line.substr(0, i+1);
 						rhd = split(line, "]").at(1);
@@ -145,11 +155,20 @@ int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<s
 					}
 					if (line[0] == '\"')
 					{
+						findUpperMarks = true;
 						int i = 1;
 						for (i = 1; i < line.size(); i++)
 						{
-							if (line[i] == '\"')
+							if (line[i] == '\"'&&line[i + 1] == ' ')
+							{
+								!findUpperMarks;
+							}
+
+							if (line[i+1] == ' '&&findUpperMarks == false)
+							{
 								break;
+							}
+
 						}
 						lhd = line.substr(0, i+1);
 						rhd = split(line, "\"").at(1);
@@ -240,9 +259,11 @@ string& trim(string &s)
 //去除注释
 void removeComment(string& s)
 {
+	
 	char* p = new char[100];
 	strcpy(p,s.c_str());
 	char* p1=strstr(p, "/*");
+
 	if (p1 == NULL)return;
 	int k = p1 - p;
 	s = s.substr(0, k);
@@ -256,7 +277,7 @@ void resolve_test()//print
 	map<string, string> m;
 	vector<Rules> rules;
 	vector<string>P1, P4;
-	string filePath("lex.l");
+	string filePath("fakelex.l");
 	resolve(filePath, m, rules, P1, P4);
 	vector<Rules>::iterator i1 = rules.begin();
 	vector<string>::iterator i2 = i1->actions.begin();

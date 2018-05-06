@@ -25,10 +25,6 @@ void suffix_To_NFA(vector<Rules>& suffixRules) {
 	for (auto &rule : suffixRules) {
 		string pattern = rule.pattern; //已经后缀化后的pattern
 		vector<string>* actions = &rule.actions;//获取操作
-		//ReNFA *nfaArray = new ReNFA[pattern.size()];//保存所有的ReNFA
-		//int lengthOfNfaArray = 0;
-		//state *stateArray = new state[4*pattern.size()];//保存所有的状态
-		//int lengthOfStateArray = 0;
 		stack<NFA> nfaStack;//用于构建NFA的工具栈
 		vector<string> tempActionVec;//临时终态动作数组
 
@@ -132,6 +128,7 @@ void suffix_To_NFA(vector<Rules>& suffixRules) {
 		//TODO 把新的数组存在reNfaVec中，等待合并
 
 		// TODO 合成一个NFA
+		// conflict
 	}
 
 }

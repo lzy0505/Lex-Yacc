@@ -10,7 +10,7 @@ using std::isalnum;
 using std::isalpha;
 using std::isdigit;
 using std::cout;
-const set<char> ESCAPEDCHARS{'.','|','*','(',')','+','?'};
+const set<char> ESCAPEDCHARS{'.','|','*','(',')','+','?','{','}'};
 
 void handleEscape(string& exp, bool in);
 
@@ -21,13 +21,13 @@ void replaceBrace(string& exp, const map<string, string>& reMap) {
 	bool inBrace = false;
 	auto expIt = exp.begin();
 	while (expIt != exp.end()) {
-		if ((*expIt) == '{') {
+		if ((*expIt) == '{'&&((expIt) == exp.begin()|| *(expIt-1) != '`')) {
 			inBrace = true;
 			rename = "";
 			++expIt;
 			continue;
 		}
-		else if ((*expIt) == '}') {
+		else if ((*expIt) == '}' && ((expIt) == exp.begin() || *(expIt - 1) != '`') &&inBrace) {
 			inBrace = false;
 			auto findIt = reMap.find(rename);
 			if (findIt != reMap.end()) {//找到了，把原来的出栈，找到的入栈
@@ -354,8 +354,8 @@ void  addDot(string &exp) {
 void translate(vector<Rules>& reVec, map<string, string>& reMap) {
 	//先处理map里面的
 	for (auto & p : reMap) {
-		replaceBrace(p.second, reMap);
 		handleQuote(p.second);
+		replaceBrace(p.second, reMap);
 		replaceSquareBrace(p.second);
 		replaceDot(p.second);
 		replaceQuestionAndAdd(p.second);
@@ -365,8 +365,8 @@ void translate(vector<Rules>& reVec, map<string, string>& reMap) {
 
 	//再处理Vector里面的
 	for (auto & e : reVec) {
-		replaceBrace(e.pattern, reMap);
 		handleQuote(e.pattern);
+		replaceBrace(e.pattern, reMap);
 		replaceSquareBrace(e.pattern);
 		replaceDot(e.pattern);
 		replaceQuestionAndAdd(e.pattern);

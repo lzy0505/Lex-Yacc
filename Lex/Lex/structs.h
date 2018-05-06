@@ -5,8 +5,9 @@
 #include "stdafx.h" 
 using std::vector;
 using std::string;
-using std::map;
-using std::multimap;
+using std::unordered_map;
+using std::unordered_multimap;
+using std::set;
 
 
 //用于规则的结构体
@@ -16,24 +17,32 @@ typedef struct {
 } Rules;
 
 //用于NFA状态的结构体
-struct state {
-	int number;//状态编号
-	multimap<char, state*> exEdges;//发出边,键为边上的值，值为下一个状态
-};
+typedef struct {
+	int number = 0;//状态标号
+	unordered_multimap<char, int> exEdgesMultiMap;//发出边,键为边上的值，值为下一个状态标号
+	bool operator==(const NFAstate& rNFAState) {
+		if (number == rNFAState.number) return true;
+		else return false;
+	}
+}NFAstate;//NFA内部状态
 
 typedef struct {
-	state* startState = nullptr;
-	map<state*, vector<string>> endStates;
-	state* statesArray = nullptr;
-	int numOfstates = 0;
-}NFA;
+	int startState = 0;//开始状态标号
+	unordered_map<int, vector<string> > endStatesMap;//存储终态和对应的动作
+	unordered_map<int,NFAstate> statesMap;//存储标号对应状态
+}NFA;//NFA
+
+typedef struct  {
+	int number = 0;//状态标号
+	unordered_set<NFAstate> identitySet;//区分不同状态用的集合
+	unordered_map<char, int> exEdgesMap;//发出边,键为边上的值，值为下一个状态标号
+}DFAstate;
 
 typedef struct {
-	state* startState = nullptr;
-	state* endState=nullptr;
-	vector<string> *actions = nullptr;
-	state* statesArray = nullptr;
-	int numOfstates = 0;
-}ReNFA;
+	unordered_map<int, vector<string> > endStatesMap;//存储终态和对应的动作
+	int startState = 0;//开始状态标号
+	vector<DFAstate> statesVec;//存储标号对应状态
+}DFA;
+
 
 #endif 

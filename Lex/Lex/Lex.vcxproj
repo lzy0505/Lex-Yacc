@@ -147,11 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="globalData.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="structs.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FADetermination.cpp" />
     <ClCompile Include="Lex.cpp" />
     <ClCompile Include="resolve.cpp" />
     <ClCompile Include="ReHandler.cpp" />

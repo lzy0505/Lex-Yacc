@@ -5,6 +5,7 @@
 #include "stdafx.h" 
 using std::vector;
 using std::string;
+using std::map;
 using std::unordered_map;
 using std::unordered_set;
 using std::unordered_multimap;
@@ -46,7 +47,7 @@ namespace std {
 
 typedef struct {
 	int startState = 0;//开始状态标号
-	unordered_map<int, vector<string> > endStatesMap;//存储终态和对应的动作
+	map<int, Rules> endStatesMap;//存储终态和对应的动作
 	unordered_map<int,NFAstate> statesMap;//存储标号对应状态
 }NFA;//NFA
 
@@ -57,7 +58,7 @@ typedef struct  {
 }DFAstate;
 
 typedef struct {
-	unordered_map<int, vector<string> > endStatesMap;//存储终态和对应的动作
+	unordered_map<int, Rules > endStatesMap;//存储终态和对应的动作
 	int startState = 0;//开始状态标号
 	vector<DFAstate> statesVec;//存储标号对应状态
 }DFA;

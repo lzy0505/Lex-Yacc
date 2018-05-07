@@ -318,6 +318,16 @@ void replaceQuestionAndAdd(string& exp){
 				}
 			}
 			++expIt;
+			while (expIt != exp.end()) {
+				charVec.push_back(*expIt);//后面的直接接上去
+				++expIt;
+			}
+			exp = "";
+			for (const auto &e : charVec) {
+				exp += e;
+			}
+			charVec.clear();
+			expIt = exp.begin();//从头开始
 			continue;
 		}
 		charVec.push_back(*expIt);
@@ -356,11 +366,11 @@ void translate(vector<Rules>& reVec, map<string, string>& reMap) {
 	for (auto & p : reMap) {
 		handleQuote(p.second);
 		replaceBrace(p.second, reMap);
-		replaceSquareBrace(p.second);
+		/*replaceSquareBrace(p.second);
 		replaceDot(p.second);
 		replaceQuestionAndAdd(p.second);
 		handleEscape(p.second, false);
-		addDot(p.second);
+		addDot(p.second);*/
 	}
 
 	//再处理Vector里面的

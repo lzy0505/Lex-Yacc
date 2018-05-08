@@ -50,6 +50,9 @@
     <ClCompile Include="FADetermination.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DFAtoArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lex.l">

@@ -153,6 +153,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DFAtoArray.cpp" />
     <ClCompile Include="FADetermination.cpp" />
     <ClCompile Include="Lex.cpp" />
     <ClCompile Include="resolve.cpp" />

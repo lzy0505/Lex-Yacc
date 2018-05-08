@@ -14,7 +14,6 @@ using std::endl;
 using std::multimap;
 using std::pair;
 
-//函数声明
 int number = 0;
 
 //将后缀表达式转化为NFA

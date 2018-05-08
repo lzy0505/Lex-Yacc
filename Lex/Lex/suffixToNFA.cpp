@@ -27,7 +27,7 @@ void suffix_To_NFA(vector<Rules>& suffixRules,NFA& finalNfa) {
 		for (auto it = pattern.cbegin() ; it != pattern.cend(); ++it)
 		{
 			NFA upNFA,downNFA;
-			NFAstate start, end,temp1;
+			NFAstate start, end;
 			char now = *it;
 			switch (now) {
 			case'|':
@@ -93,11 +93,11 @@ void suffix_To_NFA(vector<Rules>& suffixRules,NFA& finalNfa) {
 				upNFA = nfaStack.top();
 				nfaStack.pop();
 				downNFA = nfaStack.top();
-				nfaStack.pop();			
+				nfaStack.pop();
 				//取出downNFA的终态
-				temp1 = downNFA.statesMap.find(downNFA.endStatesMap.begin()->first)->second;//得到终态
+				downNFA.statesMap.find(downNFA.endStatesMap.begin()->first)->second//得到终态
 				//将压在下面的（也就是更前面的）NFA用@与后面的进行连接
-				temp1.exEdgesMultiMap.insert(pair<char, int>('@', upNFA.startState));
+				.exEdgesMultiMap.insert(pair<char, int>('@', upNFA.startState));
 				//更改终态
 				downNFA.endStatesMap.clear();
 				downNFA.endStatesMap = upNFA.endStatesMap;

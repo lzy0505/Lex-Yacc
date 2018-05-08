@@ -92,10 +92,8 @@ void convert_to_DFA(const NFA &nfa, DFA &dfa) {
 		for (const char& c : edgeSet) {
 			cout << "CHECK edge " << c << " ." << endl;
 			unordered_set<NFAstate> tempSet;
-			cout << "SUBSET construct" << endl;
 			if (subset_construct(nowStateIt->identitySet, tempSet, c, nfa.statesMap)) {
 				int toStateNum;//边指向的状态的编号
-				cout << "EPSILON  closure" << endl;
 				epsilon_closure(tempSet, nfa.statesMap);//再epsilon闭包
 				bool has = false;//看看是不是已经存在一样的
 				for (const auto &s : dfa.statesVec) {

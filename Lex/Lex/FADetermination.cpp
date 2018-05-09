@@ -8,6 +8,7 @@ using std::map;
 using std::unordered_set;
 using std::pair;
 using std::queue;
+using std::stack;
 
 
 bool find_actions(const unordered_set<NFAstate> &nfaStatesInDFAState, map<int, Rules > endStatesInNFA,Rules& actions) {
@@ -36,22 +37,44 @@ bool find_actions(const unordered_set<NFAstate> &nfaStatesInDFAState, map<int, R
 
 
 
-void epsilon_closure(unordered_set<NFAstate> &initStatesSet, const unordered_map<int , NFAstate> NFAStatesMap) {
-	unordered_set<NFAstate> tempSet1;
-	unordered_set<NFAstate> tempSet2(initStatesSet);
-	do {
-		tempSet1 = tempSet2;
-		for (const auto& state : tempSet1) {
-			auto itsPair = state.exEdgesMultiMap.equal_range('@');
-			auto beginIt = itsPair.first, endIt = itsPair.second;
-			while (beginIt != endIt) {
-				tempSet2.insert((*NFAStatesMap.find((*beginIt).second)).second);
-				++beginIt;
-			}
+//void epsilon_closure(unordered_set<NFAstate> &initStatesSet, const unordered_map<int , NFAstate> NFAStatesMap) {
+//	unordered_set<NFAstate> tempSet1;
+//	unordered_set<NFAstate> tempSet2(initStatesSet);
+//	do {
+//		tempSet1 = tempSet2;
+//		for (const auto& state : tempSet1) {
+//			auto itsPair = state.exEdgesMultiMap.equal_range('@');
+//			auto beginIt = itsPair.first, endIt = itsPair.second;
+//			while (beginIt != endIt) {
+//				tempSet2.insert((*NFAStatesMap.find((*beginIt).second)).second);
+//				++beginIt;
+//			}
+//		}
+//	} while (tempSet1 != tempSet2);
+//	initStatesSet = tempSet2;
+//}
+
+void epsilon_closure(unordered_set<NFAstate> &initStatesSet, const unordered_map<int, NFAstate> NFAStatesMap) {
+	
+	stack<NFAstate> stack;
+	//将初始集合中所有状态入栈
+	for (const auto& s : initStatesSet) {
+		stack.push(s);
+	}
+	NFAstate state;
+	while (!stack.empty()) {
+		state = stack.top();
+		stack.pop();
+		auto itsPair = state.exEdgesMultiMap.equal_range('@');
+		auto beginIt = itsPair.first;
+		while (beginIt != itsPair.second) {
+			stack.push((*NFAStatesMap.find((*beginIt).second)).second);
+			initStatesSet.insert((*NFAStatesMap.find((*beginIt).second)).second);
+			++beginIt;
 		}
-	} while (tempSet1 != tempSet2);
-	initStatesSet = tempSet2;
+	}
 }
+
 
 bool subset_construct(const unordered_set<NFAstate>& originSet, unordered_set<NFAstate>& constructedSet,const char edge, const unordered_map<int, NFAstate> NFAStatesMap) {
 	bool flag = false;//false表示集合中没有延出edge边的状态
@@ -92,6 +115,7 @@ void convert_to_DFA(const NFA &nfa, DFA &dfa) {
 		for (const char& c : edgeSet) {
 			cout << "CHECK edge " << c << " ." << endl;
 			unordered_set<NFAstate> tempSet;
+			cout << "SUBSET" << endl;
 			if (subset_construct(nowStateIt->identitySet, tempSet, c, nfa.statesMap)) {
 				int toStateNum;//边指向的状态的编号
 				epsilon_closure(tempSet, nfa.statesMap);//再epsilon闭包

@@ -58,7 +58,7 @@ typedef struct  {
 }DFAstate;
 
 typedef struct {
-	unordered_map<int, Rules > endStatesMap;//存储终态和对应的动作
+	unordered_map< int, Rules > endStatesMap;//存储终态和对应的动作
 	int startState = 0;//开始状态标号
 	vector<DFAstate> statesVec;//存储标号对应状态
 }DFA;

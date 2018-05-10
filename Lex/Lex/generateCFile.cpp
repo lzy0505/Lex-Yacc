@@ -24,6 +24,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec)
 		return -1;
 	}
 	/*主函数的开始*/
+	out << "int findAction(int action);" << endl; /*函数声明*/
 	out << "int main(int argc,char** argv)" << endl;
 	out << "{" << endl;
 
@@ -63,7 +64,8 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec)
 	out << "{" << endl;
 	out << "yy_current_state=yy_last_accepting_state;" << endl;
 	out << "yy_cp=yy_last_accepting_cpos;" << endl;
-	out << "findAction(yy_current_state);" << endl;/*调用int findAction(int state)来返回Action*/
+	out << "yy_act=yy_accept[yy_current_state];" << endl;
+	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
 	out << "}" << endl;
 	out << "else {" << endl;
 	out << "yy_current_state=yy_next[yy_base[yy_current_satte]+yy_c];";
@@ -73,13 +75,13 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec)
 	out << "}" << endl;/*mian函数结束*/
   
 
-	/*int findAction(int state)函数*/
-	out << "int findAction(int state)" << endl;
+	/*int findAction(int action)函数*/
+	out << "int findAction(int action)" << endl;
 	out << "{" << endl;
 	out << "switch (yy_act) " << endl;/*根据endVec打印switch语句*/
 	out << "{" << endl;
 	out << "case 0:" << endl;
-	/*...此处省略一些东西*/
+	/*...此处省略了一些东西*/
 	out << "break;" << endl;
 	for (int i = 0; i < endVec.size(); i++)
 	{
@@ -92,9 +94,6 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec)
 
 	}
 	out << "}" << endl; /*int findAction(int state）函数的下括号*/
-
-
-
 
 
 

@@ -634,10 +634,22 @@ yy_last_accepting_state=-1;
 if(yy_next[yy_base[yy_current_satte]+yy_c]==-1&&yy_last_accepting_state==-1)
 {
 printf("ERROR DETECTED IN INPUT FILE !");
-}if(yy_next[yy_base[yy_current_satte]+yy_c]!=-1) 
+}
+if(yy_next[yy_base[yy_current_satte]+yy_c]!=-1) 
 {
-yy_current_state=yy_next[yy_base[yy_current_satte]+yy_c];}
+yy_current_state=yy_next[yy_base[yy_current_satte]+yy_c];
+}
 ++yy_cp;
+}
+if(yy_last_accepting_cpos==yy_cp-1)
+{
+yy_current_state=yy_last_accepting_state;
+yy_cp=yy_last_accepting_cpos;
+yy_act=yy_accept[yy_current_state];
+findAction(yy_act);
+}
+else{
+printf("ERROR DETECTED IN INPUT FILE !");
 }
 }
 int findAction(int action)

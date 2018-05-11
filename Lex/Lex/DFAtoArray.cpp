@@ -17,8 +17,9 @@ void DFAtoArray(const DFA& dfa,vector<pair<int*,int> >& arrays, vector<Rules>& e
 	//cout << set_size<<endl;
 	
 	//string allset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	string allset = "0123456789abcdefghijklmnopqrstuvwxyz";
-	const int set_size = 36;
+	//string allset = "0123456789abcdefghijklmnopqrstuvwxyz";
+	string allset(ALLSET);
+	const int set_size = allset.size();
 
 
 	//建立四个表：1、ec表：索引char的ascii码，值是对应的列数

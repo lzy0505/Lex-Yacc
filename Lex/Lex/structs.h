@@ -26,22 +26,22 @@ typedef struct {
 typedef struct NFAstate{
 	int number = 0;//状态标号
 	unordered_multimap<char, int> exEdgesMultiMap;//发出边,键为边上的值，值为下一个状态标号
-	inline bool operator==(const NFAstate& rNFAState) const {
-		if (number == rNFAState.number) return true;
-		else return false;
-	}
+	//inline bool operator==(const NFAstate& rNFAState) const {
+	//	if (number == rNFAState.number) return true;
+	//	else return false;
+	//}
 }NFAstate;//NFA内部状态
 
 
 
-namespace std {
-	template<>
-	struct hash<NFAstate> {
-		inline size_t operator()(const NFAstate& s) const {
-			return  hash<int>()(s.number);
-		}
-	};
-}
+//namespace std {
+//	template<>
+//	struct hash<NFAstate> {
+//		inline size_t operator()(const NFAstate& s) const {
+//			return  hash<int>()(s.number);
+//		}
+//	};
+//}
 
 
 
@@ -53,7 +53,7 @@ typedef struct {
 
 typedef struct  {
 	int number = 0;//状态标号
-	unordered_set <NFAstate> identitySet;//区分不同状态用的集合
+	unordered_set <int> identitySet;//区分不同状态用的集合
 	unordered_map <char, int> exEdgesMap;//发出边,键为边上的值，值为下一个状态标号
 }DFAstate;
 

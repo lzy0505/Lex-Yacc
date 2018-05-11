@@ -11,11 +11,11 @@ using std::queue;
 using std::stack;
 
 
-bool find_actions(const unordered_set<NFAstate> &nfaStatesInDFAState, map<int, Rules > endStatesInNFA,Rules& actions) {
+bool find_actions(const unordered_set<int> &nfaStatesInDFAState, const map<int, Rules >& endStatesInNFA,Rules& actions) {
 	decltype(endStatesInNFA.find(0)) endStateIt;//要选择的终态
 	bool find = false;
 	for (const auto & nfaState : nfaStatesInDFAState) {//遍历DFA中所有的NFA状态
-		auto it = endStatesInNFA.find(nfaState.number);//查找一下这个NFA状态是不是一个终态
+		auto it = endStatesInNFA.find(nfaState);//查找一下这个NFA状态是不是一个终态
 		if (it != endStatesInNFA.end()) {//发现是终态
 			if (find) {//如果有位置更靠前的， 更新
 				if(endStateIt->first > it->first)
@@ -54,36 +54,34 @@ bool find_actions(const unordered_set<NFAstate> &nfaStatesInDFAState, map<int, R
 //	initStatesSet = tempSet2;
 //}
 
-void epsilon_closure(unordered_set<NFAstate> &initStatesSet, const unordered_map<int, NFAstate> NFAStatesMap) {
+void epsilon_closure(unordered_set<int> &initStatesSet, const unordered_map<int, NFAstate>& NFAStatesMap) {
 	
-	stack<NFAstate> stack;
+	stack<int> stack;
 	//将初始集合中所有状态入栈
 	for (const auto& s : initStatesSet) {
 		stack.push(s);
 	}
-	NFAstate state;
 	while (!stack.empty()) {
-		state = stack.top();
+		auto itsPair = NFAStatesMap.find(stack.top())->second.exEdgesMultiMap.equal_range('@');
 		stack.pop();
-		auto itsPair = state.exEdgesMultiMap.equal_range('@');
 		auto beginIt = itsPair.first;
 		while (beginIt != itsPair.second) {
-			stack.push((*NFAStatesMap.find((*beginIt).second)).second);
-			initStatesSet.insert((*NFAStatesMap.find((*beginIt).second)).second);
+			stack.push((*NFAStatesMap.find((*beginIt).second)).first);
+			initStatesSet.insert(beginIt->second);
 			++beginIt;
 		}
 	}
 }
 
 
-bool subset_construct(const unordered_set<NFAstate>& originSet, unordered_set<NFAstate>& constructedSet,const char edge, const unordered_map<int, NFAstate> NFAStatesMap) {
+bool subset_construct(const unordered_set<int>& originSet, unordered_set<int>& constructedSet,const char edge, const unordered_map<int, NFAstate>& NFAStatesMap) {
 	bool flag = false;//false表示集合中没有延出edge边的状态
 	for (const auto& state : originSet) {
-		auto itsPair = state.exEdgesMultiMap.equal_range(edge);
+		auto itsPair = NFAStatesMap.find(state)->second.exEdgesMultiMap.equal_range(edge);
 		auto beginIt = itsPair.first, endIt = itsPair.second;
 		if (beginIt == endIt) continue;//判断这个状态有没有发出edge边
 		while (beginIt != endIt) {
-			constructedSet.insert((*NFAStatesMap.find((*beginIt).second)).second);
+			constructedSet.insert(beginIt->second);
 			++beginIt;
 		}
 		flag = true;//集合里面有一个状态有就是有！
@@ -94,29 +92,26 @@ bool subset_construct(const unordered_set<NFAstate>& originSet, unordered_set<NF
 
 
 void convert_to_DFA(const NFA &nfa, DFA &dfa) {
+	int c = 1;
 	const string edgeSet(ALLSET);//设置边的全集
 	queue<int> unExamedDFAStates;//存储未处理的DFA状态编号
 	int counter = 0;//用于给DFA状态编号
 	DFAstate state;//I0
 	state.number = counter++;
-	state.identitySet.insert((*nfa.statesMap.find(nfa.startState)).second);
+	state.identitySet.insert(nfa.startState);
 	epsilon_closure(state.identitySet, nfa.statesMap);
 	dfa.statesVec.push_back(state);
 	unExamedDFAStates.push(state.number);
 	while (!unExamedDFAStates.empty()) {//还有没有处理的新DFA状态
+		/*cout <<"$$$$$$$$$"<< c++ <<"/1476"<<"$$$$$$$$$"<<endl;*/
 		int nowStateNum = unExamedDFAStates.front();//取出一个要处理的状态的编号
 		unExamedDFAStates.pop();
-		cout << "\n\n==============================\n" << "POP a state, remain " << unExamedDFAStates.size() << " states." << endl;
-		auto nowStateIt = dfa.statesVec.begin();
-		while (nowStateIt != dfa.statesVec.end()) {//在dfa的state中用编号找到这个要处理的状态；
-			if (nowStateIt->number == nowStateNum) break;
-			++nowStateIt;
-		}
+		//cout << "========\n" << "POP a state."<<"\n========" << endl;
 		for (const char& c : edgeSet) {
-			cout << "CHECK edge " << c << " ." << endl;
-			unordered_set<NFAstate> tempSet;
-			cout << "SUBSET" << endl;
-			if (subset_construct(nowStateIt->identitySet, tempSet, c, nfa.statesMap)) {
+			/*cout << "CHECK edge " << c << " ." << endl;*/
+			unordered_set<int> tempSet;
+			/*cout << "SUBSET CONSTRUCTION" << endl;*/
+			if (subset_construct(dfa.statesVec[nowStateNum].identitySet, tempSet, c, nfa.statesMap)) {
 				int toStateNum;//边指向的状态的编号
 				epsilon_closure(tempSet, nfa.statesMap);//再epsilon闭包
 				bool has = false;//看看是不是已经存在一样的
@@ -124,7 +119,7 @@ void convert_to_DFA(const NFA &nfa, DFA &dfa) {
 					if (s.identitySet == tempSet) {//存在一样的
 						toStateNum = s.number; //指向vect中已有的状态
 						has = true;
-						cout << "EXIST state " << s.number << endl;
+						/*cout << "EXIST state " << s.number << endl;*/
 						break;
 					}
 				}
@@ -132,22 +127,17 @@ void convert_to_DFA(const NFA &nfa, DFA &dfa) {
 					DFAstate newState;
 					newState.number = counter++;//新标号
 					toStateNum = newState.number; //指向新建的这个状态
-					cout << "CREATE state" << newState.number << endl;
+					//cout << "CREATE state" << newState.number << endl;
 					newState.identitySet = tempSet;
 					dfa.statesVec.push_back(newState);
 					unExamedDFAStates.push(toStateNum);//新状态尚需要处理
 					Rules actions;	//判断是否是终态并找每个终态对应动作
-					cout << "CHECK if terminated state" << endl;
+					//cout << "CHECK if terminated state" << endl;
 					if (find_actions(newState.identitySet, nfa.endStatesMap, actions)) { //如果包含一个终态
 						dfa.endStatesMap.insert(pair<int, Rules >(newState.number, actions));//决定这个dfa终态对应的动作
 					}
 				}
-				nowStateIt = dfa.statesVec.begin();
-				while (nowStateIt != dfa.statesVec.end()) {//在dfa的state中用编号找到这个要处理的状态；
-					if (nowStateIt->number == nowStateNum) break;
-					++nowStateIt;
-				}
-				nowStateIt->exEdgesMap.insert(pair<char, int>(c, toStateNum));//加一条边
+				dfa.statesVec[nowStateNum].exEdgesMap.insert(pair<char, int>(c, toStateNum));//加一条边
 			}
 		}
 	}

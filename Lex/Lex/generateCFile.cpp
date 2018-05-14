@@ -26,6 +26,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	}
 	/*主函数的开始*/
 	out << "#include\"stdio.h\"" << endl;
+	out << "#include\"stdlib.h\"" << endl;
 	/*依次输出P1和P4*/
 	for (int i = 0; i < part1.size(); i++)
 	{
@@ -81,7 +82,11 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "yy_cp=yy_last_accepting_cpos;" << endl;
 	out << "yy_act=yy_accept[yy_current_state];" << endl;
 	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
+	out << "yy_current_state=0;" << endl; /*将状态置为0*/
 	out << "yy_last_accepting_state=-1;" << endl;
+	out << "++yy_cp;" << endl;
+	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
+	out << "continue;" << endl;
 	out << "}" << endl;
 	out << "if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state==-1)" << endl;
 	out << "{" << endl;
@@ -90,13 +95,12 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "if(yy_next[yy_base[yy_current_state]+yy_c]!=-1) " << endl;
 	out << "{" << endl;
 	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
-	out << "}" << endl;
 	out << "++yy_cp;" << endl;
 	out << "}" << endl;
+	out << "}" << endl;
+
 	out << "if(yy_last_accepting_cpos==yy_cp-1)" << endl;
 	out << "{" << endl;
-	out << "yy_current_state=yy_last_accepting_state;" << endl;
-	out << "yy_cp=yy_last_accepting_cpos;" << endl;
 	out << "yy_act=yy_accept[yy_current_state];" << endl;
 	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
 	out << "}" << endl;
@@ -132,7 +136,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "char* getCharPtr(char* fileName){" << endl;
 	out << "char* cp=NULL;" << endl;
 	out << "FILE *fp;" << endl;
-	out << "fp=fopen(fileName,\"w\");" << endl;
+	out << "fp=fopen(fileName,\"r\");" << endl;
 	out << "if(fp==NULL)" << endl;
 	out << "{" << endl;
 	out << "printf(\"can't open file\");" << endl;
@@ -141,16 +145,17 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "}" << endl;
 	out << "fseek(fp,0,SEEK_END);" << endl;
 	out << "int flen = ftell(fp);" << endl; /* 得到文件大小 */
-	out << "char *p = (char *)malloc(flen + 1);" << endl; /* 根据文件大小动态分配内存空间 */
-	out << "if (p == NULL)" << endl;
+	out << "cp = (char *)malloc(flen + 1);" << endl; /* 根据文件大小动态分配内存空间 */
+	out << "if (cp == NULL)" << endl;
 	out << "{" << endl;
 	out << "fclose(fp);" << endl;
 	out <<"	return 0;"<<endl;
 	out << "}" << endl;
-	out << "fseek(fp, 0L, SEEK_SET);" << endl; /* 定位到文件开头 */
-	out << "fread(p, flen, 1, fp);" << endl; /* 一次性读取全部文件内容 */
-	out << "p[flen] = 0; " << endl;/* 字符串结束标志 */
-	out << "return p;" << endl;
+	out << "rewind(fp);" << endl; /* 定位到文件开头 */
+	out << "memset(cp,0,flen+1);" << endl;
+	out << "fread(cp, sizeof(char), flen, fp);" << endl; /* 一次性读取全部文件内容 */
+	out << "cp[flen] = 0; " << endl;/* 字符串结束标志 */
+	out << "return cp;" << endl;
 	out << "}" << endl;
 	out.close();
 	return 0;

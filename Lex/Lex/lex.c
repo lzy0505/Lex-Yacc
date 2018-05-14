@@ -14678,7 +14678,6 @@ yy_current_state=yy_last_accepting_state;
 yy_cp=yy_last_accepting_cpos;
 yy_act=yy_accept[yy_current_state];
 findAction(yy_act);
-printf(" ");
 yy_current_state=0;
 yy_last_accepting_state=-1;
 ++yy_cp;
@@ -14703,2330 +14702,2994 @@ findAction(yy_act);
 else{
 printf("ERROR DETECTED IN INPUT FILE !");
 }
-system("pause");
 }
 int findAction(int action)
 {
-	switch (action)
-	{
-	case 0:
-		break;
-	case 1:
-		printf("CONSTANT");
-		break;
-	case 2:
-		printf("BREAK");
-		break;
-	case 3:
-		printf("CONSTANT");
-		break;
-	case 4:
-		printf("below are comments");
-		break;
-	case 5:
-		printf("IDENTIFIER");
-		break;
-	case 6:
-		printf("CONSTANT");
-		break;
-	case 7:
-		printf("below are comments");
-		break;
-	case 8:
-		printf("a CHAR");
-		break;
-	case 9:
-		printf("CONSTANT");
-		break;
-	case 10:
-		printf("CONSTANT");
-		break;
-	case 11:
-		printf("CONSTANT");
-		break;
-	case 12:
-		printf("IDENTIFIER");
-		break;
-	case 13:
-		printf("IDENTIFIER");
-		break;
-	case 14:
-		printf("IDENTIFIER");
-		break;
-	case 15:
-		printf("CONSTANT");
-		break;
-	case 16:
-		printf("IDENTIFIER");
-		break;
-	case 17:
-		printf("CONSTANT");
-		break;
-	case 18:
-		printf("below are comments");
-		break;
-	case 19:
-		printf("IDENTIFIER");
-		break;
-	case 20:
-		printf("IDENTIFIER");
-		break;
-	case 21:
-		printf("CONSTANT");
-		break;
-	case 22:
-		printf("IDENTIFIER");
-		break;
-	case 23:
-		printf("CONSTANT");
-		break;
-	case 24:
-		printf("IDENTIFIER");
-		break;
-	case 25:
-		printf("CONSTANT");
-		break;
-	case 26:
-		printf("IDENTIFIER");
-		break;
-	case 27:
-		printf("CONSTANT");
-		break;
-	case 28:
-		printf("IDENTIFIER");
-		break;
-	case 29:
-		printf("IDENTIFIER");
-		break;
-	case 30:
-		printf("CONSTANT");
-		break;
-	case 31:
-		printf("below are comments");
-		break;
-	case 32:
-		printf("IDENTIFIER");
-		break;
-	case 33:
-		printf("IDENTIFIER");
-		break;
-	case 34:
-		printf("CONSTANT");
-		break;
-	case 35:
-		printf("IDENTIFIER");
-		break;
-	case 36:
-		printf("CONSTANT");
-		break;
-	case 37:
-		printf("IDENTIFIER");
-		break;
-	case 38:
-		printf("CONSTANT");
-		break;
-	case 39:
-		printf("IDENTIFIER");
-		break;
-	case 40:
-		printf("below are comments");
-		break;
-	case 41:
-		printf("IDENTIFIER");
-		break;
-	case 42:
-		printf("IDENTIFIER");
-		break;
-	case 43:
-		printf("CONSTANT");
-		break;
-	case 44:
-		printf("CONSTANT");
-		break;
-	case 45:
-		printf("IDENTIFIER");
-		break;
-	case 46:
-		printf("IDENTIFIER");
-		break;
-	case 47:
-		printf("CONSTANT");
-		break;
-	case 48:
-		printf("below are comments");
-		break;
-	case 49:
-		printf("IDENTIFIER");
-		break;
-	case 50:
-		printf("IDENTIFIER");
-		break;
-	case 51:
-		printf("CONSTANT");
-		break;
-	case 52:
-		printf("IDENTIFIER");
-		break;
-	case 53:
-		printf("CONSTANT");
-		break;
-	case 54:
-		printf("IDENTIFIER");
-		break;
-	case 55:
-		printf("IDENTIFIER");
-		break;
-	case 56:
-		printf("below are comments");
-		break;
-	case 57:
-		printf("IDENTIFIER");
-		break;
-	case 58:
-		printf("IDENTIFIER");
-		break;
-	case 59:
-		printf("IDENTIFIER");
-		break;
-	case 60:
-		printf("below are comments");
-		break;
-	case 61:
-		printf("IDENTIFIER");
-		break;
-	case 62:
-		printf("CONSTANT");
-		break;
-	case 63:
-		printf("below are comments");
-		break;
-	case 64:
-		printf("IDENTIFIER");
-		break;
-	case 65:
-		printf("IDENTIFIER");
-		break;
-	case 66:
-		printf("CONSTANT");
-		break;
-	case 67:
-		printf("IDENTIFIER");
-		break;
-	case 68:
-		printf("IDENTIFIER");
-		break;
-	case 69:
-		printf("CONSTANT");
-		break;
-	case 70:
-		printf("below are comments");
-		break;
-	case 71:
-		printf("IDENTIFIER");
-		break;
-	case 72:
-		printf("IDENTIFIER");
-		break;
-	case 73:
-		printf("IDENTIFIER");
-		break;
-	case 74:
-		printf("below are comments");
-		break;
-	case 75:
-		printf("IDENTIFIER");
-		break;
-	case 76:
-		printf("below are comments");
-		break;
-	case 77:
-		printf("IDENTIFIER");
-		break;
-	case 78:
-		printf("IDENTIFIER");
-		break;
-	case 79:
-		printf("IDENTIFIER");
-		break;
-	case 80:
-		printf("below are comments");
-		break;
-	case 81:
-		printf("IDENTIFIER");
-		break;
-	case 82:
-		printf("below are comments");
-		break;
-	case 83:
-		printf("IDENTIFIER");
-		break;
-	case 84:
-		printf("IDENTIFIER");
-		break;
-	case 85:
-		printf("IDENTIFIER");
-		break;
-	case 86:
-		printf("below are comments");
-		break;
-	case 87:
-		printf("IDENTIFIER");
-		break;
-	case 88:
-		printf("below are comments");
-		break;
-	case 89:
-		printf("IDENTIFIER");
-		break;
-	case 90:
-		printf("IDENTIFIER");
-		break;
-	case 91:
-		printf("IDENTIFIER");
-		break;
-	case 92:
-		printf("below are comments");
-		break;
-	case 93:
-		printf("IDENTIFIER");
-		break;
-	case 94:
-		printf("DEC_OP");
-		break;
-	case 95:
-		printf("IDENTIFIER");
-		break;
-	case 96:
-		printf("IDENTIFIER");
-		break;
-	case 97:
-		printf("IDENTIFIER");
-		break;
-	case 98:
-		printf("below are comments");
-		break;
-	case 99:
-		printf("IDENTIFIER");
-		break;
-	case 100:
-		printf("CONSTANT");
-		break;
-	case 101:
-		printf("CONSTANT");
-		break;
-	case 102:
-		printf("INC_OP");
-		break;
-	case 103:
-		printf("CONSTANT");
-		break;
-	case 104:
-		printf("below are comments");
-		break;
-	case 105:
-		printf("CONSTANT");
-		break;
-	case 106:
-		printf("CONSTANT");
-		break;
-	case 107:
-		printf("CONSTANT");
-		break;
-	case 108:
-		printf("CONSTANT");
-		break;
-	case 109:
-		printf("PTR_OP");
-		break;
-	case 110:
-		printf("COMPLEX");
-		break;
-	case 111:
-		printf("CONSTANT");
-		break;
-	case 112:
-		printf("below are comments");
-		break;
-	case 113:
-		printf("CONSTANT");
-		break;
-	case 114:
-		printf("CONSTANT");
-		break;
-	case 115:
-		printf("CONSTANT");
-		break;
-	case 116:
-		printf("CONSTANT");
-		break;
-	case 117:
-		printf("!");
-		break;
-	case 118:
-		printf("below are comments");
-		break;
-	case 119:
-		printf("below are comments");
-		break;
-	case 120:
-		printf("a CHAR");
-		break;
-	case 121:
-		printf("%%");
-		break;
-	case 122:
-		printf("a CHAR");
-		break;
-	case 123:
-		printf("CONSTANT");
-		break;
-	case 124:
-		printf("below are comments");
-		break;
-	case 125:
-		printf("(");
-		break;
-	case 126:
-		printf("CONSTANT");
-		break;
-	case 127:
-		printf("below are comments");
-		break;
-	case 128:
-		printf(")");
-		break;
-	case 129:
-		printf("*");
-		break;
-	case 130:
-		printf("+");
-		break;
-	case 131:
-		printf("below are comments");
-		break;
-	case 132:
-		printf(",");
-		break;
-	case 133:
-		printf("IDENTIFIER");
-		break;
-	case 134:
-		printf("below are comments");
-		break;
-	case 135:
-		printf("-");
-		break;
-	case 136:
-		printf(".");
-		break;
-	case 137:
-		printf("/");
-		break;
-	case 138:
-		printf("CONSTANT");
-		break;
-	case 139:
-		printf("CONSTANT");
-		break;
-	case 140:
-		printf("below are comments");
-		break;
-	case 141:
-		printf(":");
-		break;
-	case 142:
-		printf("CONSTANT");
-		break;
-	case 143:
-		printf("below are comments");
-		break;
-	case 144:
-		printf(";");
-		break;
-	case 145:
-		printf("<");
-		break;
-	case 146:
-		printf("=");
-		break;
-	case 147:
-		printf(">");
-		break;
-	case 148:
-		printf("CONSTANT");
-		break;
-	case 149:
-		printf("below are comments");
-		break;
-	case 150:
-		printf("?");
-		break;
-	case 151:
-		printf("[");
-		break;
-	case 152:
-		printf("a CHAR");
-		break;
-	case 153:
-		printf("]");
-		break;
-	case 154:
-		printf("below are comments");
-		break;
-	case 155:
-		printf("^");
-		break;
-	case 156:
-		printf("{");
-		break;
-	case 157:
-		printf("|");
-		break;
-	case 158:
-		printf("}");
-		break;
-	case 159:
-		printf("IDENTIFIER");
-		break;
-	case 160:
-		printf("CONSTANT");
-		break;
-	case 161:
-		printf("below are comments");
-		break;
-	case 162:
-		printf("IDENTIFIER");
-		break;
-	case 163:
-		printf("a SPACE");
-		break;
-	case 164:
-		printf("IDENTIFIER");
-		break;
-	case 165:
-		printf("a SPACE");
-		break;
-	case 166:
-		printf("LONG");
-		break;
-	case 167:
-		printf("a SPACE");
-		break;
-	case 168:
-		printf("below are comments");
-		break;
-	case 169:
-		printf("a SPACE");
-		break;
-	case 170:
-		printf("a SPACE");
-		break;
-	case 171:
-		printf("IDENTIFIER");
-		break;
-	case 172:
-		printf("~");
-		break;
-	case 173:
-		printf("&");
-		break;
-	case 174:
-		printf("IDENTIFIER");
-		break;
-	case 175:
-		printf("CONSTANT");
-		break;
-	case 176:
-		printf("CONSTANT");
-		break;
-	case 177:
-		printf("below are comments");
-		break;
-	case 178:
-		printf("IDENTIFIER");
-		break;
-	case 179:
-		printf("IDENTIFIER");
-		break;
-	case 180:
-		printf("IDENTIFIER");
-		break;
-	case 181:
-		printf("IDENTIFIER");
-		break;
-	case 182:
-		printf("IDENTIFIER");
-		break;
-	case 183:
-		printf("IDENTIFIER");
-		break;
-	case 184:
-		printf("IDENTIFIER");
-		break;
-	case 185:
-		printf("RIGHT_ASSIGN");
-		break;
-	case 186:
-		printf("IDENTIFIER");
-		break;
-	case 187:
-		printf("IDENTIFIER");
-		break;
-	case 188:
-		printf("IDENTIFIER");
-		break;
-	case 189:
-		printf("IDENTIFIER");
-		break;
-	case 190:
-		printf("IDENTIFIER");
-		break;
-	case 191:
-		printf("IDENTIFIER");
-		break;
-	case 192:
-		printf("IDENTIFIER");
-		break;
-	case 193:
-		printf("IDENTIFIER");
-		break;
-	case 194:
-		printf("AUTO");
-		break;
-	case 195:
-		printf("IDENTIFIER");
-		break;
-	case 196:
-		printf("IDENTIFIER");
-		break;
-	case 197:
-		printf("IDENTIFIER");
-		break;
-	case 198:
-		printf("IDENTIFIER");
-		break;
-	case 199:
-		printf("CONSTANT");
-		break;
-	case 200:
-		printf("IDENTIFIER");
-		break;
-	case 201:
-		printf("FOR");
-		break;
-	case 202:
-		printf("IDENTIFIER");
-		break;
-	case 203:
-		printf("IDENTIFIER");
-		break;
-	case 204:
-		printf("IDENTIFIER");
-		break;
-	case 205:
-		printf("IDENTIFIER");
-		break;
-	case 206:
-		printf("IDENTIFIER");
-		break;
-	case 207:
-		printf("IDENTIFIER");
-		break;
-	case 208:
-		printf("IDENTIFIER");
-		break;
-	case 209:
-		printf("CONSTANT");
-		break;
-	case 210:
-		printf("IDENTIFIER");
-		break;
-	case 211:
-		printf("IDENTIFIER");
-		break;
-	case 212:
-		printf("IDENTIFIER");
-		break;
-	case 213:
-		printf("IDENTIFIER");
-		break;
-	case 214:
-		printf("CONSTANT");
-		break;
-	case 215:
-		printf("IDENTIFIER");
-		break;
-	case 216:
-		printf("IDENTIFIER");
-		break;
-	case 217:
-		printf("CONSTANT");
-		break;
-	case 218:
-		printf("IDENTIFIER");
-		break;
-	case 219:
-		printf("IDENTIFIER");
-		break;
-	case 220:
-		printf("IDENTIFIER");
-		break;
-	case 221:
-		printf("IDENTIFIER");
-		break;
-	case 222:
-		printf("IDENTIFIER");
-		break;
-	case 223:
-		printf("IDENTIFIER");
-		break;
-	case 224:
-		printf("CONSTANT");
-		break;
-	case 225:
-		printf("IDENTIFIER");
-		break;
-	case 226:
-		printf("CONSTANT");
-		break;
-	case 227:
-		printf("IDENTIFIER");
-		break;
-	case 228:
-		printf("IDENTIFIER");
-		break;
-	case 229:
-		printf("CONSTANT");
-		break;
-	case 230:
-		printf("IDENTIFIER");
-		break;
-	case 231:
-		printf("CONSTANT");
-		break;
-	case 232:
-		printf("IDENTIFIER");
-		break;
-	case 233:
-		printf("IDENTIFIER");
-		break;
-	case 234:
-		printf("CONSTANT");
-		break;
-	case 235:
-		printf("IDENTIFIER");
-		break;
-	case 236:
-		printf("IDENTIFIER");
-		break;
-	case 237:
-		printf("CONSTANT");
-		break;
-	case 238:
-		printf("IDENTIFIER");
-		break;
-	case 239:
-		printf("CONSTANT");
-		break;
-	case 240:
-		printf("below are comments");
-		break;
-	case 241:
-		printf("IDENTIFIER");
-		break;
-	case 242:
-		printf("CONSTANT");
-		break;
-	case 243:
-		printf("IDENTIFIER");
-		break;
-	case 244:
-		printf("IDENTIFIER");
-		break;
-	case 245:
-		printf("IDENTIFIER");
-		break;
-	case 246:
-		printf("IDENTIFIER");
-		break;
-	case 247:
-		printf("IDENTIFIER");
-		break;
-	case 248:
-		printf("IDENTIFIER");
-		break;
-	case 249:
-		printf("IDENTIFIER");
-		break;
-	case 250:
-		printf("IDENTIFIER");
-		break;
-	case 251:
-		printf("IDENTIFIER");
-		break;
-	case 252:
-		printf("IDENTIFIER");
-		break;
-	case 253:
-		printf("IDENTIFIER");
-		break;
-	case 254:
-		printf("IDENTIFIER");
-		break;
-	case 255:
-		printf("CONSTANT");
-		break;
-	case 256:
-		printf("CONSTANT");
-		break;
-	case 257:
-		printf("IDENTIFIER");
-		break;
-	case 258:
-		printf("IDENTIFIER");
-		break;
-	case 259:
-		printf("IDENTIFIER");
-		break;
-	case 260:
-		printf("IDENTIFIER");
-		break;
-	case 261:
-		printf("IDENTIFIER");
-		break;
-	case 262:
-		printf("CONSTANT");
-		break;
-	case 263:
-		printf("IDENTIFIER");
-		break;
-	case 264:
-		printf("IDENTIFIER");
-		break;
-	case 265:
-		printf("IDENTIFIER");
-		break;
-	case 266:
-		printf("IDENTIFIER");
-		break;
-	case 267:
-		printf("CONSTANT");
-		break;
-	case 268:
-		printf("IDENTIFIER");
-		break;
-	case 269:
-		printf("IDENTIFIER");
-		break;
-	case 270:
-		printf("IDENTIFIER");
-		break;
-	case 271:
-		printf("CONSTANT");
-		break;
-	case 272:
-		printf("IDENTIFIER");
-		break;
-	case 273:
-		printf("CONSTANT");
-		break;
-	case 274:
-		printf("IDENTIFIER");
-		break;
-	case 275:
-		printf("IDENTIFIER");
-		break;
-	case 276:
-		printf("IDENTIFIER");
-		break;
-	case 277:
-		printf("CONSTANT");
-		break;
-	case 278:
-		printf("IDENTIFIER");
-		break;
-	case 279:
-		printf("CONSTANT");
-		break;
-	case 280:
-		printf("IDENTIFIER");
-		break;
-	case 281:
-		printf("IDENTIFIER");
-		break;
-	case 282:
-		printf("IDENTIFIER");
-		break;
-	case 283:
-		printf("MOD_ASSIGN");
-		break;
-	case 284:
-		printf("CONSTANT");
-		break;
-	case 285:
-		printf("CONSTANT");
-		break;
-	case 286:
-		printf("IDENTIFIER");
-		break;
-	case 287:
-		printf("CONSTANT");
-		break;
-	case 288:
-		printf("CONSTANT");
-		break;
-	case 289:
-		printf("IDENTIFIER");
-		break;
-	case 290:
-		printf("IDENTIFIER");
-		break;
-	case 291:
-		printf("IDENTIFIER");
-		break;
-	case 292:
-		printf("IDENTIFIER");
-		break;
-	case 293:
-		printf("IDENTIFIER");
-		break;
-	case 294:
-		printf("below are comments");
-		break;
-	case 295:
-		printf("IDENTIFIER");
-		break;
-	case 296:
-		printf("IDENTIFIER");
-		break;
-	case 297:
-		printf("IDENTIFIER");
-		break;
-	case 298:
-		printf("IDENTIFIER");
-		break;
-	case 299:
-		printf("CONSTANT");
-		break;
-	case 300:
-		printf("below are comments");
-		break;
-	case 301:
-		printf("DO");
-		break;
-	case 302:
-		printf("IDENTIFIER");
-		break;
-	case 303:
-		printf("IDENTIFIER");
-		break;
-	case 304:
-		printf("IDENTIFIER");
-		break;
-	case 305:
-		printf("below are comments");
-		break;
-	case 306:
-		printf("IDENTIFIER");
-		break;
-	case 307:
-		printf("IDENTIFIER");
-		break;
-	case 308:
-		printf("IDENTIFIER");
-		break;
-	case 309:
-		printf("IF");
-		break;
-	case 310:
-		printf("CONSTANT");
-		break;
-	case 311:
-		printf("below are comments");
-		break;
-	case 312:
-		printf("IDENTIFIER");
-		break;
-	case 313:
-		printf("CONSTANT");
-		break;
-	case 314:
-		printf("below are comments");
-		break;
-	case 315:
-		printf("IDENTIFIER");
-		break;
-	case 316:
-		printf("IDENTIFIER");
-		break;
-	case 317:
-		printf("IDENTIFIER");
-		break;
-	case 318:
-		printf("CONSTANT");
-		break;
-	case 319:
-		printf("below are comments");
-		break;
-	case 320:
-		printf("IDENTIFIER");
-		break;
-	case 321:
-		printf("CONSTANT");
-		break;
-	case 322:
-		printf("below are comments");
-		break;
-	case 323:
-		printf("IDENTIFIER");
-		break;
-	case 324:
-		printf("IDENTIFIER");
-		break;
-	case 325:
-		printf("IDENTIFIER");
-		break;
-	case 326:
-		printf("below are comments");
-		break;
-	case 327:
-		printf("IDENTIFIER");
-		break;
-	case 328:
-		printf("below are comments");
-		break;
-	case 329:
-		printf("IDENTIFIER");
-		break;
-	case 330:
-		printf("IDENTIFIER");
-		break;
-	case 331:
-		printf("CONSTANT");
-		break;
-	case 332:
-		printf("CONSTANT");
-		break;
-	case 333:
-		printf("below are comments");
-		break;
-	case 334:
-		printf("CONSTANT");
-		break;
-	case 335:
-		printf("CONSTANT");
-		break;
-	case 336:
-		printf("below are comments");
-		break;
-	case 337:
-		printf("CONSTANT");
-		break;
-	case 338:
-		printf("CONSTANT");
-		break;
-	case 339:
-		printf("CONSTANT");
-		break;
-	case 340:
-		printf("CONSTANT");
-		break;
-	case 341:
-		printf("CONSTANT");
-		break;
-	case 342:
-		printf("UNION");
-		break;
-	case 343:
-		printf("CONSTANT");
-		break;
-	case 344:
-		printf("CONSTANT");
-		break;
-	case 345:
-		printf("CONSTANT");
-		break;
-	case 346:
-		printf("CONSTANT");
-		break;
-	case 347:
-		printf("CONSTANT");
-		break;
-	case 348:
-		printf("below are comments");
-		break;
-	case 349:
-		printf("CONSTANT");
-		break;
-	case 350:
-		printf("CONSTANT");
-		break;
-	case 351:
-		printf("CONSTANT");
-		break;
-	case 352:
-		printf("CONSTANT");
-		break;
-	case 353:
-		printf("CONSTANT");
-		break;
-	case 354:
-		printf("CONSTANT");
-		break;
-	case 355:
-		printf("below are comments");
-		break;
-	case 356:
-		printf("CONSTANT");
-		break;
-	case 357:
-		printf("CONSTANT");
-		break;
-	case 358:
-		printf("below are comments");
-		break;
-	case 359:
-		printf("CONSTANT");
-		break;
-	case 360:
-		printf("CONSTANT");
-		break;
-	case 361:
-		printf("CONSTANT");
-		break;
-	case 362:
-		printf("below are comments");
-		break;
-	case 363:
-		printf("CONSTANT");
-		break;
-	case 364:
-		printf("CONSTANT");
-		break;
-	case 365:
-		printf("CONSTANT");
-		break;
-	case 366:
-		printf("below are comments");
-		break;
-	case 367:
-		printf("CONSTANT");
-		break;
-	case 368:
-		printf("CONSTANT");
-		break;
-	case 369:
-		printf("IDENTIFIER");
-		break;
-	case 370:
-		printf("CONSTANT");
-		break;
-	case 371:
-		printf("below are comments");
-		break;
-	case 372:
-		printf("CONSTANT");
-		break;
-	case 373:
-		printf("CONSTANT");
-		break;
-	case 374:
-		printf("CONSTANT");
-		break;
-	case 375:
-		printf("below are comments");
-		break;
-	case 376:
-		printf("CONSTANT");
-		break;
-	case 377:
-		printf("CONSTANT");
-		break;
-	case 378:
-		printf("CONSTANT");
-		break;
-	case 379:
-		printf("CONSTANT");
-		break;
-	case 380:
-		printf("below are comments");
-		break;
-	case 381:
-		printf("CONSTANT");
-		break;
-	case 382:
-		printf("CONSTANT");
-		break;
-	case 383:
-		printf("CONSTANT");
-		break;
-	case 384:
-		printf("below are comments");
-		break;
-	case 385:
-		printf("CONSTANT");
-		break;
-	case 386:
-		printf("below are comments");
-		break;
-	case 387:
-		printf("NE_OP");
-		break;
-	case 388:
-		printf("STRING_LITERAL");
-		break;
-	case 389:
-		printf("CONSTANT");
-		break;
-	case 390:
-		printf("}");
-		break;
-	case 391:
-		printf("MUL_ASSIGN");
-		break;
-	case 392:
-		printf("ADD_ASSIGN");
-		break;
-	case 393:
-		printf("SUB_ASSIGN");
-		break;
-	case 394:
-		printf("CONSTANT");
-		break;
-	case 395:
-		printf("CONSTANT");
-		break;
-	case 396:
-		printf("CONSTANT");
-		break;
-	case 397:
-		printf("CONSTANT");
-		break;
-	case 398:
-		printf("CONSTANT");
-		break;
-	case 399:
-		printf("CONSTANT");
-		break;
-	case 400:
-		printf("CONSTANT");
-		break;
-	case 401:
-		printf("CONSTANT");
-		break;
-	case 402:
-		printf("below are comments");
-		break;
-	case 403:
-		printf("below are comments");
-		break;
-	case 404:
-		printf("DIV_ASSIGN");
-		break;
-	case 405:
-		printf("]");
-		break;
-	case 406:
-		printf("{");
-		break;
-	case 407:
-		printf("[");
-		break;
-	case 408:
-		printf("LEFT_OP");
-		break;
-	case 409:
-		printf("LE_OP");
-		break;
-	case 410:
-		printf("EQ_OP");
-		break;
-	case 411:
-		printf("GE_OP");
-		break;
-	case 412:
-		printf("RIGHT_OP");
-		break;
-	case 413:
-		printf("XOR_ASSIGN");
-		break;
-	case 414:
-		printf("OR_ASSIGN");
-		break;
-	case 415:
-		printf("OR_OP");
-		break;
-	case 416:
-		printf("IDENTIFIER");
-		break;
-	case 417:
-		printf("IDENTIFIER");
-		break;
-	case 418:
-		printf("IDENTIFIER");
-		break;
-	case 419:
-		printf("AND_ASSIGN");
-		break;
-	case 420:
-		printf("AND_OP");
-		break;
-	case 421:
-		printf("IDENTIFIER");
-		break;
-	case 422:
-		printf("IDENTIFIER");
-		break;
-	case 423:
-		printf("IDENTIFIER");
-		break;
-	case 424:
-		printf("IDENTIFIER");
-		break;
-	case 425:
-		printf("IDENTIFIER");
-		break;
-	case 426:
-		printf("IDENTIFIER");
-		break;
-	case 427:
-		printf("IDENTIFIER");
-		break;
-	case 428:
-		printf("INT");
-		break;
-	case 429:
-		printf("IDENTIFIER");
-		break;
-	case 430:
-		printf("IDENTIFIER");
-		break;
-	case 431:
-		printf("IDENTIFIER");
-		break;
-	case 432:
-		printf("IDENTIFIER");
-		break;
-	case 433:
-		printf("IDENTIFIER");
-		break;
-	case 434:
-		printf("IDENTIFIER");
-		break;
-	case 435:
-		printf("IDENTIFIER");
-		break;
-	case 436:
-		printf("IDENTIFIER");
-		break;
-	case 437:
-		printf("CONSTANT");
-		break;
-	case 438:
-		printf("CONSTANT");
-		break;
-	case 439:
-		printf("CONSTANT");
-		break;
-	case 440:
-		printf("CONSTANT");
-		break;
-	case 441:
-		printf("CONSTANT");
-		break;
-	case 442:
-		printf("CONSTANT");
-		break;
-	case 443:
-		printf("CONSTANT");
-		break;
-	case 444:
-		printf("CONSTANT");
-		break;
-	case 445:
-		printf("CONSTANT");
-		break;
-	case 446:
-		printf("CONSTANT");
-		break;
-	case 447:
-		printf("CONSTANT");
-		break;
-	case 448:
-		printf("CONSTANT");
-		break;
-	case 449:
-		printf("CONSTANT");
-		break;
-	case 450:
-		printf("CONSTANT");
-		break;
-	case 451:
-		printf("CONSTANT");
-		break;
-	case 452:
-		printf("CONSTANT");
-		break;
-	case 453:
-		printf("CONSTANT");
-		break;
-	case 454:
-		printf("CONSTANT");
-		break;
-	case 455:
-		printf("CONSTANT");
-		break;
-	case 456:
-		printf("CONSTANT");
-		break;
-	case 457:
-		printf("CONSTANT");
-		break;
-	case 458:
-		printf("CONSTANT");
-		break;
-	case 459:
-		printf("CONSTANT");
-		break;
-	case 460:
-		printf("CONSTANT");
-		break;
-	case 461:
-		printf("CONSTANT");
-		break;
-	case 462:
-		printf("CONSTANT");
-		break;
-	case 463:
-		printf("CONSTANT");
-		break;
-	case 464:
-		printf("CONSTANT");
-		break;
-	case 465:
-		printf("IDENTIFIER");
-		break;
-	case 466:
-		printf("CONSTANT");
-		break;
-	case 467:
-		printf("CONSTANT");
-		break;
-	case 468:
-		printf("CONSTANT");
-		break;
-	case 469:
-		printf("SHORT");
-		break;
-	case 470:
-		printf("CONSTANT");
-		break;
-	case 471:
-		printf("CONSTANT");
-		break;
-	case 472:
-		printf("CONSTANT");
-		break;
-	case 473:
-		printf("CONSTANT");
-		break;
-	case 474:
-		printf("below are comments");
-		break;
-	case 475:
-		printf("CONSTANT");
-		break;
-	case 476:
-		printf("CONSTANT");
-		break;
-	case 477:
-		printf("CONSTANT");
-		break;
-	case 478:
-		printf("CONSTANT");
-		break;
-	case 479:
-		printf("CONSTANT");
-		break;
-	case 480:
-		printf("CONSTANT");
-		break;
-	case 481:
-		printf("CONSTANT");
-		break;
-	case 482:
-		printf("below are comments");
-		break;
-	case 483:
-		printf("CONSTANT");
-		break;
-	case 484:
-		printf("CONSTANT");
-		break;
-	case 485:
-		printf("CONSTANT");
-		break;
-	case 486:
-		printf("CONSTANT");
-		break;
-	case 487:
-		printf("below are comments");
-		break;
-	case 488:
-		printf("IDENTIFIER");
-		break;
-	case 489:
-		printf("CONSTANT");
-		break;
-	case 490:
-		printf("CONSTANT");
-		break;
-	case 491:
-		printf("CONSTANT");
-		break;
-	case 492:
-		printf("CONSTANT");
-		break;
-	case 493:
-		printf("IDENTIFIER");
-		break;
-	case 494:
-		printf("CONSTANT");
-		break;
-	case 495:
-		printf("CONSTANT");
-		break;
-	case 496:
-		printf("CONSTANT");
-		break;
-	case 497:
-		printf("ELLIPSIS");
-		break;
-	case 498:
-		printf("below are comments");
-		break;
-	case 499:
-		printf("CONSTANT");
-		break;
-	case 500:
-		printf("below are comments");
-		break;
-	case 501:
-		printf("below are comments");
-		break;
-	case 502:
-		printf("below are comments");
-		break;
-	case 503:
-		printf("CONSTANT");
-		break;
-	case 504:
-		printf("below are comments");
-		break;
-	case 505:
-		printf("below are comments");
-		break;
-	case 506:
-		printf("TYPEDEF");
-		break;
-	case 507:
-		printf("below are comments");
-		break;
-	case 508:
-		printf("below are comments");
-		break;
-	case 509:
-		printf("below are comments");
-		break;
-	case 510:
-		printf("CONSTANT");
-		break;
-	case 511:
-		printf("below are comments");
-		break;
-	case 512:
-		printf("below are comments");
-		break;
-	case 513:
-		printf("below are comments");
-		break;
-	case 514:
-		printf("CONSTANT");
-		break;
-	case 515:
-		printf("below are comments");
-		break;
-	case 516:
-		printf("below are comments");
-		break;
-	case 517:
-		printf("below are comments");
-		break;
-	case 518:
-		printf("CONSTANT");
-		break;
-	case 519:
-		printf("below are comments");
-		break;
-	case 520:
-		printf("below are comments");
-		break;
-	case 521:
-		printf("below are comments");
-		break;
-	case 522:
-		printf("below are comments");
-		break;
-	case 523:
-		printf("below are comments");
-		break;
-	case 524:
-		printf("CONSTANT");
-		break;
-	case 525:
-		printf("below are comments");
-		break;
-	case 526:
-		printf("below are comments");
-		break;
-	case 527:
-		printf("below are comments");
-		break;
-	case 528:
-		printf("below are comments");
-		break;
-	case 529:
-		printf("DEFAULT");
-		break;
-	case 530:
-		printf("below are comments");
-		break;
-	case 531:
-		printf("below are comments");
-		break;
-	case 532:
-		printf("below are comments");
-		break;
-	case 533:
-		printf("below are comments");
-		break;
-	case 534:
-		printf("below are comments");
-		break;
-	case 535:
-		printf("CONSTANT");
-		break;
-	case 536:
-		printf("below are comments");
-		break;
-	case 537:
-		printf("below are comments");
-		break;
-	case 538:
-		printf("below are comments");
-		break;
-	case 539:
-		printf("below are comments");
-		break;
-	case 540:
-		printf("below are comments");
-		break;
-	case 541:
-		printf("below are comments");
-		break;
-	case 542:
-		printf("CONSTANT");
-		break;
-	case 543:
-		printf("below are comments");
-		break;
-	case 544:
-		printf("below are comments");
-		break;
-	case 545:
-		printf("LEFT_ASSIGN");
-		break;
-	case 546:
-		printf("IDENTIFIER");
-		break;
-	case 547:
-		printf("CONSTANT");
-		break;
-	case 548:
-		printf("IDENTIFIER");
-		break;
-	case 549:
-		printf("CASE");
-		break;
-	case 550:
-		printf("CHAR");
-		break;
-	case 551:
-		printf("IDENTIFIER");
-		break;
-	case 552:
-		printf("BOOL");
-		break;
-	case 553:
-		printf("IDENTIFIER");
-		break;
-	case 554:
-		printf("CONSTANT");
-		break;
-	case 555:
-		printf("ELSE");
-		break;
-	case 556:
-		printf("ENUM");
-		break;
-	case 557:
-		printf("IDENTIFIER");
-		break;
-	case 558:
-		printf("GOTO");
-		break;
-	case 559:
-		printf("IDENTIFIER");
-		break;
-	case 560:
-		printf("CONSTANT");
-		break;
-	case 561:
-		printf("IDENTIFIER");
-		break;
-	case 562:
-		printf("REGISTER");
-		break;
-	case 563:
-		printf("IDENTIFIER");
-		break;
-	case 564:
-		printf("IDENTIFIER");
-		break;
-	case 565:
-		printf("IDENTIFIER");
-		break;
-	case 566:
-		printf("IDENTIFIER");
-		break;
-	case 567:
-		printf("IDENTIFIER");
-		break;
-	case 568:
-		printf("CONTINUE");
-		break;
-	case 569:
-		printf("IDENTIFIER");
-		break;
-	case 570:
-		printf("IDENTIFIER");
-		break;
-	case 571:
-		printf("VOID");
-		break;
-	case 572:
-		printf("IDENTIFIER");
-		break;
-	case 573:
-		printf("CONSTANT");
-		break;
-	case 574:
-		printf("CONSTANT");
-		break;
-	case 575:
-		printf("CONSTANT");
-		break;
-	case 576:
-		printf("CONSTANT");
-		break;
-	case 577:
-		printf("CONSTANT");
-		break;
-	case 578:
-		printf("CONSTANT");
-		break;
-	case 579:
-		printf("CONSTANT");
-		break;
-	case 580:
-		printf("CONSTANT");
-		break;
-	case 581:
-		printf("CONSTANT");
-		break;
-	case 582:
-		printf("CONSTANT");
-		break;
-	case 583:
-		printf("CONSTANT");
-		break;
-	case 584:
-		printf("CONSTANT");
-		break;
-	case 585:
-		printf("CONSTANT");
-		break;
-	case 586:
-		printf("IDENTIFIER");
-		break;
-	case 587:
-		printf("CONSTANT");
-		break;
-	case 588:
-		printf("CONSTANT");
-		break;
-	case 589:
-		printf("CONSTANT");
-		break;
-	case 590:
-		printf("CONSTANT");
-		break;
-	case 591:
-		printf("CONSTANT");
-		break;
-	case 592:
-		printf("CONSTANT");
-		break;
-	case 593:
-		printf("CONSTANT");
-		break;
-	case 594:
-		printf("CONSTANT");
-		break;
-	case 595:
-		printf("IDENTIFIER");
-		break;
-	case 596:
-		printf("CONSTANT");
-		break;
-	case 597:
-		printf("CONSTANT");
-		break;
-	case 598:
-		printf("CONSTANT");
-		break;
-	case 599:
-		printf("CONSTANT");
-		break;
-	case 600:
-		printf("CONSTANT");
-		break;
-	case 601:
-		printf("CONSTANT");
-		break;
-	case 602:
-		printf("CONSTANT");
-		break;
-	case 603:
-		printf("CONSTANT");
-		break;
-	case 604:
-		printf("CONSTANT");
-		break;
-	case 605:
-		printf("CONSTANT");
-		break;
-	case 606:
-		printf("CONSTANT");
-		break;
-	case 607:
-		printf("CONSTANT");
-		break;
-	case 608:
-		printf("CONSTANT");
-		break;
-	case 609:
-		printf("CONSTANT");
-		break;
-	case 610:
-		printf("CONSTANT");
-		break;
-	case 611:
-		printf("CONSTANT");
-		break;
-	case 612:
-		printf("CONSTANT");
-		break;
-	case 613:
-		printf("CONSTANT");
-		break;
-	case 614:
-		printf("CONSTANT");
-		break;
-	case 615:
-		printf("CONSTANT");
-		break;
-	case 616:
-		printf("CONSTANT");
-		break;
-	case 617:
-		printf("CONSTANT");
-		break;
-	case 618:
-		printf("CONSTANT");
-		break;
-	case 619:
-		printf("CONSTANT");
-		break;
-	case 620:
-		printf("CONSTANT");
-		break;
-	case 621:
-		printf("CONSTANT");
-		break;
-	case 622:
-		printf("CONSTANT");
-		break;
-	case 623:
-		printf("CONSTANT");
-		break;
-	case 624:
-		printf("CONSTANT");
-		break;
-	case 625:
-		printf("SIGNED");
-		break;
-	case 626:
-		printf("CONSTANT");
-		break;
-	case 627:
-		printf("CONSTANT");
-		break;
-	case 628:
-		printf("CONSTANT");
-		break;
-	case 629:
-		printf("CONSTANT");
-		break;
-	case 630:
-		printf("CONSTANT");
-		break;
-	case 631:
-		printf("CONSTANT");
-		break;
-	case 632:
-		printf("CONSTANT");
-		break;
-	case 633:
-		printf("CONSTANT");
-		break;
-	case 634:
-		printf("CONSTANT");
-		break;
-	case 635:
-		printf("CONSTANT");
-		break;
-	case 636:
-		printf("IDENTIFIER");
-		break;
-	case 637:
-		printf("IDENTIFIER");
-		break;
-	case 638:
-		printf("IDENTIFIER");
-		break;
-	case 639:
-		printf("CONST");
-		break;
-	case 640:
-		printf("IDENTIFIER");
-		break;
-	case 641:
-		printf("IDENTIFIER");
-		break;
-	case 642:
-		printf("FLOAT");
-		break;
-	case 643:
-		printf("IDENTIFIER");
-		break;
-	case 644:
-		printf("IDENTIFIER");
-		break;
-	case 645:
-		printf("IDENTIFIER");
-		break;
-	case 646:
-		printf("IDENTIFIER");
-		break;
-	case 647:
-		printf("IDENTIFIER");
-		break;
-	case 648:
-		printf("IDENTIFIER");
-		break;
-	case 649:
-		printf("IDENTIFIER");
-		break;
-	case 650:
-		printf("IDENTIFIER");
-		break;
-	case 651:
-		printf("IDENTIFIER");
-		break;
-	case 652:
-		printf("WHILE");
-		break;
-	case 653:
-		printf("CONSTANT");
-		break;
-	case 654:
-		printf("CONSTANT");
-		break;
-	case 655:
-		printf("CONSTANT");
-		break;
-	case 656:
-		printf("CONSTANT");
-		break;
-	case 657:
-		printf("CONSTANT");
-		break;
-	case 658:
-		printf("CONSTANT");
-		break;
-	case 659:
-		printf("CONSTANT");
-		break;
-	case 660:
-		printf("CONSTANT");
-		break;
-	case 661:
-		printf("CONSTANT");
-		break;
-	case 662:
-		printf("CONSTANT");
-		break;
-	case 663:
-		printf("CONSTANT");
-		break;
-	case 664:
-		printf("CONSTANT");
-		break;
-	case 665:
-		printf("CONSTANT");
-		break;
-	case 666:
-		printf("CONSTANT");
-		break;
-	case 667:
-		printf("CONSTANT");
-		break;
-	case 668:
-		printf("CONSTANT");
-		break;
-	case 669:
-		printf("CONSTANT");
-		break;
-	case 670:
-		printf("CONSTANT");
-		break;
-	case 671:
-		printf("CONSTANT");
-		break;
-	case 672:
-		printf("CONSTANT");
-		break;
-	case 673:
-		printf("CONSTANT");
-		break;
-	case 674:
-		printf("CONSTANT");
-		break;
-	case 675:
-		printf("CONSTANT");
-		break;
-	case 676:
-		printf("CONSTANT");
-		break;
-	case 677:
-		printf("CONSTANT");
-		break;
-	case 678:
-		printf("CONSTANT");
-		break;
-	case 679:
-		printf("CONSTANT");
-		break;
-	case 680:
-		printf("CONSTANT");
-		break;
-	case 681:
-		printf("CONSTANT");
-		break;
-	case 682:
-		printf("CONSTANT");
-		break;
-	case 683:
-		printf("CONSTANT");
-		break;
-	case 684:
-		printf("CONSTANT");
-		break;
-	case 685:
-		printf("CONSTANT");
-		break;
-	case 686:
-		printf("CONSTANT");
-		break;
-	case 687:
-		printf("CONSTANT");
-		break;
-	case 688:
-		printf("CONSTANT");
-		break;
-	case 689:
-		printf("CONSTANT");
-		break;
-	case 690:
-		printf("CONSTANT");
-		break;
-	case 691:
-		printf("IDENTIFIER");
-		break;
-	case 692:
-		printf("IDENTIFIER");
-		break;
-	case 693:
-		printf("IDENTIFIER");
-		break;
-	case 694:
-		printf("DOUBLE");
-		break;
-	case 695:
-		printf("EXTERN");
-		break;
-	case 696:
-		printf("INLINE");
-		break;
-	case 697:
-		printf("IDENTIFIER");
-		break;
-	case 698:
-		printf("RETURN");
-		break;
-	case 699:
-		printf("SIZEOF");
-		break;
-	case 700:
-		printf("STATIC");
-		break;
-	case 701:
-		printf("STRUCT");
-		break;
-	case 702:
-		printf("SWITCH");
-		break;
-	case 703:
-		printf("IDENTIFIER");
-		break;
-	case 704:
-		printf("CONSTANT");
-		break;
-	case 705:
-		printf("CONSTANT");
-		break;
-	case 706:
-		printf("CONSTANT");
-		break;
-	case 707:
-		printf("CONSTANT");
-		break;
-	case 708:
-		printf("CONSTANT");
-		break;
-	case 709:
-		printf("CONSTANT");
-		break;
-	case 710:
-		printf("CONSTANT");
-		break;
-	case 711:
-		printf("CONSTANT");
-		break;
-	case 712:
-		printf("CONSTANT");
-		break;
-	case 713:
-		printf("CONSTANT");
-		break;
-	case 714:
-		printf("CONSTANT");
-		break;
-	case 715:
-		printf("CONSTANT");
-		break;
-	case 716:
-		printf("CONSTANT");
-		break;
-	case 717:
-		printf("CONSTANT");
-		break;
-	case 718:
-		printf("CONSTANT");
-		break;
-	case 719:
-		printf("CONSTANT");
-		break;
-	case 720:
-		printf("CONSTANT");
-		break;
-	case 721:
-		printf("CONSTANT");
-		break;
-	case 722:
-		printf("CONSTANT");
-		break;
-	case 723:
-		printf("CONSTANT");
-		break;
-	case 724:
-		printf("CONSTANT");
-		break;
-	case 725:
-		printf("CONSTANT");
-		break;
-	case 726:
-		printf("CONSTANT");
-		break;
-	case 727:
-		printf("CONSTANT");
-		break;
-	case 728:
-		printf("CONSTANT");
-		break;
-	case 729:
-		printf("CONSTANT");
-		break;
-	case 730:
-		printf("IDENTIFIER");
-		break;
-	case 731:
-		printf("IDENTIFIER");
-		break;
-	case 732:
-		printf("IDENTIFIER");
-		break;
-	case 733:
-		printf("IDENTIFIER");
-		break;
-	case 734:
-		printf("IDENTIFIER");
-		break;
-	case 735:
-		printf("CONSTANT");
-		break;
-	case 736:
-		printf("CONSTANT");
-		break;
-	case 737:
-		printf("CONSTANT");
-		break;
-	case 738:
-		printf("CONSTANT");
-		break;
-	case 739:
-		printf("CONSTANT");
-		break;
-	case 740:
-		printf("CONSTANT");
-		break;
-	case 741:
-		printf("CONSTANT");
-		break;
-	case 742:
-		printf("CONSTANT");
-		break;
-	case 743:
-		printf("CONSTANT");
-		break;
-	case 744:
-		printf("CONSTANT");
-		break;
-	case 745:
-		printf("CONSTANT");
-		break;
-	case 746:
-		printf("CONSTANT");
-		break;
-	case 747:
-		printf("CONSTANT");
-		break;
-	case 748:
-		printf("CONSTANT");
-		break;
-	case 749:
-		printf("CONSTANT");
-		break;
-	case 750:
-		printf("CONSTANT");
-		break;
-	case 751:
-		printf("CONSTANT");
-		break;
-	case 752:
-		printf("CONSTANT");
-		break;
-	case 753:
-		printf("CONSTANT");
-		break;
-	case 754:
-		printf("IDENTIFIER");
-		break;
-	case 755:
-		printf("IDENTIFIER");
-		break;
-	case 756:
-		printf("RESTRICT");
-		break;
-	case 757:
-		printf("UNSIGNED");
-		break;
-	case 758:
-		printf("VOLATILE");
-		break;
-	case 759:
-		printf("CONSTANT");
-		break;
-	case 760:
-		printf("CONSTANT");
-		break;
-	case 761:
-		printf("CONSTANT");
-		break;
-	case 762:
-		printf("CONSTANT");
-		break;
-	case 763:
-		printf("CONSTANT");
-		break;
-	case 764:
-		printf("CONSTANT");
-		break;
-	case 765:
-		printf("CONSTANT");
-		break;
-	case 766:
-		printf("CONSTANT");
-		break;
-	case 767:
-		printf("CONSTANT");
-		break;
-	case 768:
-		printf("CONSTANT");
-		break;
-	case 769:
-		printf("IDENTIFIER");
-		break;
-	case 770:
-		printf("IDENTIFIER");
-		break;
-	case 771:
-		printf("IMAGINARY");
-		break;
-	default:
-		break;
-	}
+switch (action) 
+{
+case 0:
+break;
+case 1:
+count();
+return(check_type());
+break;
+case 2:
+count();
+return(AUTO);
+break;
+case 3:
+count();
+break;
+case 4:
+count();
+return(CONSTANT);
+break;
+case 5:
+count();
+return(check_type());
+break;
+case 6:
+comment();
+break;
+case 7:
+count();
+return(check_type());
+break;
+case 8:
+comment();
+break;
+case 9:
+count();
+return(check_type());
+break;
+case 10:
+count();
+return(CONSTANT);
+break;
+case 11:
+count();
+return(check_type());
+break;
+case 12:
+count();
+return(check_type());
+break;
+case 13:
+count();
+return(RIGHT_ASSIGN);
+break;
+case 14:
+count();
+return(VOLATILE);
+break;
+case 15:
+count();
+return(check_type());
+break;
+case 16:
+comment();
+break;
+case 17:
+count();
+return(check_type());
+break;
+case 18:
+count();
+return(check_type());
+break;
+case 19:
+count();
+return(check_type());
+break;
+case 20:
+comment();
+break;
+case 21:
+count();
+return(check_type());
+break;
+case 22:
+count();
+return(CONSTANT);
+break;
+case 23:
+count();
+return(check_type());
+break;
+case 24:
+count();
+return(check_type());
+break;
+case 25:
+count();
+return(check_type());
+break;
+case 26:
+count();
+return(CONSTANT);
+break;
+case 27:
+count();
+return(check_type());
+break;
+case 28:
+count();
+return(CONSTANT);
+break;
+case 29:
+comment();
+break;
+case 30:
+count();
+return(check_type());
+break;
+case 31:
+count();
+return(DEC_OP);
+break;
+case 32:
+count();
+return(check_type());
+break;
+case 33:
+count();
+return(check_type());
+break;
+case 34:
+comment();
+break;
+case 35:
+count();
+return(check_type());
+break;
+case 36:
+comment();
+break;
+case 37:
+count();
+return(check_type());
+break;
+case 38:
+count();
+return(CONSTANT);
+break;
+case 39:
+count();
+return(check_type());
+break;
+case 40:
+count();
+return(check_type());
+break;
+case 41:
+comment();
+break;
+case 42:
+count();
+return(INC_OP);
+break;
+case 43:
+count();
+return(check_type());
+break;
+case 44:
+count();
+return(check_type());
+break;
+case 45:
+comment();
+break;
+case 46:
+count();
+return(check_type());
+break;
+case 47:
+count();
+return(CONSTANT);
+break;
+case 48:
+count();
+return(check_type());
+break;
+case 49:
+count();
+return(check_type());
+break;
+case 50:
+comment();
+break;
+case 51:
+count();
+return(CONSTANT);
+break;
+case 52:
+count();
+return(check_type());
+break;
+case 53:
+count();
+return(CONSTANT);
+break;
+case 54:
+count();
+return(check_type());
+break;
+case 55:
+count();
+return(CONSTANT);
+break;
+case 56:
+count();
+return(check_type());
+break;
+case 57:
+count();
+return(check_type());
+break;
+case 58:
+comment();
+break;
+case 59:
+count();
+return(CONSTANT);
+break;
+case 60:
+count();
+return(CONSTANT);
+break;
+case 61:
+count();
+return(check_type());
+break;
+case 62:
+comment();
+break;
+case 63:
+count();
+return(check_type());
+break;
+case 64:
+count();
+return(DIV_ASSIGN);
+break;
+case 65:
+count();
+return(CONSTANT);
+break;
+case 66:
+count();
+return(check_type());
+break;
+case 67:
+count();
+return(check_type());
+break;
+case 68:
+count();
+return(CONSTANT);
+break;
+case 69:
+count();
+return(CONSTANT);
+break;
+case 70:
+count();
+return(CONSTANT);
+break;
+case 71:
+count();
+return(check_type());
+break;
+case 72:
+comment();
+break;
+case 73:
+count();
+return(check_type());
+break;
+case 74:
+count();
+return(CONSTANT);
+break;
+case 75:
+count();
+return(check_type());
+break;
+case 76:
+count();
+return(check_type());
+break;
+case 77:
+comment();
+break;
+case 78:
+comment();
+break;
+case 79:
+count();
+return(check_type());
+break;
+case 80:
+count();
+return(CONSTANT);
+break;
+case 81:
+comment();
+break;
+case 82:
+count();
+return(check_type());
+break;
+case 83:
+count();
+return(RIGHT_OP);
+break;
+case 84:
+count();
+return(CONSTANT);
+break;
+case 85:
+count();
+return(check_type());
+break;
+case 86:
+count();
+return(check_type());
+break;
+case 87:
+comment();
+break;
+case 88:
+count();
+return('{');
+break;
+case 89:
+count();
+return(check_type());
+break;
+case 90:
+count();
+return(check_type());
+break;
+case 91:
+count();
+return(check_type());
+break;
+case 92:
+count();
+return(CONSTANT);
+break;
+case 93:
+count();
+return(CONSTANT);
+break;
+case 94:
+count();
+return(check_type());
+break;
+case 95:
+count();
+return(check_type());
+break;
+case 96:
+comment();
+break;
+case 97:
+count();
+return(EQ_OP);
+break;
+case 98:
+count();
+return(CONSTANT);
+break;
+case 99:
+count();
+return(check_type());
+break;
+case 100:
+comment();
+break;
+case 101:
+count();
+return(check_type());
+break;
+case 102:
+count();
+return(AND_OP);
+break;
+case 103:
+count();
+return(CONSTANT);
+break;
+case 104:
+count();
+return(check_type());
+break;
+case 105:
+count();
+return(check_type());
+break;
+case 106:
+comment();
+break;
+case 107:
+count();
+return(OR_ASSIGN);
+break;
+case 108:
+count();
+return(CONSTANT);
+break;
+case 109:
+count();
+return(check_type());
+break;
+case 110:
+count();
+return(CONSTANT);
+break;
+case 111:
+count();
+return(check_type());
+break;
+case 112:
+count();
+return(check_type());
+break;
+case 113:
+count();
+return(LEFT_OP);
+break;
+case 114:
+count();
+return(CONSTANT);
+break;
+case 115:
+count();
+return(check_type());
+break;
+case 116:
+count();
+return(CONSTANT);
+break;
+case 117:
+comment();
+break;
+case 118:
+count();
+return(check_type());
+break;
+case 119:
+count();
+return(CONSTANT);
+break;
+case 120:
+count();
+return(CONSTANT);
+break;
+case 121:
+comment();
+break;
+case 122:
+count();
+return(CONSTANT);
+break;
+case 123:
+count();
+return(CONSTANT);
+break;
+case 124:
+count();
+return(CONSTANT);
+break;
+case 125:
+count();
+return(CONSTANT);
+break;
+case 126:
+comment();
+break;
+case 127:
+count();
+return(CONSTANT);
+break;
+case 128:
+count();
+return(CONSTANT);
+break;
+case 129:
+count();
+return(CONSTANT);
+break;
+case 130:
+comment();
+break;
+case 131:
+count();
+return(CONSTANT);
+break;
+case 132:
+count();
+return(CONSTANT);
+break;
+case 133:
+count();
+return(check_type());
+break;
+case 134:
+count();
+return(RESTRICT);
+break;
+case 135:
+count();
+return(CONSTANT);
+break;
+case 136:
+count();
+return(CONSTANT);
+break;
+case 137:
+comment();
+break;
+case 138:
+count();
+return(CONSTANT);
+break;
+case 139:
+count();
+return(CONSTANT);
+break;
+case 140:
+count();
+return(CASE);
+break;
+case 141:
+count();
+return('!');
+break;
+case 142:
+count();
+return(check_type());
+break;
+case 143:
+count();
+break;
+case 144:
+count();
+return(check_type());
+break;
+case 145:
+count();
+return('%');
+break;
+case 146:
+count();
+return(check_type());
+break;
+case 147:
+count();
+break;
+case 148:
+count();
+return(check_type());
+break;
+case 149:
+count();
+return('(');
+break;
+case 150:
+count();
+return(CONSTANT);
+break;
+case 151:
+count();
+return(')');
+break;
+case 152:
+count();
+return(check_type());
+break;
+case 153:
+count();
+return('*');
+break;
+case 154:
+count();
+return(check_type());
+break;
+case 155:
+count();
+return('+');
+break;
+case 156:
+count();
+return(check_type());
+break;
+case 157:
+count();
+return(check_type());
+break;
+case 158:
+count();
+return(',');
+break;
+case 159:
+count();
+return(CONSTANT);
+break;
+case 160:
+count();
+return('-');
+break;
+case 161:
+count();
+return(CONST);
+break;
+case 162:
+count();
+return(check_type());
+break;
+case 163:
+count();
+return('.');
+break;
+case 164:
+count();
+return(CONSTANT);
+break;
+case 165:
+count();
+return('/');
+break;
+case 166:
+count();
+return(FOR);
+break;
+case 167:
+count();
+return(':');
+break;
+case 168:
+count();
+return(CONSTANT);
+break;
+case 169:
+count();
+return(';');
+break;
+case 170:
+count();
+return(check_type());
+break;
+case 171:
+count();
+return('<');
+break;
+case 172:
+count();
+return(check_type());
+break;
+case 173:
+count();
+return('=');
+break;
+case 174:
+count();
+return(check_type());
+break;
+case 175:
+count();
+return(CONSTANT);
+break;
+case 176:
+count();
+return('>');
+break;
+case 177:
+count();
+return(check_type());
+break;
+case 178:
+count();
+return('?');
+break;
+case 179:
+count();
+return(ELSE);
+break;
+case 180:
+count();
+return(check_type());
+break;
+case 181:
+count();
+return(check_type());
+break;
+case 182:
+count();
+return('[');
+break;
+case 183:
+count();
+return(CONSTANT);
+break;
+case 184:
+count();
+break;
+case 185:
+count();
+return(check_type());
+break;
+case 186:
+count();
+return(']');
+break;
+case 187:
+count();
+return('^');
+break;
+case 188:
+count();
+return(GOTO);
+break;
+case 189:
+count();
+return(check_type());
+break;
+case 190:
+count();
+return(check_type());
+break;
+case 191:
+count();
+return('{');
+break;
+case 192:
+count();
+return(check_type());
+break;
+case 193:
+count();
+return(check_type());
+break;
+case 194:
+count();
+return(INLINE);
+break;
+case 195:
+count();
+return('|');
+break;
+case 196:
+count();
+return('}');
+break;
+case 197:
+count();
+return(check_type());
+break;
+case 198:
+count();
+return(check_type());
+break;
+case 199:
+count();
+return(check_type());
+break;
+case 200:
+count();
+break;
+case 201:
+count();
+break;
+case 202:
+count();
+return(check_type());
+break;
+case 203:
+count();
+break;
+case 204:
+count();
+break;
+case 205:
+count();
+return(check_type());
+break;
+case 206:
+count();
+break;
+case 207:
+count();
+return(FLOAT);
+break;
+case 208:
+count();
+return(CONSTANT);
+break;
+case 209:
+count();
+return(SWITCH);
+break;
+case 210:
+count();
+return('~');
+break;
+case 211:
+count();
+return(CONSTANT);
+break;
+case 212:
+count();
+return('&');
+break;
+case 213:
+count();
+return(check_type());
+break;
+case 214:
+comment();
+break;
+case 215:
+count();
+return(check_type());
+break;
+case 216:
+count();
+return(CONSTANT);
+break;
+case 217:
+count();
+return(check_type());
+break;
+case 218:
+count();
+return(CONSTANT);
+break;
+case 219:
+count();
+return(CONSTANT);
+break;
+case 220:
+count();
+return(check_type());
+break;
+case 221:
+count();
+return(check_type());
+break;
+case 222:
+comment();
+break;
+case 223:
+count();
+return(CONSTANT);
+break;
+case 224:
+count();
+return(CONSTANT);
+break;
+case 225:
+count();
+return(check_type());
+break;
+case 226:
+count();
+return(CONSTANT);
+break;
+case 227:
+count();
+return(check_type());
+break;
+case 228:
+count();
+return(CONSTANT);
+break;
+case 229:
+count();
+return(IMAGINARY);
+break;
+case 230:
+count();
+return(check_type());
+break;
+case 231:
+count();
+return(check_type());
+break;
+case 232:
+comment();
+break;
+case 233:
+count();
+return(CONSTANT);
+break;
+case 234:
+count();
+return(check_type());
+break;
+case 235:
+count();
+return(check_type());
+break;
+case 236:
+count();
+return(CONSTANT);
+break;
+case 237:
+count();
+return(CONSTANT);
+break;
+case 238:
+count();
+return(check_type());
+break;
+case 239:
+count();
+return(check_type());
+break;
+case 240:
+comment();
+break;
+case 241:
+count();
+return(CONSTANT);
+break;
+case 242:
+count();
+return(CONSTANT);
+break;
+case 243:
+count();
+return(check_type());
+break;
+case 244:
+count();
+return(CONSTANT);
+break;
+case 245:
+count();
+return(check_type());
+break;
+case 246:
+count();
+return(CONSTANT);
+break;
+case 247:
+count();
+return(check_type());
+break;
+case 248:
+count();
+return(check_type());
+break;
+case 249:
+count();
+return(CONSTANT);
+break;
+case 250:
+count();
+return(CONSTANT);
+break;
+case 251:
+count();
+return(check_type());
+break;
+case 252:
+count();
+return(check_type());
+break;
+case 253:
+count();
+return(CONSTANT);
+break;
+case 254:
+count();
+return(check_type());
+break;
+case 255:
+count();
+return(check_type());
+break;
+case 256:
+count();
+return(CONSTANT);
+break;
+case 257:
+count();
+return(CONSTANT);
+break;
+case 258:
+count();
+return(CONSTANT);
+break;
+case 259:
+count();
+return(check_type());
+break;
+case 260:
+count();
+return(CONSTANT);
+break;
+case 261:
+count();
+return(check_type());
+break;
+case 262:
+count();
+return(check_type());
+break;
+case 263:
+count();
+return(check_type());
+break;
+case 264:
+count();
+return(check_type());
+break;
+case 265:
+count();
+return(CONSTANT);
+break;
+case 266:
+count();
+return(check_type());
+break;
+case 267:
+count();
+return(check_type());
+break;
+case 268:
+count();
+return(LONG);
+break;
+case 269:
+count();
+return(check_type());
+break;
+case 270:
+count();
+return(CONSTANT);
+break;
+case 271:
+count();
+return(check_type());
+break;
+case 272:
+count();
+return(check_type());
+break;
+case 273:
+count();
+return(CONSTANT);
+break;
+case 274:
+count();
+return(check_type());
+break;
+case 275:
+count();
+return(check_type());
+break;
+case 276:
+count();
+return(check_type());
+break;
+case 277:
+count();
+return(check_type());
+break;
+case 278:
+count();
+return(CONSTANT);
+break;
+case 279:
+count();
+return(check_type());
+break;
+case 280:
+count();
+return(check_type());
+break;
+case 281:
+count();
+return(SIGNED);
+break;
+case 282:
+count();
+return(check_type());
+break;
+case 283:
+count();
+return(check_type());
+break;
+case 284:
+count();
+return(DOUBLE);
+break;
+case 285:
+count();
+return(check_type());
+break;
+case 286:
+count();
+return(check_type());
+break;
+case 287:
+count();
+return(CONSTANT);
+break;
+case 288:
+count();
+return(check_type());
+break;
+case 289:
+count();
+return(check_type());
+break;
+case 290:
+count();
+return(check_type());
+break;
+case 291:
+count();
+return(check_type());
+break;
+case 292:
+count();
+return(check_type());
+break;
+case 293:
+count();
+return(CONSTANT);
+break;
+case 294:
+count();
+return(check_type());
+break;
+case 295:
+count();
+return(check_type());
+break;
+case 296:
+count();
+return(STATIC);
+break;
+case 297:
+count();
+return(check_type());
+break;
+case 298:
+count();
+return(check_type());
+break;
+case 299:
+count();
+return(CONSTANT);
+break;
+case 300:
+count();
+return(check_type());
+break;
+case 301:
+count();
+return(check_type());
+break;
+case 302:
+comment();
+break;
+case 303:
+count();
+return(CONSTANT);
+break;
+case 304:
+count();
+return(check_type());
+break;
+case 305:
+count();
+return(check_type());
+break;
+case 306:
+count();
+return(CONSTANT);
+break;
+case 307:
+count();
+return(check_type());
+break;
+case 308:
+count();
+return(check_type());
+break;
+case 309:
+comment();
+break;
+case 310:
+count();
+return(CONSTANT);
+break;
+case 311:
+count();
+return(check_type());
+break;
+case 312:
+count();
+return(check_type());
+break;
+case 313:
+count();
+return(CONSTANT);
+break;
+case 314:
+count();
+return(check_type());
+break;
+case 315:
+count();
+return(check_type());
+break;
+case 316:
+comment();
+break;
+case 317:
+count();
+return(check_type());
+break;
+case 318:
+count();
+return(check_type());
+break;
+case 319:
+count();
+return(STRING_LITERAL);
+break;
+case 320:
+count();
+return(CONSTANT);
+break;
+case 321:
+count();
+return(check_type());
+break;
+case 322:
+count();
+return(check_type());
+break;
+case 323:
+comment();
+break;
+case 324:
+count();
+return(CONSTANT);
+break;
+case 325:
+count();
+return(check_type());
+break;
+case 326:
+count();
+return(check_type());
+break;
+case 327:
+count();
+return(CONSTANT);
+break;
+case 328:
+count();
+return(check_type());
+break;
+case 329:
+count();
+return(check_type());
+break;
+case 330:
+count();
+return(check_type());
+break;
+case 331:
+count();
+return(check_type());
+break;
+case 332:
+count();
+return(check_type());
+break;
+case 333:
+count();
+return(check_type());
+break;
+case 334:
+count();
+return(check_type());
+break;
+case 335:
+count();
+return(CONSTANT);
+break;
+case 336:
+count();
+return(check_type());
+break;
+case 337:
+count();
+return(DO);
+break;
+case 338:
+count();
+return(CONSTANT);
+break;
+case 339:
+count();
+return(check_type());
+break;
+case 340:
+count();
+return(CONSTANT);
+break;
+case 341:
+count();
+return(check_type());
+break;
+case 342:
+count();
+return(check_type());
+break;
+case 343:
+count();
+return(check_type());
+break;
+case 344:
+count();
+return(check_type());
+break;
+case 345:
+count();
+return(CONSTANT);
+break;
+case 346:
+count();
+return(check_type());
+break;
+case 347:
+count();
+return(CONSTANT);
+break;
+case 348:
+count();
+return(IF);
+break;
+case 349:
+count();
+return(check_type());
+break;
+case 350:
+count();
+return(CONSTANT);
+break;
+case 351:
+count();
+return(check_type());
+break;
+case 352:
+count();
+return(check_type());
+break;
+case 353:
+count();
+return(check_type());
+break;
+case 354:
+count();
+return(check_type());
+break;
+case 355:
+count();
+return(check_type());
+break;
+case 356:
+count();
+return(check_type());
+break;
+case 357:
+count();
+return(CONSTANT);
+break;
+case 358:
+count();
+return(check_type());
+break;
+case 359:
+count();
+return(check_type());
+break;
+case 360:
+count();
+return(CONSTANT);
+break;
+case 361:
+count();
+return(check_type());
+break;
+case 362:
+count();
+return(check_type());
+break;
+case 363:
+count();
+return(CONSTANT);
+break;
+case 364:
+count();
+return(CONSTANT);
+break;
+case 365:
+count();
+return(CONSTANT);
+break;
+case 366:
+count();
+return(CONSTANT);
+break;
+case 367:
+count();
+return(CONSTANT);
+break;
+case 368:
+count();
+return(CONSTANT);
+break;
+case 369:
+count();
+return(CONSTANT);
+break;
+case 370:
+count();
+return(CONSTANT);
+break;
+case 371:
+comment();
+break;
+case 372:
+count();
+return(CONSTANT);
+break;
+case 373:
+comment();
+break;
+case 374:
+count();
+return(CONSTANT);
+break;
+case 375:
+count();
+return(CONSTANT);
+break;
+case 376:
+count();
+return(CONSTANT);
+break;
+case 377:
+comment();
+break;
+case 378:
+count();
+return(CONSTANT);
+break;
+case 379:
+count();
+return(CONSTANT);
+break;
+case 380:
+count();
+return(CONSTANT);
+break;
+case 381:
+count();
+return(CONSTANT);
+break;
+case 382:
+count();
+return(CONSTANT);
+break;
+case 383:
+count();
+return(CONSTANT);
+break;
+case 384:
+count();
+return(CONSTANT);
+break;
+case 385:
+count();
+return(CONSTANT);
+break;
+case 386:
+count();
+return(CONSTANT);
+break;
+case 387:
+count();
+return(CONSTANT);
+break;
+case 388:
+comment();
+break;
+case 389:
+count();
+return(CONSTANT);
+break;
+case 390:
+count();
+return(CONSTANT);
+break;
+case 391:
+comment();
+break;
+case 392:
+count();
+return(CONSTANT);
+break;
+case 393:
+count();
+return(CONSTANT);
+break;
+case 394:
+count();
+return(CONSTANT);
+break;
+case 395:
+count();
+return(CONSTANT);
+break;
+case 396:
+count();
+return(CONSTANT);
+break;
+case 397:
+count();
+return(CONSTANT);
+break;
+case 398:
+comment();
+break;
+case 399:
+count();
+return(CONSTANT);
+break;
+case 400:
+count();
+return(CONSTANT);
+break;
+case 401:
+count();
+return(CONSTANT);
+break;
+case 402:
+count();
+return(CONSTANT);
+break;
+case 403:
+count();
+return(CONSTANT);
+break;
+case 404:
+count();
+return(CONSTANT);
+break;
+case 405:
+count();
+return(CONSTANT);
+break;
+case 406:
+comment();
+break;
+case 407:
+count();
+return(CONSTANT);
+break;
+case 408:
+count();
+return(REGISTER);
+break;
+case 409:
+count();
+return(CONSTANT);
+break;
+case 410:
+comment();
+break;
+case 411:
+count();
+return(CONSTANT);
+break;
+case 412:
+count();
+return(CONSTANT);
+break;
+case 413:
+count();
+return(NE_OP);
+break;
+case 414:
+comment();
+break;
+case 415:
+count();
+return(check_type());
+break;
+case 416:
+count();
+return(MOD_ASSIGN);
+break;
+case 417:
+count();
+return('}');
+break;
+case 418:
+count();
+return(MUL_ASSIGN);
+break;
+case 419:
+count();
+return(ADD_ASSIGN);
+break;
+case 420:
+count();
+return(SUB_ASSIGN);
+break;
+case 421:
+count();
+return(CONSTANT);
+break;
+case 422:
+count();
+return(PTR_OP);
+break;
+case 423:
+count();
+return(CONSTANT);
+break;
+case 424:
+count();
+return(CONSTANT);
+break;
+case 425:
+count();
+return(CONSTANT);
+break;
+case 426:
+count();
+return(CONSTANT);
+break;
+case 427:
+count();
+return(CONSTANT);
+break;
+case 428:
+count();
+return(CONSTANT);
+break;
+case 429:
+count();
+return(CONSTANT);
+break;
+case 430:
+count();
+return(CONSTANT);
+break;
+case 431:
+count();
+return(CONSTANT);
+break;
+case 432:
+comment();
+break;
+case 433:
+count();
+return(']');
+break;
+case 434:
+count();
+return(CONSTANT);
+break;
+case 435:
+count();
+return('[');
+break;
+case 436:
+count();
+return(LE_OP);
+break;
+case 437:
+count();
+return(CONSTANT);
+break;
+case 438:
+count();
+return(GE_OP);
+break;
+case 439:
+count();
+return(XOR_ASSIGN);
+break;
+case 440:
+count();
+return(OR_OP);
+break;
+case 441:
+count();
+return(check_type());
+break;
+case 442:
+count();
+return(AND_ASSIGN);
+break;
+case 443:
+count();
+return(check_type());
+break;
+case 444:
+count();
+return(check_type());
+break;
+case 445:
+count();
+return(check_type());
+break;
+case 446:
+count();
+return(check_type());
+break;
+case 447:
+count();
+return(check_type());
+break;
+case 448:
+count();
+return(check_type());
+break;
+case 449:
+count();
+return(check_type());
+break;
+case 450:
+count();
+return(INT);
+break;
+case 451:
+count();
+return(check_type());
+break;
+case 452:
+count();
+return(check_type());
+break;
+case 453:
+count();
+return(check_type());
+break;
+case 454:
+count();
+return(check_type());
+break;
+case 455:
+count();
+return(check_type());
+break;
+case 456:
+count();
+return(check_type());
+break;
+case 457:
+count();
+return(check_type());
+break;
+case 458:
+count();
+return(check_type());
+break;
+case 459:
+count();
+return(CONSTANT);
+break;
+case 460:
+count();
+return(CONSTANT);
+break;
+case 461:
+count();
+return(CONSTANT);
+break;
+case 462:
+count();
+return(CONSTANT);
+break;
+case 463:
+count();
+return(CONSTANT);
+break;
+case 464:
+count();
+return(CONSTANT);
+break;
+case 465:
+count();
+return(CONSTANT);
+break;
+case 466:
+count();
+return(CONSTANT);
+break;
+case 467:
+count();
+return(CONSTANT);
+break;
+case 468:
+count();
+return(CONSTANT);
+break;
+case 469:
+count();
+return(CONSTANT);
+break;
+case 470:
+count();
+return(CONSTANT);
+break;
+case 471:
+count();
+return(CONSTANT);
+break;
+case 472:
+count();
+return(CONSTANT);
+break;
+case 473:
+count();
+return(CONSTANT);
+break;
+case 474:
+count();
+return(CONSTANT);
+break;
+case 475:
+count();
+return(CONSTANT);
+break;
+case 476:
+comment();
+break;
+case 477:
+count();
+return(CONSTANT);
+break;
+case 478:
+comment();
+break;
+case 479:
+count();
+return(CONSTANT);
+break;
+case 480:
+count();
+return(CONSTANT);
+break;
+case 481:
+count();
+return(CONSTANT);
+break;
+case 482:
+comment();
+break;
+case 483:
+count();
+return(CONSTANT);
+break;
+case 484:
+count();
+return(CONSTANT);
+break;
+case 485:
+count();
+return(CONSTANT);
+break;
+case 486:
+count();
+return(CONSTANT);
+break;
+case 487:
+comment();
+break;
+case 488:
+count();
+return(CONSTANT);
+break;
+case 489:
+comment();
+break;
+case 490:
+count();
+return(CONSTANT);
+break;
+case 491:
+count();
+return(CONSTANT);
+break;
+case 492:
+comment();
+break;
+case 493:
+count();
+return(CONSTANT);
+break;
+case 494:
+count();
+return(CONSTANT);
+break;
+case 495:
+count();
+return(CONSTANT);
+break;
+case 496:
+count();
+return(CONSTANT);
+break;
+case 497:
+count();
+return(CONSTANT);
+break;
+case 498:
+count();
+return(CONSTANT);
+break;
+case 499:
+count();
+return(CONSTANT);
+break;
+case 500:
+comment();
+break;
+case 501:
+count();
+return(CONSTANT);
+break;
+case 502:
+count();
+return(CONSTANT);
+break;
+case 503:
+count();
+return(CONSTANT);
+break;
+case 504:
+count();
+return(CONSTANT);
+break;
+case 505:
+count();
+return(CONSTANT);
+break;
+case 506:
+comment();
+break;
+case 507:
+count();
+return(CONSTANT);
+break;
+case 508:
+count();
+return(CONSTANT);
+break;
+case 509:
+comment();
+break;
+case 510:
+count();
+return(CONSTANT);
+break;
+case 511:
+comment();
+break;
+case 512:
+count();
+return(CONSTANT);
+break;
+case 513:
+count();
+return(CONSTANT);
+break;
+case 514:
+count();
+return(CONSTANT);
+break;
+case 515:
+count();
+return(CONSTANT);
+break;
+case 516:
+count();
+return(CONSTANT);
+break;
+case 517:
+count();
+return(CONSTANT);
+break;
+case 518:
+count();
+return(CONSTANT);
+break;
+case 519:
+count();
+return(CONSTANT);
+break;
+case 520:
+count();
+return(CONSTANT);
+break;
+case 521:
+count();
+return(CONSTANT);
+break;
+case 522:
+count();
+return(CONSTANT);
+break;
+case 523:
+count();
+return(CONSTANT);
+break;
+case 524:
+count();
+return(ELLIPSIS);
+break;
+case 525:
+comment();
+break;
+case 526:
+count();
+return(CONSTANT);
+break;
+case 527:
+comment();
+break;
+case 528:
+count();
+return(CONSTANT);
+break;
+case 529:
+comment();
+break;
+case 530:
+comment();
+break;
+case 531:
+comment();
+break;
+case 532:
+comment();
+break;
+case 533:
+comment();
+break;
+case 534:
+comment();
+break;
+case 535:
+comment();
+break;
+case 536:
+comment();
+break;
+case 537:
+count();
+return(CONSTANT);
+break;
+case 538:
+comment();
+break;
+case 539:
+comment();
+break;
+case 540:
+comment();
+break;
+case 541:
+count();
+return(CONSTANT);
+break;
+case 542:
+comment();
+break;
+case 543:
+comment();
+break;
+case 544:
+comment();
+break;
+case 545:
+count();
+return(CONSTANT);
+break;
+case 546:
+comment();
+break;
+case 547:
+comment();
+break;
+case 548:
+comment();
+break;
+case 549:
+comment();
+break;
+case 550:
+comment();
+break;
+case 551:
+comment();
+break;
+case 552:
+comment();
+break;
+case 553:
+comment();
+break;
+case 554:
+comment();
+break;
+case 555:
+comment();
+break;
+case 556:
+comment();
+break;
+case 557:
+comment();
+break;
+case 558:
+comment();
+break;
+case 559:
+comment();
+break;
+case 560:
+comment();
+break;
+case 561:
+comment();
+break;
+case 562:
+comment();
+break;
+case 563:
+comment();
+break;
+case 564:
+comment();
+break;
+case 565:
+comment();
+break;
+case 566:
+comment();
+break;
+case 567:
+comment();
+break;
+case 568:
+comment();
+break;
+case 569:
+comment();
+break;
+case 570:
+comment();
+break;
+case 571:
+comment();
+break;
+case 572:
+comment();
+break;
+case 573:
+comment();
+break;
+case 574:
+count();
+return(LEFT_ASSIGN);
+break;
+case 575:
+count();
+return(check_type());
+break;
+case 576:
+count();
+return(check_type());
+break;
+case 577:
+count();
+return(check_type());
+break;
+case 578:
+count();
+return(CHAR);
+break;
+case 579:
+count();
+return(check_type());
+break;
+case 580:
+count();
+return(check_type());
+break;
+case 581:
+count();
+return(ENUM);
+break;
+case 582:
+count();
+return(check_type());
+break;
+case 583:
+count();
+return(check_type());
+break;
+case 584:
+count();
+return(check_type());
+break;
+case 585:
+count();
+return(check_type());
+break;
+case 586:
+count();
+return(check_type());
+break;
+case 587:
+count();
+return(check_type());
+break;
+case 588:
+count();
+return(check_type());
+break;
+case 589:
+count();
+return(check_type());
+break;
+case 590:
+count();
+return(check_type());
+break;
+case 591:
+count();
+return(CONSTANT);
+break;
+case 592:
+count();
+return(check_type());
+break;
+case 593:
+count();
+return(check_type());
+break;
+case 594:
+count();
+return(VOID);
+break;
+case 595:
+count();
+return(check_type());
+break;
+case 596:
+count();
+return(CONSTANT);
+break;
+case 597:
+count();
+return(CONSTANT);
+break;
+case 598:
+count();
+return(CONSTANT);
+break;
+case 599:
+count();
+return(CONSTANT);
+break;
+case 600:
+count();
+return(CONSTANT);
+break;
+case 601:
+count();
+return(CONSTANT);
+break;
+case 602:
+count();
+return(CONSTANT);
+break;
+case 603:
+count();
+return(CONSTANT);
+break;
+case 604:
+count();
+return(CONSTANT);
+break;
+case 605:
+count();
+return(CONSTANT);
+break;
+case 606:
+count();
+return(CONSTANT);
+break;
+case 607:
+count();
+return(CONSTANT);
+break;
+case 608:
+count();
+return(CONSTANT);
+break;
+case 609:
+count();
+return(CONSTANT);
+break;
+case 610:
+count();
+return(CONSTANT);
+break;
+case 611:
+count();
+return(CONSTANT);
+break;
+case 612:
+count();
+return(CONSTANT);
+break;
+case 613:
+count();
+return(CONSTANT);
+break;
+case 614:
+count();
+return(CONSTANT);
+break;
+case 615:
+count();
+return(CONSTANT);
+break;
+case 616:
+count();
+return(CONSTANT);
+break;
+case 617:
+count();
+return(CONSTANT);
+break;
+case 618:
+count();
+return(CONSTANT);
+break;
+case 619:
+count();
+return(CONSTANT);
+break;
+case 620:
+count();
+return(CONSTANT);
+break;
+case 621:
+count();
+return(CONSTANT);
+break;
+case 622:
+count();
+return(CONSTANT);
+break;
+case 623:
+count();
+return(CONSTANT);
+break;
+case 624:
+count();
+return(CONSTANT);
+break;
+case 625:
+count();
+return(CONSTANT);
+break;
+case 626:
+count();
+return(CONSTANT);
+break;
+case 627:
+count();
+return(CONSTANT);
+break;
+case 628:
+count();
+return(CONSTANT);
+break;
+case 629:
+count();
+return(CONSTANT);
+break;
+case 630:
+count();
+return(CONSTANT);
+break;
+case 631:
+count();
+return(CONSTANT);
+break;
+case 632:
+count();
+return(CONSTANT);
+break;
+case 633:
+count();
+return(CONSTANT);
+break;
+case 634:
+count();
+return(CONSTANT);
+break;
+case 635:
+count();
+return(CONSTANT);
+break;
+case 636:
+count();
+return(CONSTANT);
+break;
+case 637:
+count();
+return(CONSTANT);
+break;
+case 638:
+count();
+return(CONSTANT);
+break;
+case 639:
+count();
+return(CONSTANT);
+break;
+case 640:
+count();
+return(CONSTANT);
+break;
+case 641:
+count();
+return(CONSTANT);
+break;
+case 642:
+count();
+return(CONSTANT);
+break;
+case 643:
+count();
+return(CONSTANT);
+break;
+case 644:
+count();
+return(CONSTANT);
+break;
+case 645:
+count();
+return(check_type());
+break;
+case 646:
+count();
+return(BREAK);
+break;
+case 647:
+count();
+return(check_type());
+break;
+case 648:
+count();
+return(check_type());
+break;
+case 649:
+count();
+return(check_type());
+break;
+case 650:
+count();
+return(check_type());
+break;
+case 651:
+count();
+return(check_type());
+break;
+case 652:
+count();
+return(SHORT);
+break;
+case 653:
+count();
+return(check_type());
+break;
+case 654:
+count();
+return(check_type());
+break;
+case 655:
+count();
+return(check_type());
+break;
+case 656:
+count();
+return(check_type());
+break;
+case 657:
+count();
+return(check_type());
+break;
+case 658:
+count();
+return(check_type());
+break;
+case 659:
+count();
+return(UNION);
+break;
+case 660:
+count();
+return(check_type());
+break;
+case 661:
+count();
+return(check_type());
+break;
+case 662:
+count();
+return(WHILE);
+break;
+case 663:
+count();
+return(CONSTANT);
+break;
+case 664:
+count();
+return(CONSTANT);
+break;
+case 665:
+count();
+return(CONSTANT);
+break;
+case 666:
+count();
+return(CONSTANT);
+break;
+case 667:
+count();
+return(CONSTANT);
+break;
+case 668:
+count();
+return(CONSTANT);
+break;
+case 669:
+count();
+return(CONSTANT);
+break;
+case 670:
+count();
+return(CONSTANT);
+break;
+case 671:
+count();
+return(CONSTANT);
+break;
+case 672:
+count();
+return(CONSTANT);
+break;
+case 673:
+count();
+return(CONSTANT);
+break;
+case 674:
+count();
+return(CONSTANT);
+break;
+case 675:
+count();
+return(CONSTANT);
+break;
+case 676:
+count();
+return(CONSTANT);
+break;
+case 677:
+count();
+return(CONSTANT);
+break;
+case 678:
+count();
+return(CONSTANT);
+break;
+case 679:
+count();
+return(CONSTANT);
+break;
+case 680:
+count();
+return(CONSTANT);
+break;
+case 681:
+count();
+return(CONSTANT);
+break;
+case 682:
+count();
+return(CONSTANT);
+break;
+case 683:
+count();
+return(CONSTANT);
+break;
+case 684:
+count();
+return(CONSTANT);
+break;
+case 685:
+count();
+return(CONSTANT);
+break;
+case 686:
+count();
+return(CONSTANT);
+break;
+case 687:
+count();
+return(CONSTANT);
+break;
+case 688:
+count();
+return(CONSTANT);
+break;
+case 689:
+count();
+return(CONSTANT);
+break;
+case 690:
+count();
+return(CONSTANT);
+break;
+case 691:
+count();
+return(CONSTANT);
+break;
+case 692:
+count();
+return(CONSTANT);
+break;
+case 693:
+count();
+return(CONSTANT);
+break;
+case 694:
+count();
+return(CONSTANT);
+break;
+case 695:
+count();
+return(CONSTANT);
+break;
+case 696:
+count();
+return(CONSTANT);
+break;
+case 697:
+count();
+return(BOOL);
+break;
+case 698:
+count();
+return(check_type());
+break;
+case 699:
+count();
+return(check_type());
+break;
+case 700:
+count();
+return(check_type());
+break;
+case 701:
+count();
+return(EXTERN);
+break;
+case 702:
+count();
+return(RETURN);
+break;
+case 703:
+count();
+return(SIZEOF);
+break;
+case 704:
+count();
+return(STRUCT);
+break;
+case 705:
+count();
+return(check_type());
+break;
+case 706:
+count();
+return(CONSTANT);
+break;
+case 707:
+count();
+return(CONSTANT);
+break;
+case 708:
+count();
+return(CONSTANT);
+break;
+case 709:
+count();
+return(CONSTANT);
+break;
+case 710:
+count();
+return(CONSTANT);
+break;
+case 711:
+count();
+return(CONSTANT);
+break;
+case 712:
+count();
+return(CONSTANT);
+break;
+case 713:
+count();
+return(CONSTANT);
+break;
+case 714:
+count();
+return(CONSTANT);
+break;
+case 715:
+count();
+return(CONSTANT);
+break;
+case 716:
+count();
+return(CONSTANT);
+break;
+case 717:
+count();
+return(CONSTANT);
+break;
+case 718:
+count();
+return(CONSTANT);
+break;
+case 719:
+count();
+return(CONSTANT);
+break;
+case 720:
+count();
+return(CONSTANT);
+break;
+case 721:
+count();
+return(CONSTANT);
+break;
+case 722:
+count();
+return(CONSTANT);
+break;
+case 723:
+count();
+return(CONSTANT);
+break;
+case 724:
+count();
+return(CONSTANT);
+break;
+case 725:
+count();
+return(CONSTANT);
+break;
+case 726:
+count();
+return(CONSTANT);
+break;
+case 727:
+count();
+return(CONSTANT);
+break;
+case 728:
+count();
+return(CONSTANT);
+break;
+case 729:
+count();
+return(CONSTANT);
+break;
+case 730:
+count();
+return(CONSTANT);
+break;
+case 731:
+count();
+return(check_type());
+break;
+case 732:
+count();
+return(check_type());
+break;
+case 733:
+count();
+return(check_type());
+break;
+case 734:
+count();
+return(DEFAULT);
+break;
+case 735:
+count();
+return(check_type());
+break;
+case 736:
+count();
+return(check_type());
+break;
+case 737:
+count();
+return(TYPEDEF);
+break;
+case 738:
+count();
+return(check_type());
+break;
+case 739:
+count();
+return(CONSTANT);
+break;
+case 740:
+count();
+return(CONSTANT);
+break;
+case 741:
+count();
+return(CONSTANT);
+break;
+case 742:
+count();
+return(CONSTANT);
+break;
+case 743:
+count();
+return(CONSTANT);
+break;
+case 744:
+count();
+return(CONSTANT);
+break;
+case 745:
+count();
+return(CONSTANT);
+break;
+case 746:
+count();
+return(CONSTANT);
+break;
+case 747:
+count();
+return(CONSTANT);
+break;
+case 748:
+count();
+return(CONSTANT);
+break;
+case 749:
+count();
+return(CONSTANT);
+break;
+case 750:
+count();
+return(CONSTANT);
+break;
+case 751:
+count();
+return(CONSTANT);
+break;
+case 752:
+count();
+return(CONSTANT);
+break;
+case 753:
+count();
+return(CONSTANT);
+break;
+case 754:
+count();
+return(CONSTANT);
+break;
+case 755:
+count();
+return(CONSTANT);
+break;
+case 756:
+count();
+return(CONSTANT);
+break;
+case 757:
+count();
+return(check_type());
+break;
+case 758:
+count();
+return(check_type());
+break;
+case 759:
+count();
+return(CONTINUE);
+break;
+case 760:
+count();
+return(UNSIGNED);
+break;
+case 761:
+count();
+return(CONSTANT);
+break;
+case 762:
+count();
+return(CONSTANT);
+break;
+case 763:
+count();
+return(CONSTANT);
+break;
+case 764:
+count();
+return(CONSTANT);
+break;
+case 765:
+count();
+return(CONSTANT);
+break;
+case 766:
+count();
+return(CONSTANT);
+break;
+case 767:
+count();
+return(CONSTANT);
+break;
+case 768:
+count();
+return(CONSTANT);
+break;
+case 769:
+count();
+return(CONSTANT);
+break;
+case 770:
+count();
+return(COMPLEX);
+break;
+case 771:
+count();
+return(check_type());
+break;
+default:
+break;
+}
 }
 char* getCharPtr(char* fileName){
 char* cp=NULL;

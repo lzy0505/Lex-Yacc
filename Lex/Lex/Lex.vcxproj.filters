@@ -64,9 +64,6 @@
     <None Include="lex.l">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="fakelex.l">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lex.rc">

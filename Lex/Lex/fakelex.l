@@ -14,404 +14,307 @@ FS			(f|F|l|L)
 IS          ((u|U)|(u|U)?(l|L|ll|LL)|(l|L|ll|LL)(u|U))
 
 %%
-"/*"			comment();
-"//"[^\n]*      comment();
+"/*"			printf("below are comments");
+"//"[^\n]*      printf("below are comments");
 
 
 "auto"			{ 
-	count(); 
-	return(AUTO); 
+	 printf("AUTO"); 
 	}
 "_Bool"			{ 
-	count(); 
-	return(BOOL); 
+	 printf("BOOL"); 
 	}
 "break"			{ 
-	count();
-	return(BREAK); 
+	printf("BREAK"); 
 	}
 "case"			{ 
-	count(); 
-	return(CASE); 
+	 printf("CASE"); 
 	}
 "char"			{ 
-	count(); 
-	return(CHAR); 
+	 printf("CHAR"); 
 	}
 "_Complex"		{ 
-	count(); 
-	return(COMPLEX); 
+	 printf("COMPLEX"); 
 	}
 "const"			{ 
-	count(); 
-	return(CONST); 
+	 printf("CONST"); 
 	}
 "continue"		{ 
-	count(); 
-	return(CONTINUE); 
+	 printf("CONTINUE"); 
 	}
 "default"		{ 
-	count(); 
-	return(DEFAULT); 
+	 printf("DEFAULT"); 
 	}
 "do"			{ 
-	count(); 
-	return(DO); 
+	 printf("DO"); 
 	}
 "double"		{ 
-	count(); 
-	return(DOUBLE); 
+	 printf("DOUBLE"); 
 	}
 "else"			{ 
-	count(); 
-	return(ELSE); 
+	 printf("ELSE"); 
 	}
 "enum"			{ 
-	count(); 
-	return(ENUM); 
+	 printf("ENUM"); 
 	}
 "extern"		{ 
-	count(); 
-	return(EXTERN); 
+	 printf("EXTERN"); 
 	}
 "float"			{ 
-	count(); 
-	return(FLOAT); 
+	 printf("FLOAT"); 
 	}
 "for"			{ 
-	count(); 
-	return(FOR); 
+	 printf("FOR"); 
 	}
 "goto"			{ 
-	count(); 
-	return(GOTO); 
+	 printf("GOTO"); 
 	}
 "if"			{ 
-	count(); 
-	return(IF); 
+	 printf("IF"); 
 	}
 "_Imaginary"		{ 
-	count(); 
-	return(IMAGINARY); 
+	 printf("IMAGINARY"); 
 	}
 "inline"		{ 
-	count(); 
-	return(INLINE); 
+	 printf("INLINE"); 
 	}
 "int"			{ 
-	count(); 
-	return(INT); 
+	 printf("INT"); 
 	}
 "long"			{ 
-	count(); 
-	return(LONG); 
+	 printf("LONG"); 
 	}
 "register"		{ 
-	count(); 
-	return(REGISTER); 
+	 printf("REGISTER"); 
 	}
 "restrict"		{ 
-	count(); 
-	return(RESTRICT); 
+	 printf("RESTRICT"); 
 	}
 "return"		{ 
-	count(); 
-	return(RETURN); 
+	 printf("RETURN"); 
 	}
 "short"			{ 
-	count(); 
-	return(SHORT); 
+	 printf("SHORT"); 
 	}
 "signed"		{ 
-	count(); 
-	return(SIGNED); 
+	 printf("SIGNED"); 
 	}
 "sizeof"		{ 
-	count(); 
-	return(SIZEOF); 
+	 printf("SIZEOF"); 
 	}
 "static"		{ 
-	count(); 
-	return(STATIC); 
+	 printf("STATIC"); 
 	}
 "struct"		{ 
-	count(); 
-	return(STRUCT); 
+	 printf("STRUCT"); 
 	}
 "switch"		{ 
-	count(); 
-	return(SWITCH); 
+	 printf("SWITCH"); 
 	}
 "typedef"		{ 
-	count(); 
-	return(TYPEDEF); 
+	 printf("TYPEDEF"); 
 	}
 "union"			{ 
-	count(); 
-	return(UNION); 
+	 printf("UNION"); 
 	}
 "unsigned"		{ 
-	count(); 
-	return(UNSIGNED); 
+	 printf("UNSIGNED"); 
 	}
 "void"			{ 
-	count(); 
-	return(VOID); 
+	 printf("VOID"); 
 	}
 "volatile"		{ 
-	count(); 
-	return(VOLATILE); 
+	 printf("VOLATILE"); 
 	}
 "while"			{ 
-	count(); 
-	return(WHILE); 
+	 printf("WHILE"); 
 	}
 
 {L}({L}|{D})*		{ 
-	count(); 
-	return(check_type()); 
+	 printf("IDENTIFIER"); 
 	}
 
 0[xX]{H}+{IS}?		{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 0[0-7]*{IS}?		{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 [1-9]{D}*{IS}?		{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 L?'(\\.|[^\\'\n])+'	{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 
 {D}+{E}{FS}?		{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 {D}*"."{D}+{E}?{FS}?	{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 {D}+"."{D}*{E}?{FS}?	{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 0[xX]{H}+{P}{FS}?	{ 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 0[xX]{H}*"."{H}+{P}{FS}?     { 
-	count(); 
-	return(CONSTANT); 
+	 printf("CONSTANT"); 
 	}
 0[xX]{H}+"."{H}*{P}{FS}?     {
-	count();
-	return(CONSTANT); 
+	printf("CONSTANT"); 
 	}
 
-
 L?\"(\\.|[^\\"\n])*\"	{ 
-	count(); 
-	return(STRING_LITERAL); 
+	 printf("STRING_LITERAL"); 
 	}
 
 "..."			{ 
-	count(); 
-	return(ELLIPSIS); 
+	 printf("ELLIPSIS"); 
 	}
 ">>="			{ 
-	count(); 
-	return(RIGHT_ASSIGN); 
+	 printf("RIGHT_ASSIGN"); 
 	}
 "<<="			{ 
-	count(); 
-	return(LEFT_ASSIGN); 
+	 printf("LEFT_ASSIGN"); 
 	}
 "+="			{ 
-	count(); 
-	return(ADD_ASSIGN); 
+	 printf("ADD_ASSIGN"); 
 	}
 "-="			{ 
-	count(); 
-	return(SUB_ASSIGN); 
+	 printf("SUB_ASSIGN"); 
 	}
 "*="			{ 
-	count(); 
-	return(MUL_ASSIGN); 
+	 printf("MUL_ASSIGN"); 
 	}
 "/="			{ 
-	count(); 
-	return(DIV_ASSIGN); 
+	 printf("DIV_ASSIGN"); 
 	}
 "%="			{ 
-	count(); 
-	return(MOD_ASSIGN); 
+	 printf("MOD_ASSIGN"); 
 	}
 "&="			{ 
-	count(); 
-	return(AND_ASSIGN); 
+	 printf("AND_ASSIGN"); 
 	}
 "^="			{ 
-	count(); 
-	return(XOR_ASSIGN); 
+	 printf("XOR_ASSIGN"); 
 	}
 "|="			{ 
-	count(); 
-	return(OR_ASSIGN); 
+	 printf("OR_ASSIGN"); 
 	}
 ">>"			{ 
-	count(); 
-	return(RIGHT_OP); 
+	 printf("RIGHT_OP"); 
 	}
 "<<"			{ 
-	count(); 
-	return(LEFT_OP); 
+	 printf("LEFT_OP"); 
 	}
 "++"			{ 
-	count(); 
-	return(INC_OP); 
+	 printf("INC_OP"); 
 	}
 "--"			{ 
-	count(); 
-	return(DEC_OP); 
+	 printf("DEC_OP"); 
 	}
 "->"			{ 
-	count(); 
-	return(PTR_OP); 
+	 printf("PTR_OP"); 
 	}
 "&&"			{ 
-	count(); 
-	return(AND_OP); 
+	 printf("AND_OP"); 
 	}
 "||"			{ 
-	count(); 
-	return(OR_OP); 
+	 printf("OR_OP"); 
 	}
 "<="			{ 
-	count(); 
-	return(LE_OP); 
+	 printf("LE_OP"); 
 	}
 ">="			{ 
-	count(); 
-	return(GE_OP); 
+	 printf("GE_OP"); 
 	}
 "=="			{ 
-	count(); 
-	return(EQ_OP); 
+	 printf("EQ_OP"); 
 	}
 "!="			{ 
-	count(); 
-	return(NE_OP); 
+	 printf("NE_OP"); 
 	}
 ";"			{ 
-	count();
-	return(';'); 
+	printf(';'); 
 	}
 ("{"|"<%")		{ 
-	count(); 
-	return('{'); 
+	 printf('{'); 
 	}
 ("}"|"%>")		{ 
-	count(); 
-	return('}'); 
+	 printf('}'); 
 	}
 ","			{ 
-	count(); 
-	return(','); 
+	 printf(','); 
 	}
 ":"			{ 
-	count(); 
-	return(':'); 
+	 printf(':'); 
 	}
 "="			{ 
-	count(); 
-	return('='); 
+	 printf('='); 
 	}
 "("			{ 
-	count(); 
-	return('('); 
+	 printf('('); 
 	}
 ")"			{ 
-	count(); 
-	return(')'); 
+	 printf(')'); 
 	}
 ("["|"<:")		{ 
-	count(); 
-	return('['); 
+	 printf('['); 
 	}
 ("]"|":>")		{ 
-	count(); 
-	return(']'); 
+	 printf(']'); 
 	}
 "."			{ 
-	count(); 
-	return('.'); 
+	 printf('.'); 
 	}
 "&"			{ 
-	count(); 
-	return('&'); 
+	 printf('&'); 
 	}
 "!"			{ 
-	count(); 
-	return('!'); 
+	 printf('!'); 
 	}
 "~"			{ 
-	count(); 
-	return('~'); 
+	 printf('~'); 
 	}
 "-"			{ 
-	count(); 
-	return('-'); 
+	 printf('-'); 
 	}
 "+"			{ 
-	count(); 
-	return('+'); 
+	 printf('+'); 
 	}
 "*"			{ 
-	count(); 
-	return('*'); 
+	 printf('*'); 
 	}
 "/"			{ 
-	count(); 
-	return('/'); 
+	 printf('/'); 
 	}
 "%"			{ 
-	count(); 
-	return('%'); 
+	 printf('%'); 
 	}
 "<"			{ 
-	count();
-	return('<'); 
+	printf('<'); 
 	}
 ">"			{ 
-	count(); 
-	return('>'); 
+	 printf('>'); 
 	}
 "^"			{ 
-	count(); 
-	return('^'); 
+	 printf('^'); 
 	}
 "|"			{ 
-	count(); 
-	return('|'); 
+	 printf('|'); 
 	}
 "?"			{ 
-	count(); 
-	return('?'); 
+	 printf('?'); 
 	}
 
-[ \t\v\n\f]		count(); 
-.			count(); 
+[ \t\v\n\f]		printf("SPACE"); 
+.			printf("DOT"); 
 
 %%
 
-int yywrap()
+int yywrap(void)
 {
-return 1; /* tell scanner no further files need to be processed */
+	return 1;
 }
-

@@ -232,7 +232,6 @@
     <ClCompile Include="suffixToNFA.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fakelex.l" />
     <None Include="lex.l" />
   </ItemGroup>
   <ItemGroup>

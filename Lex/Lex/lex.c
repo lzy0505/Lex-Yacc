@@ -14678,6 +14678,7 @@ yy_current_state=yy_last_accepting_state;
 yy_cp=yy_last_accepting_cpos;
 yy_act=yy_accept[yy_current_state];
 findAction(yy_act);
+printf("  ");
 yy_current_state=0;
 yy_last_accepting_state=-1;
 ++yy_cp;
@@ -14702,6 +14703,7 @@ findAction(yy_act);
 else{
 printf("ERROR DETECTED IN INPUT FILE !");
 }
+system("pause");
 }
 int findAction(int action)
 {

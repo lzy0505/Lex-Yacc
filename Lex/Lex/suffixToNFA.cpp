@@ -21,7 +21,7 @@ void suffix_To_NFA(vector<Rules>& suffixRules,NFA& finalNfa) {
 	stack<NFA> nfaStack;//用于构建NFA的工具栈,也是
 	for (auto &rule : suffixRules) {
 		string pattern = rule.pattern; //已经后缀化后的pattern
-		cout <<"NFA pattern:" <<pattern<<endl;
+		/*cout <<"NFA pattern:" <<pattern<<endl;*/
 		Rules tempActionVec;//临时终态动作数组
 		for (auto it = pattern.cbegin() ; it != pattern.cend(); ++it)
 		{

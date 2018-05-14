@@ -25,6 +25,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 		return -1;
 	}
 	/*主函数的开始*/
+	out << "#define _CRT_SECURE_NO_WARNINGS" << endl; 
 	out << "#include\"stdio.h\"" << endl;
 	out << "#include\"stdlib.h\"" << endl;
 	/*依次输出P1和P4*/
@@ -82,6 +83,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "yy_cp=yy_last_accepting_cpos;" << endl;
 	out << "yy_act=yy_accept[yy_current_state];" << endl;
 	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
+	out << "printf(\" \");" << endl;
 	out << "yy_current_state=0;" << endl; /*将状态置为0*/
 	out << "yy_last_accepting_state=-1;" << endl;
 	out << "++yy_cp;" << endl;
@@ -140,7 +142,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "if(fp==NULL)" << endl;
 	out << "{" << endl;
 	out << "printf(\"can't open file\");" << endl;
-	out << "getch();" << endl;
+	out << "_getch();" << endl;
 	out << "exit(0);" << endl;
 	out << "}" << endl;
 	out << "fseek(fp,0,SEEK_END);" << endl;

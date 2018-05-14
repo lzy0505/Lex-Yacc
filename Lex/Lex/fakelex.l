@@ -1,8 +1,6 @@
 %{
 #include <stdio.h>
-#include "y.tab.h"
 
-void count(void);
 %}
 
 D			[0-9]

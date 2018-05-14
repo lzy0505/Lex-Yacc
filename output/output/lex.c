@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "y.tab.h"
 void count(void);
-int yywrap()
+int yywrap(void)
 {
-return 1; /* tell scanner no further files need to be processed */
+	return 1;
 }
 char* getCharPtr(char* fileName);
 int findAction(int action);
@@ -14516,61 +14516,38 @@ static int	yy_next[143172] =
 -1  };
 static int	yy_accept[1476] =
 	{	0,
-5   ,7   ,9   ,11  ,12  ,15  ,17  ,18  ,1   ,19  ,
-21  ,23  ,24  ,27  ,30  ,32  ,33  ,35  ,37  ,39  ,
-40  ,44  ,46  ,48  ,49  ,52  ,54  ,56  ,57  ,61  ,
-63  ,66  ,67  ,71  ,73  ,75  ,76  ,79  ,82  ,85  ,
-86  ,89  ,91  ,94  ,95  ,99  ,101 ,104 ,105 ,109 ,
-112 ,115 ,116 ,120 ,122 ,124 ,125 ,128 ,131 ,135 ,
-136 ,139 ,141 ,143 ,3   ,145 ,147 ,149 ,151 ,153 ,
-155 ,158 ,160 ,163 ,165 ,167 ,169 ,171 ,173 ,176 ,
-178 ,182 ,184 ,186 ,187 ,191 ,195 ,196 ,198 ,200 ,
-201 ,203 ,204 ,206 ,210 ,212 ,213 ,215 ,217 ,220 ,
-221 ,225 ,227 ,230 ,231 ,234 ,235 ,238 ,239 ,243 ,
-245 ,247 ,248 ,251 ,252 ,254 ,255 ,259 ,261 ,263 ,
-264 ,267 ,269 ,271 ,272 ,275 ,276 ,277 ,279 ,280 ,
-282 ,283 ,285 ,286 ,288 ,289 ,291 ,292 ,294 ,295 ,
-297 ,298 ,300 ,301 ,304 ,305 ,307 ,308 ,311 ,312 ,
-314 ,315 ,317 ,318 ,321 ,322 ,325 ,326 ,328 ,0   ,
-0   ,329 ,330 ,331 ,332 ,334 ,336 ,337 ,339 ,341 ,
-342 ,343 ,344 ,346 ,348 ,349 ,351 ,352 ,353 ,354 ,
-355 ,356 ,358 ,359 ,361 ,362 ,0   ,363 ,364 ,0   ,
-0   ,365 ,367 ,0   ,369 ,370 ,372 ,374 ,375 ,376 ,
-379 ,381 ,0   ,0   ,383 ,384 ,386 ,387 ,390 ,392 ,
-396 ,397 ,400 ,402 ,404 ,405 ,409 ,411 ,412 ,413 ,
+12  ,13  ,14  ,16  ,19  ,20  ,22  ,24  ,5   ,26  ,
+28  ,29  ,32  ,33  ,35  ,37  ,41  ,42  ,45  ,46  ,
+49  ,50  ,52  ,54  ,57  ,58  ,59  ,61  ,64  ,65  ,
+67  ,68  ,71  ,72  ,73  ,75  ,77  ,78  ,79  ,81  ,
+83  ,84  ,85  ,87  ,89  ,90  ,91  ,93  ,95  ,96  ,
+97  ,99  ,100 ,101 ,103 ,105 ,107 ,108 ,111 ,113 ,
+114 ,115 ,117 ,120 ,8   ,121 ,122 ,125 ,128 ,129 ,
+130 ,132 ,135 ,136 ,137 ,141 ,144 ,145 ,146 ,147 ,
+150 ,151 ,152 ,153 ,155 ,156 ,157 ,158 ,162 ,163 ,
+165 ,167 ,169 ,170 ,172 ,173 ,178 ,179 ,181 ,183 ,
+186 ,187 ,189 ,191 ,195 ,196 ,198 ,200 ,203 ,204 ,
+206 ,208 ,210 ,211 ,213 ,215 ,218 ,219 ,221 ,223 ,
+227 ,228 ,230 ,232 ,235 ,236 ,238 ,241 ,244 ,245 ,
+246 ,248 ,250 ,251 ,252 ,254 ,257 ,258 ,259 ,261 ,
+263 ,264 ,265 ,266 ,268 ,269 ,270 ,272 ,274 ,275 ,
+276 ,278 ,280 ,281 ,282 ,286 ,289 ,290 ,291 ,0   ,
+0   ,292 ,293 ,295 ,296 ,297 ,298 ,301 ,302 ,303 ,
+304 ,306 ,307 ,308 ,309 ,312 ,315 ,316 ,317 ,320 ,
+323 ,324 ,325 ,327 ,329 ,330 ,0   ,334 ,337 ,0   ,
+0   ,340 ,341 ,0   ,344 ,345 ,346 ,347 ,349 ,352 ,
+353 ,354 ,0   ,0   ,356 ,357 ,360 ,363 ,364 ,365 ,
+368 ,372 ,373 ,374 ,378 ,381 ,382 ,383 ,385 ,387 ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,319 ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,388 ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,416 ,417 ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,418 ,42  ,419 ,31  ,420 ,422 ,423 ,74  ,424 ,
-425 ,426 ,428 ,429 ,69  ,430 ,92  ,0   ,78  ,432 ,
-64  ,433 ,88  ,435 ,113 ,436 ,97  ,438 ,83  ,439 ,
-107 ,440 ,133 ,441 ,118 ,442 ,102 ,443 ,266 ,444 ,
-148 ,445 ,274 ,446 ,262 ,447 ,144 ,448 ,166 ,449 ,
-152 ,450 ,142 ,451 ,162 ,452 ,185 ,453 ,170 ,454 ,
-157 ,455 ,181 ,456 ,202 ,457 ,189 ,458 ,175 ,459 ,
-51  ,460 ,218 ,461 ,59  ,464 ,47  ,465 ,0   ,0   ,
-236 ,466 ,223 ,467 ,211 ,468 ,233 ,469 ,253 ,470 ,
-241 ,471 ,228 ,472 ,250 ,473 ,270 ,474 ,258 ,475 ,
-246 ,477 ,434 ,479 ,481 ,483 ,437 ,0   ,485 ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,486 ,488 ,
-0   ,490 ,491 ,493 ,494 ,496 ,497 ,499 ,463 ,501 ,
-502 ,504 ,505 ,507 ,508 ,407 ,431 ,510 ,394 ,0   ,
+0   ,0   ,0   ,0   ,0   ,283 ,390 ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14580,14 +14557,20 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-512 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,391 ,102 ,392 ,94  ,393 ,109 ,394 ,395 ,396 ,
+116 ,397 ,106 ,398 ,399 ,400 ,401 ,0   ,402 ,403 ,
+404 ,405 ,406 ,407 ,408 ,409 ,410 ,411 ,412 ,413 ,
+414 ,415 ,416 ,417 ,418 ,419 ,420 ,421 ,164 ,422 ,
+184 ,423 ,171 ,424 ,159 ,425 ,180 ,426 ,201 ,427 ,
+188 ,428 ,174 ,429 ,197 ,430 ,216 ,431 ,205 ,432 ,
+192 ,433 ,212 ,434 ,233 ,435 ,220 ,436 ,209 ,437 ,
+229 ,438 ,17  ,440 ,237 ,441 ,224 ,442 ,0   ,0   ,
+30  ,443 ,21  ,444 ,446 ,447 ,27  ,448 ,47  ,450 ,
+34  ,451 ,25  ,452 ,43  ,453 ,62  ,455 ,51  ,456 ,
+38  ,457 ,459 ,460 ,445 ,462 ,466 ,0   ,439 ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,359 ,351 ,
+0   ,468 ,343 ,471 ,449 ,473 ,377 ,361 ,475 ,477 ,
+479 ,370 ,454 ,481 ,484 ,379 ,485 ,486 ,367 ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14599,31 +14582,12 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,513 ,514 ,0   ,515 ,516 ,
-517 ,518 ,401 ,519 ,520 ,521 ,380 ,68  ,366 ,522 ,
-524 ,77  ,371 ,525 ,391 ,87  ,377 ,527 ,529 ,96  ,
-530 ,531 ,410 ,532 ,302 ,533 ,534 ,535 ,309 ,536 ,
-538 ,539 ,316 ,540 ,542 ,543 ,323 ,544 ,546 ,547 ,
-548 ,549 ,550 ,551 ,552 ,553 ,554 ,511 ,555 ,556 ,
-373 ,557 ,558 ,559 ,560 ,34  ,561 ,16  ,482 ,41  ,
-562 ,130 ,563 ,50  ,478 ,29  ,564 ,58  ,565 ,8   ,
-476 ,214 ,566 ,45  ,489 ,222 ,567 ,20  ,568 ,232 ,
-487 ,62  ,500 ,240 ,492 ,36  ,569 ,106 ,388 ,81  ,
-509 ,117 ,398 ,570 ,571 ,126 ,406 ,100 ,572 ,137 ,
-414 ,72  ,506 ,6   ,573 ,121 ,574 ,13  ,575 ,90  ,
-576 ,2   ,577 ,140 ,578 ,25  ,579 ,111 ,580 ,179 ,
-581 ,154 ,582 ,188 ,583 ,268 ,585 ,199 ,586 ,172 ,
-587 ,205 ,588 ,146 ,590 ,592 ,593 ,193 ,594 ,333 ,
-595 ,164 ,597 ,340 ,598 ,208 ,599 ,345 ,600 ,183 ,
-602 ,249 ,498 ,226 ,603 ,256 ,503 ,53  ,495 ,265 ,
-604 ,244 ,605 ,273 ,0   ,216 ,606 ,4   ,607 ,260 ,
-608 ,150 ,609 ,0   ,610 ,159 ,611 ,612 ,613 ,168 ,
-614 ,615 ,616 ,617 ,618 ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,619 ,257 ,
-28  ,620 ,621 ,622 ,623 ,132 ,624 ,625 ,0   ,0   ,
-0   ,626 ,110 ,0   ,627 ,628 ,526 ,629 ,630 ,631 ,
-129 ,632 ,633 ,634 ,80  ,427 ,635 ,421 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+3   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14633,37 +14597,73 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,636 ,637 ,638 ,639 ,541 ,640 ,641 ,
-642 ,643 ,644 ,0   ,0   ,645 ,192 ,156 ,646 ,161 ,
-647 ,648 ,649 ,650 ,207 ,174 ,651 ,180 ,415 ,652 ,
-653 ,654 ,655 ,656 ,657 ,658 ,659 ,660 ,661 ,662 ,
-663 ,664 ,665 ,666 ,667 ,668 ,669 ,523 ,670 ,671 ,
-672 ,545 ,393 ,0   ,0   ,528 ,673 ,674 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,217 ,271 ,0   ,489 ,226 ,
+277 ,490 ,491 ,234 ,285 ,492 ,494 ,11  ,495 ,496 ,
+497 ,18  ,294 ,498 ,500 ,4   ,300 ,501 ,348 ,31  ,
+305 ,502 ,504 ,40  ,311 ,505 ,358 ,48  ,319 ,507 ,
+508 ,56  ,326 ,509 ,375 ,63  ,333 ,511 ,355 ,70  ,
+119 ,512 ,513 ,76  ,124 ,515 ,366 ,82  ,131 ,516 ,
+517 ,88  ,140 ,519 ,384 ,314 ,362 ,80  ,487 ,322 ,
+371 ,60  ,474 ,328 ,380 ,92  ,520 ,336 ,386 ,74  ,
+482 ,7   ,521 ,104 ,522 ,127 ,523 ,86  ,525 ,134 ,
+526 ,118 ,527 ,143 ,528 ,98  ,530 ,149 ,531 ,532 ,
+533 ,154 ,534 ,112 ,536 ,161 ,537 ,538 ,539 ,168 ,
+540 ,541 ,543 ,177 ,240 ,544 ,545 ,185 ,247 ,546 ,
+548 ,194 ,253 ,549 ,550 ,202 ,260 ,551 ,553 ,555 ,
+556 ,190 ,557 ,558 ,559 ,166 ,561 ,563 ,564 ,207 ,
+565 ,566 ,567 ,182 ,569 ,243 ,570 ,222 ,571 ,249 ,
+572 ,199 ,574 ,256 ,575 ,239 ,576 ,262 ,577 ,214 ,
+579 ,267 ,580 ,23  ,463 ,273 ,582 ,231 ,583 ,279 ,
+461 ,36  ,389 ,288 ,0   ,15  ,458 ,584 ,338 ,53  ,
+467 ,585 ,587 ,0   ,588 ,591 ,350 ,66  ,476 ,592 ,
+470 ,44  ,594 ,284 ,287 ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,321 ,596 ,
+597 ,598 ,599 ,601 ,602 ,332 ,335 ,604 ,0   ,0   ,
+0   ,605 ,606 ,0   ,126 ,608 ,609 ,611 ,612 ,614 ,
+615 ,139 ,142 ,617 ,618 ,620 ,621 ,623 ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,675 ,537 ,676 ,320 ,
-677 ,678 ,679 ,357 ,680 ,350 ,681 ,682 ,683 ,684 ,
-685 ,686 ,687 ,360 ,688 ,689 ,0   ,0   ,690 ,287 ,
-691 ,278 ,692 ,693 ,694 ,695 ,696 ,299 ,697 ,290 ,
-698 ,699 ,700 ,284 ,701 ,194 ,584 ,177 ,702 ,281 ,
-703 ,296 ,704 ,209 ,589 ,197 ,705 ,293 ,706 ,310 ,
-707 ,335 ,596 ,591 ,708 ,306 ,709 ,324 ,710 ,347 ,
-601 ,338 ,711 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,712 ,98  ,713 ,
-714 ,385 ,715 ,378 ,93  ,716 ,717 ,0   ,0   ,313 ,
-718 ,303 ,719 ,368 ,720 ,382 ,721 ,327 ,722 ,0   ,
-0   ,723 ,724 ,399 ,725 ,726 ,727 ,728 ,729 ,395 ,
-730 ,731 ,732 ,733 ,734 ,735 ,736 ,737 ,43  ,738 ,
-84  ,739 ,70  ,740 ,38  ,741 ,60  ,462 ,103 ,742 ,
-0   ,0   ,55  ,743 ,224 ,744 ,123 ,745 ,108 ,746 ,
-219 ,747 ,242 ,748 ,749 ,750 ,127 ,484 ,237 ,751 ,
-119 ,752 ,753 ,403 ,754 ,389 ,114 ,755 ,138 ,756 ,
-757 ,758 ,759 ,408 ,134 ,760 ,14  ,480 ,761 ,762 ,
-763 ,764 ,10  ,765 ,26  ,766 ,65  ,767 ,768 ,769 ,
-22  ,770 ,190 ,771 ,229 };
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,624 ,626 ,581 ,628 ,629 ,631 ,632 ,
+10  ,633 ,635 ,0   ,0   ,636 ,637 ,638 ,2   ,639 ,
+465 ,586 ,640 ,641 ,642 ,643 ,39  ,644 ,645 ,469 ,
+646 ,647 ,648 ,649 ,55  ,650 ,342 ,369 ,651 ,652 ,
+653 ,654 ,69  ,655 ,478 ,656 ,658 ,659 ,661 ,299 ,
+590 ,662 ,664 ,0   ,0   ,665 ,667 ,310 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,176 ,668 ,670 ,671 ,
+672 ,673 ,674 ,675 ,535 ,148 ,676 ,677 ,678 ,679 ,
+680 ,681 ,542 ,160 ,682 ,669 ,0   ,0   ,683 ,684 ,
+547 ,175 ,685 ,686 ,687 ,688 ,689 ,690 ,552 ,193 ,
+691 ,692 ,693 ,694 ,695 ,696 ,488 ,697 ,698 ,625 ,
+699 ,700 ,701 ,702 ,493 ,225 ,703 ,634 ,704 ,627 ,
+705 ,706 ,499 ,9   ,707 ,464 ,708 ,709 ,339 ,630 ,
+503 ,1   ,710 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,663 ,711 ,657 ,
+712 ,713 ,593 ,589 ,714 ,715 ,716 ,0   ,0   ,660 ,
+472 ,313 ,717 ,718 ,719 ,720 ,721 ,666 ,480 ,0   ,
+0   ,722 ,723 ,724 ,725 ,726 ,524 ,6   ,727 ,728 ,
+729 ,730 ,731 ,732 ,529 ,133 ,733 ,506 ,595 ,734 ,
+735 ,376 ,600 ,736 ,318 ,510 ,603 ,737 ,610 ,483 ,
+0   ,0   ,331 ,514 ,607 ,738 ,619 ,739 ,613 ,740 ,
+123 ,518 ,616 ,741 ,742 ,743 ,622 ,744 ,138 ,745 ,
+746 ,747 ,748 ,749 ,560 ,554 ,750 ,751 ,752 ,753 ,
+754 ,755 ,568 ,562 ,756 ,757 ,758 ,759 ,760 ,761 ,
+573 ,242 ,762 ,763 ,764 ,765 ,766 ,767 ,578 ,255 ,
+768 ,110 ,769 ,770 ,771 };
 while(*yy_cp!=0){
 register int yy_c = yy_ec[(int)*yy_cp];
 if(yy_accept[yy_current_state])
@@ -14707,2982 +14707,2317 @@ switch (action)
 case 0:
 break;
 case 1:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 2:
-count();
-return(AUTO);
+printf("BREAK");
 break;
 case 3:
-count();
+ printf("CONSTANT");
 break;
 case 4:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 5:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 6:
-comment();
+ printf("CONSTANT");
 break;
 case 7:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 8:
-comment();
+printf("a CHAR");
 break;
 case 9:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 10:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 11:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 12:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 13:
-count();
-return(RIGHT_ASSIGN);
+ printf("IDENTIFIER");
 break;
 case 14:
-count();
-return(VOLATILE);
+ printf("IDENTIFIER");
 break;
 case 15:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 16:
-comment();
+ printf("IDENTIFIER");
 break;
 case 17:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 18:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 19:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 20:
-comment();
+ printf("IDENTIFIER");
 break;
 case 21:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 22:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 23:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 24:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 25:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 26:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 27:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 28:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 29:
-comment();
+ printf("IDENTIFIER");
 break;
 case 30:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 31:
-count();
-return(DEC_OP);
+printf("below are comments");
 break;
 case 32:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 33:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 34:
-comment();
+ printf("CONSTANT");
 break;
 case 35:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 36:
-comment();
+ printf("CONSTANT");
 break;
 case 37:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 38:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 39:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 40:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 41:
-comment();
+ printf("IDENTIFIER");
 break;
 case 42:
-count();
-return(INC_OP);
+ printf("IDENTIFIER");
 break;
 case 43:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 44:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 45:
-comment();
+ printf("IDENTIFIER");
 break;
 case 46:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 47:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 48:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 49:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 50:
-comment();
+ printf("IDENTIFIER");
 break;
 case 51:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 52:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 53:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 54:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 55:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 56:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 57:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 58:
-comment();
+ printf("IDENTIFIER");
 break;
 case 59:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 60:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 61:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 62:
-comment();
+ printf("CONSTANT");
 break;
 case 63:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 64:
-count();
-return(DIV_ASSIGN);
+ printf("IDENTIFIER");
 break;
 case 65:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 66:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 67:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 68:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 69:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 70:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 71:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 72:
-comment();
+ printf("IDENTIFIER");
 break;
 case 73:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 74:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 75:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 76:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 77:
-comment();
+ printf("IDENTIFIER");
 break;
 case 78:
-comment();
+ printf("IDENTIFIER");
 break;
 case 79:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 80:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 81:
-comment();
+ printf("IDENTIFIER");
 break;
 case 82:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 83:
-count();
-return(RIGHT_OP);
+ printf("IDENTIFIER");
 break;
 case 84:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 85:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 86:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 87:
-comment();
+ printf("IDENTIFIER");
 break;
 case 88:
-count();
-return('{');
+printf("below are comments");
 break;
 case 89:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 90:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 91:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 92:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 93:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 94:
-count();
-return(check_type());
+ printf("DEC_OP");
 break;
 case 95:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 96:
-comment();
+ printf("IDENTIFIER");
 break;
 case 97:
-count();
-return(EQ_OP);
+ printf("IDENTIFIER");
 break;
 case 98:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 99:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 100:
-comment();
+ printf("CONSTANT");
 break;
 case 101:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 102:
-count();
-return(AND_OP);
+ printf("INC_OP");
 break;
 case 103:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 104:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 105:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 106:
-comment();
+ printf("CONSTANT");
 break;
 case 107:
-count();
-return(OR_ASSIGN);
+ printf("CONSTANT");
 break;
 case 108:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 109:
-count();
-return(check_type());
+ printf("PTR_OP");
 break;
 case 110:
-count();
-return(CONSTANT);
+ printf("COMPLEX");
 break;
 case 111:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 112:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 113:
-count();
-return(LEFT_OP);
+ printf("CONSTANT");
 break;
 case 114:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 115:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 116:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 117:
-comment();
+ printf('!');
 break;
 case 118:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 119:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 120:
-count();
-return(CONSTANT);
+printf("a CHAR");
 break;
 case 121:
-comment();
+ printf('%');
 break;
 case 122:
-count();
-return(CONSTANT);
+printf("a CHAR");
 break;
 case 123:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 124:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 125:
-count();
-return(CONSTANT);
+ printf('(');
 break;
 case 126:
-comment();
+ printf("CONSTANT");
 break;
 case 127:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 128:
-count();
-return(CONSTANT);
+ printf(')');
 break;
 case 129:
-count();
-return(CONSTANT);
+ printf('*');
 break;
 case 130:
-comment();
+ printf('+');
 break;
 case 131:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 132:
-count();
-return(CONSTANT);
+ printf(',');
 break;
 case 133:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 134:
-count();
-return(RESTRICT);
+printf("below are comments");
 break;
 case 135:
-count();
-return(CONSTANT);
+ printf('-');
 break;
 case 136:
-count();
-return(CONSTANT);
+ printf('.');
 break;
 case 137:
-comment();
+ printf('/');
 break;
 case 138:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 139:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 140:
-count();
-return(CASE);
+printf("below are comments");
 break;
 case 141:
-count();
-return('!');
+ printf(':');
 break;
 case 142:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 143:
-count();
+printf("below are comments");
 break;
 case 144:
-count();
-return(check_type());
+printf(';');
 break;
 case 145:
-count();
-return('%');
+printf('<');
 break;
 case 146:
-count();
-return(check_type());
+ printf('=');
 break;
 case 147:
-count();
+ printf('>');
 break;
 case 148:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 149:
-count();
-return('(');
+printf("below are comments");
 break;
 case 150:
-count();
-return(CONSTANT);
+ printf('?');
 break;
 case 151:
-count();
-return(')');
+ printf('[');
 break;
 case 152:
-count();
-return(check_type());
+printf("a CHAR");
 break;
 case 153:
-count();
-return('*');
+ printf(']');
 break;
 case 154:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 155:
-count();
-return('+');
+ printf('^');
 break;
 case 156:
-count();
-return(check_type());
+ printf('{');
 break;
 case 157:
-count();
-return(check_type());
+ printf('|');
 break;
 case 158:
-count();
-return(',');
+ printf('}');
 break;
 case 159:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 160:
-count();
-return('-');
+ printf("CONSTANT");
 break;
 case 161:
-count();
-return(CONST);
+printf("below are comments");
 break;
 case 162:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 163:
-count();
-return('.');
+printf("a SPACE");
 break;
 case 164:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 165:
-count();
-return('/');
+printf("a SPACE");
 break;
 case 166:
-count();
-return(FOR);
+ printf("LONG");
 break;
 case 167:
-count();
-return(':');
+printf("a SPACE");
 break;
 case 168:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 169:
-count();
-return(';');
+printf("a SPACE");
 break;
 case 170:
-count();
-return(check_type());
+printf("a SPACE");
 break;
 case 171:
-count();
-return('<');
+ printf("IDENTIFIER");
 break;
 case 172:
-count();
-return(check_type());
+ printf('~');
 break;
 case 173:
-count();
-return('=');
+ printf('&');
 break;
 case 174:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 175:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 176:
-count();
-return('>');
+ printf("CONSTANT");
 break;
 case 177:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 178:
-count();
-return('?');
+ printf("IDENTIFIER");
 break;
 case 179:
-count();
-return(ELSE);
+ printf("IDENTIFIER");
 break;
 case 180:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 181:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 182:
-count();
-return('[');
+ printf("IDENTIFIER");
 break;
 case 183:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 184:
-count();
+ printf("IDENTIFIER");
 break;
 case 185:
-count();
-return(check_type());
+ printf("RIGHT_ASSIGN");
 break;
 case 186:
-count();
-return(']');
+ printf("IDENTIFIER");
 break;
 case 187:
-count();
-return('^');
+ printf("IDENTIFIER");
 break;
 case 188:
-count();
-return(GOTO);
+ printf("IDENTIFIER");
 break;
 case 189:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 190:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 191:
-count();
-return('{');
+ printf("IDENTIFIER");
 break;
 case 192:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 193:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 194:
-count();
-return(INLINE);
+ printf("AUTO");
 break;
 case 195:
-count();
-return('|');
+ printf("IDENTIFIER");
 break;
 case 196:
-count();
-return('}');
+ printf("IDENTIFIER");
 break;
 case 197:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 198:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 199:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 200:
-count();
+ printf("IDENTIFIER");
 break;
 case 201:
-count();
+ printf("FOR");
 break;
 case 202:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 203:
-count();
+ printf("IDENTIFIER");
 break;
 case 204:
-count();
+ printf("IDENTIFIER");
 break;
 case 205:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 206:
-count();
+ printf("IDENTIFIER");
 break;
 case 207:
-count();
-return(FLOAT);
+ printf("IDENTIFIER");
 break;
 case 208:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 209:
-count();
-return(SWITCH);
+ printf("CONSTANT");
 break;
 case 210:
-count();
-return('~');
+ printf("IDENTIFIER");
 break;
 case 211:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 212:
-count();
-return('&');
+ printf("IDENTIFIER");
 break;
 case 213:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 214:
-comment();
+ printf("CONSTANT");
 break;
 case 215:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 216:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 217:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 218:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 219:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 220:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 221:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 222:
-comment();
+ printf("IDENTIFIER");
 break;
 case 223:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 224:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 225:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 226:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 227:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 228:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 229:
-count();
-return(IMAGINARY);
+ printf("CONSTANT");
 break;
 case 230:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 231:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 232:
-comment();
+ printf("IDENTIFIER");
 break;
 case 233:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 234:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 235:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 236:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 237:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 238:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 239:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 240:
-comment();
+printf("below are comments");
 break;
 case 241:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 242:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 243:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 244:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 245:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 246:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 247:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 248:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 249:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 250:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 251:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 252:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 253:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 254:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 255:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 256:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 257:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 258:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 259:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 260:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 261:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 262:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 263:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 264:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 265:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 266:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 267:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 268:
-count();
-return(LONG);
+ printf("IDENTIFIER");
 break;
 case 269:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 270:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 271:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 272:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 273:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 274:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 275:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 276:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 277:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 278:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 279:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 280:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 281:
-count();
-return(SIGNED);
+ printf("IDENTIFIER");
 break;
 case 282:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 283:
-count();
-return(check_type());
+ printf("MOD_ASSIGN");
 break;
 case 284:
-count();
-return(DOUBLE);
+ printf("CONSTANT");
 break;
 case 285:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 286:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 287:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 288:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 289:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 290:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 291:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 292:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 293:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 294:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 295:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 296:
-count();
-return(STATIC);
+ printf("IDENTIFIER");
 break;
 case 297:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 298:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 299:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 300:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 301:
-count();
-return(check_type());
+ printf("DO");
 break;
 case 302:
-comment();
+ printf("IDENTIFIER");
 break;
 case 303:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 304:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 305:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 306:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 307:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 308:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 309:
-comment();
+ printf("IF");
 break;
 case 310:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 311:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 312:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 313:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 314:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 315:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 316:
-comment();
+ printf("IDENTIFIER");
 break;
 case 317:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 318:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 319:
-count();
-return(STRING_LITERAL);
+printf("below are comments");
 break;
 case 320:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 321:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 322:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 323:
-comment();
+ printf("IDENTIFIER");
 break;
 case 324:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 325:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 326:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 327:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 328:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 329:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 330:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 331:
-count();
-return(check_type());
+printf("CONSTANT");
 break;
 case 332:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 333:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 334:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 335:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 336:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 337:
-count();
-return(DO);
+ printf("CONSTANT");
 break;
 case 338:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 339:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 340:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 341:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 342:
-count();
-return(check_type());
+ printf("UNION");
 break;
 case 343:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 344:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 345:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 346:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 347:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 348:
-count();
-return(IF);
+printf("below are comments");
 break;
 case 349:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 350:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 351:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 352:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 353:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 354:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 355:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 356:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 357:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 358:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 359:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 360:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 361:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 362:
-count();
-return(check_type());
+printf("below are comments");
 break;
 case 363:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 364:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 365:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 366:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 367:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 368:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 369:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 370:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 371:
-comment();
+printf("below are comments");
 break;
 case 372:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 373:
-comment();
+ printf("CONSTANT");
 break;
 case 374:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 375:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 376:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 377:
-comment();
+ printf("CONSTANT");
 break;
 case 378:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 379:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 380:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 381:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 382:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 383:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 384:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 385:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 386:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 387:
-count();
-return(CONSTANT);
+ printf("NE_OP");
 break;
 case 388:
-comment();
+ printf("STRING_LITERAL");
 break;
 case 389:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 390:
-count();
-return(CONSTANT);
+ printf('}');
 break;
 case 391:
-comment();
+ printf("MUL_ASSIGN");
 break;
 case 392:
-count();
-return(CONSTANT);
+ printf("ADD_ASSIGN");
 break;
 case 393:
-count();
-return(CONSTANT);
+ printf("SUB_ASSIGN");
 break;
 case 394:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 395:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 396:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 397:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 398:
-comment();
+ printf("CONSTANT");
 break;
 case 399:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 400:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 401:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 402:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 403:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 404:
-count();
-return(CONSTANT);
+ printf("DIV_ASSIGN");
 break;
 case 405:
-count();
-return(CONSTANT);
+ printf(']');
 break;
 case 406:
-comment();
+ printf('{');
 break;
 case 407:
-count();
-return(CONSTANT);
+ printf('[');
 break;
 case 408:
-count();
-return(REGISTER);
+ printf("LEFT_OP");
 break;
 case 409:
-count();
-return(CONSTANT);
+ printf("LE_OP");
 break;
 case 410:
-comment();
+ printf("EQ_OP");
 break;
 case 411:
-count();
-return(CONSTANT);
+ printf("GE_OP");
 break;
 case 412:
-count();
-return(CONSTANT);
+ printf("RIGHT_OP");
 break;
 case 413:
-count();
-return(NE_OP);
+ printf("XOR_ASSIGN");
 break;
 case 414:
-comment();
+ printf("OR_ASSIGN");
 break;
 case 415:
-count();
-return(check_type());
+ printf("OR_OP");
 break;
 case 416:
-count();
-return(MOD_ASSIGN);
+ printf("IDENTIFIER");
 break;
 case 417:
-count();
-return('}');
+ printf("IDENTIFIER");
 break;
 case 418:
-count();
-return(MUL_ASSIGN);
+ printf("IDENTIFIER");
 break;
 case 419:
-count();
-return(ADD_ASSIGN);
+ printf("AND_ASSIGN");
 break;
 case 420:
-count();
-return(SUB_ASSIGN);
+ printf("AND_OP");
 break;
 case 421:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 422:
-count();
-return(PTR_OP);
+ printf("IDENTIFIER");
 break;
 case 423:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 424:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 425:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 426:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 427:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 428:
-count();
-return(CONSTANT);
+ printf("INT");
 break;
 case 429:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 430:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 431:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 432:
-comment();
+ printf("IDENTIFIER");
 break;
 case 433:
-count();
-return(']');
+ printf("IDENTIFIER");
 break;
 case 434:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 435:
-count();
-return('[');
+ printf("IDENTIFIER");
 break;
 case 436:
-count();
-return(LE_OP);
+ printf("IDENTIFIER");
 break;
 case 437:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 438:
-count();
-return(GE_OP);
+ printf("CONSTANT");
 break;
 case 439:
-count();
-return(XOR_ASSIGN);
+ printf("CONSTANT");
 break;
 case 440:
-count();
-return(OR_OP);
+ printf("CONSTANT");
 break;
 case 441:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 442:
-count();
-return(AND_ASSIGN);
+ printf("CONSTANT");
 break;
 case 443:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 444:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 445:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 446:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 447:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 448:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 449:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 450:
-count();
-return(INT);
+ printf("CONSTANT");
 break;
 case 451:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 452:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 453:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 454:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 455:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 456:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 457:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 458:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 459:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 460:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 461:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 462:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 463:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 464:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 465:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 466:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 467:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 468:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 469:
-count();
-return(CONSTANT);
+ printf("SHORT");
 break;
 case 470:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 471:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 472:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 473:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 474:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 475:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 476:
-comment();
+ printf("CONSTANT");
 break;
 case 477:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 478:
-comment();
+ printf("CONSTANT");
 break;
 case 479:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 480:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 481:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 482:
-comment();
+printf("below are comments");
 break;
 case 483:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 484:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 485:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 486:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 487:
-comment();
+printf("below are comments");
 break;
 case 488:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 489:
-comment();
+ printf("CONSTANT");
 break;
 case 490:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 491:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 492:
-comment();
+ printf("CONSTANT");
 break;
 case 493:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 494:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 495:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 496:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 497:
-count();
-return(CONSTANT);
+ printf("ELLIPSIS");
 break;
 case 498:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 499:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 500:
-comment();
+printf("below are comments");
 break;
 case 501:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 502:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 503:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 504:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 505:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 506:
-comment();
+ printf("TYPEDEF");
 break;
 case 507:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 508:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 509:
-comment();
+printf("below are comments");
 break;
 case 510:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 511:
-comment();
+printf("below are comments");
 break;
 case 512:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 513:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 514:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 515:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 516:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 517:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 518:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 519:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 520:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 521:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 522:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 523:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 524:
-count();
-return(ELLIPSIS);
+ printf("CONSTANT");
 break;
 case 525:
-comment();
+printf("below are comments");
 break;
 case 526:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 527:
-comment();
+printf("below are comments");
 break;
 case 528:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 529:
-comment();
+ printf("DEFAULT");
 break;
 case 530:
-comment();
+printf("below are comments");
 break;
 case 531:
-comment();
+printf("below are comments");
 break;
 case 532:
-comment();
+printf("below are comments");
 break;
 case 533:
-comment();
+printf("below are comments");
 break;
 case 534:
-comment();
+printf("below are comments");
 break;
 case 535:
-comment();
+ printf("CONSTANT");
 break;
 case 536:
-comment();
+printf("below are comments");
 break;
 case 537:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 538:
-comment();
+printf("below are comments");
 break;
 case 539:
-comment();
+printf("below are comments");
 break;
 case 540:
-comment();
+printf("below are comments");
 break;
 case 541:
-count();
-return(CONSTANT);
+printf("below are comments");
 break;
 case 542:
-comment();
+ printf("CONSTANT");
 break;
 case 543:
-comment();
+printf("below are comments");
 break;
 case 544:
-comment();
+printf("below are comments");
 break;
 case 545:
-count();
-return(CONSTANT);
+ printf("LEFT_ASSIGN");
 break;
 case 546:
-comment();
+ printf("IDENTIFIER");
 break;
 case 547:
-comment();
+ printf("CONSTANT");
 break;
 case 548:
-comment();
+ printf("IDENTIFIER");
 break;
 case 549:
-comment();
+ printf("CASE");
 break;
 case 550:
-comment();
+ printf("CHAR");
 break;
 case 551:
-comment();
+ printf("IDENTIFIER");
 break;
 case 552:
-comment();
+ printf("BOOL");
 break;
 case 553:
-comment();
+ printf("IDENTIFIER");
 break;
 case 554:
-comment();
+ printf("CONSTANT");
 break;
 case 555:
-comment();
+ printf("ELSE");
 break;
 case 556:
-comment();
+ printf("ENUM");
 break;
 case 557:
-comment();
+ printf("IDENTIFIER");
 break;
 case 558:
-comment();
+ printf("GOTO");
 break;
 case 559:
-comment();
+ printf("IDENTIFIER");
 break;
 case 560:
-comment();
+ printf("CONSTANT");
 break;
 case 561:
-comment();
+ printf("IDENTIFIER");
 break;
 case 562:
-comment();
+ printf("REGISTER");
 break;
 case 563:
-comment();
+ printf("IDENTIFIER");
 break;
 case 564:
-comment();
+ printf("IDENTIFIER");
 break;
 case 565:
-comment();
+ printf("IDENTIFIER");
 break;
 case 566:
-comment();
+ printf("IDENTIFIER");
 break;
 case 567:
-comment();
+ printf("IDENTIFIER");
 break;
 case 568:
-comment();
+ printf("CONTINUE");
 break;
 case 569:
-comment();
+ printf("IDENTIFIER");
 break;
 case 570:
-comment();
+ printf("IDENTIFIER");
 break;
 case 571:
-comment();
+ printf("VOID");
 break;
 case 572:
-comment();
+ printf("IDENTIFIER");
 break;
 case 573:
-comment();
+ printf("CONSTANT");
 break;
 case 574:
-count();
-return(LEFT_ASSIGN);
+ printf("CONSTANT");
 break;
 case 575:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 576:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 577:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 578:
-count();
-return(CHAR);
+ printf("CONSTANT");
 break;
 case 579:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 580:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 581:
-count();
-return(ENUM);
+ printf("CONSTANT");
 break;
 case 582:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 583:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 584:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 585:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 586:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 587:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 588:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 589:
-count();
-return(check_type());
+printf("CONSTANT");
 break;
 case 590:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 591:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 592:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 593:
-count();
-return(check_type());
+printf("CONSTANT");
 break;
 case 594:
-count();
-return(VOID);
+ printf("CONSTANT");
 break;
 case 595:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 596:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 597:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 598:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 599:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 600:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 601:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 602:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 603:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 604:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 605:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 606:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 607:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 608:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 609:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 610:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 611:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 612:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 613:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 614:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 615:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 616:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 617:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 618:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 619:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 620:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 621:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 622:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 623:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 624:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 625:
-count();
-return(CONSTANT);
+ printf("SIGNED");
 break;
 case 626:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 627:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 628:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 629:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 630:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 631:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 632:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 633:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 634:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 635:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 636:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 637:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 638:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 639:
-count();
-return(CONSTANT);
+ printf("CONST");
 break;
 case 640:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 641:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 642:
-count();
-return(CONSTANT);
+ printf("FLOAT");
 break;
 case 643:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 644:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 645:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 646:
-count();
-return(BREAK);
+ printf("IDENTIFIER");
 break;
 case 647:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 648:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 649:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 650:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 651:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 652:
-count();
-return(SHORT);
+ printf("WHILE");
 break;
 case 653:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 654:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 655:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 656:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 657:
-count();
-return(check_type());
+printf("CONSTANT");
 break;
 case 658:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 659:
-count();
-return(UNION);
+ printf("CONSTANT");
 break;
 case 660:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 661:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 662:
-count();
-return(WHILE);
+ printf("CONSTANT");
 break;
 case 663:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 664:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 665:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 666:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 667:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 668:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 669:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 670:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 671:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 672:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 673:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 674:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 675:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 676:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 677:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 678:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 679:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 680:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 681:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 682:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 683:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 684:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 685:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 686:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 687:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 688:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 689:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 690:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 691:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 692:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 693:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 694:
-count();
-return(CONSTANT);
+ printf("DOUBLE");
 break;
 case 695:
-count();
-return(CONSTANT);
+ printf("EXTERN");
 break;
 case 696:
-count();
-return(CONSTANT);
+ printf("INLINE");
 break;
 case 697:
-count();
-return(BOOL);
+ printf("IDENTIFIER");
 break;
 case 698:
-count();
-return(check_type());
+ printf("RETURN");
 break;
 case 699:
-count();
-return(check_type());
+ printf("SIZEOF");
 break;
 case 700:
-count();
-return(check_type());
+ printf("STATIC");
 break;
 case 701:
-count();
-return(EXTERN);
+ printf("STRUCT");
 break;
 case 702:
-count();
-return(RETURN);
+ printf("SWITCH");
 break;
 case 703:
-count();
-return(SIZEOF);
+ printf("IDENTIFIER");
 break;
 case 704:
-count();
-return(STRUCT);
+ printf("CONSTANT");
 break;
 case 705:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 706:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 707:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 708:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 709:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 710:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 711:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 712:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 713:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 714:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 715:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 716:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 717:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 718:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 719:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 720:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 721:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 722:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 723:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 724:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 725:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 726:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 727:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 728:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 729:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 730:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 731:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 732:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 733:
-count();
-return(check_type());
+ printf("IDENTIFIER");
 break;
 case 734:
-count();
-return(DEFAULT);
+ printf("IDENTIFIER");
 break;
 case 735:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 736:
-count();
-return(check_type());
+ printf("CONSTANT");
 break;
 case 737:
-count();
-return(TYPEDEF);
+ printf("CONSTANT");
 break;
 case 738:
-count();
-return(check_type());
+printf("CONSTANT");
 break;
 case 739:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 740:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 741:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 742:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 743:
-count();
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 744:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 745:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 746:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 747:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 748:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 749:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 750:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 751:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 752:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 753:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 754:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 755:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 756:
-count();
-return(CONSTANT);
+ printf("RESTRICT");
 break;
 case 757:
-count();
-return(check_type());
+ printf("UNSIGNED");
 break;
 case 758:
-count();
-return(check_type());
+ printf("VOLATILE");
 break;
 case 759:
-count();
-return(CONTINUE);
+ printf("CONSTANT");
 break;
 case 760:
-count();
-return(UNSIGNED);
+ printf("CONSTANT");
 break;
 case 761:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 762:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 763:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 764:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 765:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 766:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 767:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 768:
-count();
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 769:
-count();
-return(CONSTANT);
+ printf("IDENTIFIER");
 break;
 case 770:
-count();
-return(COMPLEX);
+ printf("IDENTIFIER");
 break;
 case 771:
-count();
-return(check_type());
+ printf("IMAGINARY");
 break;
 default:
 break;

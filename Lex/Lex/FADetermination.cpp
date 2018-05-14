@@ -103,7 +103,7 @@ void convert_to_DFA(const NFA &nfa, DFA &dfa) {
 	dfa.statesVec.push_back(state);
 	unExamedDFAStates.push(state.number);
 	while (!unExamedDFAStates.empty()) {//还有没有处理的新DFA状态
-		/*cout <<"$$$$$$$$$"<< c++ <<"/1476"<<"$$$$$$$$$"<<endl;*/
+		cout <<"$$$$$$$$$"<< c++ <<"/1476"<<"$$$$$$$$$"<<endl;
 		int nowStateNum = unExamedDFAStates.front();//取出一个要处理的状态的编号
 		unExamedDFAStates.pop();
 		//cout << "========\n" << "POP a state."<<"\n========" << endl;

@@ -5,6 +5,7 @@ void count(void);
 int yywrap()
 {
 return 1; /* tell scanner no further files need to be processed */
+}
 char* getCharPtr(char* fileName);
 int findAction(int action);
 int main(int argc,char** argv)
@@ -14515,61 +14516,38 @@ static int	yy_next[143172] =
 -1  };
 static int	yy_accept[1476] =
 	{	0,
-12  ,13  ,14  ,16  ,19  ,20  ,22  ,24  ,5   ,26  ,
-28  ,29  ,32  ,33  ,35  ,37  ,41  ,42  ,45  ,46  ,
-49  ,50  ,52  ,54  ,57  ,58  ,59  ,61  ,64  ,65  ,
-67  ,68  ,71  ,72  ,73  ,75  ,77  ,78  ,79  ,81  ,
-83  ,84  ,85  ,87  ,89  ,90  ,91  ,93  ,95  ,96  ,
-97  ,99  ,100 ,101 ,103 ,105 ,107 ,108 ,111 ,113 ,
-114 ,115 ,117 ,120 ,8   ,121 ,122 ,125 ,128 ,129 ,
-130 ,132 ,135 ,136 ,137 ,141 ,144 ,145 ,146 ,147 ,
-150 ,151 ,152 ,153 ,155 ,156 ,157 ,158 ,162 ,163 ,
-165 ,167 ,169 ,170 ,172 ,173 ,178 ,179 ,181 ,183 ,
-186 ,187 ,189 ,191 ,195 ,196 ,198 ,200 ,203 ,204 ,
-206 ,208 ,210 ,211 ,213 ,215 ,218 ,219 ,221 ,223 ,
-227 ,228 ,230 ,232 ,235 ,236 ,238 ,241 ,244 ,245 ,
-246 ,248 ,250 ,251 ,252 ,254 ,257 ,258 ,259 ,261 ,
-263 ,264 ,265 ,266 ,268 ,269 ,270 ,272 ,274 ,275 ,
-276 ,278 ,280 ,281 ,282 ,286 ,289 ,290 ,291 ,0   ,
-0   ,292 ,293 ,295 ,296 ,297 ,298 ,301 ,302 ,303 ,
-304 ,306 ,307 ,308 ,309 ,312 ,315 ,316 ,317 ,320 ,
-323 ,324 ,325 ,327 ,329 ,330 ,0   ,334 ,337 ,0   ,
-0   ,340 ,341 ,0   ,344 ,345 ,346 ,347 ,349 ,352 ,
-353 ,354 ,0   ,0   ,356 ,357 ,360 ,363 ,364 ,365 ,
-368 ,372 ,373 ,374 ,378 ,381 ,382 ,383 ,385 ,387 ,
+5   ,7   ,9   ,11  ,12  ,15  ,17  ,18  ,1   ,19  ,
+21  ,23  ,24  ,27  ,30  ,32  ,33  ,35  ,37  ,39  ,
+40  ,44  ,46  ,48  ,49  ,52  ,54  ,56  ,57  ,61  ,
+63  ,66  ,67  ,71  ,73  ,75  ,76  ,79  ,82  ,85  ,
+86  ,89  ,91  ,94  ,95  ,99  ,101 ,104 ,105 ,109 ,
+112 ,115 ,116 ,120 ,122 ,124 ,125 ,128 ,131 ,135 ,
+136 ,139 ,141 ,143 ,3   ,145 ,147 ,149 ,151 ,153 ,
+155 ,158 ,160 ,163 ,165 ,167 ,169 ,171 ,173 ,176 ,
+178 ,182 ,184 ,186 ,187 ,191 ,195 ,196 ,198 ,200 ,
+201 ,203 ,204 ,206 ,210 ,212 ,213 ,215 ,217 ,220 ,
+221 ,225 ,227 ,230 ,231 ,234 ,235 ,238 ,239 ,243 ,
+245 ,247 ,248 ,251 ,252 ,254 ,255 ,259 ,261 ,263 ,
+264 ,267 ,269 ,271 ,272 ,275 ,276 ,277 ,279 ,280 ,
+282 ,283 ,285 ,286 ,288 ,289 ,291 ,292 ,294 ,295 ,
+297 ,298 ,300 ,301 ,304 ,305 ,307 ,308 ,311 ,312 ,
+314 ,315 ,317 ,318 ,321 ,322 ,325 ,326 ,328 ,0   ,
+0   ,329 ,330 ,331 ,332 ,334 ,336 ,337 ,339 ,341 ,
+342 ,343 ,344 ,346 ,348 ,349 ,351 ,352 ,353 ,354 ,
+355 ,356 ,358 ,359 ,361 ,362 ,0   ,363 ,364 ,0   ,
+0   ,365 ,367 ,0   ,369 ,370 ,372 ,374 ,375 ,376 ,
+379 ,381 ,0   ,0   ,383 ,384 ,386 ,387 ,390 ,392 ,
+396 ,397 ,400 ,402 ,404 ,405 ,409 ,411 ,412 ,413 ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,388 ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,319 ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,283 ,390 ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,391 ,102 ,392 ,94  ,393 ,109 ,394 ,395 ,396 ,
-116 ,397 ,106 ,398 ,399 ,400 ,401 ,0   ,402 ,403 ,
-404 ,405 ,406 ,407 ,408 ,409 ,410 ,411 ,412 ,413 ,
-414 ,415 ,416 ,417 ,418 ,419 ,420 ,421 ,164 ,422 ,
-184 ,423 ,171 ,424 ,159 ,425 ,180 ,426 ,201 ,427 ,
-188 ,428 ,174 ,429 ,197 ,430 ,216 ,431 ,205 ,432 ,
-192 ,433 ,212 ,434 ,233 ,435 ,220 ,436 ,209 ,437 ,
-229 ,438 ,17  ,440 ,237 ,441 ,224 ,442 ,0   ,0   ,
-30  ,443 ,21  ,444 ,446 ,447 ,27  ,448 ,47  ,450 ,
-34  ,451 ,25  ,452 ,43  ,453 ,62  ,455 ,51  ,456 ,
-38  ,457 ,459 ,460 ,445 ,462 ,466 ,0   ,439 ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,359 ,351 ,
-0   ,468 ,343 ,471 ,449 ,473 ,377 ,361 ,475 ,477 ,
-479 ,370 ,454 ,481 ,484 ,379 ,485 ,486 ,367 ,0   ,
+0   ,0   ,0   ,0   ,0   ,416 ,417 ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14579,14 +14557,20 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-3   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,418 ,42  ,419 ,31  ,420 ,422 ,423 ,74  ,424 ,
+425 ,426 ,428 ,429 ,69  ,430 ,92  ,0   ,78  ,432 ,
+64  ,433 ,88  ,435 ,113 ,436 ,97  ,438 ,83  ,439 ,
+107 ,440 ,133 ,441 ,118 ,442 ,102 ,443 ,266 ,444 ,
+148 ,445 ,274 ,446 ,262 ,447 ,144 ,448 ,166 ,449 ,
+152 ,450 ,142 ,451 ,162 ,452 ,185 ,453 ,170 ,454 ,
+157 ,455 ,181 ,456 ,202 ,457 ,189 ,458 ,175 ,459 ,
+51  ,460 ,218 ,461 ,59  ,464 ,47  ,465 ,0   ,0   ,
+236 ,466 ,223 ,467 ,211 ,468 ,233 ,469 ,253 ,470 ,
+241 ,471 ,228 ,472 ,250 ,473 ,270 ,474 ,258 ,475 ,
+246 ,477 ,434 ,479 ,481 ,483 ,437 ,0   ,485 ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,486 ,488 ,
+0   ,490 ,491 ,493 ,494 ,496 ,497 ,499 ,463 ,501 ,
+502 ,504 ,505 ,507 ,508 ,407 ,431 ,510 ,394 ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14598,31 +14582,12 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,217 ,271 ,0   ,489 ,226 ,
-277 ,490 ,491 ,234 ,285 ,492 ,494 ,11  ,495 ,496 ,
-497 ,18  ,294 ,498 ,500 ,4   ,300 ,501 ,348 ,31  ,
-305 ,502 ,504 ,40  ,311 ,505 ,358 ,48  ,319 ,507 ,
-508 ,56  ,326 ,509 ,375 ,63  ,333 ,511 ,355 ,70  ,
-119 ,512 ,513 ,76  ,124 ,515 ,366 ,82  ,131 ,516 ,
-517 ,88  ,140 ,519 ,384 ,314 ,362 ,80  ,487 ,322 ,
-371 ,60  ,474 ,328 ,380 ,92  ,520 ,336 ,386 ,74  ,
-482 ,7   ,521 ,104 ,522 ,127 ,523 ,86  ,525 ,134 ,
-526 ,118 ,527 ,143 ,528 ,98  ,530 ,149 ,531 ,532 ,
-533 ,154 ,534 ,112 ,536 ,161 ,537 ,538 ,539 ,168 ,
-540 ,541 ,543 ,177 ,240 ,544 ,545 ,185 ,247 ,546 ,
-548 ,194 ,253 ,549 ,550 ,202 ,260 ,551 ,553 ,555 ,
-556 ,190 ,557 ,558 ,559 ,166 ,561 ,563 ,564 ,207 ,
-565 ,566 ,567 ,182 ,569 ,243 ,570 ,222 ,571 ,249 ,
-572 ,199 ,574 ,256 ,575 ,239 ,576 ,262 ,577 ,214 ,
-579 ,267 ,580 ,23  ,463 ,273 ,582 ,231 ,583 ,279 ,
-461 ,36  ,389 ,288 ,0   ,15  ,458 ,584 ,338 ,53  ,
-467 ,585 ,587 ,0   ,588 ,591 ,350 ,66  ,476 ,592 ,
-470 ,44  ,594 ,284 ,287 ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,321 ,596 ,
-597 ,598 ,599 ,601 ,602 ,332 ,335 ,604 ,0   ,0   ,
-0   ,605 ,606 ,0   ,126 ,608 ,609 ,611 ,612 ,614 ,
-615 ,139 ,142 ,617 ,618 ,620 ,621 ,623 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+512 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14632,45 +14597,81 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,624 ,626 ,581 ,628 ,629 ,631 ,632 ,
-10  ,633 ,635 ,0   ,0   ,636 ,637 ,638 ,2   ,639 ,
-465 ,586 ,640 ,641 ,642 ,643 ,39  ,644 ,645 ,469 ,
-646 ,647 ,648 ,649 ,55  ,650 ,342 ,369 ,651 ,652 ,
-653 ,654 ,69  ,655 ,478 ,656 ,658 ,659 ,661 ,299 ,
-590 ,662 ,664 ,0   ,0   ,665 ,667 ,310 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,513 ,514 ,0   ,515 ,516 ,
+517 ,518 ,401 ,519 ,520 ,521 ,380 ,68  ,366 ,522 ,
+524 ,77  ,371 ,525 ,391 ,87  ,377 ,527 ,529 ,96  ,
+530 ,531 ,410 ,532 ,302 ,533 ,534 ,535 ,309 ,536 ,
+538 ,539 ,316 ,540 ,542 ,543 ,323 ,544 ,546 ,547 ,
+548 ,549 ,550 ,551 ,552 ,553 ,554 ,511 ,555 ,556 ,
+373 ,557 ,558 ,559 ,560 ,34  ,561 ,16  ,482 ,41  ,
+562 ,130 ,563 ,50  ,478 ,29  ,564 ,58  ,565 ,8   ,
+476 ,214 ,566 ,45  ,489 ,222 ,567 ,20  ,568 ,232 ,
+487 ,62  ,500 ,240 ,492 ,36  ,569 ,106 ,388 ,81  ,
+509 ,117 ,398 ,570 ,571 ,126 ,406 ,100 ,572 ,137 ,
+414 ,72  ,506 ,6   ,573 ,121 ,574 ,13  ,575 ,90  ,
+576 ,2   ,577 ,140 ,578 ,25  ,579 ,111 ,580 ,179 ,
+581 ,154 ,582 ,188 ,583 ,268 ,585 ,199 ,586 ,172 ,
+587 ,205 ,588 ,146 ,590 ,592 ,593 ,193 ,594 ,333 ,
+595 ,164 ,597 ,340 ,598 ,208 ,599 ,345 ,600 ,183 ,
+602 ,249 ,498 ,226 ,603 ,256 ,503 ,53  ,495 ,265 ,
+604 ,244 ,605 ,273 ,0   ,216 ,606 ,4   ,607 ,260 ,
+608 ,150 ,609 ,0   ,610 ,159 ,611 ,612 ,613 ,168 ,
+614 ,615 ,616 ,617 ,618 ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,619 ,257 ,
+28  ,620 ,621 ,622 ,623 ,132 ,624 ,625 ,0   ,0   ,
+0   ,626 ,110 ,0   ,627 ,628 ,526 ,629 ,630 ,631 ,
+129 ,632 ,633 ,634 ,80  ,427 ,635 ,421 ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,176 ,668 ,670 ,671 ,
-672 ,673 ,674 ,675 ,535 ,148 ,676 ,677 ,678 ,679 ,
-680 ,681 ,542 ,160 ,682 ,669 ,0   ,0   ,683 ,684 ,
-547 ,175 ,685 ,686 ,687 ,688 ,689 ,690 ,552 ,193 ,
-691 ,692 ,693 ,694 ,695 ,696 ,488 ,697 ,698 ,625 ,
-699 ,700 ,701 ,702 ,493 ,225 ,703 ,634 ,704 ,627 ,
-705 ,706 ,499 ,9   ,707 ,464 ,708 ,709 ,339 ,630 ,
-503 ,1   ,710 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,663 ,711 ,657 ,
-712 ,713 ,593 ,589 ,714 ,715 ,716 ,0   ,0   ,660 ,
-472 ,313 ,717 ,718 ,719 ,720 ,721 ,666 ,480 ,0   ,
-0   ,722 ,723 ,724 ,725 ,726 ,524 ,6   ,727 ,728 ,
-729 ,730 ,731 ,732 ,529 ,133 ,733 ,506 ,595 ,734 ,
-735 ,376 ,600 ,736 ,318 ,510 ,603 ,737 ,610 ,483 ,
-0   ,0   ,331 ,514 ,607 ,738 ,619 ,739 ,613 ,740 ,
-123 ,518 ,616 ,741 ,742 ,743 ,622 ,744 ,138 ,745 ,
-746 ,747 ,748 ,749 ,560 ,554 ,750 ,751 ,752 ,753 ,
-754 ,755 ,568 ,562 ,756 ,757 ,758 ,759 ,760 ,761 ,
-573 ,242 ,762 ,763 ,764 ,765 ,766 ,767 ,578 ,255 ,
-768 ,110 ,769 ,770 ,771 };
-while(*cp!=0){
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,636 ,637 ,638 ,639 ,541 ,640 ,641 ,
+642 ,643 ,644 ,0   ,0   ,645 ,192 ,156 ,646 ,161 ,
+647 ,648 ,649 ,650 ,207 ,174 ,651 ,180 ,415 ,652 ,
+653 ,654 ,655 ,656 ,657 ,658 ,659 ,660 ,661 ,662 ,
+663 ,664 ,665 ,666 ,667 ,668 ,669 ,523 ,670 ,671 ,
+672 ,545 ,393 ,0   ,0   ,528 ,673 ,674 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,675 ,537 ,676 ,320 ,
+677 ,678 ,679 ,357 ,680 ,350 ,681 ,682 ,683 ,684 ,
+685 ,686 ,687 ,360 ,688 ,689 ,0   ,0   ,690 ,287 ,
+691 ,278 ,692 ,693 ,694 ,695 ,696 ,299 ,697 ,290 ,
+698 ,699 ,700 ,284 ,701 ,194 ,584 ,177 ,702 ,281 ,
+703 ,296 ,704 ,209 ,589 ,197 ,705 ,293 ,706 ,310 ,
+707 ,335 ,596 ,591 ,708 ,306 ,709 ,324 ,710 ,347 ,
+601 ,338 ,711 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,712 ,98  ,713 ,
+714 ,385 ,715 ,378 ,93  ,716 ,717 ,0   ,0   ,313 ,
+718 ,303 ,719 ,368 ,720 ,382 ,721 ,327 ,722 ,0   ,
+0   ,723 ,724 ,399 ,725 ,726 ,727 ,728 ,729 ,395 ,
+730 ,731 ,732 ,733 ,734 ,735 ,736 ,737 ,43  ,738 ,
+84  ,739 ,70  ,740 ,38  ,741 ,60  ,462 ,103 ,742 ,
+0   ,0   ,55  ,743 ,224 ,744 ,123 ,745 ,108 ,746 ,
+219 ,747 ,242 ,748 ,749 ,750 ,127 ,484 ,237 ,751 ,
+119 ,752 ,753 ,403 ,754 ,389 ,114 ,755 ,138 ,756 ,
+757 ,758 ,759 ,408 ,134 ,760 ,14  ,480 ,761 ,762 ,
+763 ,764 ,10  ,765 ,26  ,766 ,65  ,767 ,768 ,769 ,
+22  ,770 ,190 ,771 ,229 };
+while(*yy_cp!=0){
 register int yy_c = yy_ec[(int)*yy_cp];
 if(yy_accept[yy_current_state])
 {
 yy_last_accepting_state=yy_current_state;
 yy_last_accepting_cpos=yy_cp;
 }
-if(yy_next[yy_base[yy_current_satte]+yy_c]==-1&&yy_last_accepting_state!=-1)
+if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state!=-1)
 {
 yy_current_state=yy_last_accepting_state;
 yy_cp=yy_last_accepting_cpos;
@@ -14678,13 +14679,13 @@ yy_act=yy_accept[yy_current_state];
 findAction(yy_act);
 yy_last_accepting_state=-1;
 }
-if(yy_next[yy_base[yy_current_satte]+yy_c]==-1&&yy_last_accepting_state==-1)
+if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state==-1)
 {
 printf("ERROR DETECTED IN INPUT FILE !");
 }
-if(yy_next[yy_base[yy_current_satte]+yy_c]!=-1) 
+if(yy_next[yy_base[yy_current_state]+yy_c]!=-1) 
 {
-yy_current_state=yy_next[yy_base[yy_current_satte]+yy_c];
+yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
 }
 ++yy_cp;
 }
@@ -14701,42 +14702,42 @@ printf("ERROR DETECTED IN INPUT FILE !");
 }
 int findAction(int action)
 {
-switch (yy_act) 
+switch (action) 
 {
 case 0:
 break;
 case 1:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 2:
 count();
-return(BREAK);
+return(AUTO);
 break;
 case 3:
 count();
-return(CONSTANT);
 break;
 case 4:
-comment();
+count();
+return(CONSTANT);
 break;
 case 5:
 count();
 return(check_type());
 break;
 case 6:
-count();
-return(CONSTANT);
-break;
-case 7:
 comment();
 break;
-case 8:
+case 7:
 count();
+return(check_type());
+break;
+case 8:
+comment();
 break;
 case 9:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 10:
 count();
@@ -14744,7 +14745,7 @@ return(CONSTANT);
 break;
 case 11:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 12:
 count();
@@ -14752,46 +14753,45 @@ return(check_type());
 break;
 case 13:
 count();
-return(check_type());
+return(RIGHT_ASSIGN);
 break;
 case 14:
 count();
-return(check_type());
+return(VOLATILE);
 break;
 case 15:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 16:
-count();
-return(check_type());
+comment();
 break;
 case 17:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 18:
-comment();
+count();
+return(check_type());
 break;
 case 19:
 count();
 return(check_type());
 break;
 case 20:
-count();
-return(check_type());
+comment();
 break;
 case 21:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 22:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 23:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 24:
 count();
@@ -14799,30 +14799,30 @@ return(check_type());
 break;
 case 25:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 26:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 27:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 28:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 29:
-count();
-return(check_type());
+comment();
 break;
 case 30:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 31:
-comment();
+count();
+return(DEC_OP);
 break;
 case 32:
 count();
@@ -14833,16 +14833,14 @@ count();
 return(check_type());
 break;
 case 34:
-count();
-return(CONSTANT);
+comment();
 break;
 case 35:
 count();
 return(check_type());
 break;
 case 36:
-count();
-return(CONSTANT);
+comment();
 break;
 case 37:
 count();
@@ -14857,27 +14855,26 @@ count();
 return(check_type());
 break;
 case 40:
-comment();
-break;
-case 41:
 count();
 return(check_type());
+break;
+case 41:
+comment();
 break;
 case 42:
 count();
-return(check_type());
+return(INC_OP);
 break;
 case 43:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 44:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 45:
-count();
-return(check_type());
+comment();
 break;
 case 46:
 count();
@@ -14888,15 +14885,15 @@ count();
 return(CONSTANT);
 break;
 case 48:
-comment();
+count();
+return(check_type());
 break;
 case 49:
 count();
 return(check_type());
 break;
 case 50:
-count();
-return(check_type());
+comment();
 break;
 case 51:
 count();
@@ -14916,48 +14913,49 @@ return(check_type());
 break;
 case 55:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 56:
-comment();
+count();
+return(check_type());
 break;
 case 57:
 count();
 return(check_type());
 break;
 case 58:
-count();
-return(check_type());
+comment();
 break;
 case 59:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 60:
-comment();
+count();
+return(CONSTANT);
 break;
 case 61:
 count();
 return(check_type());
 break;
 case 62:
-count();
-return(CONSTANT);
+comment();
 break;
 case 63:
-comment();
+count();
+return(check_type());
 break;
 case 64:
 count();
-return(check_type());
+return(DIV_ASSIGN);
 break;
 case 65:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 66:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 67:
 count();
@@ -14965,80 +14963,82 @@ return(check_type());
 break;
 case 68:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 69:
 count();
 return(CONSTANT);
 break;
 case 70:
-comment();
+count();
+return(CONSTANT);
 break;
 case 71:
 count();
 return(check_type());
 break;
 case 72:
-count();
-return(check_type());
+comment();
 break;
 case 73:
 count();
 return(check_type());
 break;
 case 74:
-comment();
+count();
+return(CONSTANT);
 break;
 case 75:
 count();
 return(check_type());
 break;
 case 76:
-comment();
+count();
+return(check_type());
 break;
 case 77:
-count();
-return(check_type());
+comment();
 break;
 case 78:
-count();
-return(check_type());
+comment();
 break;
 case 79:
 count();
 return(check_type());
 break;
 case 80:
-comment();
+count();
+return(CONSTANT);
 break;
 case 81:
-count();
-return(check_type());
+comment();
 break;
 case 82:
-comment();
+count();
+return(check_type());
 break;
 case 83:
 count();
-return(check_type());
+return(RIGHT_OP);
 break;
 case 84:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 85:
 count();
 return(check_type());
 break;
 case 86:
-comment();
-break;
-case 87:
 count();
 return(check_type());
 break;
-case 88:
+case 87:
 comment();
+break;
+case 88:
+count();
+return('{');
 break;
 case 89:
 count();
@@ -15053,65 +15053,65 @@ count();
 return(check_type());
 break;
 case 92:
-comment();
+count();
+return(CONSTANT);
 break;
 case 93:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 94:
 count();
-return(DEC_OP);
+return(check_type());
 break;
 case 95:
 count();
 return(check_type());
 break;
 case 96:
-count();
-return(check_type());
+comment();
 break;
 case 97:
 count();
-return(check_type());
+return(EQ_OP);
 break;
 case 98:
-comment();
+count();
+return(CONSTANT);
 break;
 case 99:
 count();
 return(check_type());
 break;
 case 100:
-count();
-return(CONSTANT);
+comment();
 break;
 case 101:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 102:
 count();
-return(INC_OP);
+return(AND_OP);
 break;
 case 103:
 count();
 return(CONSTANT);
 break;
 case 104:
-comment();
+count();
+return(check_type());
 break;
 case 105:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 106:
-count();
-return(CONSTANT);
+comment();
 break;
 case 107:
 count();
-return(CONSTANT);
+return(OR_ASSIGN);
 break;
 case 108:
 count();
@@ -15119,22 +15119,23 @@ return(CONSTANT);
 break;
 case 109:
 count();
-return(PTR_OP);
+return(check_type());
 break;
 case 110:
 count();
-return(COMPLEX);
+return(CONSTANT);
 break;
 case 111:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 112:
-comment();
+count();
+return(check_type());
 break;
 case 113:
 count();
-return(CONSTANT);
+return(LEFT_OP);
 break;
 case 114:
 count();
@@ -15142,87 +15143,90 @@ return(CONSTANT);
 break;
 case 115:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 116:
 count();
 return(CONSTANT);
 break;
 case 117:
-count();
-return('!');
+comment();
 break;
 case 118:
-comment();
+count();
+return(check_type());
 break;
 case 119:
-comment();
+count();
+return(CONSTANT);
 break;
 case 120:
 count();
+return(CONSTANT);
 break;
 case 121:
-count();
-return('%');
+comment();
 break;
 case 122:
 count();
+return(CONSTANT);
 break;
 case 123:
 count();
 return(CONSTANT);
 break;
 case 124:
-comment();
-break;
-case 125:
-count();
-return('(');
-break;
-case 126:
 count();
 return(CONSTANT);
 break;
-case 127:
+case 125:
+count();
+return(CONSTANT);
+break;
+case 126:
 comment();
+break;
+case 127:
+count();
+return(CONSTANT);
 break;
 case 128:
 count();
-return(')');
+return(CONSTANT);
 break;
 case 129:
 count();
-return('*');
+return(CONSTANT);
 break;
 case 130:
-count();
-return('+');
+comment();
 break;
 case 131:
-comment();
+count();
+return(CONSTANT);
 break;
 case 132:
 count();
-return(',');
+return(CONSTANT);
 break;
 case 133:
 count();
 return(check_type());
 break;
 case 134:
-comment();
+count();
+return(RESTRICT);
 break;
 case 135:
 count();
-return('-');
+return(CONSTANT);
 break;
 case 136:
 count();
-return('.');
+return(CONSTANT);
 break;
 case 137:
-count();
-return('/');
+comment();
 break;
 case 138:
 count();
@@ -15233,86 +15237,90 @@ count();
 return(CONSTANT);
 break;
 case 140:
-comment();
+count();
+return(CASE);
 break;
 case 141:
 count();
-return(':');
+return('!');
 break;
 case 142:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 143:
-comment();
+count();
 break;
 case 144:
 count();
-return(';');
+return(check_type());
 break;
 case 145:
 count();
-return('<');
+return('%');
 break;
 case 146:
 count();
-return('=');
+return(check_type());
 break;
 case 147:
 count();
-return('>');
 break;
 case 148:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 149:
-comment();
+count();
+return('(');
 break;
 case 150:
 count();
-return('?');
+return(CONSTANT);
 break;
 case 151:
 count();
-return('[');
+return(')');
 break;
 case 152:
 count();
+return(check_type());
 break;
 case 153:
 count();
-return(']');
+return('*');
 break;
 case 154:
-comment();
-break;
-case 155:
-count();
-return('^');
-break;
-case 156:
-count();
-return('{');
-break;
-case 157:
-count();
-return('|');
-break;
-case 158:
-count();
-return('}');
-break;
-case 159:
 count();
 return(check_type());
 break;
-case 160:
+case 155:
+count();
+return('+');
+break;
+case 156:
+count();
+return(check_type());
+break;
+case 157:
+count();
+return(check_type());
+break;
+case 158:
+count();
+return(',');
+break;
+case 159:
 count();
 return(CONSTANT);
 break;
+case 160:
+count();
+return('-');
+break;
 case 161:
-comment();
+count();
+return(CONST);
 break;
 case 162:
 count();
@@ -15320,41 +15328,47 @@ return(check_type());
 break;
 case 163:
 count();
+return('.');
 break;
 case 164:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 165:
 count();
+return('/');
 break;
 case 166:
 count();
-return(LONG);
+return(FOR);
 break;
 case 167:
 count();
+return(':');
 break;
 case 168:
-comment();
+count();
+return(CONSTANT);
 break;
 case 169:
 count();
+return(';');
 break;
 case 170:
 count();
+return(check_type());
 break;
 case 171:
 count();
-return(check_type());
+return('<');
 break;
 case 172:
 count();
-return('~');
+return(check_type());
 break;
 case 173:
 count();
-return('&');
+return('=');
 break;
 case 174:
 count();
@@ -15366,18 +15380,19 @@ return(CONSTANT);
 break;
 case 176:
 count();
-return(CONSTANT);
+return('>');
 break;
 case 177:
-comment();
+count();
+return(check_type());
 break;
 case 178:
 count();
-return(check_type());
+return('?');
 break;
 case 179:
 count();
-return(check_type());
+return(ELSE);
 break;
 case 180:
 count();
@@ -15389,31 +15404,30 @@ return(check_type());
 break;
 case 182:
 count();
-return(check_type());
+return('[');
 break;
 case 183:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 184:
 count();
-return(check_type());
 break;
 case 185:
 count();
-return(RIGHT_ASSIGN);
+return(check_type());
 break;
 case 186:
 count();
-return(check_type());
+return(']');
 break;
 case 187:
 count();
-return(check_type());
+return('^');
 break;
 case 188:
 count();
-return(check_type());
+return(GOTO);
 break;
 case 189:
 count();
@@ -15425,7 +15439,7 @@ return(check_type());
 break;
 case 191:
 count();
-return(check_type());
+return('{');
 break;
 case 192:
 count();
@@ -15437,15 +15451,15 @@ return(check_type());
 break;
 case 194:
 count();
-return(AUTO);
+return(INLINE);
 break;
 case 195:
 count();
-return(check_type());
+return('|');
 break;
 case 196:
 count();
-return(check_type());
+return('}');
 break;
 case 197:
 count();
@@ -15457,15 +15471,13 @@ return(check_type());
 break;
 case 199:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 200:
 count();
-return(check_type());
 break;
 case 201:
 count();
-return(FOR);
 break;
 case 202:
 count();
@@ -15473,11 +15485,9 @@ return(check_type());
 break;
 case 203:
 count();
-return(check_type());
 break;
 case 204:
 count();
-return(check_type());
 break;
 case 205:
 count();
@@ -15485,39 +15495,37 @@ return(check_type());
 break;
 case 206:
 count();
-return(check_type());
 break;
 case 207:
 count();
-return(check_type());
+return(FLOAT);
 break;
 case 208:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 209:
 count();
-return(CONSTANT);
+return(SWITCH);
 break;
 case 210:
 count();
-return(check_type());
+return('~');
 break;
 case 211:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 212:
 count();
-return(check_type());
+return('&');
 break;
 case 213:
 count();
 return(check_type());
 break;
 case 214:
-count();
-return(CONSTANT);
+comment();
 break;
 case 215:
 count();
@@ -15525,19 +15533,19 @@ return(check_type());
 break;
 case 216:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 217:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 218:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 219:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 220:
 count();
@@ -15548,12 +15556,11 @@ count();
 return(check_type());
 break;
 case 222:
-count();
-return(check_type());
+comment();
 break;
 case 223:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 224:
 count();
@@ -15573,11 +15580,11 @@ return(check_type());
 break;
 case 228:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 229:
 count();
-return(CONSTANT);
+return(IMAGINARY);
 break;
 case 230:
 count();
@@ -15585,19 +15592,18 @@ return(check_type());
 break;
 case 231:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 232:
-count();
-return(check_type());
+comment();
 break;
 case 233:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 234:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 235:
 count();
@@ -15605,7 +15611,7 @@ return(check_type());
 break;
 case 236:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 237:
 count();
@@ -15617,14 +15623,14 @@ return(check_type());
 break;
 case 239:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 240:
 comment();
 break;
 case 241:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 242:
 count();
@@ -15636,7 +15642,7 @@ return(check_type());
 break;
 case 244:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 245:
 count();
@@ -15644,7 +15650,7 @@ return(check_type());
 break;
 case 246:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 247:
 count();
@@ -15656,11 +15662,11 @@ return(check_type());
 break;
 case 249:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 250:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 251:
 count();
@@ -15672,7 +15678,7 @@ return(check_type());
 break;
 case 253:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 254:
 count();
@@ -15680,7 +15686,7 @@ return(check_type());
 break;
 case 255:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 256:
 count();
@@ -15688,11 +15694,11 @@ return(CONSTANT);
 break;
 case 257:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 258:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 259:
 count();
@@ -15700,7 +15706,7 @@ return(check_type());
 break;
 case 260:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 261:
 count();
@@ -15708,7 +15714,7 @@ return(check_type());
 break;
 case 262:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 263:
 count();
@@ -15720,7 +15726,7 @@ return(check_type());
 break;
 case 265:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 266:
 count();
@@ -15728,11 +15734,11 @@ return(check_type());
 break;
 case 267:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 268:
 count();
-return(check_type());
+return(LONG);
 break;
 case 269:
 count();
@@ -15740,11 +15746,11 @@ return(check_type());
 break;
 case 270:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 271:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 272:
 count();
@@ -15768,15 +15774,15 @@ return(check_type());
 break;
 case 277:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 278:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 279:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 280:
 count();
@@ -15784,7 +15790,7 @@ return(check_type());
 break;
 case 281:
 count();
-return(check_type());
+return(SIGNED);
 break;
 case 282:
 count();
@@ -15792,15 +15798,15 @@ return(check_type());
 break;
 case 283:
 count();
-return(MOD_ASSIGN);
+return(check_type());
 break;
 case 284:
 count();
-return(CONSTANT);
+return(DOUBLE);
 break;
 case 285:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 286:
 count();
@@ -15812,7 +15818,7 @@ return(CONSTANT);
 break;
 case 288:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 289:
 count();
@@ -15832,10 +15838,11 @@ return(check_type());
 break;
 case 293:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 294:
-comment();
+count();
+return(check_type());
 break;
 case 295:
 count();
@@ -15843,7 +15850,7 @@ return(check_type());
 break;
 case 296:
 count();
-return(check_type());
+return(STATIC);
 break;
 case 297:
 count();
@@ -15858,30 +15865,31 @@ count();
 return(CONSTANT);
 break;
 case 300:
-comment();
+count();
+return(check_type());
 break;
 case 301:
 count();
-return(DO);
+return(check_type());
 break;
 case 302:
-count();
-return(check_type());
+comment();
 break;
 case 303:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 304:
 count();
 return(check_type());
 break;
 case 305:
-comment();
+count();
+return(check_type());
 break;
 case 306:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 307:
 count();
@@ -15892,15 +15900,15 @@ count();
 return(check_type());
 break;
 case 309:
-count();
-return(IF);
+comment();
 break;
 case 310:
 count();
 return(CONSTANT);
 break;
 case 311:
-comment();
+count();
+return(check_type());
 break;
 case 312:
 count();
@@ -15911,15 +15919,15 @@ count();
 return(CONSTANT);
 break;
 case 314:
-comment();
+count();
+return(check_type());
 break;
 case 315:
 count();
 return(check_type());
 break;
 case 316:
-count();
-return(check_type());
+comment();
 break;
 case 317:
 count();
@@ -15927,43 +15935,46 @@ return(check_type());
 break;
 case 318:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 319:
-comment();
+count();
+return(STRING_LITERAL);
 break;
 case 320:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 321:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 322:
-comment();
-break;
-case 323:
 count();
 return(check_type());
+break;
+case 323:
+comment();
 break;
 case 324:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 325:
 count();
 return(check_type());
 break;
 case 326:
-comment();
-break;
-case 327:
 count();
 return(check_type());
 break;
+case 327:
+count();
+return(CONSTANT);
+break;
 case 328:
-comment();
+count();
+return(check_type());
 break;
 case 329:
 count();
@@ -15975,29 +15986,31 @@ return(check_type());
 break;
 case 331:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 332:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 333:
-comment();
+count();
+return(check_type());
 break;
 case 334:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 335:
 count();
 return(CONSTANT);
 break;
 case 336:
-comment();
+count();
+return(check_type());
 break;
 case 337:
 count();
-return(CONSTANT);
+return(DO);
 break;
 case 338:
 count();
@@ -16005,7 +16018,7 @@ return(CONSTANT);
 break;
 case 339:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 340:
 count();
@@ -16013,19 +16026,19 @@ return(CONSTANT);
 break;
 case 341:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 342:
 count();
-return(UNION);
+return(check_type());
 break;
 case 343:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 344:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 345:
 count();
@@ -16033,18 +16046,19 @@ return(CONSTANT);
 break;
 case 346:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 347:
 count();
 return(CONSTANT);
 break;
 case 348:
-comment();
+count();
+return(IF);
 break;
 case 349:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 350:
 count();
@@ -16052,37 +16066,39 @@ return(CONSTANT);
 break;
 case 351:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 352:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 353:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 354:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 355:
-comment();
+count();
+return(check_type());
 break;
 case 356:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 357:
 count();
 return(CONSTANT);
 break;
 case 358:
-comment();
+count();
+return(check_type());
 break;
 case 359:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 360:
 count();
@@ -16090,10 +16106,11 @@ return(CONSTANT);
 break;
 case 361:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 362:
-comment();
+count();
+return(check_type());
 break;
 case 363:
 count();
@@ -16108,7 +16125,8 @@ count();
 return(CONSTANT);
 break;
 case 366:
-comment();
+count();
+return(CONSTANT);
 break;
 case 367:
 count();
@@ -16120,7 +16138,7 @@ return(CONSTANT);
 break;
 case 369:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 370:
 count();
@@ -16134,23 +16152,22 @@ count();
 return(CONSTANT);
 break;
 case 373:
-count();
-return(CONSTANT);
+comment();
 break;
 case 374:
 count();
 return(CONSTANT);
 break;
 case 375:
-comment();
+count();
+return(CONSTANT);
 break;
 case 376:
 count();
 return(CONSTANT);
 break;
 case 377:
-count();
-return(CONSTANT);
+comment();
 break;
 case 378:
 count();
@@ -16161,7 +16178,8 @@ count();
 return(CONSTANT);
 break;
 case 380:
-comment();
+count();
+return(CONSTANT);
 break;
 case 381:
 count();
@@ -16176,22 +16194,23 @@ count();
 return(CONSTANT);
 break;
 case 384:
-comment();
+count();
+return(CONSTANT);
 break;
 case 385:
 count();
 return(CONSTANT);
 break;
 case 386:
-comment();
+count();
+return(CONSTANT);
 break;
 case 387:
 count();
-return(NE_OP);
+return(CONSTANT);
 break;
 case 388:
-count();
-return(STRING_LITERAL);
+comment();
 break;
 case 389:
 count();
@@ -16199,19 +16218,18 @@ return(CONSTANT);
 break;
 case 390:
 count();
-return('}');
+return(CONSTANT);
 break;
 case 391:
-count();
-return(MUL_ASSIGN);
+comment();
 break;
 case 392:
 count();
-return(ADD_ASSIGN);
+return(CONSTANT);
 break;
 case 393:
 count();
-return(SUB_ASSIGN);
+return(CONSTANT);
 break;
 case 394:
 count();
@@ -16230,8 +16248,7 @@ count();
 return(CONSTANT);
 break;
 case 398:
-count();
-return(CONSTANT);
+comment();
 break;
 case 399:
 count();
@@ -16246,142 +16263,140 @@ count();
 return(CONSTANT);
 break;
 case 402:
-comment();
+count();
+return(CONSTANT);
 break;
 case 403:
-comment();
+count();
+return(CONSTANT);
 break;
 case 404:
 count();
-return(DIV_ASSIGN);
+return(CONSTANT);
 break;
 case 405:
 count();
-return(']');
+return(CONSTANT);
 break;
 case 406:
-count();
-return('{');
+comment();
 break;
 case 407:
 count();
-return('[');
+return(CONSTANT);
 break;
 case 408:
 count();
-return(LEFT_OP);
+return(REGISTER);
 break;
 case 409:
 count();
-return(LE_OP);
+return(CONSTANT);
 break;
 case 410:
-count();
-return(EQ_OP);
+comment();
 break;
 case 411:
 count();
-return(GE_OP);
+return(CONSTANT);
 break;
 case 412:
 count();
-return(RIGHT_OP);
+return(CONSTANT);
 break;
 case 413:
 count();
-return(XOR_ASSIGN);
+return(NE_OP);
 break;
 case 414:
-count();
-return(OR_ASSIGN);
+comment();
 break;
 case 415:
 count();
-return(OR_OP);
+return(check_type());
 break;
 case 416:
 count();
-return(check_type());
+return(MOD_ASSIGN);
 break;
 case 417:
 count();
-return(check_type());
+return('}');
 break;
 case 418:
 count();
-return(check_type());
+return(MUL_ASSIGN);
 break;
 case 419:
 count();
-return(AND_ASSIGN);
+return(ADD_ASSIGN);
 break;
 case 420:
 count();
-return(AND_OP);
+return(SUB_ASSIGN);
 break;
 case 421:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 422:
 count();
-return(check_type());
+return(PTR_OP);
 break;
 case 423:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 424:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 425:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 426:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 427:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 428:
 count();
-return(INT);
+return(CONSTANT);
 break;
 case 429:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 430:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 431:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 432:
-count();
-return(check_type());
+comment();
 break;
 case 433:
 count();
-return(check_type());
+return(']');
 break;
 case 434:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 435:
 count();
-return(check_type());
+return('[');
 break;
 case 436:
 count();
-return(check_type());
+return(LE_OP);
 break;
 case 437:
 count();
@@ -16389,87 +16404,87 @@ return(CONSTANT);
 break;
 case 438:
 count();
-return(CONSTANT);
+return(GE_OP);
 break;
 case 439:
 count();
-return(CONSTANT);
+return(XOR_ASSIGN);
 break;
 case 440:
 count();
-return(CONSTANT);
+return(OR_OP);
 break;
 case 441:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 442:
 count();
-return(CONSTANT);
+return(AND_ASSIGN);
 break;
 case 443:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 444:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 445:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 446:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 447:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 448:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 449:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 450:
 count();
-return(CONSTANT);
+return(INT);
 break;
 case 451:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 452:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 453:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 454:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 455:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 456:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 457:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 458:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 459:
 count();
@@ -16497,7 +16512,7 @@ return(CONSTANT);
 break;
 case 465:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 466:
 count();
@@ -16513,7 +16528,7 @@ return(CONSTANT);
 break;
 case 469:
 count();
-return(SHORT);
+return(CONSTANT);
 break;
 case 470:
 count();
@@ -16532,23 +16547,22 @@ count();
 return(CONSTANT);
 break;
 case 474:
-comment();
+count();
+return(CONSTANT);
 break;
 case 475:
 count();
 return(CONSTANT);
 break;
 case 476:
-count();
-return(CONSTANT);
+comment();
 break;
 case 477:
 count();
 return(CONSTANT);
 break;
 case 478:
-count();
-return(CONSTANT);
+comment();
 break;
 case 479:
 count();
@@ -16586,11 +16600,10 @@ comment();
 break;
 case 488:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 489:
-count();
-return(CONSTANT);
+comment();
 break;
 case 490:
 count();
@@ -16601,12 +16614,11 @@ count();
 return(CONSTANT);
 break;
 case 492:
-count();
-return(CONSTANT);
+comment();
 break;
 case 493:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 494:
 count();
@@ -16622,10 +16634,11 @@ return(CONSTANT);
 break;
 case 497:
 count();
-return(ELLIPSIS);
+return(CONSTANT);
 break;
 case 498:
-comment();
+count();
+return(CONSTANT);
 break;
 case 499:
 count();
@@ -16635,30 +16648,35 @@ case 500:
 comment();
 break;
 case 501:
-comment();
+count();
+return(CONSTANT);
 break;
 case 502:
-comment();
+count();
+return(CONSTANT);
 break;
 case 503:
 count();
 return(CONSTANT);
 break;
 case 504:
-comment();
+count();
+return(CONSTANT);
 break;
 case 505:
-comment();
+count();
+return(CONSTANT);
 break;
 case 506:
-count();
-return(TYPEDEF);
+comment();
 break;
 case 507:
-comment();
+count();
+return(CONSTANT);
 break;
 case 508:
-comment();
+count();
+return(CONSTANT);
 break;
 case 509:
 comment();
@@ -16671,62 +16689,73 @@ case 511:
 comment();
 break;
 case 512:
-comment();
+count();
+return(CONSTANT);
 break;
 case 513:
-comment();
+count();
+return(CONSTANT);
 break;
 case 514:
 count();
 return(CONSTANT);
 break;
 case 515:
-comment();
+count();
+return(CONSTANT);
 break;
 case 516:
-comment();
+count();
+return(CONSTANT);
 break;
 case 517:
-comment();
+count();
+return(CONSTANT);
 break;
 case 518:
 count();
 return(CONSTANT);
 break;
 case 519:
-comment();
+count();
+return(CONSTANT);
 break;
 case 520:
-comment();
+count();
+return(CONSTANT);
 break;
 case 521:
-comment();
+count();
+return(CONSTANT);
 break;
 case 522:
-comment();
+count();
+return(CONSTANT);
 break;
 case 523:
-comment();
+count();
+return(CONSTANT);
 break;
 case 524:
 count();
-return(CONSTANT);
+return(ELLIPSIS);
 break;
 case 525:
 comment();
 break;
 case 526:
-comment();
+count();
+return(CONSTANT);
 break;
 case 527:
 comment();
 break;
 case 528:
-comment();
+count();
+return(CONSTANT);
 break;
 case 529:
-count();
-return(DEFAULT);
+comment();
 break;
 case 530:
 comment();
@@ -16744,14 +16773,14 @@ case 534:
 comment();
 break;
 case 535:
-count();
-return(CONSTANT);
+comment();
 break;
 case 536:
 comment();
 break;
 case 537:
-comment();
+count();
+return(CONSTANT);
 break;
 case 538:
 comment();
@@ -16763,11 +16792,11 @@ case 540:
 comment();
 break;
 case 541:
-comment();
-break;
-case 542:
 count();
 return(CONSTANT);
+break;
+case 542:
+comment();
 break;
 case 543:
 comment();
@@ -16777,167 +16806,139 @@ comment();
 break;
 case 545:
 count();
-return(LEFT_ASSIGN);
+return(CONSTANT);
 break;
 case 546:
-count();
-return(check_type());
+comment();
 break;
 case 547:
-count();
-return(CONSTANT);
+comment();
 break;
 case 548:
-count();
-return(check_type());
+comment();
 break;
 case 549:
-count();
-return(CASE);
+comment();
 break;
 case 550:
-count();
-return(CHAR);
+comment();
 break;
 case 551:
-count();
-return(check_type());
+comment();
 break;
 case 552:
-count();
-return(BOOL);
+comment();
 break;
 case 553:
-count();
-return(check_type());
+comment();
 break;
 case 554:
-count();
-return(CONSTANT);
+comment();
 break;
 case 555:
-count();
-return(ELSE);
+comment();
 break;
 case 556:
-count();
-return(ENUM);
+comment();
 break;
 case 557:
-count();
-return(check_type());
+comment();
 break;
 case 558:
-count();
-return(GOTO);
+comment();
 break;
 case 559:
-count();
-return(check_type());
+comment();
 break;
 case 560:
-count();
-return(CONSTANT);
+comment();
 break;
 case 561:
-count();
-return(check_type());
+comment();
 break;
 case 562:
-count();
-return(REGISTER);
+comment();
 break;
 case 563:
-count();
-return(check_type());
+comment();
 break;
 case 564:
-count();
-return(check_type());
+comment();
 break;
 case 565:
-count();
-return(check_type());
+comment();
 break;
 case 566:
-count();
-return(check_type());
+comment();
 break;
 case 567:
-count();
-return(check_type());
+comment();
 break;
 case 568:
-count();
-return(CONTINUE);
+comment();
 break;
 case 569:
-count();
-return(check_type());
+comment();
 break;
 case 570:
-count();
-return(check_type());
+comment();
 break;
 case 571:
-count();
-return(VOID);
+comment();
 break;
 case 572:
-count();
-return(check_type());
+comment();
 break;
 case 573:
-count();
-return(CONSTANT);
+comment();
 break;
 case 574:
 count();
-return(CONSTANT);
+return(LEFT_ASSIGN);
 break;
 case 575:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 576:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 577:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 578:
 count();
-return(CONSTANT);
+return(CHAR);
 break;
 case 579:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 580:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 581:
 count();
-return(CONSTANT);
+return(ENUM);
 break;
 case 582:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 583:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 584:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 585:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 586:
 count();
@@ -16945,19 +16946,19 @@ return(check_type());
 break;
 case 587:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 588:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 589:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 590:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 591:
 count();
@@ -16965,15 +16966,15 @@ return(CONSTANT);
 break;
 case 592:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 593:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 594:
 count();
-return(CONSTANT);
+return(VOID);
 break;
 case 595:
 count();
@@ -17097,7 +17098,7 @@ return(CONSTANT);
 break;
 case 625:
 count();
-return(SIGNED);
+return(CONSTANT);
 break;
 case 626:
 count();
@@ -17141,39 +17142,39 @@ return(CONSTANT);
 break;
 case 636:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 637:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 638:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 639:
 count();
-return(CONST);
+return(CONSTANT);
 break;
 case 640:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 641:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 642:
 count();
-return(FLOAT);
+return(CONSTANT);
 break;
 case 643:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 644:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 645:
 count();
@@ -17181,7 +17182,7 @@ return(check_type());
 break;
 case 646:
 count();
-return(check_type());
+return(BREAK);
 break;
 case 647:
 count();
@@ -17205,47 +17206,47 @@ return(check_type());
 break;
 case 652:
 count();
-return(WHILE);
+return(SHORT);
 break;
 case 653:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 654:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 655:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 656:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 657:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 658:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 659:
 count();
-return(CONSTANT);
+return(UNION);
 break;
 case 660:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 661:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 662:
 count();
-return(CONSTANT);
+return(WHILE);
 break;
 case 663:
 count();
@@ -17361,63 +17362,63 @@ return(CONSTANT);
 break;
 case 691:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 692:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 693:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 694:
 count();
-return(DOUBLE);
+return(CONSTANT);
 break;
 case 695:
 count();
-return(EXTERN);
+return(CONSTANT);
 break;
 case 696:
 count();
-return(INLINE);
+return(CONSTANT);
 break;
 case 697:
 count();
-return(check_type());
+return(BOOL);
 break;
 case 698:
 count();
-return(RETURN);
+return(check_type());
 break;
 case 699:
 count();
-return(SIZEOF);
+return(check_type());
 break;
 case 700:
 count();
-return(STATIC);
+return(check_type());
 break;
 case 701:
 count();
-return(STRUCT);
+return(EXTERN);
 break;
 case 702:
 count();
-return(SWITCH);
+return(RETURN);
 break;
 case 703:
 count();
-return(check_type());
+return(SIZEOF);
 break;
 case 704:
 count();
-return(CONSTANT);
+return(STRUCT);
 break;
 case 705:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 706:
 count();
@@ -17517,7 +17518,7 @@ return(CONSTANT);
 break;
 case 730:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 731:
 count();
@@ -17533,23 +17534,23 @@ return(check_type());
 break;
 case 734:
 count();
-return(check_type());
+return(DEFAULT);
 break;
 case 735:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 736:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 737:
 count();
-return(CONSTANT);
+return(TYPEDEF);
 break;
 case 738:
 count();
-return(CONSTANT);
+return(check_type());
 break;
 case 739:
 count();
@@ -17613,31 +17614,31 @@ return(CONSTANT);
 break;
 case 754:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 755:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 756:
 count();
-return(RESTRICT);
+return(CONSTANT);
 break;
 case 757:
 count();
-return(UNSIGNED);
+return(check_type());
 break;
 case 758:
 count();
-return(VOLATILE);
+return(check_type());
 break;
 case 759:
 count();
-return(CONSTANT);
+return(CONTINUE);
 break;
 case 760:
 count();
-return(CONSTANT);
+return(UNSIGNED);
 break;
 case 761:
 count();
@@ -17673,15 +17674,15 @@ return(CONSTANT);
 break;
 case 769:
 count();
-return(check_type());
+return(CONSTANT);
 break;
 case 770:
 count();
-return(check_type());
+return(COMPLEX);
 break;
 case 771:
 count();
-return(IMAGINARY);
+return(check_type());
 break;
 default:
 break;
@@ -17690,16 +17691,16 @@ break;
 char* getCharPtr(char* fileName){
 char* cp=NULL;
 FILE *fp;
-fp=fopen(fileName,"w")
+fp=fopen(fileName,"w");
 if(fp==NULL)
 {
-printf("can't open file")
-getch()
-exit(0)
+printf("can't open file");
+getch();
+exit(0);
 }
-fseek(fp,OL,SEEK_END);
+fseek(fp,0,SEEK_END);
 int flen = ftell(fp);
-p = (char *)malloc(flen + 1);
+char *p = (char *)malloc(flen + 1);
 if (p == NULL)
 {
 fclose(fp);

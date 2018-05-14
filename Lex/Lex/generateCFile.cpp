@@ -31,7 +31,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	{
 		out << part1[i] << endl;
 	}
-	for (int i = 0; i < part1.size(); i++)
+	for (int i = 0; i < part4.size(); i++)
 	{
 		out << part4[i] << endl;
 	}
@@ -68,14 +68,14 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 
 
 	/*状态跳转部分*/
-	out << "while(*cp!=0){" << endl;	/*若不为字符串结束符'\0'*/
+	out << "while(*yy_cp!=0){" << endl;	/*若不为字符串结束符'\0'*/
 	out << "register int yy_c = yy_ec[(int)*yy_cp];" << endl; /*当前读取字符对应的列号*/
 	out << "if(yy_accept[yy_current_state])" << endl;
 	out << "{" << endl;
 	out << "yy_last_accepting_state=yy_current_state;" << endl;
 	out << "yy_last_accepting_cpos=yy_cp;" << endl;
 	out << "}" << endl;
-	out << "if(yy_next[yy_base[yy_current_satte]+yy_c]==-1&&yy_last_accepting_state!=-1)" << endl;/*当找不到下一个状态时，回退*/
+	out << "if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state!=-1)" << endl;/*当找不到下一个状态时，回退*/
 	out << "{" << endl;
 	out << "yy_current_state=yy_last_accepting_state;" << endl;
 	out << "yy_cp=yy_last_accepting_cpos;" << endl;
@@ -83,13 +83,13 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
 	out << "yy_last_accepting_state=-1;" << endl;
 	out << "}" << endl;
-	out << "if(yy_next[yy_base[yy_current_satte]+yy_c]==-1&&yy_last_accepting_state==-1)" << endl;
+	out << "if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state==-1)" << endl;
 	out << "{" << endl;
 	out << "printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
 	out << "}" << endl;
-	out << "if(yy_next[yy_base[yy_current_satte]+yy_c]!=-1) " << endl;
+	out << "if(yy_next[yy_base[yy_current_state]+yy_c]!=-1) " << endl;
 	out << "{" << endl;
-	out << "yy_current_state=yy_next[yy_base[yy_current_satte]+yy_c];" << endl;
+	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
 	out << "}" << endl;
 	out << "++yy_cp;" << endl;
 	out << "}" << endl;
@@ -109,7 +109,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	/*int findAction(int action)函数*/
 	out << "int findAction(int action)" << endl;
 	out << "{" << endl;
-	out << "switch (yy_act) " << endl;/*根据endVec打印switch语句*/
+	out << "switch (action) " << endl;/*根据endVec打印switch语句*/
 	out << "{" << endl;
 	out << "case 0:" << endl;
 	/*...此处省略了一些东西*/
@@ -132,16 +132,16 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "char* getCharPtr(char* fileName){" << endl;
 	out << "char* cp=NULL;" << endl;
 	out << "FILE *fp;" << endl;
-	out << "fp=fopen(fileName,\"w\")" << endl;
+	out << "fp=fopen(fileName,\"w\");" << endl;
 	out << "if(fp==NULL)" << endl;
 	out << "{" << endl;
-	out << "printf(\"can't open file\")" << endl;
-	out << "getch()" << endl;
-	out << "exit(0)" << endl;
+	out << "printf(\"can't open file\");" << endl;
+	out << "getch();" << endl;
+	out << "exit(0);" << endl;
 	out << "}" << endl;
-	out << "fseek(fp,OL,SEEK_END);" << endl;
+	out << "fseek(fp,0,SEEK_END);" << endl;
 	out << "int flen = ftell(fp);" << endl; /* 得到文件大小 */
-	out << "p = (char *)malloc(flen + 1);" << endl; /* 根据文件大小动态分配内存空间 */
+	out << "char *p = (char *)malloc(flen + 1);" << endl; /* 根据文件大小动态分配内存空间 */
 	out << "if (p == NULL)" << endl;
 	out << "{" << endl;
 	out << "fclose(fp);" << endl;

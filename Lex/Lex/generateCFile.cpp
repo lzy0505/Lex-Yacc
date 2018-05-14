@@ -142,7 +142,6 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "if(fp==NULL)" << endl;
 	out << "{" << endl;
 	out << "printf(\"can't open file\");" << endl;
-	out << "getch();" << endl;
 	out << "exit(0);" << endl;
 	out << "}" << endl;
 	out << "fseek(fp,0,SEEK_END);" << endl;

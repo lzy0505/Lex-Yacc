@@ -17035,7 +17035,6 @@ fp=fopen(fileName,"r");
 if(fp==NULL)
 {
 printf("can't open file");
-getch();
 exit(0);
 }
 fseek(fp,0,SEEK_END);

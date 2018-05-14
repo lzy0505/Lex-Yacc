@@ -83,7 +83,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "yy_cp=yy_last_accepting_cpos;" << endl;
 	out << "yy_act=yy_accept[yy_current_state];" << endl;
 	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
-	out << "printf(\" \");" << endl;
+	out << "printf(\"  \");" << endl;
 	out << "yy_current_state=0;" << endl; /*将状态置为0*/
 	out << "yy_last_accepting_state=-1;" << endl;
 	out << "++yy_cp;" << endl;
@@ -109,6 +109,7 @@ int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector
 	out << "else{" << endl;
 	out << "printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
 	out << "}" << endl;
+	out << "system(\"pause\");" << endl;
 	out << "}" << endl;/*mian函数结束*/
   
 

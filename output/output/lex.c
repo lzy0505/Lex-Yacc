@@ -14678,6 +14678,7 @@ yy_current_state=yy_last_accepting_state;
 yy_cp=yy_last_accepting_cpos;
 yy_act=yy_accept[yy_current_state];
 findAction(yy_act);
+printf(" ");
 yy_current_state=0;
 yy_last_accepting_state=-1;
 ++yy_cp;
@@ -14702,6 +14703,7 @@ findAction(yy_act);
 else{
 printf("ERROR DETECTED IN INPUT FILE !");
 }
+system("pause");
 }
 int findAction(int action)
 {
@@ -14971,7 +14973,7 @@ case 87:
 printf("below are comments");
 break;
 case 88:
- printf('{');
+ printf("{");
 break;
 case 89:
  printf("IDENTIFIER");
@@ -15130,7 +15132,7 @@ case 140:
  printf("CASE");
 break;
 case 141:
- printf('!');
+ printf("!");
 break;
 case 142:
  printf("IDENTIFIER");
@@ -15142,7 +15144,7 @@ case 144:
  printf("IDENTIFIER");
 break;
 case 145:
- printf('%%');
+ printf("%%");
 break;
 case 146:
  printf("IDENTIFIER");
@@ -15154,25 +15156,25 @@ case 148:
  printf("IDENTIFIER");
 break;
 case 149:
- printf('(');
+ printf("(");
 break;
 case 150:
  printf("CONSTANT");
 break;
 case 151:
- printf(')');
+ printf(")");
 break;
 case 152:
  printf("IDENTIFIER");
 break;
 case 153:
- printf('*');
+ printf("*");
 break;
 case 154:
  printf("IDENTIFIER");
 break;
 case 155:
- printf('+');
+ printf("+");
 break;
 case 156:
  printf("IDENTIFIER");
@@ -15181,13 +15183,13 @@ case 157:
  printf("IDENTIFIER");
 break;
 case 158:
- printf(',');
+ printf(",");
 break;
 case 159:
  printf("CONSTANT");
 break;
 case 160:
- printf('-');
+ printf("-");
 break;
 case 161:
  printf("CONST");
@@ -15196,37 +15198,37 @@ case 162:
  printf("IDENTIFIER");
 break;
 case 163:
- printf('.');
+ printf(".");
 break;
 case 164:
  printf("CONSTANT");
 break;
 case 165:
- printf('/');
+ printf("/");
 break;
 case 166:
  printf("FOR");
 break;
 case 167:
- printf(':');
+ printf(":");
 break;
 case 168:
  printf("CONSTANT");
 break;
 case 169:
-printf(';');
+printf(";");
 break;
 case 170:
  printf("IDENTIFIER");
 break;
 case 171:
-printf('<');
+printf("<");
 break;
 case 172:
  printf("IDENTIFIER");
 break;
 case 173:
- printf('=');
+ printf("=");
 break;
 case 174:
  printf("IDENTIFIER");
@@ -15235,13 +15237,13 @@ case 175:
  printf("CONSTANT");
 break;
 case 176:
- printf('>');
+ printf(">");
 break;
 case 177:
  printf("IDENTIFIER");
 break;
 case 178:
- printf('?');
+ printf("?");
 break;
 case 179:
  printf("ELSE");
@@ -15253,7 +15255,7 @@ case 181:
  printf("IDENTIFIER");
 break;
 case 182:
- printf('[');
+ printf("[");
 break;
 case 183:
  printf("CONSTANT");
@@ -15265,10 +15267,10 @@ case 185:
  printf("IDENTIFIER");
 break;
 case 186:
- printf(']');
+ printf("]");
 break;
 case 187:
- printf('^');
+ printf("^");
 break;
 case 188:
  printf("GOTO");
@@ -15280,7 +15282,7 @@ case 190:
  printf("IDENTIFIER");
 break;
 case 191:
- printf('{');
+ printf("{");
 break;
 case 192:
  printf("IDENTIFIER");
@@ -15292,10 +15294,10 @@ case 194:
  printf("INLINE");
 break;
 case 195:
- printf('|');
+ printf("|");
 break;
 case 196:
- printf('}');
+ printf("}");
 break;
 case 197:
  printf("IDENTIFIER");
@@ -15337,13 +15339,13 @@ case 209:
  printf("SWITCH");
 break;
 case 210:
- printf('~');
+ printf("~");
 break;
 case 211:
  printf("CONSTANT");
 break;
 case 212:
- printf('&');
+ printf("&");
 break;
 case 213:
  printf("IDENTIFIER");
@@ -15958,7 +15960,7 @@ case 416:
  printf("MOD_ASSIGN");
 break;
 case 417:
- printf('}');
+ printf("}");
 break;
 case 418:
  printf("MUL_ASSIGN");
@@ -16006,13 +16008,13 @@ case 432:
 printf("below are comments");
 break;
 case 433:
- printf(']');
+ printf("]");
 break;
 case 434:
  printf("CONSTANT");
 break;
 case 435:
- printf('[');
+ printf("[");
 break;
 case 436:
  printf("LE_OP");

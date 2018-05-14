@@ -237,76 +237,76 @@ L?\"(\\.|[^\\"\n])*\"	{
 	 printf("NE_OP"); 
 	}
 ";"			{ 
-	printf(';'); 
+	printf(";"); 
 	}
 ("{"|"<%")		{ 
-	 printf('{'); 
+	 printf("{"); 
 	}
 ("}"|"%>")		{ 
-	 printf('}'); 
+	 printf("}"); 
 	}
 ","			{ 
-	 printf(','); 
+	 printf(","); 
 	}
 ":"			{ 
-	 printf(':'); 
+	 printf(":"); 
 	}
 "="			{ 
-	 printf('='); 
+	 printf("="); 
 	}
 "("			{ 
-	 printf('('); 
+	 printf("("); 
 	}
 ")"			{ 
-	 printf(')'); 
+	 printf(")"); 
 	}
 ("["|"<:")		{ 
-	 printf('['); 
+	 printf("["); 
 	}
 ("]"|":>")		{ 
-	 printf(']'); 
+	 printf("]"); 
 	}
 "."			{ 
-	 printf('.'); 
+	 printf("."); 
 	}
 "&"			{ 
-	 printf('&'); 
+	 printf("&"); 
 	}
 "!"			{ 
-	 printf('!'); 
+	 printf("!"); 
 	}
 "~"			{ 
-	 printf('~'); 
+	 printf("~"); 
 	}
 "-"			{ 
-	 printf('-'); 
+	 printf("-"); 
 	}
 "+"			{ 
-	 printf('+'); 
+	 printf("+"); 
 	}
 "*"			{ 
-	 printf('*'); 
+	 printf("*"); 
 	}
 "/"			{ 
-	 printf('/'); 
+	 printf("/"); 
 	}
 "%"			{ 
-	 printf('%'); 
+	 printf("%%"); 
 	}
 "<"			{ 
-	printf('<'); 
+	printf("<"); 
 	}
 ">"			{ 
-	 printf('>'); 
+	 printf(">"); 
 	}
 "^"			{ 
-	 printf('^'); 
+	 printf("^"); 
 	}
 "|"			{ 
-	 printf('|'); 
+	 printf("|"); 
 	}
 "?"			{ 
-	 printf('?'); 
+	 printf("?"); 
 	}
 
 [ \t\v\n\f]		printf("SPACE"); 

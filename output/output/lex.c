@@ -15142,7 +15142,7 @@ case 144:
  printf("IDENTIFIER");
 break;
 case 145:
- printf('%');
+ printf('%%');
 break;
 case 146:
  printf("IDENTIFIER");

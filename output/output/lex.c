@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "y.tab.h"
 void count(void);
-int yywrap()
+int yywrap(void)
 {
-	return 1; /* tell scanner no further files need to be processed */
+	return 1;
 }
 char* getCharPtr(char* fileName);
 int findAction(int action);
@@ -14664,7 +14664,7 @@ static int	yy_accept[1476] =
 754 ,755 ,568 ,562 ,756 ,757 ,758 ,759 ,760 ,761 ,
 573 ,242 ,762 ,763 ,764 ,765 ,766 ,767 ,578 ,255 ,
 768 ,110 ,769 ,770 ,771 };
-while(*yy_cp !=0){
+while(*yy_cp!=0){
 register int yy_c = yy_ec[(int)*yy_cp];
 if(yy_accept[yy_current_state])
 {
@@ -14702,3005 +14702,2340 @@ printf("ERROR DETECTED IN INPUT FILE !");
 }
 int findAction(int action)
 {
-switch (action)
+switch (action) 
 {
 case 0:
 break;
 case 1:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 2:
-
-return(BREAK);
+printf("BREAK");
 break;
 case 3:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 4:
-
+printf("below are comments");
 break;
 case 5:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 6:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 7:
-
+printf("below are comments");
 break;
 case 8:
-
+printf("a CHAR");
 break;
 case 9:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 10:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 11:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 12:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 13:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 14:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 15:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 16:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 17:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 18:
-
+printf("below are comments");
 break;
 case 19:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 20:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 21:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 22:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 23:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 24:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 25:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 26:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 27:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 28:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 29:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 30:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 31:
-
+printf("below are comments");
 break;
 case 32:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 33:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 34:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 35:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 36:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 37:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 38:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 39:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 40:
-
+printf("below are comments");
 break;
 case 41:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 42:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 43:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 44:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 45:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 46:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 47:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 48:
-
+printf("below are comments");
 break;
 case 49:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 50:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 51:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 52:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 53:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 54:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 55:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 56:
-
+printf("below are comments");
 break;
 case 57:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 58:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 59:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 60:
-
+printf("below are comments");
 break;
 case 61:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 62:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 63:
-
+printf("below are comments");
 break;
 case 64:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 65:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 66:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 67:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 68:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 69:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 70:
-
+printf("below are comments");
 break;
 case 71:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 72:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 73:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 74:
-
+printf("below are comments");
 break;
 case 75:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 76:
-
+printf("below are comments");
 break;
 case 77:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 78:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 79:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 80:
-
+printf("below are comments");
 break;
 case 81:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 82:
-
+printf("below are comments");
 break;
 case 83:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 84:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 85:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 86:
-
+printf("below are comments");
 break;
 case 87:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 88:
-
+printf("below are comments");
 break;
 case 89:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 90:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 91:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 92:
-
+printf("below are comments");
 break;
 case 93:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 94:
-
-return(DEC_OP);
+ printf("DEC_OP");
 break;
 case 95:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 96:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 97:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 98:
-
+printf("below are comments");
 break;
 case 99:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 100:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 101:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 102:
-
-return(INC_OP);
+ printf("INC_OP");
 break;
 case 103:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 104:
-
+printf("below are comments");
 break;
 case 105:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 106:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 107:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 108:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 109:
-
-return(PTR_OP);
+ printf("PTR_OP");
 break;
 case 110:
-
-return(COMPLEX);
+ printf("COMPLEX");
 break;
 case 111:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 112:
-
+printf("below are comments");
 break;
 case 113:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 114:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 115:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 116:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 117:
-
-return('!');
+ printf('!');
 break;
 case 118:
-
+printf("below are comments");
 break;
 case 119:
-
+printf("below are comments");
 break;
 case 120:
-
+printf("a CHAR");
 break;
 case 121:
-
-return('%');
+ printf('%');
 break;
 case 122:
-
+printf("a CHAR");
 break;
 case 123:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 124:
-
+printf("below are comments");
 break;
 case 125:
-
-return('(');
+ printf('(');
 break;
 case 126:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 127:
-
+printf("below are comments");
 break;
 case 128:
-
-return(')');
+ printf(')');
 break;
 case 129:
-
-return('*');
+ printf('*');
 break;
 case 130:
-
-return('+');
+ printf('+');
 break;
 case 131:
-
+printf("below are comments");
 break;
 case 132:
-
-return(',');
+ printf(',');
 break;
 case 133:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 134:
-
+printf("below are comments");
 break;
 case 135:
-
-return('-');
+ printf('-');
 break;
 case 136:
-
-return('.');
+ printf('.');
 break;
 case 137:
-
-return('/');
+ printf('/');
 break;
 case 138:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 139:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 140:
-
+printf("below are comments");
 break;
 case 141:
-
-return(':');
+ printf(':');
 break;
 case 142:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 143:
-
+printf("below are comments");
 break;
 case 144:
-
-return(';');
+printf(';');
 break;
 case 145:
-
-return('<');
+printf('<');
 break;
 case 146:
-
-return('=');
+ printf('=');
 break;
 case 147:
-
-return('>');
+ printf('>');
 break;
 case 148:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 149:
-
+printf("below are comments");
 break;
 case 150:
-
-return('?');
+ printf('?');
 break;
 case 151:
-
-return('[');
+ printf('[');
 break;
 case 152:
-
+printf("a CHAR");
 break;
 case 153:
-
-return(']');
+ printf(']');
 break;
 case 154:
-
+printf("below are comments");
 break;
 case 155:
-
-return('^');
+ printf('^');
 break;
 case 156:
-
-return('{');
+ printf('{');
 break;
 case 157:
-
-return('|');
+ printf('|');
 break;
 case 158:
-
-return('}');
+ printf('}');
 break;
 case 159:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 160:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 161:
-
+printf("below are comments");
 break;
 case 162:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 163:
-
+printf("a SPACE");
 break;
 case 164:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 165:
-
+printf("a SPACE");
 break;
 case 166:
-
-return(LONG);
+ printf("LONG");
 break;
 case 167:
-
+printf("a SPACE");
 break;
 case 168:
-
+printf("below are comments");
 break;
 case 169:
-
+printf("a SPACE");
 break;
 case 170:
-
+printf("a SPACE");
 break;
 case 171:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 172:
-
-return('~');
+ printf('~');
 break;
 case 173:
-
-return('&');
+ printf('&');
 break;
 case 174:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 175:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 176:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 177:
-
+printf("below are comments");
 break;
 case 178:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 179:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 180:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 181:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 182:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 183:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 184:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 185:
-
-return(RIGHT_ASSIGN);
+ printf("RIGHT_ASSIGN");
 break;
 case 186:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 187:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 188:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 189:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 190:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 191:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 192:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 193:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 194:
-
-return(AUTO);
+ printf("AUTO");
 break;
 case 195:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 196:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 197:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 198:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 199:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 200:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 201:
-
-return(FOR);
+ printf("FOR");
 break;
 case 202:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 203:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 204:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 205:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 206:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 207:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 208:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 209:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 210:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 211:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 212:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 213:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 214:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 215:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 216:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 217:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 218:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 219:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 220:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 221:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 222:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 223:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 224:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 225:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 226:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 227:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 228:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 229:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 230:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 231:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 232:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 233:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 234:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 235:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 236:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 237:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 238:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 239:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 240:
-
+printf("below are comments");
 break;
 case 241:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 242:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 243:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 244:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 245:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 246:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 247:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 248:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 249:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 250:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 251:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 252:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 253:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 254:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 255:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 256:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 257:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 258:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 259:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 260:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 261:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 262:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 263:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 264:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 265:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 266:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 267:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 268:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 269:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 270:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 271:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 272:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 273:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 274:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 275:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 276:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 277:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 278:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 279:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 280:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 281:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 282:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 283:
-
-return(MOD_ASSIGN);
+ printf("MOD_ASSIGN");
 break;
 case 284:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 285:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 286:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 287:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 288:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 289:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 290:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 291:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 292:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 293:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 294:
-
+printf("below are comments");
 break;
 case 295:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 296:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 297:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 298:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 299:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 300:
-
+printf("below are comments");
 break;
 case 301:
-
-return(DO);
+ printf("DO");
 break;
 case 302:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 303:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 304:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 305:
-
+printf("below are comments");
 break;
 case 306:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 307:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 308:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 309:
-
-return(IF);
+ printf("IF");
 break;
 case 310:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 311:
-
+printf("below are comments");
 break;
 case 312:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 313:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 314:
-
+printf("below are comments");
 break;
 case 315:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 316:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 317:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 318:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 319:
-
+printf("below are comments");
 break;
 case 320:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 321:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 322:
-
+printf("below are comments");
 break;
 case 323:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 324:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 325:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 326:
-
+printf("below are comments");
 break;
 case 327:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 328:
-
+printf("below are comments");
 break;
 case 329:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 330:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 331:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 332:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 333:
-
+printf("below are comments");
 break;
 case 334:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 335:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 336:
-
+printf("below are comments");
 break;
 case 337:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 338:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 339:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 340:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 341:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 342:
-
-return(UNION);
+ printf("UNION");
 break;
 case 343:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 344:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 345:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 346:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 347:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 348:
-
+printf("below are comments");
 break;
 case 349:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 350:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 351:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 352:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 353:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 354:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 355:
-
+printf("below are comments");
 break;
 case 356:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 357:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 358:
-
+printf("below are comments");
 break;
 case 359:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 360:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 361:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 362:
-
+printf("below are comments");
 break;
 case 363:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 364:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 365:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 366:
-
+printf("below are comments");
 break;
 case 367:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 368:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 369:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 370:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 371:
-
+printf("below are comments");
 break;
 case 372:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 373:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 374:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 375:
-
+printf("below are comments");
 break;
 case 376:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 377:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 378:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 379:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 380:
-
+printf("below are comments");
 break;
 case 381:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 382:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 383:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 384:
-
+printf("below are comments");
 break;
 case 385:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 386:
-
+printf("below are comments");
 break;
 case 387:
-
-return(NE_OP);
+ printf("NE_OP");
 break;
 case 388:
-
-return(STRING_LITERAL);
+ printf("STRING_LITERAL");
 break;
 case 389:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 390:
-
-return('}');
+ printf('}');
 break;
 case 391:
-
-return(MUL_ASSIGN);
+ printf("MUL_ASSIGN");
 break;
 case 392:
-
-return(ADD_ASSIGN);
+ printf("ADD_ASSIGN");
 break;
 case 393:
-
-return(SUB_ASSIGN);
+ printf("SUB_ASSIGN");
 break;
 case 394:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 395:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 396:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 397:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 398:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 399:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 400:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 401:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 402:
-
+printf("below are comments");
 break;
 case 403:
-
+printf("below are comments");
 break;
 case 404:
-
-return(DIV_ASSIGN);
+ printf("DIV_ASSIGN");
 break;
 case 405:
-
-return(']');
+ printf(']');
 break;
 case 406:
-
-return('{');
+ printf('{');
 break;
 case 407:
-
-return('[');
+ printf('[');
 break;
 case 408:
-
-return(LEFT_OP);
+ printf("LEFT_OP");
 break;
 case 409:
-
-return(LE_OP);
+ printf("LE_OP");
 break;
 case 410:
-
-return(EQ_OP);
+ printf("EQ_OP");
 break;
 case 411:
-
-return(GE_OP);
+ printf("GE_OP");
 break;
 case 412:
-
-return(RIGHT_OP);
+ printf("RIGHT_OP");
 break;
 case 413:
-
-return(XOR_ASSIGN);
+ printf("XOR_ASSIGN");
 break;
 case 414:
-
-return(OR_ASSIGN);
+ printf("OR_ASSIGN");
 break;
 case 415:
-
-return(OR_OP);
+ printf("OR_OP");
 break;
 case 416:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 417:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 418:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 419:
-
-return(AND_ASSIGN);
+ printf("AND_ASSIGN");
 break;
 case 420:
-
-return(AND_OP);
+ printf("AND_OP");
 break;
 case 421:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 422:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 423:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 424:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 425:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 426:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 427:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 428:
-
-return(INT);
+ printf("INT");
 break;
 case 429:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 430:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 431:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 432:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 433:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 434:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 435:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 436:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 437:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 438:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 439:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 440:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 441:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 442:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 443:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 444:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 445:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 446:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 447:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 448:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 449:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 450:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 451:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 452:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 453:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 454:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 455:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 456:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 457:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 458:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 459:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 460:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 461:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 462:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 463:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 464:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 465:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 466:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 467:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 468:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 469:
-
-return(SHORT);
+ printf("SHORT");
 break;
 case 470:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 471:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 472:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 473:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 474:
-
+printf("below are comments");
 break;
 case 475:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 476:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 477:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 478:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 479:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 480:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 481:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 482:
-
+printf("below are comments");
 break;
 case 483:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 484:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 485:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 486:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 487:
-
+printf("below are comments");
 break;
 case 488:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 489:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 490:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 491:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 492:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 493:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 494:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 495:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 496:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 497:
-
-return(ELLIPSIS);
+ printf("ELLIPSIS");
 break;
 case 498:
-
+printf("below are comments");
 break;
 case 499:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 500:
-
+printf("below are comments");
 break;
 case 501:
-
+printf("below are comments");
 break;
 case 502:
-
+printf("below are comments");
 break;
 case 503:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 504:
-
+printf("below are comments");
 break;
 case 505:
-
+printf("below are comments");
 break;
 case 506:
-
-return(TYPEDEF);
+ printf("TYPEDEF");
 break;
 case 507:
-
+printf("below are comments");
 break;
 case 508:
-
+printf("below are comments");
 break;
 case 509:
-
+printf("below are comments");
 break;
 case 510:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 511:
-
+printf("below are comments");
 break;
 case 512:
-
+printf("below are comments");
 break;
 case 513:
-
+printf("below are comments");
 break;
 case 514:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 515:
-
+printf("below are comments");
 break;
 case 516:
-
+printf("below are comments");
 break;
 case 517:
-
+printf("below are comments");
 break;
 case 518:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 519:
-
+printf("below are comments");
 break;
 case 520:
-
+printf("below are comments");
 break;
 case 521:
-
+printf("below are comments");
 break;
 case 522:
-
+printf("below are comments");
 break;
 case 523:
-
+printf("below are comments");
 break;
 case 524:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 525:
-
+printf("below are comments");
 break;
 case 526:
-
+printf("below are comments");
 break;
 case 527:
-
+printf("below are comments");
 break;
 case 528:
-
+printf("below are comments");
 break;
 case 529:
-
-return(DEFAULT);
+ printf("DEFAULT");
 break;
 case 530:
-
+printf("below are comments");
 break;
 case 531:
-
+printf("below are comments");
 break;
 case 532:
-
+printf("below are comments");
 break;
 case 533:
-
+printf("below are comments");
 break;
 case 534:
-
+printf("below are comments");
 break;
 case 535:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 536:
-
+printf("below are comments");
 break;
 case 537:
-
+printf("below are comments");
 break;
 case 538:
-
+printf("below are comments");
 break;
 case 539:
-
+printf("below are comments");
 break;
 case 540:
-
+printf("below are comments");
 break;
 case 541:
-
+printf("below are comments");
 break;
 case 542:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 543:
-
+printf("below are comments");
 break;
 case 544:
-
+printf("below are comments");
 break;
 case 545:
-
-return(LEFT_ASSIGN);
+ printf("LEFT_ASSIGN");
 break;
 case 546:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 547:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 548:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 549:
-
-return(CASE);
+ printf("CASE");
 break;
 case 550:
-
-return(CHAR);
+ printf("CHAR");
 break;
 case 551:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 552:
-
-return(BOOL);
+ printf("BOOL");
 break;
 case 553:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 554:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 555:
-
-return(ELSE);
+ printf("ELSE");
 break;
 case 556:
-
-return(ENUM);
+ printf("ENUM");
 break;
 case 557:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 558:
-
-return(GOTO);
+ printf("GOTO");
 break;
 case 559:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 560:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 561:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 562:
-
-return(REGISTER);
+ printf("REGISTER");
 break;
 case 563:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 564:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 565:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 566:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 567:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 568:
-
-return(CONTINUE);
+ printf("CONTINUE");
 break;
 case 569:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 570:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 571:
-
-return(VOID);
+ printf("VOID");
 break;
 case 572:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 573:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 574:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 575:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 576:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 577:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 578:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 579:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 580:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 581:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 582:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 583:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 584:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 585:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 586:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 587:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 588:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 589:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 590:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 591:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 592:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 593:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 594:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 595:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 596:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 597:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 598:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 599:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 600:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 601:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 602:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 603:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 604:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 605:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 606:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 607:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 608:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 609:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 610:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 611:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 612:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 613:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 614:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 615:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 616:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 617:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 618:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 619:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 620:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 621:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 622:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 623:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 624:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 625:
-
-return(SIGNED);
+ printf("SIGNED");
 break;
 case 626:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 627:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 628:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 629:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 630:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 631:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 632:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 633:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 634:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 635:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 636:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 637:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 638:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 639:
-
-return(CONST);
+ printf("CONST");
 break;
 case 640:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 641:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 642:
-
-return(FLOAT);
+ printf("FLOAT");
 break;
 case 643:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 644:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 645:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 646:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 647:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 648:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 649:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 650:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 651:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 652:
-
-return(WHILE);
+ printf("WHILE");
 break;
 case 653:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 654:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 655:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 656:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 657:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 658:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 659:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 660:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 661:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 662:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 663:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 664:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 665:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 666:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 667:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 668:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 669:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 670:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 671:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 672:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 673:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 674:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 675:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 676:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 677:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 678:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 679:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 680:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 681:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 682:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 683:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 684:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 685:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 686:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 687:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 688:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 689:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 690:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 691:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 692:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 693:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 694:
-
-return(DOUBLE);
+ printf("DOUBLE");
 break;
 case 695:
-
-return(EXTERN);
+ printf("EXTERN");
 break;
 case 696:
-
-return(INLINE);
+ printf("INLINE");
 break;
 case 697:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 698:
-
-return(RETURN);
+ printf("RETURN");
 break;
 case 699:
-
-return(SIZEOF);
+ printf("SIZEOF");
 break;
 case 700:
-
-return(STATIC);
+ printf("STATIC");
 break;
 case 701:
-
-return(STRUCT);
+ printf("STRUCT");
 break;
 case 702:
-
-return(SWITCH);
+ printf("SWITCH");
 break;
 case 703:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 704:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 705:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 706:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 707:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 708:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 709:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 710:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 711:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 712:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 713:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 714:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 715:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 716:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 717:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 718:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 719:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 720:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 721:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 722:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 723:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 724:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 725:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 726:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 727:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 728:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 729:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 730:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 731:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 732:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 733:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 734:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 735:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 736:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 737:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 738:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 739:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 740:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 741:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 742:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 743:
-
-return(CONSTANT);
+printf("CONSTANT");
 break;
 case 744:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 745:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 746:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 747:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 748:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 749:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 750:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 751:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 752:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 753:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 754:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 755:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 756:
-
-return(RESTRICT);
+ printf("RESTRICT");
 break;
 case 757:
-
-return(UNSIGNED);
+ printf("UNSIGNED");
 break;
 case 758:
-
-return(VOLATILE);
+ printf("VOLATILE");
 break;
 case 759:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 760:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 761:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 762:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 763:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 764:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 765:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 766:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 767:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 768:
-
-return(CONSTANT);
+ printf("CONSTANT");
 break;
 case 769:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 770:
-
-return(0);
+ printf("IDENTIFIER");
 break;
 case 771:
-
-return(IMAGINARY);
+ printf("IMAGINARY");
 break;
 default:
 break;
 }
 }
 char* getCharPtr(char* fileName){
-char* p=NULL;
+char* cp=NULL;
 FILE *fp;
-fp = fopen(fileName, "w");
+fp=fopen(fileName,"w");
 if(fp==NULL)
 {
-	printf("can't open file");
-	getch();
-	exit(0);
+printf("can't open file");
+getch();
+exit(0);
 }
-fseek(fp,0L,SEEK_END);
+fseek(fp,0,SEEK_END);
 int flen = ftell(fp);
-p = (char *)malloc(flen + 1);
+char *p = (char *)malloc(flen + 1);
 if (p == NULL)
 {
 fclose(fp);

@@ -1,19 +1,15 @@
 #include"stdafx.h"
-#include<iostream>
-#include<fstream>
-#include<string>
-#include<vector>
-#include<iomanip>
 #include"structs.h"
+
 using namespace std;
 
 /*打印数组，name为数组名，size为数组大小，value为数组值，out为写入的文件流*/
-void print_array(string name, int size, const int *value, ofstream& out);
+static void print_array(string name, int size, const int *value, ofstream& out);
 /*pl(),单行输出函数*/
 
 
 /*生成.c文件,arrays为包含多个相关数组的容器，endVec为终态对应的动作*/
-int generateCFile(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector<string>& part1, vector<string>& part4)
+int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector<string>& part1, vector<string>& part4)
 {
 
 	ofstream out;

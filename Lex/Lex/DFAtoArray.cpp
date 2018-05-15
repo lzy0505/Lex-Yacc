@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "structs.h"
-#include"globalData.hpp"
+
 using std::vector;
 using std::string;
 using std::cout;
@@ -8,16 +8,8 @@ using std::endl;
 using std::pair;
 
 
+void dfa_to_array(const DFA& dfa,vector<pair<int*,int> >& arrays, vector<Rules>& endVec) {
 
-void DFAtoArray(const DFA& dfa,vector<pair<int*,int> >& arrays, vector<Rules>& endVec) {
-
-	//const int set_size = 2;
-	/*	ALLSET.size();*/
-	//string allset = "ab";
-	//cout << set_size<<endl;
-	
-	//string allset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	//string allset = "0123456789abcdefghijklmnopqrstuvwxyz";
 	string allset(ALLSET);
 	const int set_size = allset.size();
 
@@ -45,7 +37,6 @@ void DFAtoArray(const DFA& dfa,vector<pair<int*,int> >& arrays, vector<Rules>& e
 
 		next[i] = -1;
 	}
-
 
 
 

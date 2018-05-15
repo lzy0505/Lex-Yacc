@@ -24,10 +24,10 @@
     <ClInclude Include="structs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="globalData.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalData.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,35 +35,30 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lex.cpp">
+    <ClCompile Include="REStandardization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="resolve.cpp">
+    <ClCompile Include="ParseLexFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ReHandler.cpp">
+    <ClCompile Include="REToSuffixForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Suffix.cpp">
+    <ClCompile Include="SuffixFormToNFA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="suffixToNFA.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FADetermination.cpp">
+    <ClCompile Include="GenerateCCode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DFAtoArray.cpp">
+    <ClCompile Include="NFAToDFA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="generateCFile.cpp">
+    <ClCompile Include="DFAToArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="lex.l">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lex.rc">

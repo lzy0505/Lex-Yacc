@@ -1,18 +1,16 @@
 #include "stdafx.h"
-#include<iostream>
-#include<vector>
-#include<map>
-#include<fstream>
-#include<string>
 #include"structs.h"
+
 using namespace std;
-vector<string> split(const string& str, const string& delim);
-string& trim(string &s);
-void removeComment(string& s);
-void resolve_test();
+
+
+static vector<string> split(const string& str, const string& delim);
+static string& trim(string &s);
+static void remove_comment(string& s);
+
 
 //对lex.l文件解析
-int resolve(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<string>&P1,vector<string>&P4)
+int read_and_parse_lex(string filePath,map<string,string>& m,vector<Rules>& vRules,vector<string>&P1,vector<string>&P4)
 {
 	//读入文件
 	ifstream in;
@@ -263,7 +261,7 @@ string& trim(string &s)
 	return s;
 }
 //去除注释
-void removeComment(string& s)
+void remove_comment(string& s)
 {
 	
 	char* p = new char[100];
@@ -276,41 +274,4 @@ void removeComment(string& s)
 	delete p;
 	
 	
-}
-void resolve_test()//print
-{
-
-	map<string, string> m;
-	vector<Rules> rules;
-	vector<string>P1, P4;
-	string filePath("fakelex.l");
-	resolve(filePath, m, rules, P1, P4);
-	vector<Rules>::iterator i1 = rules.begin();
-	vector<string>::iterator i2 = i1->actions.begin();
-	vector<string>::iterator i3 = P1.begin();
-	for (; i3 != P1.end(); i3++)
-	{
-		cout << *i3 << endl;
-	}
- 
-	
-	for (; i1 != rules.end(); i1++)
-	{
-		
-		for (i2 = i1->actions.begin(); i2 != i1->actions.end(); i2++)
-		{
-			
-			cout << i1->pattern << "\t" << *i2 << endl;
-
-		}
-
-	}
-	for (i3 = P4.begin(); i3 != P4.end(); i3++)
-	{
-
-		cout << *i3 << endl;
-
-	}
-	
-
 }

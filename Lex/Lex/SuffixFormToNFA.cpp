@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "structs.h"
+
 using std::stack;
 using std::vector;
 using std::map;
@@ -17,7 +18,7 @@ using std::pair;
 int number = 0;
 
 //将后缀表达式转化为NFA
-void suffix_To_NFA(vector<Rules>& suffixRules,NFA& finalNfa) {
+void suffix_to_nfa(vector<Rules>& suffixRules,NFA& finalNfa) {
 	stack<NFA> nfaStack;//用于构建NFA的工具栈,也是
 	for (auto &rule : suffixRules) {
 		string pattern = rule.pattern; //已经后缀化后的pattern

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "structs.h"
+
 using std::stack;
 using std::vector;
 using std::map;
@@ -13,7 +14,7 @@ using std::stack;
 using std::endl;
 
 //中缀转成后缀
-void suffixRE(vector<Rules>& rules) {
+void re_to_suffix(vector<Rules>& rules) {
 	for (auto &rule :rules ) {
 		string pattern = rule.pattern;//对pattern进行操作
 		string temp="";//用于临时装载正确pattern

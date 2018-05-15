@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "structs.h"
-#include "globalData.hpp"
+#include "GlobalData.hpp"
+
 using std::stack;
 using std::vector;
 using std::map;
@@ -10,12 +11,19 @@ using std::isalnum;
 using std::isalpha;
 using std::isdigit;
 using std::cout;
-const set<char> ESCAPEDCHARS{'.','|','*','(',')','+','?','{','}','[',']'};
 
-void handleEscape(string& exp, bool in);
+static void handle_escape(string& exp, bool in);
+static void replace_brace(string& exp, const map<string, string>& reMap);
+static void construct_char_set(set<char> &s, const string &content, bool n);
+static void replace_square_brace(string& exp);
+static void handle_quote(string& exp);
+static void replace_dot(string &exp);
+static void replace_question_and_add(string& exp);
+static void add_dot(string &exp);
+
 
 //替换{X}
-void replaceBrace(string& exp, const map<string, string>& reMap) {
+void replace_brace(string& exp, const map<string, string>& reMap) {
 	string rename;
 	vector<char> charVec;
 	bool inBrace = false;
@@ -59,9 +67,9 @@ void replaceBrace(string& exp, const map<string, string>& reMap) {
 }
 
 // 替换[X]
-void constructCharSet(set<char> &s, const string &content, bool n) {
+void construct_char_set(set<char> &s, const string &content, bool n) {
 	string stemp(content);
-	handleEscape(stemp, true);
+	handle_escape(stemp, true);
 	//处理[a-z]
 	auto it = stemp.cbegin();
 	set<char> temp;
@@ -96,7 +104,7 @@ void constructCharSet(set<char> &s, const string &content, bool n) {
 	}
 }
 
-void replaceSquareBrace(string& exp) {
+void replace_square_brace(string& exp) {
 	string sbcontent;
 	vector<char> charVec;
 	bool inSquareBrackes = false;
@@ -113,10 +121,10 @@ void replaceSquareBrace(string& exp) {
 			charVec.push_back('(');
 			set<char> s;//保存转换过的字符
 			if (sbcontent[0] == '^') { // 非操作
-				constructCharSet(s, sbcontent.substr(1, sbcontent.size() - 1), true);
+				construct_char_set(s, sbcontent.substr(1, sbcontent.size() - 1), true);
 			}
 			else {
-				constructCharSet(s, sbcontent, false);
+				construct_char_set(s, sbcontent, false);
 			}
 			for (const auto &c : s) {
 				if(ESCAPEDCHARS.find(c)!= ESCAPEDCHARS.cend())//转义
@@ -149,7 +157,7 @@ void replaceSquareBrace(string& exp) {
 
 
 // 处理引号
-void handleQuote(string& exp) {
+void handle_quote(string& exp) {
 	bool inQuote = false;
 	const auto sexpIt = exp.begin();
 	auto expIt = sexpIt;
@@ -181,7 +189,7 @@ void handleQuote(string& exp) {
 }
 
 //处理\转义字符
-void handleEscape(string& exp,bool in) {
+void handle_escape(string& exp,bool in) {
 	string stemp;
 	bool flag = false;
 	for (auto &c : exp) {
@@ -227,14 +235,14 @@ void handleEscape(string& exp,bool in) {
 }
 
 //处理. (匹配除了\n之外所有单个字符)
-void replaceDot(string &exp) {
+void replace_dot(string &exp) {
 	vector<char> charVec;
 	auto expIt = exp.begin();
 	while (expIt != exp.end()) {
 		if (*expIt == '.' && (expIt== exp.begin() || (expIt != exp.begin() && *(expIt-1)!='`'))){
 			charVec.push_back('(');
 			set<char> s;//保存转换过的字符
-			constructCharSet(s, "\n", true);
+			construct_char_set(s, "\n", true);
 			for (const auto &c : s) {
 				if (ESCAPEDCHARS.find(c) != ESCAPEDCHARS.cend())//转义
 					charVec.push_back('`');
@@ -259,7 +267,7 @@ void replaceDot(string &exp) {
 }
 
 // 替换？和+ (同时处理括号)
-void replaceQuestionAndAdd(string& exp){
+void replace_question_and_add(string& exp){
 	vector<char> charVec;
 	auto expIt = exp.begin();
 	while (expIt != exp.end()) {
@@ -344,7 +352,7 @@ void replaceQuestionAndAdd(string& exp){
 
 
 // 加点
-void  addDot(string &exp) {
+void  add_dot(string &exp) {
 	string oldExp = exp;
 	string dotedExp;
 	for (auto oldExpIt = oldExp.cbegin(); oldExpIt != oldExp.cend(); ++oldExpIt) {
@@ -360,28 +368,22 @@ void  addDot(string &exp) {
 	//cout << "ADD DOT:" << exp << "\n";
 }
 
-
-void translate(vector<Rules>& reVec, map<string, string>& reMap) {
+void re_standardize(vector<Rules>& reVec, map<string, string>& reMap) {
 	//先处理map里面的
 	for (auto & p : reMap) {
-		handleQuote(p.second);
-		replaceBrace(p.second, reMap);
-		/*replaceSquareBrace(p.second);
-		replaceDot(p.second);
-		replaceQuestionAndAdd(p.second);
-		handleEscape(p.second, false);
-		addDot(p.second);*/
+		handle_quote(p.second);
+		replace_brace(p.second, reMap);
 	}
 
 	//再处理Vector里面的
 	for (auto & e : reVec) {
-		handleQuote(e.pattern);
-		replaceBrace(e.pattern, reMap);
-		replaceSquareBrace(e.pattern);
-		replaceDot(e.pattern);
-		replaceQuestionAndAdd(e.pattern);
-		handleEscape(e.pattern, false);
-		addDot(e.pattern);
+		handle_quote(e.pattern);
+		replace_brace(e.pattern, reMap);
+		replace_square_brace(e.pattern);
+		replace_dot(e.pattern);
+		replace_question_and_add(e.pattern);
+		handle_escape(e.pattern, false);
+		add_dot(e.pattern);
 	}
 	
 }

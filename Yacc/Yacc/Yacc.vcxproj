@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CFGToLRDFA.cpp" />
+    <ClCompile Include="First.cpp" />
     <ClCompile Include="GenerateFiles.cpp" />
     <ClCompile Include="LRDFAToTable.cpp" />
     <ClCompile Include="ParseYaccFile.cpp" />

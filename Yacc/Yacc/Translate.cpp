@@ -47,5 +47,5 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 	}
 
 	startInt = tokensMap[startItemStr];
-
+	producerVec.push_back(pair<int, vector<int> >(0, vector<int>({ startInt })));
 }

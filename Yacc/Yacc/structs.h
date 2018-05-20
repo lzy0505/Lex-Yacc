@@ -24,6 +24,7 @@ typedef struct LRItem {
 	inline bool operator==(const LRItem& rLRItem) const {
 		if (positionInt != rLRItem.positionInt) return false;
 		if (gramarInt != rLRItem.gramarInt) return false;
+		if (predictiveItemSet != rLRItem.predictiveItemSet) return false;
 		else return true;
 	}
 }LRItem;
@@ -49,7 +50,7 @@ typedef struct {
 typedef struct {
 	int startState = 0;
 	unordered_multimap<int, int> reducableStatesMap;//<状态号，产生式编号>
-	vector<unordered_set<LRItem> > statesVec;//存储所有的LRState
+	vector<LRState > statesVec;//存储所有的LRState
 }LRDFA;
 
 #endif // !STRUCT_H

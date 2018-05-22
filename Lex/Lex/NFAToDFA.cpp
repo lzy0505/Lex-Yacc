@@ -123,9 +123,15 @@ void epsilon_closure(unordered_set<int> &initStatesSet, const unordered_map<int,
 		stack.pop();
 		auto beginIt = itsPair.first;
 		while (beginIt != itsPair.second) {
-			stack.push((*NFAStatesMap.find((*beginIt).second)).first);
-			initStatesSet.insert(beginIt->second);
-			++beginIt;
+			int unhandledItem = (*beginIt).second;
+			if (initStatesSet.find(unhandledItem)!= initStatesSet.end()) {//已经处理过该状态
+				continue;
+			}
+			else {
+				stack.push(unhandledItem);
+				initStatesSet.insert(unhandledItem);
+				++beginIt;
+			}
 		}
 	}
 }

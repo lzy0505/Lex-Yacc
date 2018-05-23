@@ -20,7 +20,7 @@ typedef vector<pair<int, vector<int> > > ProducerVec;//<×ó£¬ÓÒ>
 typedef struct LRItem {
 	int positionInt = 0;
 	int gramarInt = -1;
-	set<int> predictiveItemSet;
+	unordered_set<int> predictiveItemSet;
 	inline bool operator==(const LRItem& rLRItem) const {
 		if (positionInt != rLRItem.positionInt) return false;
 		if (gramarInt != rLRItem.gramarInt) return false;

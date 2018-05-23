@@ -8,7 +8,9 @@ using std::queue;
 static void epsilon_clousure(unordered_set<LRItem> &lrStateSet);
 static void subset_construct(const unordered_set<LRItem> &lrStateSet, map<int, unordered_set<LRItem> >& newStateMap);
 
-extern map<int, set<int> > firstMap;
+void first_string(unordered_set<int>& inputSet, const vector<int>& symbols);
+
+extern map<int, unordered_set<int> > firstMap;
 extern int boundTInt, boundNInt;
 extern map<int, pair<int, int> > indexMap;
 extern ProducerVec producerVec;
@@ -62,7 +64,7 @@ void epsilon_clousure(unordered_set<LRItem> &lrStateSet) {
 	}
 	pair<int, vector<int> > producer;
 	int position, item;
-	set<int> predictiveItemSet;
+	unordered_set<int> predictiveItemSet;
 	while (!stack.empty()) {//栈不为空时
 		producer = producerVec[stack.top().gramarInt];
 		position = stack.top().positionInt;
@@ -77,7 +79,6 @@ void epsilon_clousure(unordered_set<LRItem> &lrStateSet) {
 			}
 			//先找到所有对应的产生式
 			auto index = indexMap.find(item)->second;
-			int nextItem = (position == producer.second.size() - 1) ? -1: producer.second[position+1];//-1 for epsilon
 			predictiveItemSet = stack.top().predictiveItemSet;
 			stack.pop();
 			for (int i = 0; i < index.second; ++i) {//对于所有产生式，新建LRItem
@@ -86,17 +87,15 @@ void epsilon_clousure(unordered_set<LRItem> &lrStateSet) {
 				auto &newItemRef = stack.top();
 				newItemRef.gramarInt = index.first + i;
 				//求预测符
-				if (nextItem == -1) {//是最后一项了，不需要求first
-					newItemRef.predictiveItemSet = predictiveItemSet;
-				}else if(nextItem <=boundTInt){ //是一个终结符，直接等于
-					newItemRef.predictiveItemSet.insert(nextItem);
-				}else { //是非终结符,求first
-					newItemRef.predictiveItemSet = firstMap[nextItem];
-					auto findIt = newItemRef.predictiveItemSet.find(-1);
-					if (findIt != newItemRef.predictiveItemSet.end()) {//如果first里有epsilon，删掉之后并上原来的集合
-						newItemRef.predictiveItemSet.erase(findIt);
-						newItemRef.predictiveItemSet.insert(predictiveItemSet.cbegin(), predictiveItemSet.cend());
-					}
+				vector<int> nextSymbolsVec;
+				for (int i = position; i < producer.second.size(); ++i) {
+					nextSymbolsVec.push_back(producer.second[i]);
+				}
+				
+				first_string(newItemRef.predictiveItemSet, nextSymbolsVec);
+				if (newItemRef.predictiveItemSet.find(-1)!= newItemRef.predictiveItemSet.end()) {//有epsilon
+					newItemRef.predictiveItemSet.erase(-1);
+					newItemRef.predictiveItemSet.insert(predictiveItemSet.cbegin(), predictiveItemSet.cend());
 				}
 				lrStateSet.insert(newItemRef);
 			}

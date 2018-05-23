@@ -5,14 +5,16 @@ using std::map;
 
 
 extern map<int, set<int> > firstMap;
+extern int boundTInt, boundNInt;
+extern map<int, pair<int, int> > indexMap;
+extern ProducerVec producerVec;
+
+static set<int> first_symbol(int symbol);
 
 
 
-void first_operation(const int &boundTInt, const map<int, pair<int, int> > &indexMap, const ProducerVec &producerVec) {
-	//if (nextItem >boundTInt) {//·ÇÖÕ½á·û
-	//	auto index = indexMap.find(nextItem)->second;
-	//	for (int i = 0; i < index.second; ++i) {
-	//		first_operation(boundTInt, predictiveItemSet, index.first + i)
-	//	}
-	//}
+void first_operation() {
+	
 }
+
+

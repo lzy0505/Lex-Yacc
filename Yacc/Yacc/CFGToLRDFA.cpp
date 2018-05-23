@@ -4,20 +4,23 @@ using std::map;
 using std::stack;
 using std::queue;
 
-//TODO ：刘
-static void epsilon_clousure(const int &boundTInt, const ProducerVec &producerVec, const map<int, pair<int, int> > &indexMap, unordered_set<LRItem> &lrStateSet);
-static void subset_construct(const ProducerVec &producerVec, const map<int, pair<int, int> > &indexMap, const unordered_set<LRItem> &lrStateSet, map<int, unordered_set<LRItem> >& newStateMap);
+
+static void epsilon_clousure(unordered_set<LRItem> &lrStateSet);
+static void subset_construct(const unordered_set<LRItem> &lrStateSet, map<int, unordered_set<LRItem> >& newStateMap);
 
 extern map<int, set<int> > firstMap;
+extern int boundTInt, boundNInt;
+extern map<int, pair<int, int> > indexMap;
+extern ProducerVec producerVec;
 
-void cfg_to_lrdfa(const int boundTInt, const string &start, const ProducerVec &producerVec, const map<int, pair<int, int> > &indexMap, LRDFA & lrdfa) {
+void cfg_to_lrdfa(LRDFA & lrdfa) {
 	LRState I0;
 	LRItem initProducer;
 	int stateNumCounter = 0;
 	initProducer.predictiveItemSet.insert(-2);//-2 stands for $R
 	initProducer.gramarInt = producerVec.size() - 1;
 	I0.LRItemsSet.insert(initProducer);
-	epsilon_clousure(boundTInt, producerVec, indexMap, I0.LRItemsSet);
+	epsilon_clousure(I0.LRItemsSet);
 	I0.numberInt = stateNumCounter++;
 	lrdfa.statesVec.push_back(I0);
 	queue<int> unhandledStates;
@@ -26,9 +29,9 @@ void cfg_to_lrdfa(const int boundTInt, const string &start, const ProducerVec &p
 	while (!unhandledStates.empty()) {
 		int top = unhandledStates.front();
 		newStateMap.clear();
-		subset_construct(producerVec, indexMap, lrdfa.statesVec[top].LRItemsSet, newStateMap);
+		subset_construct(lrdfa.statesVec[top].LRItemsSet, newStateMap);
 		for (auto & p : newStateMap) {
-			epsilon_clousure(boundTInt,producerVec,indexMap,p.second);
+			epsilon_clousure(p.second);
 			int edgeToInt = -1;
 			// 检查是否存在相同的状态
 			for (const auto &s : lrdfa.statesVec) {
@@ -51,7 +54,8 @@ void cfg_to_lrdfa(const int boundTInt, const string &start, const ProducerVec &p
 	}
 }
 
-void epsilon_clousure(const int &boundTInt, const ProducerVec &producerVec, const map<int, pair<int, int> > &indexMap, unordered_set<LRItem> &lrStateSet) {
+void epsilon_clousure(unordered_set<LRItem> &lrStateSet) {
+	// TODO 优化
 	stack<LRItem> stack;
 	for (const auto &lrItem : lrStateSet) {//产生式先都入栈
 		stack.push(lrItem);
@@ -101,7 +105,7 @@ void epsilon_clousure(const int &boundTInt, const ProducerVec &producerVec, cons
 }
 
 
-void subset_construct(const ProducerVec &producerVec, const map<int, pair<int, int> > &indexMap, const unordered_set<LRItem> &lrStateSet, map<int, unordered_set<LRItem> >& newStateMap) {
+void subset_construct(const unordered_set<LRItem> &lrStateSet, map<int, unordered_set<LRItem> >& newStateMap) {
 	
 	pair<int, vector<int> > producer;
 	LRItem newItem;

@@ -7,8 +7,12 @@ using std::map;
 // char 0-255
 // tokens 256-n
 // ·ÇÖÕ½á·û n-m
-// Áõ
-void translate_expression(const string &startItemStr, const vector<string> &tokensVec, const ProducerVecStr & producerVecStr, int & boundTInt, int & boundNInt, int &startInt, ProducerVec &producerVec, map<int, pair<int, int> > &indexMap) {
+
+extern int boundTInt, boundNInt, startInt;
+extern ProducerVec producerVec;
+extern map<int, pair<int, int> > indexMap;
+
+void translate_expression(const string &startItemStr, const vector<string> &tokensVec, const ProducerVecStr & producerVecStr) {
 	int count = 256;
 	map<string, int> tokensMap;//<token,number>
 	for (const auto &token : tokensVec) {

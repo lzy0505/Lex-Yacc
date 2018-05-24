@@ -72,6 +72,7 @@ void epsilon_clousure(unordered_set<LRItem> &lrStateSet) {
 	pair<int, vector<int> > producer;
 	int position, symbol;
 	int predictiveSymbol;
+	unordered_set<int> predictiveSymbolSet;
 	while (!queue.empty()) {//栈不为空时
 		producer = producerVec[queue.front().gramarInt];//要处理的产生式
 		position = queue.front().positionInt;//要处理的符号的位置
@@ -96,7 +97,7 @@ void epsilon_clousure(unordered_set<LRItem> &lrStateSet) {
 				for (int i = position+1; i < producer.second.size(); ++i) {
 					nextSymbolsVec.push_back(producer.second[i]);
 				}
-				unordered_set<int> predictiveSymbolSet;
+				predictiveSymbolSet.clear();
 				first_string(predictiveSymbolSet, nextSymbolsVec);
 				if (predictiveSymbolSet.find(-1)!= predictiveSymbolSet.end()) {//有epsilon
 					predictiveSymbolSet.erase(-1);

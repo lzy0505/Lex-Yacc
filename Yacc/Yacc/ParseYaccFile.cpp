@@ -2,7 +2,7 @@
 #include"structs.h"
 using namespace std;
 
-int open_and_read_yacc_file(const string& fileName, vector<string> &tokensVec, vector<string>&left, string& start, ProducerVecStr &producerVecStr, vector<string>& funcVec){
+int open_and_read_yacc_file(const string& fileName, vector<string> &tokensVec, vector<unordered_set<string>>&left, string& start, ProducerVecStr &producerVecStr, vector<string>& funcVec){
 	ifstream in;
 	in.open(fileName, ios::in);
 	if (!in)
@@ -26,15 +26,20 @@ int open_and_read_yacc_file(const string& fileName, vector<string> &tokensVec, v
 
 	if (str == "%left")
 	{
+		unordered_set<string> newSet;
 		do
-		{
+		{	
 			if (str == "%left")
 			{
+				left.push_back(newSet);
+				newSet.clear();
 				in >> str;
 			}
-			left.push_back(str);
+			newSet.insert(str);
 			in >> str;
 		} while (str != "%start"&&str != "%%");
+		left.push_back(newSet);
+		left.erase(left.begin());
 	}
 	
 	if (str == "%start")

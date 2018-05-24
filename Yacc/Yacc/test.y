@@ -1,15 +1,25 @@
-%token c d
+%token i
 
-%start S
+%left '+' '*'
+
+%start E
 %%
 
-S
-    : C C
+E
+    : E '+' E
+    | E '*' E
+    | '(' E ')'
+    | i
     ;
 
-C
-    : c C
-    | d
+T
+    : T '*' F
+    | F
+    ;
+
+F
+    : '(' E ')'
+    | i
     ;
 
 %%

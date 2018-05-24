@@ -92,7 +92,6 @@ int open_and_read_yacc_file(const string& fileName, vector<string> &tokensVec, v
 			while (str.empty())
 			{
 				getline(in, str);
-
 			}
 			funcVec.push_back(str);
 

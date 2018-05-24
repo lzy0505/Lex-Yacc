@@ -11,10 +11,11 @@ using std::map;
 extern int boundTInt, boundNInt, startInt;
 extern ProducerVec producerVec;
 extern map<int, pair<int, int> > indexMap;
+map<string, int> tokensMap;//<token,number>
 
 void translate_expression(const string &startItemStr, const vector<string> &tokensVec, const ProducerVecStr & producerVecStr) {
 	int count = 256;
-	map<string, int> tokensMap;//<token,number>
+	
 	for (const auto &token : tokensVec) {
 		tokensMap.emplace(token, count++);
 	}
@@ -49,6 +50,7 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 		++counter;
 		
 	}
+	indexMap.try_emplace(preleftInt, pair<int, int>(producerVec.size() - counter, counter));
 
 	startInt = tokensMap[startItemStr];
 	producerVec.push_back(pair<int, vector<int> >(0, vector<int>({ startInt })));

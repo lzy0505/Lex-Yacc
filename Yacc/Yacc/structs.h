@@ -20,11 +20,11 @@ typedef vector<pair<int, vector<int> > > ProducerVec;//<×ó£¬ÓÒ>
 typedef struct LRItem {
 	int positionInt = 0;
 	int gramarInt = -1;
-	unordered_set<int> predictiveItemSet;
+	int predictiveSymbol;
 	inline bool operator==(const LRItem& rLRItem) const {
 		if (positionInt != rLRItem.positionInt) return false;
 		if (gramarInt != rLRItem.gramarInt) return false;
-		if (predictiveItemSet != rLRItem.predictiveItemSet) return false;
+		if (predictiveSymbol != rLRItem.predictiveSymbol) return false;
 		else return true;
 	}
 }LRItem;

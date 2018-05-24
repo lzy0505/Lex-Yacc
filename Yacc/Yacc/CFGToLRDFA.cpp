@@ -3,6 +3,7 @@
 using std::map;
 using std::stack;
 using std::queue;
+using std::cout;
 
 
 static void epsilon_clousure(unordered_set<LRItem> &lrStateSet);
@@ -10,16 +11,17 @@ static void subset_construct(const unordered_set<LRItem> &lrStateSet, map<int, u
 
 void first_string(unordered_set<int>& inputSet, const vector<int>& symbols);
 
-extern map<int, unordered_set<int> > firstMap;
 extern int boundTInt, boundNInt;
 extern map<int, pair<int, int> > indexMap;
 extern ProducerVec producerVec;
+extern ProducerVecStr producerVecStr;
+extern map<string, int> tokensMap;
 
 void cfg_to_lrdfa(LRDFA & lrdfa) {
 	LRState I0;
 	LRItem initProducer;
 	int stateNumCounter = 0;
-	initProducer.predictiveItemSet.insert(-2);//-2 stands for $R
+	initProducer.predictiveSymbol=-2;//-2 stands for $R
 	initProducer.gramarInt = producerVec.size() - 1;
 	I0.LRItemsSet.insert(initProducer);
 	epsilon_clousure(I0.LRItemsSet);
@@ -29,9 +31,13 @@ void cfg_to_lrdfa(LRDFA & lrdfa) {
 	unhandledStates.push(0);
 	map<int, unordered_set<LRItem> > newStateMap;
 	while (!unhandledStates.empty()) {
+		cout << "remain"<< unhandledStates .size()<<"\n";
 		int top = unhandledStates.front();
+		unhandledStates.pop();
 		newStateMap.clear();
+		cout << "SUBSET\n";
 		subset_construct(lrdfa.statesVec[top].LRItemsSet, newStateMap);
+		cout << "EPSILON\n";
 		for (auto & p : newStateMap) {
 			epsilon_clousure(p.second);
 			int edgeToInt = -1;
@@ -44,6 +50,7 @@ void cfg_to_lrdfa(LRDFA & lrdfa) {
 			}
 			if (edgeToInt == -1)//不存在要新建状态了
 			{
+				cout << "NEW STATE: "<<stateNumCounter << "\n";
 				LRState newState;
 				lrdfa.statesVec.push_back(newState);
 				edgeToInt = stateNumCounter;
@@ -58,46 +65,54 @@ void cfg_to_lrdfa(LRDFA & lrdfa) {
 
 void epsilon_clousure(unordered_set<LRItem> &lrStateSet) {
 	// TODO 优化
-	stack<LRItem> stack;
+	queue<LRItem> queue;
 	for (const auto &lrItem : lrStateSet) {//产生式先都入栈
-		stack.push(lrItem);
+		queue.push(lrItem);
 	}
 	pair<int, vector<int> > producer;
-	int position, item;
-	unordered_set<int> predictiveItemSet;
-	while (!stack.empty()) {//栈不为空时
-		producer = producerVec[stack.top().gramarInt];
-		position = stack.top().positionInt;
+	int position, symbol;
+	int predictiveSymbol;
+	while (!queue.empty()) {//栈不为空时
+		producer = producerVec[queue.front().gramarInt];//要处理的产生式
+		position = queue.front().positionInt;//要处理的符号的位置
 		if (producer.second.size() == position) {//点在末尾，处理下一个产生式
-			stack.pop();
+			queue.pop();
 			continue;
 		}else {
-			item = producer.second[position];
-			if (item <= boundTInt) {//是终结符，没有闭包，处理下一个
-				stack.pop();
+			symbol = producer.second[position];//要处理的符号
+			if (symbol <= boundTInt) {//是终结符，没有闭包，处理下一个
+				queue.pop();
 				continue;
 			}
 			//先找到所有对应的产生式
-			auto index = indexMap.find(item)->second;
-			predictiveItemSet = stack.top().predictiveItemSet;
-			stack.pop();
+			auto index = indexMap.find(symbol)->second;
+			predictiveSymbol = queue.front().predictiveSymbol;
+			queue.pop();
 			for (int i = 0; i < index.second; ++i) {//对于所有产生式，新建LRItem
 				LRItem newItem;
-				stack.push(newItem);
-				auto &newItemRef = stack.top();
-				newItemRef.gramarInt = index.first + i;
+				newItem.gramarInt = index.first + i;
 				//求预测符
 				vector<int> nextSymbolsVec;
-				for (int i = position; i < producer.second.size(); ++i) {
+				for (int i = position+1; i < producer.second.size(); ++i) {
 					nextSymbolsVec.push_back(producer.second[i]);
 				}
-				
-				first_string(newItemRef.predictiveItemSet, nextSymbolsVec);
-				if (newItemRef.predictiveItemSet.find(-1)!= newItemRef.predictiveItemSet.end()) {//有epsilon
-					newItemRef.predictiveItemSet.erase(-1);
-					newItemRef.predictiveItemSet.insert(predictiveItemSet.cbegin(), predictiveItemSet.cend());
+				unordered_set<int> predictiveSymbolSet;
+				first_string(predictiveSymbolSet, nextSymbolsVec);
+				if (predictiveSymbolSet.find(-1)!= predictiveSymbolSet.end()) {//有epsilon
+					predictiveSymbolSet.erase(-1);
+					predictiveSymbolSet.insert(predictiveSymbol);
 				}
-				lrStateSet.insert(newItemRef);
+				for (const auto & p : predictiveSymbolSet) {//对于first中的每一个预测符
+					//TODO 一样的产生式没有合并
+					newItem.predictiveSymbol = p;
+					auto findIt = lrStateSet.find(newItem);
+					if (findIt != lrStateSet.end()) {//存在一样的了， 就不再处理
+						continue;
+					}
+					queue.push(newItem);
+					lrStateSet.insert(newItem);
+				}
+
 			}
 		}
 	}

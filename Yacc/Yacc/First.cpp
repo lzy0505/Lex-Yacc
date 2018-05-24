@@ -83,6 +83,10 @@ void first_operation() {
 
 void first_string(unordered_set<int>& inputSet, const vector<int>& symbolsVec) {
 	int i = 1;
+	if (symbolsVec.size() == 0) {
+		inputSet.insert(-1);
+		return;
+	}
 	while (i <= symbolsVec.size()) {//不是最后一项，且其中有epsilon
 		auto & tempRef = firstMap[symbolsVec[i - 1]];
 		if (tempRef.find(-1) == tempRef.end()) {

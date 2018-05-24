@@ -18,8 +18,8 @@ typedef vector<pair<int, vector<int> > > ProducerVec;//<左，右>
 //typedef multimap<int, vector<int> > ProducerMuiltiMap;//便于查找<左非终结符<产生式编号，右>>
 
 typedef struct LRItem {
-	int positionInt = 0;
-	int gramarInt = -1;
+	int positionInt = 0;//点的位置
+	int gramarInt = -1;//产生式编号
 	set<int> predictiveItemSet;
 	inline bool operator==(const LRItem& rLRItem) const {
 		if (positionInt != rLRItem.positionInt) return false;
@@ -30,7 +30,6 @@ typedef struct LRItem {
 }LRItem;
 
 namespace std {
-
 	template<>
 	struct hash<LRItem> {
 		inline size_t operator()(const LRItem& s) const {
@@ -38,8 +37,6 @@ namespace std {
 		}
 	};
 }
-
-
 typedef struct {
 	int numberInt = -1;//状态号
 	unordered_map<int, int> edgesMap;//<终结符，状态号>

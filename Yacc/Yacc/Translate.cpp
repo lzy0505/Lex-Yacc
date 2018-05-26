@@ -7,10 +7,16 @@ using std::map;
 // char 0-255
 // tokens 256-n
 // ·ÇÖÕ½á·û n-m
-// Áõ
-void translate_expression(const string &startItemStr, const vector<string> &tokensVec, const ProducerVecStr & producerVecStr, int & boundTInt, int & boundNInt, int &startInt, ProducerVec &producerVec, map<int, pair<int, int> > &indexMap) {
+
+extern int boundTInt, boundNInt, startInt;
+extern ProducerVec producerVec;
+extern map<int, pair<int, int> > indexMap;
+extern vector<unordered_set<int> > precedenceRulesVec;
+map<string, int> tokensMap;//<token,number>
+
+void translate_expression(const string &startItemStr, const vector<string> &tokensVec, const ProducerVecStr & producerVecStr,  const vector<unordered_set<string>>&left) {
 	int count = 256;
-	map<string, int> tokensMap;//<token,number>
+	
 	for (const auto &token : tokensVec) {
 		tokensMap.emplace(token, count++);
 	}
@@ -20,6 +26,19 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 		if (result.second)++count;
 	}
 	boundNInt = count - 1;
+
+	for (const auto & s : left) {
+		unordered_set<int> newSet;
+		for (const auto & e : s) {
+			if (e[0] == '\'' && e[2] == '\'') {
+				newSet.insert((int)e[1]);
+			}
+			else {
+				newSet.insert(tokensMap[e]);
+			}
+		}
+		precedenceRulesVec.push_back(newSet);
+	}
 
 	vector<int > tempRightVec;
 	int preleftInt = boundTInt + 1, counter = 0, temp;
@@ -45,6 +64,7 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 		++counter;
 		
 	}
+	indexMap.try_emplace(preleftInt, pair<int, int>(producerVec.size() - counter, counter));
 
 	startInt = tokensMap[startItemStr];
 	producerVec.push_back(pair<int, vector<int> >(0, vector<int>({ startInt })));

@@ -1,14 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include"stdio.h"
 #include"stdlib.h"
+#include<string.h>
 #include <stdio.h>
-#include "y.tab.h"
-void count(void);
 int yywrap(void)
 {
 	return 1;
 }
 char* getCharPtr(char* fileName);
-int findAction(int action);
+void findAction(int action);
+void addToken(char* token);
+void getTokens(unsigned num,char** _tokens);
+unsigned tokenNum=0;
+unsigned arraySize=0;
+char** tokens = NULL;
 int main(int argc,char** argv)
 {
 register int yy_current_state = 0;
@@ -14678,7 +14683,6 @@ yy_current_state=yy_last_accepting_state;
 yy_cp=yy_last_accepting_cpos;
 yy_act=yy_accept[yy_current_state];
 findAction(yy_act);
-printf("  ");
 yy_current_state=0;
 yy_last_accepting_state=-1;
 ++yy_cp;
@@ -14703,2326 +14707,2331 @@ findAction(yy_act);
 else{
 printf("ERROR DETECTED IN INPUT FILE !");
 }
+for (int i = 0; i < tokenNum; i++)
+{
+	printf("%s  ", tokens[i]);
+}
+
 system("pause");
 }
-int findAction(int action)
+void findAction(int action)
 {
 switch (action) 
 {
 case 0:
 break;
 case 1:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 2:
- printf("AUTO");
+ addToken("AUTO");
 break;
 case 3:
-printf("DOT");
+addToken("DOT");
 break;
 case 4:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 5:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 6:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 7:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 8:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 9:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 10:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 11:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 12:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 13:
- printf("RIGHT_ASSIGN");
+ addToken("RIGHT_ASSIGN");
 break;
 case 14:
- printf("VOLATILE");
+ addToken("VOLATILE");
 break;
 case 15:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 16:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 17:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 18:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 19:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 20:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 21:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 22:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 23:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 24:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 25:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 26:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 27:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 28:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 29:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 30:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 31:
- printf("DEC_OP");
+ addToken("DEC_OP");
 break;
 case 32:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 33:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 34:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 35:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 36:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 37:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 38:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 39:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 40:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 41:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 42:
- printf("INC_OP");
+ addToken("INC_OP");
 break;
 case 43:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 44:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 45:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 46:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 47:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 48:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 49:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 50:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 51:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 52:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 53:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 54:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 55:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 56:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 57:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 58:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 59:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 60:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 61:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 62:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 63:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 64:
- printf("DIV_ASSIGN");
+ addToken("DIV_ASSIGN");
 break;
 case 65:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 66:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 67:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 68:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 69:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 70:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 71:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 72:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 73:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 74:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 75:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 76:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 77:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 78:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 79:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 80:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 81:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 82:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 83:
- printf("RIGHT_OP");
+ addToken("RIGHT_OP");
 break;
 case 84:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 85:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 86:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 87:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 88:
- printf("{");
+ addToken("{");
 break;
 case 89:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 90:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 91:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 92:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 93:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 94:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 95:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 96:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 97:
- printf("EQ_OP");
+ addToken("EQ_OP");
 break;
 case 98:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 99:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 100:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 101:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 102:
- printf("AND_OP");
+ addToken("AND_OP");
 break;
 case 103:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 104:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 105:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 106:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 107:
- printf("OR_ASSIGN");
+ addToken("OR_ASSIGN");
 break;
 case 108:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 109:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 110:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 111:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 112:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 113:
- printf("LEFT_OP");
+ addToken("LEFT_OP");
 break;
 case 114:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 115:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 116:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 117:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 118:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 119:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 120:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 121:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 122:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 123:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 124:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 125:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 126:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 127:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 128:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 129:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 130:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 131:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 132:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 133:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 134:
- printf("RESTRICT");
+ addToken("RESTRICT");
 break;
 case 135:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 136:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 137:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 138:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 139:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 140:
- printf("CASE");
+ addToken("CASE");
 break;
 case 141:
- printf("!");
+ addToken("!");
 break;
 case 142:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 143:
-printf("DOT");
+addToken("DOT");
 break;
 case 144:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 145:
- printf("%%");
+ addToken("%%");
 break;
 case 146:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 147:
-printf("DOT");
+addToken("DOT");
 break;
 case 148:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 149:
- printf("(");
+ addToken("(");
 break;
 case 150:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 151:
- printf(")");
+ addToken(")");
 break;
 case 152:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 153:
- printf("*");
+ addToken("*");
 break;
 case 154:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 155:
- printf("+");
+ addToken("+");
 break;
 case 156:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 157:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 158:
- printf(",");
+ addToken(",");
 break;
 case 159:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 160:
- printf("-");
+ addToken("-");
 break;
 case 161:
- printf("CONST");
+ addToken("CONST");
 break;
 case 162:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 163:
- printf(".");
+ addToken(".");
 break;
 case 164:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 165:
- printf("/");
+ addToken("/");
 break;
 case 166:
- printf("FOR");
+ addToken("FOR");
 break;
 case 167:
- printf(":");
+ addToken(":");
 break;
 case 168:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 169:
-printf(";");
+addToken(";");
 break;
 case 170:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 171:
-printf("<");
+addToken("<");
 break;
 case 172:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 173:
- printf("=");
+ addToken("=");
 break;
 case 174:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 175:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 176:
- printf(">");
+ addToken(">");
 break;
 case 177:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 178:
- printf("?");
+ addToken("?");
 break;
 case 179:
- printf("ELSE");
+ addToken("ELSE");
 break;
 case 180:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 181:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 182:
- printf("[");
+ addToken("[");
 break;
 case 183:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 184:
-printf("DOT");
+addToken("DOT");
 break;
 case 185:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 186:
- printf("]");
+ addToken("]");
 break;
 case 187:
- printf("^");
+ addToken("^");
 break;
 case 188:
- printf("GOTO");
+ addToken("GOTO");
 break;
 case 189:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 190:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 191:
- printf("{");
+ addToken("{");
 break;
 case 192:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 193:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 194:
- printf("INLINE");
+ addToken("INLINE");
 break;
 case 195:
- printf("|");
+ addToken("|");
 break;
 case 196:
- printf("}");
+ addToken("}");
 break;
 case 197:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 198:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 199:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 200:
-printf("SPACE");
+addToken("SPACE");
 break;
 case 201:
-printf("SPACE");
+addToken("SPACE");
 break;
 case 202:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 203:
-printf("SPACE");
+addToken("SPACE");
 break;
 case 204:
-printf("SPACE");
+addToken("SPACE");
 break;
 case 205:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 206:
-printf("SPACE");
+addToken("SPACE");
 break;
 case 207:
- printf("FLOAT");
+ addToken("FLOAT");
 break;
 case 208:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 209:
- printf("SWITCH");
+ addToken("SWITCH");
 break;
 case 210:
- printf("~");
+ addToken("~");
 break;
 case 211:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 212:
- printf("&");
+ addToken("&");
 break;
 case 213:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 214:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 215:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 216:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 217:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 218:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 219:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 220:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 221:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 222:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 223:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 224:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 225:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 226:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 227:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 228:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 229:
- printf("IMAGINARY");
+ addToken("IMAGINARY");
 break;
 case 230:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 231:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 232:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 233:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 234:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 235:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 236:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 237:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 238:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 239:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 240:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 241:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 242:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 243:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 244:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 245:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 246:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 247:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 248:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 249:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 250:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 251:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 252:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 253:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 254:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 255:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 256:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 257:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 258:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 259:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 260:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 261:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 262:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 263:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 264:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 265:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 266:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 267:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 268:
- printf("LONG");
+ addToken("LONG");
 break;
 case 269:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 270:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 271:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 272:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 273:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 274:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 275:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 276:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 277:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 278:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 279:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 280:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 281:
- printf("SIGNED");
+ addToken("SIGNED");
 break;
 case 282:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 283:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 284:
- printf("DOUBLE");
+ addToken("DOUBLE");
 break;
 case 285:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 286:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 287:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 288:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 289:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 290:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 291:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 292:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 293:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 294:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 295:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 296:
- printf("STATIC");
+ addToken("STATIC");
 break;
 case 297:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 298:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 299:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 300:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 301:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 302:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 303:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 304:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 305:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 306:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 307:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 308:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 309:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 310:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 311:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 312:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 313:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 314:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 315:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 316:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 317:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 318:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 319:
- printf("STRING_LITERAL");
+ addToken("STRING_LITERAL");
 break;
 case 320:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 321:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 322:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 323:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 324:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 325:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 326:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 327:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 328:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 329:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 330:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 331:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 332:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 333:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 334:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 335:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 336:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 337:
- printf("DO");
+ addToken("DO");
 break;
 case 338:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 339:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 340:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 341:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 342:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 343:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 344:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 345:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 346:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 347:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 348:
- printf("IF");
+ addToken("IF");
 break;
 case 349:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 350:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 351:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 352:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 353:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 354:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 355:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 356:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 357:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 358:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 359:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 360:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 361:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 362:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 363:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 364:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 365:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 366:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 367:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 368:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 369:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 370:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 371:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 372:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 373:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 374:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 375:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 376:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 377:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 378:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 379:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 380:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 381:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 382:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 383:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 384:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 385:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 386:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 387:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 388:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 389:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 390:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 391:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 392:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 393:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 394:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 395:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 396:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 397:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 398:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 399:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 400:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 401:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 402:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 403:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 404:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 405:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 406:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 407:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 408:
- printf("REGISTER");
+ addToken("REGISTER");
 break;
 case 409:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 410:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 411:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 412:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 413:
- printf("NE_OP");
+ addToken("NE_OP");
 break;
 case 414:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 415:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 416:
- printf("MOD_ASSIGN");
+ addToken("MOD_ASSIGN");
 break;
 case 417:
- printf("}");
+ addToken("}");
 break;
 case 418:
- printf("MUL_ASSIGN");
+ addToken("MUL_ASSIGN");
 break;
 case 419:
- printf("ADD_ASSIGN");
+ addToken("ADD_ASSIGN");
 break;
 case 420:
- printf("SUB_ASSIGN");
+ addToken("SUB_ASSIGN");
 break;
 case 421:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 422:
- printf("PTR_OP");
+ addToken("PTR_OP");
 break;
 case 423:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 424:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 425:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 426:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 427:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 428:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 429:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 430:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 431:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 432:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 433:
- printf("]");
+ addToken("]");
 break;
 case 434:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 435:
- printf("[");
+ addToken("[");
 break;
 case 436:
- printf("LE_OP");
+ addToken("LE_OP");
 break;
 case 437:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 438:
- printf("GE_OP");
+ addToken("GE_OP");
 break;
 case 439:
- printf("XOR_ASSIGN");
+ addToken("XOR_ASSIGN");
 break;
 case 440:
- printf("OR_OP");
+ addToken("OR_OP");
 break;
 case 441:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 442:
- printf("AND_ASSIGN");
+ addToken("AND_ASSIGN");
 break;
 case 443:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 444:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 445:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 446:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 447:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 448:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 449:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 450:
- printf("INT");
+ addToken("INT");
 break;
 case 451:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 452:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 453:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 454:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 455:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 456:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 457:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 458:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 459:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 460:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 461:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 462:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 463:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 464:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 465:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 466:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 467:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 468:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 469:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 470:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 471:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 472:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 473:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 474:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 475:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 476:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 477:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 478:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 479:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 480:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 481:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 482:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 483:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 484:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 485:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 486:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 487:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 488:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 489:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 490:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 491:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 492:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 493:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 494:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 495:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 496:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 497:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 498:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 499:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 500:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 501:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 502:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 503:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 504:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 505:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 506:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 507:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 508:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 509:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 510:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 511:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 512:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 513:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 514:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 515:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 516:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 517:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 518:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 519:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 520:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 521:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 522:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 523:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 524:
- printf("ELLIPSIS");
+ addToken("ELLIPSIS");
 break;
 case 525:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 526:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 527:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 528:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 529:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 530:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 531:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 532:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 533:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 534:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 535:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 536:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 537:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 538:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 539:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 540:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 541:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 542:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 543:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 544:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 545:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 546:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 547:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 548:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 549:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 550:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 551:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 552:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 553:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 554:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 555:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 556:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 557:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 558:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 559:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 560:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 561:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 562:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 563:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 564:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 565:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 566:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 567:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 568:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 569:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 570:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 571:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 572:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 573:
-printf("below are comments");
+addToken("below are comments");
 break;
 case 574:
- printf("LEFT_ASSIGN");
+ addToken("LEFT_ASSIGN");
 break;
 case 575:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 576:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 577:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 578:
- printf("CHAR");
+ addToken("CHAR");
 break;
 case 579:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 580:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 581:
- printf("ENUM");
+ addToken("ENUM");
 break;
 case 582:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 583:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 584:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 585:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 586:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 587:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 588:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 589:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 590:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 591:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 592:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 593:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 594:
- printf("VOID");
+ addToken("VOID");
 break;
 case 595:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 596:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 597:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 598:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 599:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 600:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 601:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 602:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 603:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 604:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 605:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 606:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 607:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 608:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 609:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 610:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 611:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 612:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 613:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 614:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 615:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 616:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 617:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 618:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 619:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 620:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 621:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 622:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 623:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 624:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 625:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 626:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 627:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 628:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 629:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 630:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 631:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 632:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 633:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 634:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 635:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 636:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 637:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 638:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 639:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 640:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 641:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 642:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 643:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 644:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 645:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 646:
-printf("BREAK");
+addToken("BREAK");
 break;
 case 647:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 648:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 649:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 650:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 651:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 652:
- printf("SHORT");
+ addToken("SHORT");
 break;
 case 653:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 654:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 655:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 656:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 657:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 658:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 659:
- printf("UNION");
+ addToken("UNION");
 break;
 case 660:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 661:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 662:
- printf("WHILE");
+ addToken("WHILE");
 break;
 case 663:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 664:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 665:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 666:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 667:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 668:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 669:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 670:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 671:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 672:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 673:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 674:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 675:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 676:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 677:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 678:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 679:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 680:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 681:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 682:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 683:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 684:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 685:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 686:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 687:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 688:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 689:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 690:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 691:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 692:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 693:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 694:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 695:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 696:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 697:
- printf("BOOL");
+ addToken("BOOL");
 break;
 case 698:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 699:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 700:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 701:
- printf("EXTERN");
+ addToken("EXTERN");
 break;
 case 702:
- printf("RETURN");
+ addToken("RETURN");
 break;
 case 703:
- printf("SIZEOF");
+ addToken("SIZEOF");
 break;
 case 704:
- printf("STRUCT");
+ addToken("STRUCT");
 break;
 case 705:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 706:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 707:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 708:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 709:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 710:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 711:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 712:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 713:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 714:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 715:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 716:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 717:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 718:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 719:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 720:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 721:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 722:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 723:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 724:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 725:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 726:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 727:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 728:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 729:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 730:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 731:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 732:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 733:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 734:
- printf("DEFAULT");
+ addToken("DEFAULT");
 break;
 case 735:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 736:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 737:
- printf("TYPEDEF");
+ addToken("TYPEDEF");
 break;
 case 738:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 739:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 740:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 741:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 742:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 743:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 744:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 745:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 746:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 747:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 748:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 749:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 750:
-printf("CONSTANT");
+addToken("CONSTANT");
 break;
 case 751:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 752:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 753:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 754:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 755:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 756:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 757:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 758:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 case 759:
- printf("CONTINUE");
+ addToken("CONTINUE");
 break;
 case 760:
- printf("UNSIGNED");
+ addToken("UNSIGNED");
 break;
 case 761:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 762:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 763:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 764:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 765:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 766:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 767:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 768:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 769:
- printf("CONSTANT");
+ addToken("CONSTANT");
 break;
 case 770:
- printf("COMPLEX");
+ addToken("COMPLEX");
 break;
 case 771:
- printf("IDENTIFIER");
+ addToken("IDENTIFIER");
 break;
 default:
 break;
@@ -17035,7 +17044,6 @@ fp=fopen(fileName,"r");
 if(fp==NULL)
 {
 printf("can't open file");
-getch();
 exit(0);
 }
 fseek(fp,0,SEEK_END);
@@ -17051,4 +17059,21 @@ memset(cp,0,flen+1);
 fread(cp, sizeof(char), flen, fp);
 cp[flen] = 0; 
 return cp;
+}
+void addToken(char *token){
+if(tokenNum>=arraySize)
+{
+tokens=(char**)realloc(tokens,sizeof(char*)*(arraySize+100));
+for(unsigned i=arraySize;i<arraySize+100;i++)
+{
+tokens[i]=(char*)malloc(sizeof(char)*30);
+}
+arraySize=arraySize+100;
+}
+memcpy(tokens[tokenNum],token,30);
+++tokenNum;
+}
+void getTokens(unsigned num,char** _tokens){
+num=tokenNum;
+_tokens=tokens;
 }

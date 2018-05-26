@@ -1,6 +1,13 @@
-int main(){
-	if(3!=2)
+int main(int argn,char** argv){
+int i=argv[1];
+switch(i)
 {
-	printf("helloWorld");
-	return 0;
+case 0:
+printf("ZERO");break;
+case 1:
+printf("ONE");break;
+default:
+printf("DEFAULT");break;
+}
+return 0;
 }

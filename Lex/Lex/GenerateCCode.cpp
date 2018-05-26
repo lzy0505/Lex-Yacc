@@ -24,6 +24,7 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "#define _CRT_SECURE_NO_WARNINGS" << endl; 
 	out << "#include\"stdio.h\"" << endl;
 	out << "#include\"stdlib.h\"" << endl;
+	out << "#include<string.h>" << endl;
 	/*依次输出P1和P4*/
 	for (int i = 0; i < part1.size(); i++)
 	{
@@ -35,8 +36,12 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	}
 
 	out << "char* getCharPtr(char* fileName);" << endl;
-	out << "int findAction(int action);" << endl; /*函数声明*/
-
+	out << "void findAction(int action);" << endl; /*函数声明*/
+	out << "void addToken(char* token);" << endl; /*将token加入Token序列*/
+	out << "void getTokens(unsigned num,char** _tokens);" << endl; /*得到Token序列*/
+	out << "unsigned tokenNum=0;" << endl; /*已存储的Token个数*/
+	out << "unsigned arraySize=0;" << endl; /*存储数组tokens的大小*/
+	out << "char** tokens = NULL;" << endl;
 	out << "int main(int argc,char** argv)" << endl;
 	out << "{" << endl;
 
@@ -46,6 +51,8 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "register char *yy_cp = NULL;" << endl;
 	out << "register char *yy_last_accepting_cpos = NULL;" << endl;
 	out << "register int yy_act = 0;" << endl;
+	
+
 
 	/*调用char* getCharPtr(char* fileName)得到文件字符指针*/
 	out << "yy_cp=getCharPtr(argv[1]);" << endl;
@@ -79,7 +86,6 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "yy_cp=yy_last_accepting_cpos;" << endl;
 	out << "yy_act=yy_accept[yy_current_state];" << endl;
 	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
-	out << "printf(\"  \");" << endl;
 	out << "yy_current_state=0;" << endl; /*将状态置为0*/
 	out << "yy_last_accepting_state=-1;" << endl;
 	out << "++yy_cp;" << endl;
@@ -109,8 +115,8 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "}" << endl;/*mian函数结束*/
   
 
-	/*int findAction(int action)函数*/
-	out << "int findAction(int action)" << endl;
+	/*void findAction(int action)函数*/
+	out << "void findAction(int action)" << endl;
 	out << "{" << endl;
 	out << "switch (action) " << endl;/*根据endVec打印switch语句*/
 	out << "{" << endl;
@@ -139,7 +145,6 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "if(fp==NULL)" << endl;
 	out << "{" << endl;
 	out << "printf(\"can't open file\");" << endl;
-	out << "_getch();" << endl;
 	out << "exit(0);" << endl;
 	out << "}" << endl;
 	out << "fseek(fp,0,SEEK_END);" << endl;
@@ -155,6 +160,24 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "fread(cp, sizeof(char), flen, fp);" << endl; /* 一次性读取全部文件内容 */
 	out << "cp[flen] = 0; " << endl;/* 字符串结束标志 */
 	out << "return cp;" << endl;
+	out << "}" << endl;
+	out << "void addToken(char *token){" << endl; 
+	out << "if(tokenNum>=arraySize)" << endl;/*当数组空间不够时*/
+	out << "{" << endl;
+	out << "tokens=(char**)realloc(tokens,sizeof(char*)*(arraySize+100));" << endl;
+	out << "for(unsigned i=arraySize;i<arraySize+100;i++)" << endl;
+	out << "{" << endl;
+	out << "tokens[i]=(char*)malloc(sizeof(char)*30);" << endl;
+	out << "}" << endl;
+	out << "arraySize=arraySize+100;" << endl;
+	out << "}" << endl;
+	out << "memcpy(tokens[tokenNum],token,30);" << endl;
+	out << "++tokenNum;" << endl;
+	out << "}" << endl;
+	/*getTokens()函数用于Yacc得到Token序列*/
+	out << "void getTokens(unsigned num,char** _tokens){" << endl; /*得到Token序列*/
+	out << "num=tokenNum;" << endl;
+	out << "_tokens=tokens;" << endl;
 	out << "}" << endl;
 	out.close();
 	return 0;

@@ -13,13 +13,26 @@ extern ProducerVec producerVec;
 extern map<int, pair<int, int> > indexMap;
 extern vector<unordered_set<int> > precedenceRulesVec;
 map<string, int> tokensMap;//<token,number>
+map<int, int> charsMap;
 
 void translate_expression(const string &startItemStr, const vector<string> &tokensVec, const ProducerVecStr & producerVecStr,  const vector<unordered_set<string>>&left) {
-	int count = 256;
+	int count = 0;
 	
 	for (const auto &token : tokensVec) {
 		tokensMap.emplace(token, count++);
 	}
+
+	for (const auto &producer : producerVecStr) {
+		//翻译字符
+		for (const auto & item : producer.second) {
+			if (item[0] == '\'' && item[2] == '\'') {
+				if (tokensMap.find(item) != tokensMap.end()) continue;
+				charsMap.emplace(item[1], count);
+				tokensMap.emplace(item, count++);
+			}
+		}
+	}
+
 	boundTInt = count - 1;
 	for (const auto &producer : producerVecStr) {
 		auto result = tokensMap.try_emplace(producer.first, count);
@@ -30,15 +43,12 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 	for (const auto & s : left) {
 		unordered_set<int> newSet;
 		for (const auto & e : s) {
-			if (e[0] == '\'' && e[2] == '\'') {
-				newSet.insert((int)e[1]);
-			}
-			else {
-				newSet.insert(tokensMap[e]);
-			}
+			newSet.insert(tokensMap[e]);
 		}
 		precedenceRulesVec.push_back(newSet);
 	}
+
+
 
 	vector<int > tempRightVec;
 	int preleftInt = boundTInt + 1, counter = 0, temp;
@@ -46,12 +56,7 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 		tempRightVec.clear();
 		//翻译右部产生式
 		for (const auto & item : producer.second) {
-			if (item[0] == '\'' && item[2] == '\'') {
-				tempRightVec.push_back((int)item[1]);
-			}
-			else {
-				tempRightVec.push_back(tokensMap[item]);
-			}
+			tempRightVec.push_back(tokensMap[item]);
 		}
 		//翻译左部产生式并存入
 		temp = tokensMap[producer.first];

@@ -8,6 +8,8 @@ using std::endl;
 using std::pair;
 
 
+extern vector<Rules> rules;
+
 void dfa_to_array(const DFA& dfa,vector<pair<int*,int> >& arrays, vector<Rules>& endVec) {
 
 	string allset(ALLSET);
@@ -56,7 +58,7 @@ void dfa_to_array(const DFA& dfa,vector<pair<int*,int> >& arrays, vector<Rules>&
 	int numOfend = 0;
 	for (auto it = dfa.endStatesMap.begin(); it != dfa.endStatesMap.end(); ++it) {
 		accept[it->first] = numOfend+1;
-		endVec.push_back(it->second);
+		endVec.push_back(rules[it->second]);
 		++numOfend;
 	}
 

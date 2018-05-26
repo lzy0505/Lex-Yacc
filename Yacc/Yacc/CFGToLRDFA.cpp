@@ -141,5 +141,4 @@ void subset_construct(const unordered_set<LRItem> &lrStateSet, map<int, unordere
 			findIt->second.insert(newItem);
 		}
 	}
-
 }

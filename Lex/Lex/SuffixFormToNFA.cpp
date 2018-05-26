@@ -20,10 +20,9 @@ int number = 0;
 //将后缀表达式转化为NFA
 void suffix_to_nfa(vector<Rules>& suffixRules,NFA& finalNfa) {
 	stack<NFA> nfaStack;//用于构建NFA的工具栈,也是
-	for (auto &rule : suffixRules) {
-		string pattern = rule.pattern; //已经后缀化后的pattern
-		/*cout <<"NFA pattern:" <<pattern<<endl;*/
-		Rules tempActionVec;//临时终态动作数组
+	for (int i = 0; i < suffixRules.size();++i) {
+		string pattern = suffixRules[i].pattern; //已经后缀化后的pattern
+		int tempActionInt = -1;//临时终态动作数组
 		for (auto it = pattern.cbegin() ; it != pattern.cend(); ++it)
 		{
 			NFA upNFA,downNFA;
@@ -57,7 +56,7 @@ void suffix_to_nfa(vector<Rules>& suffixRules,NFA& finalNfa) {
 				downNFA.startState = start.number;
 				//修改downNFA的终态
 				downNFA.endStatesMap.clear();
-				downNFA.endStatesMap.insert(pair<int, Rules>(end.number, tempActionVec));			
+				downNFA.endStatesMap.insert(pair<int, int>(end.number, tempActionInt));
 				nfaStack.push(downNFA);		
 				break;
 			case'*':
@@ -85,7 +84,7 @@ void suffix_to_nfa(vector<Rules>& suffixRules,NFA& finalNfa) {
 				upNFA.statesMap.insert(pair<int, NFAstate>(end.number, end));
 				//更改终态
 				upNFA.endStatesMap.clear();
-				upNFA.endStatesMap.insert(pair<int, Rules >(end.number,tempActionVec));
+				upNFA.endStatesMap.insert(pair<int, int >(end.number, tempActionInt));
 				nfaStack.push(upNFA);
 				break;
 			case'.':
@@ -126,14 +125,14 @@ void suffix_to_nfa(vector<Rules>& suffixRules,NFA& finalNfa) {
 				pushNFA.statesMap.insert(pair<int, NFAstate>(start.number, start));
 				pushNFA.statesMap.insert(pair<int, NFAstate>(end.number, end));
 				//标识当前终态，因此先传入空vector。
-				pushNFA.endStatesMap.insert(pair<int, Rules>(end.number, tempActionVec));
+				pushNFA.endStatesMap.insert(pair<int, int>(end.number, tempActionInt));
 				//压栈
 				nfaStack.push(pushNFA);
 				break;
 			}	
 		}
 		//将action赋给栈顶的NFA的终态
-		nfaStack.top().endStatesMap.begin()->second = rule;
+		nfaStack.top().endStatesMap.begin()->second = i;
 	}
 	//现在得到了装着所有NFA的nfaStack,合并为一个大的NFA。
 	finalNfa = nfaStack.top();

@@ -13,25 +13,35 @@ extern ProducerVec producerVec;
 extern map<int, pair<int, int> > indexMap;
 extern vector<unordered_set<int> > precedenceRulesVec;
 map<string, int> tokensMap;//<token,number>
-map<int, int> charsMap;
+map<string, int> tokensDefineMap;//<token,number> ÓÃÓÚdefine
+map<int, int> intsMap;
+
+int defineCount = 256;
 
 void translate_expression(const string &startItemStr, const vector<string> &tokensVec, const ProducerVecStr & producerVecStr,  const vector<unordered_set<string>>&left) {
-	int count = 0;
 	
-	for (const auto &token : tokensVec) {
-		tokensMap.emplace(token, count++);
-	}
+
+	int count = 0;
 
 	for (const auto &producer : producerVecStr) {
 		//·­Òë×Ö·û
 		for (const auto & item : producer.second) {
 			if (item[0] == '\'' && item[2] == '\'') {
 				if (tokensMap.find(item) != tokensMap.end()) continue;
-				charsMap.emplace(item[1], count);
+				intsMap.emplace(item[1], count);
 				tokensMap.emplace(item, count++);
 			}
 		}
 	}
+
+
+	for (const auto &token : tokensVec) {
+		tokensDefineMap.emplace(token, defineCount);
+		intsMap.emplace(defineCount++, count);
+		tokensMap.emplace(token, count++);
+	}
+
+	
 
 	boundTInt = count - 1;
 	for (const auto &producer : producerVecStr) {

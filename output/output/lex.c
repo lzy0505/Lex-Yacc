@@ -12,7 +12,7 @@ char* getCharPtr(char* fileName);
 int findAction(int action);
 void comment();
 static int	yy_ec[256] =
-	{	0,
+{	0,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,92  ,91  ,
 93  ,94  ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,

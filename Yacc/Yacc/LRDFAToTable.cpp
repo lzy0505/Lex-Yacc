@@ -154,7 +154,6 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 	table_vec.push_back(pair<void*, int>(base, lrdfa.statesVec.size() + 1));
 	table_vec.push_back(pair<void*, int>(producer_data, 5 * producerVec.size()));
 	table_vec.push_back(pair<void*, int>(index, 2 * producerVec.size()));
-
 	table_vec.push_back(pair<void*, int>(map_vec, defineCount));
 
 

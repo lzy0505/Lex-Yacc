@@ -7,6 +7,8 @@ using namespace std;
 // TODO : 赵某
 extern vector<pair<void*, int> > table_vec;
 extern vector<string> tokensVec;
+extern map<string, int> tokensDefineMap;
+extern vector<string> productions_vec;
 void print_array(string name, int size, void *value, ofstream& out);
 void generate_files() {
 	/*第一部分y.tab.h*/
@@ -14,12 +16,13 @@ void generate_files() {
 	out.open("y.tab.h", ios::out);
 	out << "#ifndef Y_TAB_H" << endl;
 	out << "#define Y_TAB_H" << endl;
-	string* pInt = (string *)table_vec[6].first;
-	for (int i = 0; i < table_vec[6].second; i++)
+	map<string, int>::iterator it;
+	it = tokensDefineMap.begin();
+	while(it!= tokensDefineMap.end())
 	{
 
-		out << "#define  " << pInt[i] <<"    "<< i+256 << endl;
-
+		out << "#define  " << it->first <<"    "<< it->second<< endl;
+		it++;
 	}
 	
 	out << "#endif" << endl;
@@ -136,18 +139,18 @@ void generate_files() {
 	print_array("yy_base", table_vec[1].second, table_vec[1].first, out);
 	print_array("yy_producer_data", table_vec[2].second, table_vec[2].first, out);
 	print_array("yy_index", table_vec[3].second, table_vec[3].first, out);
-	print_array("yy_map_vec", table_vec[5].second, table_vec[5].first, out);
+	print_array("yy_map_vec", table_vec[4].second, table_vec[4].first, out);
 	
 	/*对字符串类型数组单独处理*/
 	
 	out << "static char* yy_productions[]=" << endl;
 	out << "{" << endl;
 
-	string* pStr = (string*)table_vec[4].first;
-	for (int i = 0; i < table_vec[4].second - 1; i++)
+
+	for (int i = 0; i < productions_vec.size()-1; i++)
 	{
 
-		out << "\"" << pStr[i] << "\"" << ", ";
+		out << "\"" << productions_vec[i] << "\"" << ", ";
 		if (i % 5 == 0)
 		{
 			out << endl;
@@ -156,7 +159,7 @@ void generate_files() {
 	
 	/*最后一个元素没得逗号*/
 
-	out << "\"" << pStr[table_vec[4].second - 1] << "\"" << endl << "}" << endl;
+	out << "\"" << productions_vec[productions_vec.size()-1] << "\"" << endl << "}" << endl;
 
 
 

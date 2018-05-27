@@ -24,6 +24,7 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "#define _CRT_SECURE_NO_WARNINGS" << endl; 
 	out << "#include\"stdio.h\"" << endl;
 	out << "#include\"stdlib.h\"" << endl;
+	out << "#include\"y.tab.h\"" << endl;
 	out << "#include<string.h>" << endl;
 	/*依次输出P1和P4*/
 	for (int i = 0; i < part1.size(); i++)
@@ -38,11 +39,12 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "char* getCharPtr(char* fileName);" << endl;
 	out << "void findAction(int action);" << endl; /*函数声明*/
 	out << "void addToken(char* token);" << endl; /*将token加入Token序列*/
+	out << "void comment();" << endl; /*comment函数，啥都不做*/
 	out << "void getTokens(unsigned num,char** _tokens);" << endl; /*得到Token序列*/
 	out << "unsigned tokenNum=0;" << endl; /*已存储的Token个数*/
 	out << "unsigned arraySize=0;" << endl; /*存储数组tokens的大小*/
-	out << "char** tokens = NULL;" << endl;
-	out << "int main(int argc,char** argv)" << endl;
+	out << "int* tokens = NULL;" << endl;
+	out << "int lex_main(char* fileName)" << endl;
 	out << "{" << endl;
 
 	/*定义若干变量*/
@@ -55,7 +57,7 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 
 
 	/*调用char* getCharPtr(char* fileName)得到文件字符指针*/
-	out << "yy_cp=getCharPtr(argv[1]);" << endl;
+	out << "yy_cp=getCharPtr(fileName);" << endl;
 
 
 	/*依次输出ec表,base表,next表,accept表*/
@@ -111,8 +113,8 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "else{" << endl;
 	out << "printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
 	out << "}" << endl;
-	out << "system(\"pause\");" << endl;
-	out << "}" << endl;/*mian函数结束*/
+	//out << "system(\"pause\");" << endl;
+	out << "}" << endl;/*lex_mian函数结束*/
   
 
 	/*void findAction(int action)函数*/
@@ -161,24 +163,33 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "cp[flen] = 0; " << endl;/* 字符串结束标志 */
 	out << "return cp;" << endl;
 	out << "}" << endl;
-	out << "void addToken(char *token){" << endl; 
+	out << "void addToken(int token){" << endl; 
 	out << "if(tokenNum>=arraySize)" << endl;/*当数组空间不够时*/
 	out << "{" << endl;
-	out << "tokens=(char**)realloc(tokens,sizeof(char*)*(arraySize+100));" << endl;
-	out << "for(unsigned i=arraySize;i<arraySize+100;i++)" << endl;
-	out << "{" << endl;
-	out << "tokens[i]=(char*)malloc(sizeof(char)*30);" << endl;
-	out << "}" << endl;
+	out << "tokens=(int*)realloc(tokens,sizeof(int)*(arraySize+100));" << endl;
 	out << "arraySize=arraySize+100;" << endl;
 	out << "}" << endl;
-	out << "memcpy(tokens[tokenNum],token,30);" << endl;
+	out << "tokens[tokenNum]=token;" << endl;
 	out << "++tokenNum;" << endl;
 	out << "}" << endl;
 	/*getTokens()函数用于Yacc得到Token序列*/
-	out << "void getTokens(unsigned num,char** _tokens){" << endl; /*得到Token序列*/
+	out << "void getTokens(unsigned& num,int* _tokens){" << endl; /*得到Token序列*/
 	out << "num=tokenNum;" << endl;
 	out << "_tokens=tokens;" << endl;
 	out << "}" << endl;
+	/*comment函数*/
+	out << "void comment(){" << endl; 
+	out << "char c,prev=0;" << endl;
+	out << "while(++yy_cp!=0)" << endl;
+	out << "{" << endl;
+	out << "if(c=='/'&&prev=='*')" << endl;
+	out << "return;" << endl;
+	out << "prev=c;" << endl;
+	out << "}" << endl;
+	out << "printf(\"ERROR:unterminated comment!\");" << endl;
+	out << "}" << endl;
+
+
 	out.close();
 	return 0;
 }

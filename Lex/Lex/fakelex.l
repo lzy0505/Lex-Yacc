@@ -12,303 +12,303 @@ FS			(f|F|l|L)
 IS          ((u|U)|(u|U)?(l|L|ll|LL)|(l|L|ll|LL)(u|U))
 
 %%
-"/*"			addToken("below are comments");
-"//"[^\n]*      addToken("below are comments");
+"/*"			comment();
+"//"[^\n]*      comment();
 
 
 "auto"			{ 
-	 addToken("AUTO"); 
+	 addToken(AUTO); 
 	}
 "_Bool"			{ 
-	 addToken("BOOL"); 
+	 addToken(BOOL); 
 	}
 "break"			{ 
-	addToken("BREAK"); 
+	addToken(BREAK); 
 	}
 "case"			{ 
-	 addToken("CASE"); 
+	 addToken(CASE); 
 	}
 "char"			{ 
-	 addToken("CHAR"); 
+	 addToken(CHAR); 
 	}
 "_Complex"		{ 
-	 addToken("COMPLEX"); 
+	 addToken(COMPLEX); 
 	}
 "const"			{ 
-	 addToken("CONST"); 
+	 addToken(CONST); 
 	}
 "continue"		{ 
-	 addToken("CONTINUE"); 
+	 addToken(CONTINUE); 
 	}
 "default"		{ 
-	 addToken("DEFAULT"); 
+	 addToken(DEFAULT); 
 	}
 "do"			{ 
-	 addToken("DO"); 
+	 addToken(DO); 
 	}
 "double"		{ 
-	 addToken("DOUBLE"); 
+	 addToken(DOUBLE); 
 	}
 "else"			{ 
-	 addToken("ELSE"); 
+	 addToken(ELSE); 
 	}
 "enum"			{ 
-	 addToken("ENUM"); 
+	 addToken(ENUM); 
 	}
 "extern"		{ 
-	 addToken("EXTERN"); 
+	 addToken(EXTERN); 
 	}
 "float"			{ 
-	 addToken("FLOAT"); 
+	 addToken(FLOAT); 
 	}
 "for"			{ 
-	 addToken("FOR"); 
+	 addToken(FOR); 
 	}
 "goto"			{ 
-	 addToken("GOTO"); 
+	 addToken(GOTO); 
 	}
 "if"			{ 
-	 addToken("IF"); 
+	 addToken(IF); 
 	}
 "_Imaginary"		{ 
-	 addToken("IMAGINARY"); 
+	 addToken(IMAGINARY); 
 	}
 "inline"		{ 
-	 addToken("INLINE"); 
+	 addToken(INLINE); 
 	}
 "int"			{ 
-	 addToken("INT"); 
+	 addToken(INT); 
 	}
 "long"			{ 
-	 addToken("LONG"); 
+	 addToken(LONG); 
 	}
 "register"		{ 
-	 addToken("REGISTER"); 
+	 addToken(REGISTER); 
 	}
 "restrict"		{ 
-	 addToken("RESTRICT"); 
+	 addToken(RESTRICT); 
 	}
 "return"		{ 
-	 addToken("RETURN"); 
+	 addToken(RETURN); 
 	}
 "short"			{ 
-	 addToken("SHORT"); 
+	 addToken(SHORT); 
 	}
 "signed"		{ 
-	 addToken("SIGNED"); 
+	 addToken(SIGNED); 
 	}
 "sizeof"		{ 
-	 addToken("SIZEOF"); 
+	 addToken(SIZEOF); 
 	}
 "static"		{ 
-	 addToken("STATIC"); 
+	 addToken(STATIC); 
 	}
 "struct"		{ 
-	 addToken("STRUCT"); 
+	 addToken(STRUCT); 
 	}
 "switch"		{ 
-	 addToken("SWITCH"); 
+	 addToken(SWITCH); 
 	}
 "typedef"		{ 
-	 addToken("TYPEDEF"); 
+	 addToken(TYPEDEF); 
 	}
 "union"			{ 
-	 addToken("UNION"); 
+	 addToken(UNION); 
 	}
 "unsigned"		{ 
-	 addToken("UNSIGNED"); 
+	 addToken(UNSIGNED); 
 	}
 "void"			{ 
-	 addToken("VOID"); 
+	 addToken(VOID); 
 	}
 "volatile"		{ 
-	 addToken("VOLATILE"); 
+	 addToken(VOLATILE); 
 	}
 "while"			{ 
-	 addToken("WHILE"); 
+	 addToken(WHILE); 
 	}
 
 {L}({L}|{D})*		{ 
-	 addToken("IDENTIFIER"); 
+	 addToken(IDENTIFIER); 
 	}
 
 0[xX]{H}+{IS}?		{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 0[0-7]*{IS}?		{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 [1-9]{D}*{IS}?		{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 L?'(\\.|[^\\'\n])+'	{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 
 {D}+{E}{FS}?		{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 {D}*"."{D}+{E}?{FS}?	{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 {D}+"."{D}*{E}?{FS}?	{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 0[xX]{H}+{P}{FS}?	{ 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 0[xX]{H}*"."{H}+{P}{FS}?     { 
-	 addToken("CONSTANT"); 
+	 addToken(CONSTANT); 
 	}
 0[xX]{H}+"."{H}*{P}{FS}?     {
-	addToken("CONSTANT"); 
+	addToken(CONSTANT); 
 	}
 
 L?\"(\\.|[^\\"\n])*\"	{ 
-	 addToken("STRING_LITERAL"); 
+	 addToken(STRING_LITERAL); 
 	}
 
 "..."			{ 
-	 addToken("ELLIPSIS"); 
+	 addToken(ELLIPSIS); 
 	}
 ">>="			{ 
-	 addToken("RIGHT_ASSIGN"); 
+	 addToken(RIGHT_ASSIGN); 
 	}
 "<<="			{ 
-	 addToken("LEFT_ASSIGN"); 
+	 addToken(LEFT_ASSIGN); 
 	}
 "+="			{ 
-	 addToken("ADD_ASSIGN"); 
+	 addToken(ADD_ASSIGN); 
 	}
 "-="			{ 
-	 addToken("SUB_ASSIGN"); 
+	 addToken(SUB_ASSIGN); 
 	}
 "*="			{ 
-	 addToken("MUL_ASSIGN"); 
+	 addToken(MUL_ASSIGN); 
 	}
 "/="			{ 
-	 addToken("DIV_ASSIGN"); 
+	 addToken(DIV_ASSIGN); 
 	}
 "%="			{ 
-	 addToken("MOD_ASSIGN"); 
+	 addToken(MOD_ASSIGN); 
 	}
 "&="			{ 
-	 addToken("AND_ASSIGN"); 
+	 addToken(AND_ASSIGN); 
 	}
 "^="			{ 
-	 addToken("XOR_ASSIGN"); 
+	 addToken(XOR_ASSIGN); 
 	}
 "|="			{ 
-	 addToken("OR_ASSIGN"); 
+	 addToken(OR_ASSIGN); 
 	}
 ">>"			{ 
-	 addToken("RIGHT_OP"); 
+	 addToken(RIGHT_OP); 
 	}
 "<<"			{ 
-	 addToken("LEFT_OP"); 
+	 addToken(LEFT_OP); 
 	}
 "++"			{ 
-	 addToken("INC_OP"); 
+	 addToken(INC_OP); 
 	}
 "--"			{ 
-	 addToken("DEC_OP"); 
+	 addToken(DEC_OP); 
 	}
 "->"			{ 
-	 addToken("PTR_OP"); 
+	 addToken(PTR_OP); 
 	}
 "&&"			{ 
-	 addToken("AND_OP"); 
+	 addToken(AND_OP); 
 	}
 "||"			{ 
-	 addToken("OR_OP"); 
+	 addToken(OR_OP); 
 	}
 "<="			{ 
-	 addToken("LE_OP"); 
+	 addToken(LE_OP); 
 	}
 ">="			{ 
-	 addToken("GE_OP"); 
+	 addToken(GE_OP); 
 	}
 "=="			{ 
-	 addToken("EQ_OP"); 
+	 addToken(EQ_OP); 
 	}
 "!="			{ 
-	 addToken("NE_OP"); 
+	 addToken(NE_OP); 
 	}
 ";"			{ 
-	addToken(";"); 
+	addToken(';'); 
 	}
 ("{"|"<%")		{ 
-	 addToken("{"); 
+	 addToken('{'); 
 	}
 ("}"|"%>")		{ 
-	 addToken("}"); 
+	 addToken('}'); 
 	}
 ","			{ 
-	 addToken(","); 
+	 addToken(','); 
 	}
 ":"			{ 
-	 addToken(":"); 
+	 addToken(':'); 
 	}
 "="			{ 
-	 addToken("="); 
+	 addToken('='); 
 	}
 "("			{ 
-	 addToken("("); 
+	 addToken('('); 
 	}
 ")"			{ 
-	 addToken(")"); 
+	 addToken(')'); 
 	}
 ("["|"<:")		{ 
-	 addToken("["); 
+	 addToken('['); 
 	}
 ("]"|":>")		{ 
-	 addToken("]"); 
+	 addToken(']'); 
 	}
 "."			{ 
-	 addToken("."); 
+	 addToken('.'); 
 	}
 "&"			{ 
-	 addToken("&"); 
+	 addToken('&'); 
 	}
 "!"			{ 
-	 addToken("!"); 
+	 addToken('!'); 
 	}
 "~"			{ 
-	 addToken("~"); 
+	 addToken('~'); 
 	}
 "-"			{ 
-	 addToken("-"); 
+	 addToken('-'); 
 	}
 "+"			{ 
-	 addToken("+"); 
+	 addToken('+'); 
 	}
 "*"			{ 
-	 addToken("*"); 
+	 addToken('*'); 
 	}
 "/"			{ 
-	 addToken("/"); 
+	 addToken('/'); 
 	}
 "%"			{ 
-	 addToken("%%"); 
+	 addToken('%'); 
 	}
 "<"			{ 
-	addToken("<"); 
+	addToken('<'); 
 	}
 ">"			{ 
-	 addToken(">"); 
+	 addToken('>'); 
 	}
 "^"			{ 
-	 addToken("^"); 
+	 addToken('^'); 
 	}
 "|"			{ 
-	 addToken("|"); 
+	 addToken('|'); 
 	}
 "?"			{ 
-	 addToken("?"); 
+	 addToken('?'); 
 	}
 
-[ \t\v\n\f]		addToken("SPACE"); 
-.			addToken("DOT"); 
+[ \t\v\n\f]		addToken(SPACE); 
+.			addToken(DOT); 
 
 %%
 

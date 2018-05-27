@@ -1,0 +1,122 @@
+#include"stdafx.h"
+#include"structs.h"
+#include<fstream>
+#include<iomanip>
+
+using namespace std;
+// TODO : 赵某
+void print_array(string name, int size, const int *value, ofstream& out);
+void generate_files(int *next_state, int *reduce_state, int  size) {
+
+/*第一部分y.tab.c*/
+	ofstream out;
+	out.open("y.tab.c", ios::out);
+
+	if (!out)
+	{
+		cout << "ERROR: can't open file y.tab.c !" << endl;
+	}
+
+		out << "include<stdio.h>" << endl;
+		out << "include<stdlib.h>" << endl;
+		out << "include<assert.h>" << endl;
+		out << "struct Node" << endl;
+		out << "{" << endl;
+		out<<"	int data;" << endl;
+		out << "	struct Node* next;" << endl;
+		out << "};" << endl;
+
+		out << "struct Stack" << endl;
+		out << "{" << endl;
+		out << "struct Node* head;" << endl;
+		out << "int size;" << endl;
+		out << "};" << endl;
+
+		out << "void StackInit(struct Stack* stack)" << endl;
+		out << "{" << endl;
+		out << "	stack->head = NULL;" << endl;
+		out << "	stack->size = 0;" << endl;
+		out << "}" << endl;
+
+		out << "void StackPush(struct Stack* stack, const int data)//进栈 " << endl;
+		out << "{" << endl;
+		out << "struct Node* node;" << endl;
+		out << "node = (struct Node*)malloc(sizeof(struct Node));" << endl;
+		out << "assert(node != NULL);" << endl;
+		out << "node->data = data;" << endl;
+		out << "node->next = stack->head;" << endl;
+		out << "stack->head = node;" << endl;
+		out << "++stack->size;" << endl;
+		out << "}" << endl;
+
+		out << "int StackEmpty(struct Stack* stack)" << endl;
+		out << "{" << endl;
+		out << "return (stack->size == 0);" << endl;
+		out << "}" << endl;
+
+		out << "int StackPop(struct Stack* stack, int* data)//出栈  " << endl;
+		out << "{" << endl;
+		out << "if (StackEmpty(stack))" << endl;
+		out << "{" << endl;
+		out << "	return 0;" << endl;
+		out << "	}" << endl;
+
+		out << "	struct Node* tmp = stack->head;" << endl;
+		out << "	*data = stack->head->data;" << endl;
+		out << "	stack->head = stack->head->next;" << endl;
+		out << "	free(tmp);" << endl;
+		out << "--stack->size;" << endl;
+
+		out << "	return 1;" << endl;
+		out << "}" << endl;
+		out << "int getTop(struct Stack* stack, int* data)" << endl;
+		out << "{" << endl;
+
+		out << "	if (StackEmpty(stack))" << endl;
+		out << "	{" << endl;
+		out << "		return 0;" << endl;
+		out << "	}" << endl;
+		out << "	*data = stack->head->data;" << endl;
+		out << "	return 1;" << endl;
+		out << "}" << endl;
+		out << "void StackCleanup(struct Stack* stack)" << endl;
+		out << "{" << endl;
+		out << "struct Node* tmp;" << endl;
+		out << "while (stack->head)" << endl;
+		out << "{" << endl;
+		out << "		tmp = stack->head;" << endl;
+		out << "		stack->head = stack->head->next;" << endl;
+		out << "		free(tmp);" << endl;
+		out << "	}" << endl;
+
+		out << "	stack->size = 0;" << endl;
+		out << "}" << endl;
+		out << "int main(int argc,char **argv)" << endl;
+		out << "{" << endl;
+
+		out << "}" << endl;
+
+
+}
+
+void print_array(string name, int size, const int *value, ofstream& out)
+{
+
+	const int* array_buf = value;
+	out << "static int	" << name << "[" << size << "]" << " =" << endl;
+	out << "	{	0," << endl;
+	for (int i = 1; i < size; i++)
+	{
+
+		out << setw(4) << left << array_buf[i];
+		if (i != size - 1)
+		{
+			out << ",";
+		}
+		if (i % 10 == 0)
+		{
+			out << endl;
+		}
+	}
+	out << "};" << endl;
+}

@@ -34,8 +34,10 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 	memset(index, 0, 2 * producerVec.size() * sizeof(int));
 	//反向翻译表，索引为token号，值为string。
 	string* tokens = new string[boundTInt+1];
+
 	//字符到token编号的映射
 	int* char_vec = new int[256];
+
 	for (int i = 0; i < 256; i++) {
 		char_vec[i] = -1;//-1表示没有定义该字符
 	}

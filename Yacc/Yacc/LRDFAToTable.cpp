@@ -22,6 +22,7 @@ extern map<string, int> tokensDefineMap;
 
 //最后要返回的vec,自己extern嗷
 vector<pair<void*, int> > table_vec;
+vector<string> productions_vec;
 
 void lrdfa_to_table(const LRDFA &lrdfa) {
 	//base表通过状态号得到对应一维数组的索引位置。
@@ -43,9 +44,6 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 	for (int i = 0; i < defineCount; i++) {
 		map_vec[i] = -1;//-1表示没有定义该字符
 	}
-	//反向翻译表，索引为token号-256，值为string。
-	string* tokens = new string[tokensDefineMap.size()];
-
 	
 
 
@@ -60,15 +58,20 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 		for (auto rightIt = producerVec[i].second.begin(); rightIt != producerVec[i].second.end(); rightIt++) {
 			producer_data[count++] = *rightIt;
 		}
+
 	}
 	//构建反向翻译表
 	for (int i = 0; i < producerVecStr.size(); ++i) {
-		productions[i] = producerVecStr[i].first+" ->";
+		string temp_str= producerVecStr[i].first + " ->";
+		//productions[i] = 
 		for (auto it = producerVecStr[i].second.begin(); it != producerVecStr[i].second.end(); it++) {
-			productions[i] += " ";
-			productions[i] += *it;
+			temp_str += " ";
+			temp_str += *it;
 		}
+		productions_vec.push_back(temp_str);
 	}
+	
+
 	for (auto& it : intsMap) {
 		map_vec[it.first] = it.second;
 	}
@@ -145,17 +148,14 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 		}
 	}
 
-	for (const auto& p : tokensDefineMap) {
-		tokens[p.second - 256] = p.first;
-	}
 
 	//装载vec
 	table_vec.push_back(pair<void*, int>(next, (boundNInt + 2)*lrdfa.statesVec.size()));
 	table_vec.push_back(pair<void*, int>(base, lrdfa.statesVec.size() + 1));
 	table_vec.push_back(pair<void*, int>(producer_data, 5 * producerVec.size()));
 	table_vec.push_back(pair<void*, int>(index, 2 * producerVec.size()));
-	table_vec.push_back(pair<void*, int>(productions, boundTInt+1));
+
 	table_vec.push_back(pair<void*, int>(map_vec, defineCount));
-	table_vec.push_back(pair<void*, int>(tokens, tokensDefineMap.size()));
+
 
 }

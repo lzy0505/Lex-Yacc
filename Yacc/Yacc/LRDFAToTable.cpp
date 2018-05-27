@@ -11,10 +11,14 @@ using std::pair;
 
 extern int boundNInt;
 extern int boundTInt;
+extern int defineCount;
 extern ProducerVec producerVec;//用于编号下表寻址
 extern vector<unordered_set<int> > precedenceRulesVec;//移进规约表
 extern ProducerVecStr producerVecStr;
-extern map<int, int> charsMap;
+extern map<int, int> intsMap;
+extern map<string, int> tokensDefineMap;
+
+
 
 //最后要返回的vec,自己extern嗷
 vector<pair<void*, int> > table_vec;
@@ -32,15 +36,15 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 	//通过产生式标号获取产生式，[2*产生式标号]=首地址，[2*产生式标号+1]=长度(长度包括左边的那个)，用在producer_data中查找。
 	int* index = new int[2* producerVec.size()];
 	memset(index, 0, 2 * producerVec.size() * sizeof(int));
-	//反向翻译表，索引为token号，值为string。
-	string* tokens = new string[boundTInt+1];
-
+	//反向翻译表，索引为production号，值为string。
+	string* productions = new string[boundTInt+1];
 	//字符到token编号的映射
-	int* char_vec = new int[256];
-
-	for (int i = 0; i < 256; i++) {
-		char_vec[i] = -1;//-1表示没有定义该字符
+	int* map_vec = new int[defineCount];
+	for (int i = 0; i < defineCount; i++) {
+		map_vec[i] = -1;//-1表示没有定义该字符
 	}
+	//反向翻译表，索引为token号-256，值为string。
+	string* tokens = new string[tokensDefineMap.size()];
 
 	
 
@@ -59,14 +63,14 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 	}
 	//构建反向翻译表
 	for (int i = 0; i < producerVecStr.size(); ++i) {
-		tokens[i] = producerVecStr[i].first+" ->";
+		productions[i] = producerVecStr[i].first+" ->";
 		for (auto it = producerVecStr[i].second.begin(); it != producerVecStr[i].second.end(); it++) {
-			tokens[i] += " ";
-			tokens[i] += *it;
+			productions[i] += " ";
+			productions[i] += *it;
 		}
 	}
-	for (auto& it : charsMap) {
-		char_vec[it.first] = it.second;
+	for (auto& it : intsMap) {
+		map_vec[it.first] = it.second;
 	}
 
 	//遍历所有状态操作，构建next、base表
@@ -140,12 +144,18 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 			}
 		}
 	}
+
+	for (const auto& p : tokensDefineMap) {
+		tokens[p.second - 256] = p.first;
+	}
+
 	//装载vec
 	table_vec.push_back(pair<void*, int>(next, (boundNInt + 2)*lrdfa.statesVec.size()));
 	table_vec.push_back(pair<void*, int>(base, lrdfa.statesVec.size() + 1));
 	table_vec.push_back(pair<void*, int>(producer_data, 5 * producerVec.size()));
 	table_vec.push_back(pair<void*, int>(index, 2 * producerVec.size()));
-	table_vec.push_back(pair<void*, int>(tokens, boundTInt+1));
-	table_vec.push_back(pair<void*, int>(char_vec, 256));
+	table_vec.push_back(pair<void*, int>(productions, boundTInt+1));
+	table_vec.push_back(pair<void*, int>(map_vec, defineCount));
+	table_vec.push_back(pair<void*, int>(tokens, tokensDefineMap.size()));
 
 }

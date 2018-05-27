@@ -12,22 +12,17 @@ void generate_files() {
 	/*第一部分y.tab.h*/
 	ofstream out;
 	out.open("y.tab.h", ios::out);
-
-
 	out << "#ifndef Y_TAB_H" << endl;
 	out << "#define Y_TAB_H" << endl;
-
-	for (unsigned i = 0; i < tokensVec.size(); i++)
+	string* pInt = (string *)table_vec[6].first;
+	for (int i = 0; i < table_vec[6].second; i++)
 	{
 
-		out << "#define  " << tokensVec[i] <<"    "<< i << endl;
+		out << "#define  " << pInt[i] <<"    "<< i+256 << endl;
 
 	}
-
-
-
+	
 	out << "#endif" << endl;
-
 	out.close();
 
 
@@ -43,6 +38,18 @@ void generate_files() {
 	out << "include<stdio.h>" << endl;
 	out << "include<stdlib.h>" << endl;
 	out << "include<assert.h>" << endl;
+	/*声明函数*/
+	//out << "int getOneToken(int& token);" << endl;
+	//out << "int nextToken();" << endl;
+	//out << "int tokenIndex=0;" << endl;/*token数组的索引*/
+	//out << "int *tokens=NULL;" << endl;/*token数组*/
+	//out << "int tokenLength=0;" << endl; /*token的长度*/
+	out << "void lex_init(char* fileName);" << endl;
+	out << "int yy_lex();" << endl;/*yy_lex外部函数定义*/
+	//out << "void getTokens(unsigned num, int* _tokens);" << endl;
+
+
+	/*栈定义部分*/
 	out << "struct Node" << endl;
 	out << "{" << endl;
 	out << "	int data;" << endl;
@@ -82,7 +89,7 @@ void generate_files() {
 	out << "if (StackEmpty(stack))" << endl;
 	out << "{" << endl;
 	out << "	return 0;" << endl;
-	out << "	}" << endl;
+	out << "}" << endl;
 
 	out << "	struct Node* tmp = stack->head;" << endl;
 	out << "	*data = stack->head->data;" << endl;
@@ -115,24 +122,25 @@ void generate_files() {
 	out << "	stack->size = 0;" << endl;
 	out << "}" << endl;
 
-	/*
-	table_vec.push_back(pair<void*, int>(next, (boundNInt + 2)*lrdfa.statesVec.size()));
+
+	
+	/*table_vec.push_back(pair<void*, int>(next, (boundNInt + 2)*lrdfa.statesVec.size()));
 	table_vec.push_back(pair<void*, int>(base, lrdfa.statesVec.size() + 1));
 	table_vec.push_back(pair<void*, int>(producer_data, 5 * producerVec.size()));
 	table_vec.push_back(pair<void*, int>(index, 2 * producerVec.size()));
-	table_vec.push_back(pair<void*, int>(tokens, boundTInt + 1));
-	table_vec.push_back(pair<void*, int>(char_vec, 256));
+	table_vec.push_back(pair<void*, int>(productions, boundTInt + 1));
+	table_vec.push_back(pair<void*, int>(map_vec, defineCount));
+	table_vec.push_back(pair<void*, int>(tokens, tokensDefineMap.size()));
 	*/
-
 	print_array("yy_next", table_vec[0].second, table_vec[0].first, out);
 	print_array("yy_base", table_vec[1].second, table_vec[1].first, out);
 	print_array("yy_producer_data", table_vec[2].second, table_vec[2].first, out);
 	print_array("yy_index", table_vec[3].second, table_vec[3].first, out);
-	print_array("yy_char_vec", table_vec[5].second, table_vec[5].first, out);
-
+	print_array("yy_map_vec", table_vec[5].second, table_vec[5].first, out);
+	
 	/*对字符串类型数组单独处理*/
-
-	out << "static char* yy_tokens[]=" << endl;
+	
+	out << "static char* yy_productions[]=" << endl;
 	out << "{" << endl;
 
 	string* pStr = (string*)table_vec[4].first;
@@ -145,7 +153,7 @@ void generate_files() {
 			out << endl;
 		}
 	}
-
+	
 	/*最后一个元素没得逗号*/
 
 	out << "\"" << pStr[table_vec[4].second - 1] << "\"" << endl << "}" << endl;
@@ -153,8 +161,14 @@ void generate_files() {
 
 
 	/*main()函数部分*/
+
 	out << "int main(int argc,char **argv)" << endl;
 	out << "{" << endl;
+
+	/*调用lex_main*/
+	out << "lex_init(\"q.txt\");" << endl;
+
+
 
 	/*创建两个栈，状态栈和符号栈*/
 
@@ -165,13 +179,13 @@ void generate_files() {
 
 	/*将初始状态和终结符压到两个栈中*/
 	out << "StackPush(&stateStack,0);" << endl;
-	//out << "StackPush(&symbolStack,???);" << endl;
+	out << "StackPush(&symbolStack,-2);" << endl;/*符号栈压入$*/
 	out << "int token=0;" << endl; /*存放每次读取的token*/
 	out << "int item=0;" << endl;  /*存放转移表的表项*/
 	out << "int producerStart=0;" << endl; /*存放产生式开始坐标*/
 	out << "int producerLength=0;" << endl; /*存放产生式的长度*/
-	/*假装有个token读取函数int getOneToken(int& token); */
-	out << "getToken(token);" << endl;
+	/*token读取函数yy_lex(); */
+	out << "token=yy_lex();" << endl;
 	
 	/*接下来就重复作一些事情就完事了*/
 
@@ -184,16 +198,15 @@ void generate_files() {
 	out << "{" << endl;
 	out << "prinf(\"accepted!\");"<<endl;
 	out << "}" << endl;
-
-
+    
 	/*如果是移进*/
 	out << "if(item>0)" << endl;
 	out << "{" << endl;
 	out << "StackPush(&symbolStack,token);" << endl;
 	out << "StackPush(&stateStack,item);" << endl;
 	/*token指针指向下一个*/
-	out << "nextToken();" << endl;
-	out << "getToken(token);" << endl;
+	out << "if((token=yy_lex())==-1)" << endl;
+	out << "break;" << endl;
 	out << "}" << endl;
 
 	/*如果是归约*/
@@ -232,16 +245,35 @@ void generate_files() {
 	out << "}" << endl;
 	out << "if(check==1)" << endl;
 	out << "{" << endl;
+
 	/*将产生式左侧的符号压入符号栈以及GOTO(当前栈顶状态，产生式左侧符号)压入状态栈*/
 	out << "StackPush(&symbolStack,yy_producer_data[producerStart]);" << endl;
 	out << "item=yy_next[ yy_base[StackTop(&stateStack)]+yy_producer_data[producerStart]]" << endl;
 	out << "StackPush(&stateSatck,item);" << endl;
-	out << "printf(\"%s\n\",yy_tokens[(-item)])" << endl;
+	out << "printf(\"%s\\n\",yy_tokens[(-item)])" << endl;
 	out << "}" << endl;
-	out << "}while(getToken(token)!=-1);" << endl;
-
+	out << "}while(token!=-1);" << endl;
+	out << "}" << endl;
+	/*
+	out << "int getOneToken(int& token)" << endl;
+	out << "{" << endl;
+	out << "if(tokenLength<=0)" << endl;
+	out << "return 0;" << endl;
+	out << "token=tokens[tokenIndex];" << endl;
+	out << "return 1;" << endl;
 	out << "}" << endl;
 
+	out << "int nextToken()" << endl;
+	out << "{" << endl;
+	out << "if(tokenLength>0)" << endl;
+	out << "{" << endl;
+	out << "++tokenIndex;" << endl;
+	out << "--tokenLength;" << endl;
+	out << "return 1;" << endl;
+	out << "}" << endl;
+	out << "return 0;" << endl;
+	out << "}" << endl;
+	*/
 	out.close();
 
 }

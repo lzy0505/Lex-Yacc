@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include"stdio.h"
 #include"stdlib.h"
+#include"y.tab.h"
 #include<string.h>
 #include <stdio.h>
 int yywrap(void)
@@ -8,20 +9,8 @@ int yywrap(void)
 	return 1;
 }
 char* getCharPtr(char* fileName);
-void findAction(int action);
-void addToken(char* token);
-void getTokens(unsigned num,char** _tokens);
-unsigned tokenNum=0;
-unsigned arraySize=0;
-char** tokens = NULL;
-int main(int argc,char** argv)
-{
-register int yy_current_state = 0;
-register int yy_last_accepting_state = 0;
-register char *yy_cp = NULL;
-register char *yy_last_accepting_cpos = NULL;
-register int yy_act = 0;
-yy_cp=getCharPtr(argv[1]);
+int findAction(int action);
+void comment();
 static int	yy_ec[256] =
 	{	0,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,92  ,91  ,
@@ -14522,61 +14511,38 @@ static int	yy_next[143172] =
 -1  };
 static int	yy_accept[1476] =
 	{	0,
-12  ,13  ,14  ,16  ,19  ,20  ,22  ,24  ,5   ,26  ,
-28  ,29  ,32  ,33  ,35  ,37  ,41  ,42  ,45  ,46  ,
-49  ,50  ,52  ,54  ,57  ,58  ,59  ,61  ,64  ,65  ,
-67  ,68  ,71  ,72  ,73  ,75  ,77  ,78  ,79  ,81  ,
-83  ,84  ,85  ,87  ,89  ,90  ,91  ,93  ,95  ,96  ,
-97  ,99  ,100 ,101 ,103 ,105 ,107 ,108 ,111 ,113 ,
-114 ,115 ,117 ,120 ,8   ,121 ,122 ,125 ,128 ,129 ,
-130 ,132 ,135 ,136 ,137 ,141 ,144 ,145 ,146 ,147 ,
-150 ,151 ,152 ,153 ,155 ,156 ,157 ,158 ,162 ,163 ,
-165 ,167 ,169 ,170 ,172 ,173 ,178 ,179 ,181 ,183 ,
-186 ,187 ,189 ,191 ,195 ,196 ,198 ,200 ,203 ,204 ,
-206 ,208 ,210 ,211 ,213 ,215 ,218 ,219 ,221 ,223 ,
-227 ,228 ,230 ,232 ,235 ,236 ,238 ,241 ,244 ,245 ,
-246 ,248 ,250 ,251 ,252 ,254 ,257 ,258 ,259 ,261 ,
-263 ,264 ,265 ,266 ,268 ,269 ,270 ,272 ,274 ,275 ,
-276 ,278 ,280 ,281 ,282 ,286 ,289 ,290 ,291 ,0   ,
-0   ,292 ,293 ,295 ,296 ,297 ,298 ,301 ,302 ,303 ,
-304 ,306 ,307 ,308 ,309 ,312 ,315 ,316 ,317 ,320 ,
-323 ,324 ,325 ,327 ,329 ,330 ,0   ,334 ,337 ,0   ,
-0   ,340 ,341 ,0   ,344 ,345 ,346 ,347 ,349 ,352 ,
-353 ,354 ,0   ,0   ,356 ,357 ,360 ,363 ,364 ,365 ,
-368 ,372 ,373 ,374 ,378 ,381 ,382 ,383 ,385 ,387 ,
+5   ,7   ,9   ,11  ,12  ,15  ,17  ,18  ,1   ,19  ,
+21  ,23  ,24  ,27  ,30  ,32  ,33  ,35  ,37  ,39  ,
+40  ,44  ,46  ,48  ,49  ,52  ,54  ,56  ,57  ,61  ,
+63  ,66  ,67  ,71  ,73  ,75  ,76  ,79  ,82  ,85  ,
+86  ,89  ,91  ,94  ,95  ,99  ,101 ,104 ,105 ,109 ,
+112 ,115 ,116 ,120 ,122 ,124 ,125 ,128 ,131 ,135 ,
+136 ,139 ,141 ,143 ,3   ,145 ,147 ,149 ,151 ,153 ,
+155 ,158 ,160 ,163 ,165 ,167 ,169 ,171 ,173 ,176 ,
+178 ,182 ,184 ,186 ,187 ,191 ,195 ,196 ,198 ,200 ,
+201 ,203 ,204 ,206 ,210 ,212 ,213 ,215 ,217 ,220 ,
+221 ,225 ,227 ,230 ,231 ,234 ,235 ,238 ,239 ,243 ,
+245 ,247 ,248 ,251 ,252 ,254 ,255 ,259 ,261 ,263 ,
+264 ,267 ,269 ,271 ,272 ,275 ,276 ,277 ,279 ,280 ,
+282 ,283 ,285 ,286 ,288 ,289 ,291 ,292 ,294 ,295 ,
+297 ,298 ,300 ,301 ,304 ,305 ,307 ,308 ,311 ,312 ,
+314 ,315 ,317 ,318 ,321 ,322 ,325 ,326 ,328 ,0   ,
+0   ,329 ,330 ,331 ,332 ,334 ,336 ,337 ,339 ,341 ,
+342 ,343 ,344 ,346 ,348 ,349 ,351 ,352 ,353 ,354 ,
+355 ,356 ,358 ,359 ,361 ,362 ,0   ,363 ,364 ,0   ,
+0   ,365 ,367 ,0   ,369 ,370 ,372 ,374 ,375 ,376 ,
+379 ,381 ,0   ,0   ,383 ,384 ,386 ,387 ,390 ,392 ,
+396 ,397 ,400 ,402 ,404 ,405 ,409 ,411 ,412 ,413 ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,388 ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,319 ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,283 ,390 ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,391 ,102 ,392 ,94  ,393 ,109 ,394 ,395 ,396 ,
-116 ,397 ,106 ,398 ,399 ,400 ,401 ,0   ,402 ,403 ,
-404 ,405 ,406 ,407 ,408 ,409 ,410 ,411 ,412 ,413 ,
-414 ,415 ,416 ,417 ,418 ,419 ,420 ,421 ,164 ,422 ,
-184 ,423 ,171 ,424 ,159 ,425 ,180 ,426 ,201 ,427 ,
-188 ,428 ,174 ,429 ,197 ,430 ,216 ,431 ,205 ,432 ,
-192 ,433 ,212 ,434 ,233 ,435 ,220 ,436 ,209 ,437 ,
-229 ,438 ,17  ,440 ,237 ,441 ,224 ,442 ,0   ,0   ,
-30  ,443 ,21  ,444 ,446 ,447 ,27  ,448 ,47  ,450 ,
-34  ,451 ,25  ,452 ,43  ,453 ,62  ,455 ,51  ,456 ,
-38  ,457 ,459 ,460 ,445 ,462 ,466 ,0   ,439 ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,359 ,351 ,
-0   ,468 ,343 ,471 ,449 ,473 ,377 ,361 ,475 ,477 ,
-479 ,370 ,454 ,481 ,484 ,379 ,485 ,486 ,367 ,0   ,
+0   ,0   ,0   ,0   ,0   ,416 ,417 ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14586,14 +14552,20 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-3   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,418 ,42  ,419 ,31  ,420 ,422 ,423 ,74  ,424 ,
+425 ,426 ,428 ,429 ,69  ,430 ,92  ,0   ,78  ,432 ,
+64  ,433 ,88  ,435 ,113 ,436 ,97  ,438 ,83  ,439 ,
+107 ,440 ,133 ,441 ,118 ,442 ,102 ,443 ,266 ,444 ,
+148 ,445 ,274 ,446 ,262 ,447 ,144 ,448 ,166 ,449 ,
+152 ,450 ,142 ,451 ,162 ,452 ,185 ,453 ,170 ,454 ,
+157 ,455 ,181 ,456 ,202 ,457 ,189 ,458 ,175 ,459 ,
+51  ,460 ,218 ,461 ,59  ,464 ,47  ,465 ,0   ,0   ,
+236 ,466 ,223 ,467 ,211 ,468 ,233 ,469 ,253 ,470 ,
+241 ,471 ,228 ,472 ,250 ,473 ,270 ,474 ,258 ,475 ,
+246 ,477 ,434 ,479 ,481 ,483 ,437 ,0   ,485 ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,486 ,488 ,
+0   ,490 ,491 ,493 ,494 ,496 ,497 ,499 ,463 ,501 ,
+502 ,504 ,505 ,507 ,508 ,407 ,431 ,510 ,394 ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14605,31 +14577,12 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,217 ,271 ,0   ,489 ,226 ,
-277 ,490 ,491 ,234 ,285 ,492 ,494 ,11  ,495 ,496 ,
-497 ,18  ,294 ,498 ,500 ,4   ,300 ,501 ,348 ,31  ,
-305 ,502 ,504 ,40  ,311 ,505 ,358 ,48  ,319 ,507 ,
-508 ,56  ,326 ,509 ,375 ,63  ,333 ,511 ,355 ,70  ,
-119 ,512 ,513 ,76  ,124 ,515 ,366 ,82  ,131 ,516 ,
-517 ,88  ,140 ,519 ,384 ,314 ,362 ,80  ,487 ,322 ,
-371 ,60  ,474 ,328 ,380 ,92  ,520 ,336 ,386 ,74  ,
-482 ,7   ,521 ,104 ,522 ,127 ,523 ,86  ,525 ,134 ,
-526 ,118 ,527 ,143 ,528 ,98  ,530 ,149 ,531 ,532 ,
-533 ,154 ,534 ,112 ,536 ,161 ,537 ,538 ,539 ,168 ,
-540 ,541 ,543 ,177 ,240 ,544 ,545 ,185 ,247 ,546 ,
-548 ,194 ,253 ,549 ,550 ,202 ,260 ,551 ,553 ,555 ,
-556 ,190 ,557 ,558 ,559 ,166 ,561 ,563 ,564 ,207 ,
-565 ,566 ,567 ,182 ,569 ,243 ,570 ,222 ,571 ,249 ,
-572 ,199 ,574 ,256 ,575 ,239 ,576 ,262 ,577 ,214 ,
-579 ,267 ,580 ,23  ,463 ,273 ,582 ,231 ,583 ,279 ,
-461 ,36  ,389 ,288 ,0   ,15  ,458 ,584 ,338 ,53  ,
-467 ,585 ,587 ,0   ,588 ,591 ,350 ,66  ,476 ,592 ,
-470 ,44  ,594 ,284 ,287 ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,321 ,596 ,
-597 ,598 ,599 ,601 ,602 ,332 ,335 ,604 ,0   ,0   ,
-0   ,605 ,606 ,0   ,126 ,608 ,609 ,611 ,612 ,614 ,
-615 ,139 ,142 ,617 ,618 ,620 ,621 ,623 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+512 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14639,38 +14592,92 @@ static int	yy_accept[1476] =
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,624 ,626 ,581 ,628 ,629 ,631 ,632 ,
-10  ,633 ,635 ,0   ,0   ,636 ,637 ,638 ,2   ,639 ,
-465 ,586 ,640 ,641 ,642 ,643 ,39  ,644 ,645 ,469 ,
-646 ,647 ,648 ,649 ,55  ,650 ,342 ,369 ,651 ,652 ,
-653 ,654 ,69  ,655 ,478 ,656 ,658 ,659 ,661 ,299 ,
-590 ,662 ,664 ,0   ,0   ,665 ,667 ,310 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,513 ,514 ,0   ,515 ,516 ,
+517 ,518 ,401 ,519 ,520 ,521 ,380 ,68  ,366 ,522 ,
+524 ,77  ,371 ,525 ,391 ,87  ,377 ,527 ,529 ,96  ,
+530 ,531 ,410 ,532 ,302 ,533 ,534 ,535 ,309 ,536 ,
+538 ,539 ,316 ,540 ,542 ,543 ,323 ,544 ,546 ,547 ,
+548 ,549 ,550 ,551 ,552 ,553 ,554 ,511 ,555 ,556 ,
+373 ,557 ,558 ,559 ,560 ,34  ,561 ,16  ,482 ,41  ,
+562 ,130 ,563 ,50  ,478 ,29  ,564 ,58  ,565 ,8   ,
+476 ,214 ,566 ,45  ,489 ,222 ,567 ,20  ,568 ,232 ,
+487 ,62  ,500 ,240 ,492 ,36  ,569 ,106 ,388 ,81  ,
+509 ,117 ,398 ,570 ,571 ,126 ,406 ,100 ,572 ,137 ,
+414 ,72  ,506 ,6   ,573 ,121 ,574 ,13  ,575 ,90  ,
+576 ,2   ,577 ,140 ,578 ,25  ,579 ,111 ,580 ,179 ,
+581 ,154 ,582 ,188 ,583 ,268 ,585 ,199 ,586 ,172 ,
+587 ,205 ,588 ,146 ,590 ,592 ,593 ,193 ,594 ,333 ,
+595 ,164 ,597 ,340 ,598 ,208 ,599 ,345 ,600 ,183 ,
+602 ,249 ,498 ,226 ,603 ,256 ,503 ,53  ,495 ,265 ,
+604 ,244 ,605 ,273 ,0   ,216 ,606 ,4   ,607 ,260 ,
+608 ,150 ,609 ,0   ,610 ,159 ,611 ,612 ,613 ,168 ,
+614 ,615 ,616 ,617 ,618 ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,619 ,257 ,
+28  ,620 ,621 ,622 ,623 ,132 ,624 ,625 ,0   ,0   ,
+0   ,626 ,110 ,0   ,627 ,628 ,526 ,629 ,630 ,631 ,
+129 ,632 ,633 ,634 ,80  ,427 ,635 ,421 ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,176 ,668 ,670 ,671 ,
-672 ,673 ,674 ,675 ,535 ,148 ,676 ,677 ,678 ,679 ,
-680 ,681 ,542 ,160 ,682 ,669 ,0   ,0   ,683 ,684 ,
-547 ,175 ,685 ,686 ,687 ,688 ,689 ,690 ,552 ,193 ,
-691 ,692 ,693 ,694 ,695 ,696 ,488 ,697 ,698 ,625 ,
-699 ,700 ,701 ,702 ,493 ,225 ,703 ,634 ,704 ,627 ,
-705 ,706 ,499 ,9   ,707 ,464 ,708 ,709 ,339 ,630 ,
-503 ,1   ,710 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,663 ,711 ,657 ,
-712 ,713 ,593 ,589 ,714 ,715 ,716 ,0   ,0   ,660 ,
-472 ,313 ,717 ,718 ,719 ,720 ,721 ,666 ,480 ,0   ,
-0   ,722 ,723 ,724 ,725 ,726 ,524 ,6   ,727 ,728 ,
-729 ,730 ,731 ,732 ,529 ,133 ,733 ,506 ,595 ,734 ,
-735 ,376 ,600 ,736 ,318 ,510 ,603 ,737 ,610 ,483 ,
-0   ,0   ,331 ,514 ,607 ,738 ,619 ,739 ,613 ,740 ,
-123 ,518 ,616 ,741 ,742 ,743 ,622 ,744 ,138 ,745 ,
-746 ,747 ,748 ,749 ,560 ,554 ,750 ,751 ,752 ,753 ,
-754 ,755 ,568 ,562 ,756 ,757 ,758 ,759 ,760 ,761 ,
-573 ,242 ,762 ,763 ,764 ,765 ,766 ,767 ,578 ,255 ,
-768 ,110 ,769 ,770 ,771 };
-while(*yy_cp!=0){
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,636 ,637 ,638 ,639 ,541 ,640 ,641 ,
+642 ,643 ,644 ,0   ,0   ,645 ,192 ,156 ,646 ,161 ,
+647 ,648 ,649 ,650 ,207 ,174 ,651 ,180 ,415 ,652 ,
+653 ,654 ,655 ,656 ,657 ,658 ,659 ,660 ,661 ,662 ,
+663 ,664 ,665 ,666 ,667 ,668 ,669 ,523 ,670 ,671 ,
+672 ,545 ,393 ,0   ,0   ,528 ,673 ,674 ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,675 ,537 ,676 ,320 ,
+677 ,678 ,679 ,357 ,680 ,350 ,681 ,682 ,683 ,684 ,
+685 ,686 ,687 ,360 ,688 ,689 ,0   ,0   ,690 ,287 ,
+691 ,278 ,692 ,693 ,694 ,695 ,696 ,299 ,697 ,290 ,
+698 ,699 ,700 ,284 ,701 ,194 ,584 ,177 ,702 ,281 ,
+703 ,296 ,704 ,209 ,589 ,197 ,705 ,293 ,706 ,310 ,
+707 ,335 ,596 ,591 ,708 ,306 ,709 ,324 ,710 ,347 ,
+601 ,338 ,711 ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,0   ,712 ,98  ,713 ,
+714 ,385 ,715 ,378 ,93  ,716 ,717 ,0   ,0   ,313 ,
+718 ,303 ,719 ,368 ,720 ,382 ,721 ,327 ,722 ,0   ,
+0   ,723 ,724 ,399 ,725 ,726 ,727 ,728 ,729 ,395 ,
+730 ,731 ,732 ,733 ,734 ,735 ,736 ,737 ,43  ,738 ,
+84  ,739 ,70  ,740 ,38  ,741 ,60  ,462 ,103 ,742 ,
+0   ,0   ,55  ,743 ,224 ,744 ,123 ,745 ,108 ,746 ,
+219 ,747 ,242 ,748 ,749 ,750 ,127 ,484 ,237 ,751 ,
+119 ,752 ,753 ,403 ,754 ,389 ,114 ,755 ,138 ,756 ,
+757 ,758 ,759 ,408 ,134 ,760 ,14  ,480 ,761 ,762 ,
+763 ,764 ,10  ,765 ,26  ,766 ,65  ,767 ,768 ,769 ,
+22  ,770 ,190 ,771 ,229 };
+ int yy_current_state = 0;
+ int yy_last_accepting_state = 0;
+ char *yy_cp = NULL;
+ char *yy_last_accepting_cpos = NULL;
+ int yy_act = 0;
+ int isEnd=0;
+void lex_init(char* fileName)
+{
+yy_cp=getCharPtr(fileName);
+}
+int yy_lex()
+{
+if(isEnd==1)
+{
+return -1;
+}
+int result=0;
+int foundToken=0;
+while(*yy_cp!=0&&foundToken==0){
 register int yy_c = yy_ec[(int)*yy_cp];
 if(yy_accept[yy_current_state])
 {
@@ -14682,12 +14689,24 @@ if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state!=-1)
 yy_current_state=yy_last_accepting_state;
 yy_cp=yy_last_accepting_cpos;
 yy_act=yy_accept[yy_current_state];
-findAction(yy_act);
+result=findAction(yy_act);
+if(result!=-1)
+{
+foundToken=1;
+yy_current_state=0;
+yy_last_accepting_state=-1;
+++yy_cp;
+yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
+break;
+}
+if(result==-1)
+{
 yy_current_state=0;
 yy_last_accepting_state=-1;
 ++yy_cp;
 yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
 continue;
+}
 }
 if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state==-1)
 {
@@ -14699,2338 +14718,2331 @@ yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
 ++yy_cp;
 }
 }
-if(yy_last_accepting_cpos==yy_cp-1)
+if(yy_last_accepting_cpos==yy_cp-1&&foundToken==0)
 {
 yy_act=yy_accept[yy_current_state];
-findAction(yy_act);
+result=findAction(yy_act);
+isEnd=1;
 }
 else{
 printf("ERROR DETECTED IN INPUT FILE !");
 }
-system("pause");
+return result;
 }
-void findAction(int action)
+int findAction(int action)
 {
 switch (action) 
 {
 case 0:
 break;
 case 1:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 2:
-addToken("BREAK");
+ return(AUTO);
 break;
 case 3:
- addToken("CONSTANT");
 break;
 case 4:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 5:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 6:
- addToken("CONSTANT");
+comment();
 break;
 case 7:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 8:
-addToken("DOT");
+comment();
 break;
 case 9:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 10:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 11:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 12:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 13:
- addToken("IDENTIFIER");
+ return(RIGHT_ASSIGN);
 break;
 case 14:
- addToken("IDENTIFIER");
+ return(VOLATILE);
 break;
 case 15:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 16:
- addToken("IDENTIFIER");
+comment();
 break;
 case 17:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 18:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 19:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 20:
- addToken("IDENTIFIER");
+comment();
 break;
 case 21:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 22:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 23:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 24:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 25:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 26:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 27:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 28:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 29:
- addToken("IDENTIFIER");
+comment();
 break;
 case 30:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 31:
-addToken("below are comments");
+ return(DEC_OP);
 break;
 case 32:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 33:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 34:
- addToken("CONSTANT");
+comment();
 break;
 case 35:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 36:
- addToken("CONSTANT");
+comment();
 break;
 case 37:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 38:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 39:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 40:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 41:
- addToken("IDENTIFIER");
+comment();
 break;
 case 42:
- addToken("IDENTIFIER");
+ return(INC_OP);
 break;
 case 43:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 44:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 45:
- addToken("IDENTIFIER");
+comment();
 break;
 case 46:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 47:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 48:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 49:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 50:
- addToken("IDENTIFIER");
+comment();
 break;
 case 51:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 52:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 53:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 54:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 55:
- addToken("IDENTIFIER");
+return(CONSTANT);
 break;
 case 56:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 57:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 58:
- addToken("IDENTIFIER");
+comment();
 break;
 case 59:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 60:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 61:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 62:
- addToken("CONSTANT");
+comment();
 break;
 case 63:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 64:
- addToken("IDENTIFIER");
+ return(DIV_ASSIGN);
 break;
 case 65:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 66:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 67:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 68:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 69:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 70:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 71:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 72:
- addToken("IDENTIFIER");
+comment();
 break;
 case 73:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 74:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 75:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 76:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 77:
- addToken("IDENTIFIER");
+comment();
 break;
 case 78:
- addToken("IDENTIFIER");
+comment();
 break;
 case 79:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 80:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 81:
- addToken("IDENTIFIER");
+comment();
 break;
 case 82:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 83:
- addToken("IDENTIFIER");
+ return(RIGHT_OP);
 break;
 case 84:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 85:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 86:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 87:
- addToken("IDENTIFIER");
+comment();
 break;
 case 88:
-addToken("below are comments");
+ return('{');
 break;
 case 89:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 90:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 91:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 92:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 93:
- addToken("IDENTIFIER");
+return(CONSTANT);
 break;
 case 94:
- addToken("DEC_OP");
+ return(IDENTIFIER);
 break;
 case 95:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 96:
- addToken("IDENTIFIER");
+comment();
 break;
 case 97:
- addToken("IDENTIFIER");
+ return(EQ_OP);
 break;
 case 98:
-addToken("below are comments");
+return(CONSTANT);
 break;
 case 99:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 100:
- addToken("CONSTANT");
+comment();
 break;
 case 101:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 102:
- addToken("INC_OP");
+ return(AND_OP);
 break;
 case 103:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 104:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 105:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 106:
- addToken("CONSTANT");
+comment();
 break;
 case 107:
- addToken("CONSTANT");
+ return(OR_ASSIGN);
 break;
 case 108:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 109:
- addToken("PTR_OP");
+ return(IDENTIFIER);
 break;
 case 110:
- addToken("COMPLEX");
+ return(CONSTANT);
 break;
 case 111:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 112:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 113:
- addToken("CONSTANT");
+ return(LEFT_OP);
 break;
 case 114:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 115:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 116:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 117:
- addToken("!");
+comment();
 break;
 case 118:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 119:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 120:
-addToken("DOT");
+ return(CONSTANT);
 break;
 case 121:
- addToken("%%");
+comment();
 break;
 case 122:
-addToken("DOT");
+ return(CONSTANT);
 break;
 case 123:
-addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 124:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 125:
- addToken("(");
+ return(CONSTANT);
 break;
 case 126:
- addToken("CONSTANT");
+comment();
 break;
 case 127:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 128:
- addToken(")");
+ return(CONSTANT);
 break;
 case 129:
- addToken("*");
+ return(CONSTANT);
 break;
 case 130:
- addToken("+");
+comment();
 break;
 case 131:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 132:
- addToken(",");
+ return(CONSTANT);
 break;
 case 133:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 134:
-addToken("below are comments");
+ return(RESTRICT);
 break;
 case 135:
- addToken("-");
+ return(CONSTANT);
 break;
 case 136:
- addToken(".");
+ return(CONSTANT);
 break;
 case 137:
- addToken("/");
+comment();
 break;
 case 138:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 139:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 140:
-addToken("below are comments");
+ return(CASE);
 break;
 case 141:
- addToken(":");
+ return('!');
 break;
 case 142:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 143:
-addToken("below are comments");
 break;
 case 144:
-addToken(";");
+ return(IDENTIFIER);
 break;
 case 145:
-addToken("<");
+ return('%');
 break;
 case 146:
- addToken("=");
+ return(IDENTIFIER);
 break;
 case 147:
- addToken(">");
 break;
 case 148:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 149:
-addToken("below are comments");
+ return('(');
 break;
 case 150:
- addToken("?");
+ return(CONSTANT);
 break;
 case 151:
- addToken("[");
+ return(')');
 break;
 case 152:
-addToken("DOT");
+ return(IDENTIFIER);
 break;
 case 153:
- addToken("]");
+ return('*');
 break;
 case 154:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 155:
- addToken("^");
+ return('+');
 break;
 case 156:
- addToken("{");
+ return(IDENTIFIER);
 break;
 case 157:
- addToken("|");
+ return(IDENTIFIER);
 break;
 case 158:
- addToken("}");
+ return(',');
 break;
 case 159:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 160:
- addToken("CONSTANT");
+ return('-');
 break;
 case 161:
-addToken("below are comments");
+ return(CONST);
 break;
 case 162:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 163:
-addToken("SPACE");
+ return('.');
 break;
 case 164:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 165:
-addToken("SPACE");
+ return('/');
 break;
 case 166:
- addToken("LONG");
+ return(FOR);
 break;
 case 167:
-addToken("SPACE");
+ return(':');
 break;
 case 168:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 169:
-addToken("SPACE");
+return(';');
 break;
 case 170:
-addToken("SPACE");
+ return(IDENTIFIER);
 break;
 case 171:
- addToken("IDENTIFIER");
+return('<');
 break;
 case 172:
- addToken("~");
+ return(IDENTIFIER);
 break;
 case 173:
- addToken("&");
+ return('=');
 break;
 case 174:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 175:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 176:
- addToken("CONSTANT");
+ return('>');
 break;
 case 177:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 178:
- addToken("IDENTIFIER");
+ return('?');
 break;
 case 179:
- addToken("IDENTIFIER");
+ return(ELSE);
 break;
 case 180:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 181:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 182:
- addToken("IDENTIFIER");
+ return('[');
 break;
 case 183:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 184:
- addToken("IDENTIFIER");
 break;
 case 185:
- addToken("RIGHT_ASSIGN");
+ return(IDENTIFIER);
 break;
 case 186:
- addToken("IDENTIFIER");
+ return(']');
 break;
 case 187:
- addToken("IDENTIFIER");
+ return('^');
 break;
 case 188:
- addToken("IDENTIFIER");
+ return(GOTO);
 break;
 case 189:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 190:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 191:
- addToken("IDENTIFIER");
+ return('{');
 break;
 case 192:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 193:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 194:
- addToken("AUTO");
+ return(INLINE);
 break;
 case 195:
- addToken("IDENTIFIER");
+ return('|');
 break;
 case 196:
- addToken("IDENTIFIER");
+ return('}');
 break;
 case 197:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 198:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 199:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 200:
- addToken("IDENTIFIER");
 break;
 case 201:
- addToken("FOR");
 break;
 case 202:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 203:
- addToken("IDENTIFIER");
 break;
 case 204:
- addToken("IDENTIFIER");
 break;
 case 205:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 206:
- addToken("IDENTIFIER");
 break;
 case 207:
- addToken("IDENTIFIER");
+ return(FLOAT);
 break;
 case 208:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 209:
- addToken("CONSTANT");
+ return(SWITCH);
 break;
 case 210:
- addToken("IDENTIFIER");
+ return('~');
 break;
 case 211:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 212:
- addToken("IDENTIFIER");
+ return('&');
 break;
 case 213:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 214:
- addToken("CONSTANT");
+comment();
 break;
 case 215:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 216:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 217:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 218:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 219:
- addToken("IDENTIFIER");
+return(CONSTANT);
 break;
 case 220:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 221:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 222:
- addToken("IDENTIFIER");
+comment();
 break;
 case 223:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 224:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 225:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 226:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 227:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 228:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 229:
- addToken("CONSTANT");
+ return(IMAGINARY);
 break;
 case 230:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 231:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 232:
- addToken("IDENTIFIER");
+comment();
 break;
 case 233:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 234:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 235:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 236:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 237:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 238:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 239:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 240:
-addToken("below are comments");
+comment();
 break;
 case 241:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 242:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 243:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 244:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 245:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 246:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 247:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 248:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 249:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 250:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 251:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 252:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 253:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 254:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 255:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 256:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 257:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 258:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 259:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 260:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 261:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 262:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 263:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 264:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 265:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 266:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 267:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 268:
- addToken("IDENTIFIER");
+ return(LONG);
 break;
 case 269:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 270:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 271:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 272:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 273:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 274:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 275:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 276:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 277:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 278:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 279:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 280:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 281:
- addToken("IDENTIFIER");
+ return(SIGNED);
 break;
 case 282:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 283:
- addToken("MOD_ASSIGN");
+ return(IDENTIFIER);
 break;
 case 284:
- addToken("CONSTANT");
+ return(DOUBLE);
 break;
 case 285:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 286:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 287:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 288:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 289:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 290:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 291:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 292:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 293:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 294:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 295:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 296:
- addToken("IDENTIFIER");
+ return(STATIC);
 break;
 case 297:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 298:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 299:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 300:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 301:
- addToken("DO");
+ return(IDENTIFIER);
 break;
 case 302:
- addToken("IDENTIFIER");
+comment();
 break;
 case 303:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 304:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 305:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 306:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 307:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 308:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 309:
- addToken("IF");
+comment();
 break;
 case 310:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 311:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 312:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 313:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 314:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 315:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 316:
- addToken("IDENTIFIER");
+comment();
 break;
 case 317:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 318:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 319:
-addToken("below are comments");
+ return(STRING_LITERAL);
 break;
 case 320:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 321:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 322:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 323:
- addToken("IDENTIFIER");
+comment();
 break;
 case 324:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 325:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 326:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 327:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 328:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 329:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 330:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 331:
-addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 332:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 333:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 334:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 335:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 336:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 337:
- addToken("CONSTANT");
+ return(DO);
 break;
 case 338:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 339:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 340:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 341:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 342:
- addToken("UNION");
+ return(IDENTIFIER);
 break;
 case 343:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 344:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 345:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 346:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 347:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 348:
-addToken("below are comments");
+ return(IF);
 break;
 case 349:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 350:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 351:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 352:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 353:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 354:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 355:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 356:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 357:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 358:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 359:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 360:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 361:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 362:
-addToken("below are comments");
+ return(IDENTIFIER);
 break;
 case 363:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 364:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 365:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 366:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 367:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 368:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 369:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 370:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 371:
-addToken("below are comments");
+comment();
 break;
 case 372:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 373:
- addToken("CONSTANT");
+comment();
 break;
 case 374:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 375:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 376:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 377:
- addToken("CONSTANT");
+comment();
 break;
 case 378:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 379:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 380:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 381:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 382:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 383:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 384:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 385:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 386:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 387:
- addToken("NE_OP");
+ return(CONSTANT);
 break;
 case 388:
- addToken("STRING_LITERAL");
+comment();
 break;
 case 389:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 390:
- addToken("}");
+ return(CONSTANT);
 break;
 case 391:
- addToken("MUL_ASSIGN");
+comment();
 break;
 case 392:
- addToken("ADD_ASSIGN");
+ return(CONSTANT);
 break;
 case 393:
- addToken("SUB_ASSIGN");
+ return(CONSTANT);
 break;
 case 394:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 395:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 396:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 397:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 398:
- addToken("CONSTANT");
+comment();
 break;
 case 399:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 400:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 401:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 402:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 403:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 404:
- addToken("DIV_ASSIGN");
+ return(CONSTANT);
 break;
 case 405:
- addToken("]");
+ return(CONSTANT);
 break;
 case 406:
- addToken("{");
+comment();
 break;
 case 407:
- addToken("[");
+ return(CONSTANT);
 break;
 case 408:
- addToken("LEFT_OP");
+ return(REGISTER);
 break;
 case 409:
- addToken("LE_OP");
+ return(CONSTANT);
 break;
 case 410:
- addToken("EQ_OP");
+comment();
 break;
 case 411:
- addToken("GE_OP");
+ return(CONSTANT);
 break;
 case 412:
- addToken("RIGHT_OP");
+ return(CONSTANT);
 break;
 case 413:
- addToken("XOR_ASSIGN");
+ return(NE_OP);
 break;
 case 414:
- addToken("OR_ASSIGN");
+comment();
 break;
 case 415:
- addToken("OR_OP");
+ return(IDENTIFIER);
 break;
 case 416:
- addToken("IDENTIFIER");
+ return(MOD_ASSIGN);
 break;
 case 417:
- addToken("IDENTIFIER");
+ return('}');
 break;
 case 418:
- addToken("IDENTIFIER");
+ return(MUL_ASSIGN);
 break;
 case 419:
- addToken("AND_ASSIGN");
+ return(ADD_ASSIGN);
 break;
 case 420:
- addToken("AND_OP");
+ return(SUB_ASSIGN);
 break;
 case 421:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 422:
- addToken("IDENTIFIER");
+ return(PTR_OP);
 break;
 case 423:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 424:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 425:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 426:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 427:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 428:
- addToken("INT");
+ return(CONSTANT);
 break;
 case 429:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 430:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 431:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 432:
- addToken("IDENTIFIER");
+comment();
 break;
 case 433:
- addToken("IDENTIFIER");
+ return(']');
 break;
 case 434:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 435:
- addToken("IDENTIFIER");
+ return('[');
 break;
 case 436:
- addToken("IDENTIFIER");
+ return(LE_OP);
 break;
 case 437:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 438:
- addToken("CONSTANT");
+ return(GE_OP);
 break;
 case 439:
- addToken("CONSTANT");
+ return(XOR_ASSIGN);
 break;
 case 440:
- addToken("CONSTANT");
+ return(OR_OP);
 break;
 case 441:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 442:
- addToken("CONSTANT");
+ return(AND_ASSIGN);
 break;
 case 443:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 444:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 445:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 446:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 447:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 448:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 449:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 450:
- addToken("CONSTANT");
+ return(INT);
 break;
 case 451:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 452:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 453:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 454:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 455:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 456:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 457:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 458:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 459:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 460:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 461:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 462:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 463:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 464:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 465:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 466:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 467:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 468:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 469:
- addToken("SHORT");
+ return(CONSTANT);
 break;
 case 470:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 471:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 472:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 473:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 474:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 475:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 476:
- addToken("CONSTANT");
+comment();
 break;
 case 477:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 478:
- addToken("CONSTANT");
+comment();
 break;
 case 479:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 480:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 481:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 482:
-addToken("below are comments");
+comment();
 break;
 case 483:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 484:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 485:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 486:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 487:
-addToken("below are comments");
+comment();
 break;
 case 488:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 489:
- addToken("CONSTANT");
+comment();
 break;
 case 490:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 491:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 492:
- addToken("CONSTANT");
+comment();
 break;
 case 493:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 494:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 495:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 496:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 497:
- addToken("ELLIPSIS");
+ return(CONSTANT);
 break;
 case 498:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 499:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 500:
-addToken("below are comments");
+comment();
 break;
 case 501:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 502:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 503:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 504:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 505:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 506:
- addToken("TYPEDEF");
+comment();
 break;
 case 507:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 508:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 509:
-addToken("below are comments");
+comment();
 break;
 case 510:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 511:
-addToken("below are comments");
+comment();
 break;
 case 512:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 513:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 514:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 515:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 516:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 517:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 518:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 519:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 520:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 521:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 522:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 523:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 524:
- addToken("CONSTANT");
+ return(ELLIPSIS);
 break;
 case 525:
-addToken("below are comments");
+comment();
 break;
 case 526:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 527:
-addToken("below are comments");
+comment();
 break;
 case 528:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 529:
- addToken("DEFAULT");
+comment();
 break;
 case 530:
-addToken("below are comments");
+comment();
 break;
 case 531:
-addToken("below are comments");
+comment();
 break;
 case 532:
-addToken("below are comments");
+comment();
 break;
 case 533:
-addToken("below are comments");
+comment();
 break;
 case 534:
-addToken("below are comments");
+comment();
 break;
 case 535:
- addToken("CONSTANT");
+comment();
 break;
 case 536:
-addToken("below are comments");
+comment();
 break;
 case 537:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 538:
-addToken("below are comments");
+comment();
 break;
 case 539:
-addToken("below are comments");
+comment();
 break;
 case 540:
-addToken("below are comments");
+comment();
 break;
 case 541:
-addToken("below are comments");
+ return(CONSTANT);
 break;
 case 542:
- addToken("CONSTANT");
+comment();
 break;
 case 543:
-addToken("below are comments");
+comment();
 break;
 case 544:
-addToken("below are comments");
+comment();
 break;
 case 545:
- addToken("LEFT_ASSIGN");
+ return(CONSTANT);
 break;
 case 546:
- addToken("IDENTIFIER");
+comment();
 break;
 case 547:
- addToken("CONSTANT");
+comment();
 break;
 case 548:
- addToken("IDENTIFIER");
+comment();
 break;
 case 549:
- addToken("CASE");
+comment();
 break;
 case 550:
- addToken("CHAR");
+comment();
 break;
 case 551:
- addToken("IDENTIFIER");
+comment();
 break;
 case 552:
- addToken("BOOL");
+comment();
 break;
 case 553:
- addToken("IDENTIFIER");
+comment();
 break;
 case 554:
- addToken("CONSTANT");
+comment();
 break;
 case 555:
- addToken("ELSE");
+comment();
 break;
 case 556:
- addToken("ENUM");
+comment();
 break;
 case 557:
- addToken("IDENTIFIER");
+comment();
 break;
 case 558:
- addToken("GOTO");
+comment();
 break;
 case 559:
- addToken("IDENTIFIER");
+comment();
 break;
 case 560:
- addToken("CONSTANT");
+comment();
 break;
 case 561:
- addToken("IDENTIFIER");
+comment();
 break;
 case 562:
- addToken("REGISTER");
+comment();
 break;
 case 563:
- addToken("IDENTIFIER");
+comment();
 break;
 case 564:
- addToken("IDENTIFIER");
+comment();
 break;
 case 565:
- addToken("IDENTIFIER");
+comment();
 break;
 case 566:
- addToken("IDENTIFIER");
+comment();
 break;
 case 567:
- addToken("IDENTIFIER");
+comment();
 break;
 case 568:
- addToken("CONTINUE");
+comment();
 break;
 case 569:
- addToken("IDENTIFIER");
+comment();
 break;
 case 570:
- addToken("IDENTIFIER");
+comment();
 break;
 case 571:
- addToken("VOID");
+comment();
 break;
 case 572:
- addToken("IDENTIFIER");
+comment();
 break;
 case 573:
- addToken("CONSTANT");
+comment();
 break;
 case 574:
- addToken("CONSTANT");
+ return(LEFT_ASSIGN);
 break;
 case 575:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 576:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 577:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 578:
- addToken("CONSTANT");
+ return(CHAR);
 break;
 case 579:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 580:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 581:
- addToken("CONSTANT");
+ return(ENUM);
 break;
 case 582:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 583:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 584:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 585:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 586:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 587:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 588:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 589:
-addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 590:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 591:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 592:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 593:
-addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 594:
- addToken("CONSTANT");
+ return(VOID);
 break;
 case 595:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 596:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 597:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 598:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 599:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 600:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 601:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 602:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 603:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 604:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 605:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 606:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 607:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 608:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 609:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 610:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 611:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 612:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 613:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 614:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 615:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 616:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 617:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 618:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 619:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 620:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 621:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 622:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 623:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 624:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 625:
- addToken("SIGNED");
+ return(CONSTANT);
 break;
 case 626:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 627:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 628:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 629:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 630:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 631:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 632:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 633:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 634:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 635:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 636:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 637:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 638:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 639:
- addToken("CONST");
+ return(CONSTANT);
 break;
 case 640:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 641:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 642:
- addToken("FLOAT");
+ return(CONSTANT);
 break;
 case 643:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 644:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 645:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 646:
- addToken("IDENTIFIER");
+return(BREAK);
 break;
 case 647:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 648:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 649:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 650:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 651:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 652:
- addToken("WHILE");
+ return(SHORT);
 break;
 case 653:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 654:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 655:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 656:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 657:
-addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 658:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 659:
- addToken("CONSTANT");
+ return(UNION);
 break;
 case 660:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 661:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 662:
- addToken("CONSTANT");
+ return(WHILE);
 break;
 case 663:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 664:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 665:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 666:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 667:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 668:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 669:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 670:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 671:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 672:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 673:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 674:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 675:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 676:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 677:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 678:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 679:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 680:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 681:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 682:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 683:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 684:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 685:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 686:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 687:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 688:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 689:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 690:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 691:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 692:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 693:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 694:
- addToken("DOUBLE");
+ return(CONSTANT);
 break;
 case 695:
- addToken("EXTERN");
+ return(CONSTANT);
 break;
 case 696:
- addToken("INLINE");
+ return(CONSTANT);
 break;
 case 697:
- addToken("IDENTIFIER");
+ return(BOOL);
 break;
 case 698:
- addToken("RETURN");
+ return(IDENTIFIER);
 break;
 case 699:
- addToken("SIZEOF");
+ return(IDENTIFIER);
 break;
 case 700:
- addToken("STATIC");
+ return(IDENTIFIER);
 break;
 case 701:
- addToken("STRUCT");
+ return(EXTERN);
 break;
 case 702:
- addToken("SWITCH");
+ return(RETURN);
 break;
 case 703:
- addToken("IDENTIFIER");
+ return(SIZEOF);
 break;
 case 704:
- addToken("CONSTANT");
+ return(STRUCT);
 break;
 case 705:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 706:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 707:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 708:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 709:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 710:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 711:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 712:
-addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 713:
-addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 714:
-addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 715:
-addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 716:
-addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 717:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 718:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 719:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 720:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 721:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 722:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 723:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 724:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 725:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 726:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 727:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 728:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 729:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 730:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 731:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 732:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 733:
- addToken("IDENTIFIER");
+ return(IDENTIFIER);
 break;
 case 734:
- addToken("IDENTIFIER");
+ return(DEFAULT);
 break;
 case 735:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 736:
- addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 737:
- addToken("CONSTANT");
+ return(TYPEDEF);
 break;
 case 738:
-addToken("CONSTANT");
+ return(IDENTIFIER);
 break;
 case 739:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 740:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 741:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 742:
-addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 743:
-addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 744:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 745:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 746:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 747:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 748:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 749:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 750:
- addToken("CONSTANT");
+return(CONSTANT);
 break;
 case 751:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 752:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 753:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 754:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 755:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 756:
- addToken("RESTRICT");
+ return(CONSTANT);
 break;
 case 757:
- addToken("UNSIGNED");
+ return(IDENTIFIER);
 break;
 case 758:
- addToken("VOLATILE");
+ return(IDENTIFIER);
 break;
 case 759:
- addToken("CONSTANT");
+ return(CONTINUE);
 break;
 case 760:
- addToken("CONSTANT");
+ return(UNSIGNED);
 break;
 case 761:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 762:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 763:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 764:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 765:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 766:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 767:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 768:
- addToken("CONSTANT");
+ return(CONSTANT);
 break;
 case 769:
- addToken("IDENTIFIER");
+ return(CONSTANT);
 break;
 case 770:
- addToken("IDENTIFIER");
+ return(COMPLEX);
 break;
 case 771:
- addToken("IMAGINARY");
+ return(IDENTIFIER);
 break;
 default:
 break;
 }
+return -1;
 }
 char* getCharPtr(char* fileName){
 char* cp=NULL;
@@ -17055,20 +17067,13 @@ fread(cp, sizeof(char), flen, fp);
 cp[flen] = 0; 
 return cp;
 }
-void addToken(char *token){
-if(tokenNum>=arraySize)
+void comment(){
+char c,prev=0;
+while(++yy_cp!=0)
 {
-tokens=(char**)realloc(tokens,sizeof(char*)*(arraySize+100));
-for(unsigned i=arraySize;i<arraySize+100;i++)
-{
-tokens[i]=(char*)malloc(sizeof(char)*30);
+if(c=='/'&&prev=='*')
+return;
+prev=c;
 }
-arraySize=arraySize+100;
-}
-memcpy(tokens[tokenNum],token,30);
-++tokenNum;
-}
-void getTokens(unsigned num,char** _tokens){
-num=tokenNum;
-_tokens=tokens;
+printf("ERROR:unterminated comment!");
 }

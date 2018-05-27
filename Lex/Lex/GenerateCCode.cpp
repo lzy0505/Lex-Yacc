@@ -37,27 +37,13 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	}
 
 	out << "char* getCharPtr(char* fileName);" << endl;
-	out << "void findAction(int action);" << endl; /*函数声明*/
-	out << "void addToken(char* token);" << endl; /*将token加入Token序列*/
+	out << "int findAction(int action);" << endl; /*函数声明*/
+	//out << "void addToken(int token);" << endl; /*将token加入Token序列*/
 	out << "void comment();" << endl; /*comment函数，啥都不做*/
-	out << "void getTokens(unsigned num,char** _tokens);" << endl; /*得到Token序列*/
-	out << "unsigned tokenNum=0;" << endl; /*已存储的Token个数*/
-	out << "unsigned arraySize=0;" << endl; /*存储数组tokens的大小*/
-	out << "int* tokens = NULL;" << endl;
-	out << "int lex_main(char* fileName)" << endl;
-	out << "{" << endl;
-
-	/*定义若干变量*/
-	out << "register int yy_current_state = 0;" << endl;
-	out << "register int yy_last_accepting_state = 0;" << endl;
-	out << "register char *yy_cp = NULL;" << endl;
-	out << "register char *yy_last_accepting_cpos = NULL;" << endl;
-	out << "register int yy_act = 0;" << endl;
-	
-
-
-	/*调用char* getCharPtr(char* fileName)得到文件字符指针*/
-	out << "yy_cp=getCharPtr(fileName);" << endl;
+	//out << "void getTokens(unsigned num,int* _tokens);" << endl; /*得到Token序列*/
+	//out << "unsigned tokenNum=0;" << endl; /*已存储的Token个数*/
+	//out << "unsigned arraySize=0;" << endl; /*存储数组tokens的大小*/
+	//out << "int* tokens = NULL;" << endl;
 
 
 	/*依次输出ec表,base表,next表,accept表*/
@@ -73,9 +59,36 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 
 	}
 
+	/*定义若干变量*/
+	out << " int yy_current_state = 0;" << endl;
+	out << " int yy_last_accepting_state = 0;" << endl;
+	out << " char *yy_cp = NULL;" << endl;
+	out << " char *yy_last_accepting_cpos = NULL;" << endl;
+	out << " int yy_act = 0;" << endl;
+	out << " int isEnd=0;" << endl;
 
+
+	/*一些初始化动作*/
+	out << "void lex_init(char* fileName)" << endl;
+	out << "{" << endl;
+	/*调用char* getCharPtr(char* fileName)得到文件字符指针*/
+	out << "yy_cp=getCharPtr(fileName);" << endl;
+	out << "}" << endl;
+
+
+	out << "int yy_lex()" << endl;
+	out << "{" << endl;
+
+	out << "if(isEnd==1)" << endl;
+	out << "{" << endl;
+	out << "return -1;" << endl;
+	out << "}" << endl;
+
+
+	out << "int result=0;" << endl;
+	out << "int foundToken=0;" << endl;
 	/*状态跳转部分*/
-	out << "while(*yy_cp!=0){" << endl;	/*若不为字符串结束符'\0'*/
+	out << "while(*yy_cp!=0&&foundToken==0){" << endl;	/*若不为字符串结束符'\0'且没有找到Token*/
 	out << "register int yy_c = yy_ec[(int)*yy_cp];" << endl; /*当前读取字符对应的列号*/
 	out << "if(yy_accept[yy_current_state])" << endl;
 	out << "{" << endl;
@@ -87,17 +100,31 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "yy_current_state=yy_last_accepting_state;" << endl;
 	out << "yy_cp=yy_last_accepting_cpos;" << endl;
 	out << "yy_act=yy_accept[yy_current_state];" << endl;
-	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
+	out << "result=findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
+	out << "if(result!=-1)" << endl;
+	out << "{" << endl;
+	out << "foundToken=1;" << endl;
+	out << "yy_current_state=0;" << endl; /*将状态置为0*/
+	out << "yy_last_accepting_state=-1;" << endl;
+	out << "++yy_cp;" << endl;
+	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
+	out << "break;" << endl;
+	out << "}" << endl;
+	out << "if(result==-1)" << endl;
+	out << "{" << endl;
 	out << "yy_current_state=0;" << endl; /*将状态置为0*/
 	out << "yy_last_accepting_state=-1;" << endl;
 	out << "++yy_cp;" << endl;
 	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
 	out << "continue;" << endl;
 	out << "}" << endl;
+	out << "}" << endl;
+
 	out << "if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state==-1)" << endl;
 	out << "{" << endl;
 	out << "printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
 	out << "}" << endl;
+
 	out << "if(yy_next[yy_base[yy_current_state]+yy_c]!=-1) " << endl;
 	out << "{" << endl;
 	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
@@ -105,20 +132,20 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "}" << endl;
 	out << "}" << endl;
 
-	out << "if(yy_last_accepting_cpos==yy_cp-1)" << endl;
+	out << "if(yy_last_accepting_cpos==yy_cp-1&&foundToken==0)" << endl;
 	out << "{" << endl;
 	out << "yy_act=yy_accept[yy_current_state];" << endl;
-	out << "findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
+	out << "result=findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
+	out << "isEnd=1;" << endl;
 	out << "}" << endl;
 	out << "else{" << endl;
 	out << "printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
 	out << "}" << endl;
-	//out << "system(\"pause\");" << endl;
+	out << "return result;" << endl;
 	out << "}" << endl;/*lex_mian函数结束*/
   
-
-	/*void findAction(int action)函数*/
-	out << "void findAction(int action)" << endl;
+	/*int findAction(int action)函数*/
+	out << "int findAction(int action)" << endl;
 	out << "{" << endl;
 	out << "switch (action) " << endl;/*根据endVec打印switch语句*/
 	out << "{" << endl;
@@ -138,6 +165,7 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "default:" << endl;
 	out << "break;" << endl;
 	out << "}" << endl; /*int findAction(int state）函数的下括号*/
+	out << "return -1;" << endl;
 	out << "}" << endl;/*int findAction(int action)函数的下括号*/
 	/*char* getCharPtr(char* fileName)函数*/
 	out << "char* getCharPtr(char* fileName){" << endl;
@@ -163,8 +191,9 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "cp[flen] = 0; " << endl;/* 字符串结束标志 */
 	out << "return cp;" << endl;
 	out << "}" << endl;
+	/*
 	out << "void addToken(int token){" << endl; 
-	out << "if(tokenNum>=arraySize)" << endl;/*当数组空间不够时*/
+	out << "if(tokenNum>=arraySize)" << endl;
 	out << "{" << endl;
 	out << "tokens=(int*)realloc(tokens,sizeof(int)*(arraySize+100));" << endl;
 	out << "arraySize=arraySize+100;" << endl;
@@ -172,16 +201,20 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "tokens[tokenNum]=token;" << endl;
 	out << "++tokenNum;" << endl;
 	out << "}" << endl;
+	*/
 	/*getTokens()函数用于Yacc得到Token序列*/
-	out << "void getTokens(unsigned& num,int* _tokens){" << endl; /*得到Token序列*/
+	/*
+	out << "void getTokens(unsigned& num,int* _tokens){" << endl; 
 	out << "num=tokenNum;" << endl;
 	out << "_tokens=tokens;" << endl;
 	out << "}" << endl;
+	*/
 	/*comment函数*/
 	out << "void comment(){" << endl; 
 	out << "char c,prev=0;" << endl;
 	out << "while(++yy_cp!=0)" << endl;
 	out << "{" << endl;
+	out << "c=*yy_cp;" << endl;
 	out << "if(c=='/'&&prev=='*')" << endl;
 	out << "return;" << endl;
 	out << "prev=c;" << endl;

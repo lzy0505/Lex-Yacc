@@ -49,7 +49,7 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 
 	//遍历存储所有的产生式,构建producer_data、index表
 	int count = 0;//记录存储到哪个位置了
-	for (int i = 0; i < producerVec.size();++i) {
+	for (int i = 1; i < producerVec.size();++i) {
 		producer_data[count] = producerVec[i].first;//记录第一个
 		index[2 * i] = count;
 		index[2 * i + 1] = producerVec[i].second.size() + 1;
@@ -73,7 +73,7 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 	
 
 	for (auto& it : intsMap) {
-		map_vec[it.first] = it.second;
+			map_vec[it.first] = it.second;
 	}
 
 	//遍历所有状态操作，构建next、base表
@@ -154,7 +154,6 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 	table_vec.push_back(pair<void*, int>(base, lrdfa.statesVec.size() + 1));
 	table_vec.push_back(pair<void*, int>(producer_data, 5 * producerVec.size()));
 	table_vec.push_back(pair<void*, int>(index, 2 * producerVec.size()));
-
 	table_vec.push_back(pair<void*, int>(map_vec, defineCount));
 
 

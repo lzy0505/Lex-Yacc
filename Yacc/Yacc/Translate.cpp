@@ -59,6 +59,11 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 	}
 
 
+	startInt = tokensMap[startItemStr];
+
+	producerVec.push_back(pair<int, vector<int> >(0, vector<int>()));
+
+	producerVec.push_back(pair<int, vector<int> >(0, vector<int>({ startInt })));
 
 	vector<int > tempRightVec;
 	int preleftInt = boundTInt + 1, counter = 0, temp;
@@ -80,7 +85,5 @@ void translate_expression(const string &startItemStr, const vector<string> &toke
 		
 	}
 	indexMap.try_emplace(preleftInt, pair<int, int>(producerVec.size() - counter, counter));
-
-	startInt = tokensMap[startItemStr];
-	producerVec.push_back(pair<int, vector<int> >(0, vector<int>({ startInt })));
+	
 }

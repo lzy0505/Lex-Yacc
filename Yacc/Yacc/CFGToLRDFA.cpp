@@ -22,7 +22,7 @@ void cfg_to_lrdfa(LRDFA & lrdfa) {
 	LRItem initProducer;
 	int stateNumCounter = 0;
 	initProducer.predictiveSymbol=-2;//-2 stands for $R
-	initProducer.gramarInt = producerVec.size() - 1;
+	initProducer.gramarInt = 1;
 	I0.LRItemsSet.insert(initProducer);
 	epsilon_clousure(I0.LRItemsSet);
 	I0.numberInt = stateNumCounter++;

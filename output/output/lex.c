@@ -14682,7 +14682,6 @@ int yy_lex()
 		return -2;
 	}
 	int result=0;
-	int foundToken=0;
 	while(*yy_cp!=0){
 		register int yy_c = yy_ec[(int)*yy_cp];
 		if(yy_accept[yy_current_state])//如果可以匹配到token，记录位置
@@ -14709,7 +14708,7 @@ int yy_lex()
 				yy_current_state=0;
 				yy_last_accepting_state=-1;
 				++yy_cp;
-				//yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
+				yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
 				continue;
 			}
 		}
@@ -14725,15 +14724,18 @@ int yy_lex()
 	}
 	if(*yy_cp == 0) {//到文本的最后了
 		isEnd = 1;
-		if (yy_last_accepting_state != -1) {//匹配到了
-			yy_act = yy_accept[yy_last_accepting_state];
+		if (yy_accept[yy_current_state]&&yy_cp==yy_last_accepting_cpos+1)//如果可以刚好匹配到token，记录位置
+		{
+			yy_act = yy_accept[yy_current_state];
 			result = findAction(yy_act);
-			if (yy_last_accepting_cpos + 1 != yy_cp)//不是刚好
+		}
+	
+		else //不是刚好
 			{
 				printf("ERROR DETECTED IN INPUT FILE !");
 				correct = 0;
 			}
-		}
+		
 	}
 	
 	return result;

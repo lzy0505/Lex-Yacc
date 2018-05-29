@@ -97,8 +97,12 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 			//如果是点在最后的项，则会有规约
 			if (it->positionInt == producerVec[it->gramarInt].second.size()) {
 				//取出预测分析符，预测分析符都是终结符，因此没有shift_reduce[i]=0的情况
+				int predictiveSymbol = it->predictiveSymbol;
+				if (predictiveSymbol == -2) { //处理$的情况
+					predictiveSymbol = boundTInt + 1;
+				}
 				//解决移进规约冲突
-				if (next[base[lrdfa.statesVec[i].numberInt] + it->predictiveSymbol] >0) {
+				if (next[base[lrdfa.statesVec[i].numberInt] + predictiveSymbol] >0) {
 					int preLine = -1,lastLine=-1;//preLine记录预测符的行数，lastLine记录每项最后一个终结符的行数。行数越大优先级越高，同一行按照左结合来解决冲突
 					//找到产生式中最后一个终结符
 					int last;
@@ -126,23 +130,19 @@ void lrdfa_to_table(const LRDFA &lrdfa) {
 					if (preLine!=-1&&lastLine!=-1) {
 						//最后一个的终结符优先级高,改为规约，反之，做移进（做已经什么都不用做）
 						if (preLine <= lastLine) {
-							next[base[lrdfa.statesVec[i].numberInt] + it->predictiveSymbol] = -it->gramarInt;
+							next[base[lrdfa.statesVec[i].numberInt] + predictiveSymbol] = -it->gramarInt;
 							
 						}
 					}
 				}//解决规约规约冲突
-				else if (next[base[lrdfa.statesVec[i].numberInt] + it->predictiveSymbol]<0) {
+				else if (next[base[lrdfa.statesVec[i].numberInt] + predictiveSymbol]<0) {
 					//比较产生式优先级，选择优先级高（号码比较小的）的做规约
-					if (next[base[lrdfa.statesVec[i].numberInt] + it->predictiveSymbol] < it->gramarInt) {
-						next[base[lrdfa.statesVec[i].numberInt] + it->predictiveSymbol] = -it->gramarInt;
+					if (next[base[lrdfa.statesVec[i].numberInt] + predictiveSymbol] < it->gramarInt) {
+						next[base[lrdfa.statesVec[i].numberInt] + predictiveSymbol] = -it->gramarInt;
 					}
 				}
 				else {//没有冲突，则把产生式对应的编号赋值。
-					if (it->predictiveSymbol == -2) { //处理$的情况
-						next[base[lrdfa.statesVec[i].numberInt] + boundTInt + 1] = -it->gramarInt;
-						continue;
-					}
-					next[base[lrdfa.statesVec[i].numberInt] + it->predictiveSymbol] = -it->gramarInt;
+					next[base[lrdfa.statesVec[i].numberInt] + predictiveSymbol] = -it->gramarInt;
 				}		
 			}
 		}

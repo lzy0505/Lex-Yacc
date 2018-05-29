@@ -622,7 +622,7 @@ static int	yy_next[289380] =
 -231,-231,-231,-231,-231,-231,-231,-231,-231,-231,
 -231,-231,-231,-231,-231,-231,-231,-231,-231,-231,
 -231,-231,-231,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
-0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
+0   ,0   ,0   ,0   ,0   ,0   ,-231,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -29527,6 +29527,10 @@ int main(int argc,char **argv)
 			StackTop(&stateStack, &top);
 			item = yy_next[yy_base[top] + yy_producer_data[producerStart]+1];
 			StackPush(&stateStack,item);
+		}
+		else{
+			printf("ERROR:SYNTAX ERROR!");
+			return -1;
 		}
 	}while(1);
 	return 0;

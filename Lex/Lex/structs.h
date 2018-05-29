@@ -43,5 +43,4 @@ typedef struct {
 	vector<DFAstate> statesVec;//´æ´¢±êºÅ¶ÔÓ¦×´Ì¬
 }DFA;
 
-
 #endif 

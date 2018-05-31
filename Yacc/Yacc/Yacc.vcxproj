@@ -155,6 +155,7 @@
     <ClCompile Include="CFGToLRDFA.cpp" />
     <ClCompile Include="First.cpp" />
     <ClCompile Include="GenerateFiles.cpp" />
+    <ClCompile Include="LRDFAToLALRDFA.cpp" />
     <ClCompile Include="LRDFAToTable.cpp" />
     <ClCompile Include="ParseYaccFile.cpp" />
     <ClCompile Include="stdafx.cpp">

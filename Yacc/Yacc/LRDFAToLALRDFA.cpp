@@ -15,7 +15,7 @@ using std::make_pair;
 
 
 extern LRDFA lrdfa;
-
+LRDFA lalrdfa;
 
 namespace std {
 
@@ -60,4 +60,25 @@ void lrdfa_to_lalrdfa() {
 			core_vec.push_back(make_pair(state_core, new_type));
 		}
 	}
+	//ºÏ²¢
+
+	unordered_map<int, int> index;//¾É£¬ÐÂ×´Ì¬ºÅ
+	int count = 0;
+	for (const auto& core : core_vec) {
+		LRState newState;
+		newState.numberInt = count++;
+		newState.edgesMap = lrdfa.statesVec[*core.second.begin()].edgesMap;
+		for (const auto& state : core.second) {
+			index.emplace(state, newState.numberInt);
+			newState.LRItemsSet.insert(lrdfa.statesVec[state].LRItemsSet.cbegin(), lrdfa.statesVec[state].LRItemsSet.cend());
+		}
+		lalrdfa.statesVec.push_back(newState);
+	}
+	for (auto& state : lalrdfa.statesVec) {
+		for (auto& edge : state.edgesMap) {
+			edge.second = index.find(edge.second)->second;
+		}
+	}
+
+	lalrdfa.startState = index.find(lrdfa.startState)->second;
 }

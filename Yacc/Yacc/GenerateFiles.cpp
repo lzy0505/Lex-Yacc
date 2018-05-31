@@ -10,7 +10,6 @@ extern vector<string> productions_vec;
 extern map<string, int> tokensDefineMap;
 extern int boundTInt;
 
-
 void print_array(string name, int size, void *value, ofstream& out);
 void generate_files() {
 	/*第一部分y.tab.h*/

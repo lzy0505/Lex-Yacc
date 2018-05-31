@@ -16,8 +16,10 @@ extern map<int, pair<int, int> > indexMap;
 extern ProducerVec producerVec;
 extern ProducerVecStr producerVecStr;
 extern map<string, int> tokensMap;
+extern LRDFA lrdfa;
 
-void cfg_to_lrdfa(LRDFA & lrdfa) {
+
+void cfg_to_lrdfa() {
 	LRState I0;
 	LRItem initProducer;
 	int stateNumCounter = 0;

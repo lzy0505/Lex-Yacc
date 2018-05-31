@@ -23,8 +23,10 @@ extern map<string, int> tokensDefineMap;
 //最后要返回的vec,自己extern嗷
 vector<pair<void*, int> > table_vec;
 vector<string> productions_vec;
+extern LRDFA lrdfa;
 
-void lrdfa_to_table(const LRDFA &lrdfa) {
+
+void lrdfa_to_table() {
 	//base表通过状态号得到对应一维数组的索引位置。
 	int* base = new int[lrdfa.statesVec.size()+1];
 	memset(base,0, lrdfa.statesVec.size() * sizeof(int));

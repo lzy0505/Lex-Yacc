@@ -13,6 +13,10 @@ using std::map;
 using std::pair;
 using std::make_pair;
 
+
+extern LRDFA lrdfa;
+
+
 namespace std {
 
 	template<>
@@ -32,13 +36,13 @@ namespace std {
 }
 
 //合并同心项
-void lrdfa_to_lalrdfa(LRDFA & lrdfa) {
+void lrdfa_to_lalrdfa() {
 	vector<pair<unordered_set<pair<int, int>>, unordered_set<int>>> core_vec;//同心集合，pair前项是core，后项是心为前项的同心集（存着状态号）
 	//对每个状态求core，然后比较core，将core相同的装到一起
-	for (auto& state:lrdfa.statesVec) {
+	for (const auto & state : lrdfa.statesVec) {
 		//把状态的core弄出来
 		unordered_set<pair<int, int>> state_core;
-		for (auto lritem : state.LRItemsSet) {
+		for (const auto &lritem : state.LRItemsSet) {
 			state_core.insert(make_pair(lritem.gramarInt, lritem.positionInt));
 		}
 		bool isHad = false;//是否已存在于core_vec中
@@ -56,6 +60,4 @@ void lrdfa_to_lalrdfa(LRDFA & lrdfa) {
 			core_vec.push_back(make_pair(state_core, new_type));
 		}
 	}
-	int a;
-
 }

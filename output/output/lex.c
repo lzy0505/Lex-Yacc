@@ -1,11 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include"stdio.h"
 #include"stdlib.h"
-#include "y.tab.h"
+#include"y.tab.h"
 #include<string.h>
+#define START_STATE 0
 #include <stdio.h>
-int yy_lex();
-
 int yywrap(void)
 {
 	return 1;
@@ -14,7 +13,7 @@ char* getCharPtr(char* fileName);
 int findAction(int action);
 void comment();
 static int	yy_ec[256] =
-{	0,
+	{	0,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,92  ,91  ,
 93  ,94  ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
 0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,0   ,
@@ -14661,84 +14660,82 @@ static int	yy_accept[1476] =
 754 ,755 ,568 ,562 ,756 ,757 ,758 ,759 ,760 ,761 ,
 573 ,242 ,762 ,763 ,764 ,765 ,766 ,767 ,578 ,255 ,
 768 ,110 ,769 ,770 ,771 };
- int yy_current_state = 0;
+ int yy_current_state = START_STATE;
  int yy_last_accepting_state = -1;
  char *yy_cp = NULL;
  char *yy_last_accepting_cpos = NULL;
  int yy_act = 0;
  int isEnd=0;
- int correct = 1;
+int correct=1;
 void lex_init(char* fileName)
 {
-	yy_cp=getCharPtr(fileName);
+yy_cp=getCharPtr(fileName);
 }
 int yy_lex()
 {
-	if(isEnd&&correct)//到最后了，且是正确的
+if (isEnd&&correct)
+{
+	return -1;
+}
+else if (isEnd && !correct)
+{
+	return -2;
+}
+int result = 0;
+while (*yy_cp != 0) {
+	register int yy_c = yy_ec[(int)*yy_cp];
+	if (yy_accept[yy_current_state])
 	{
-		return -1;
-	}else if(isEnd&&!correct)//到最后了，且是正确的
+	yy_last_accepting_state = yy_current_state;
+	yy_last_accepting_cpos = yy_cp;
+	}
+	if (yy_next[yy_base[yy_current_state] + yy_c] == -1 && yy_last_accepting_state != -1)
 	{
-		return -2;
+	yy_current_state = yy_last_accepting_state;
+	yy_cp = yy_last_accepting_cpos;
+	yy_act = yy_accept[yy_current_state];
+	result = findAction(yy_act);
+		if (result != -1)
+		{
+		yy_current_state = START_STATE;
+		yy_last_accepting_state = -1;
+		++yy_cp;
+		yy_current_state = yy_next[yy_base[yy_current_state] + yy_c];
+		break;
 	}
-	int result=0;
-	while(*yy_cp!=0){
-		register int yy_c = yy_ec[(int)*yy_cp];
-		if(yy_accept[yy_current_state])//如果可以匹配到token，记录位置
-		{
-			yy_last_accepting_state=yy_current_state;
-			yy_last_accepting_cpos=yy_cp;
-		}
-		if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state!=-1)//不能继续匹配了，但是之前已经匹配到过token
-		{
-			yy_current_state=yy_last_accepting_state;
-			yy_cp=yy_last_accepting_cpos;
-			yy_act=yy_accept[yy_current_state];
-			result=findAction(yy_act);
-			if(result!=-1)//token正常，返回并等待下一次调用
-			{
-				yy_current_state=0;
-				yy_last_accepting_state=-1;
-				++yy_cp;
-				yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
-				break;
-			}
-			if(result==-1)//token不正常，不返回，继续找到下一个token
-			{
-				yy_current_state=0;
-				yy_last_accepting_state=-1;
-				++yy_cp;
-				yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
-				continue;
-			}
-		}
-		if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state==-1)//如果不能继续匹配且还没有匹配到任何一个token
-		{
-			printf("ERROR DETECTED IN INPUT FILE !");
-		}
-		if(yy_next[yy_base[yy_current_state]+yy_c]!=-1) //正常匹配，跳转
-		{
-			yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];
-			++yy_cp;
-		}
+		if (result == -1)
+	{
+		yy_current_state = START_STATE;
+		yy_last_accepting_state = -1;
+		++yy_cp;
+		yy_current_state = yy_next[yy_base[yy_current_state] + yy_c];
+		continue;
 	}
-	if(*yy_cp == 0) {//到文本的最后了
-		isEnd = 1;
-		if (yy_accept[yy_current_state]&&yy_cp==yy_last_accepting_cpos+1)//如果可以刚好匹配到token，记录位置
-		{
-			yy_act = yy_accept[yy_current_state];
-			result = findAction(yy_act);
-		}
-	
-		else //不是刚好
-			{
-				printf("ERROR DETECTED IN INPUT FILE !");
-				correct = 0;
-			}
-		
 	}
-	
-	return result;
+	if (yy_next[yy_base[yy_current_state] + yy_c] == -1 && yy_last_accepting_state == -1)
+{
+	printf("ERROR DETECTED IN INPUT FILE !");
+	}
+if (yy_next[yy_base[yy_current_state] + yy_c] != -1) 
+{
+		yy_current_state = yy_next[yy_base[yy_current_state] + yy_c];
+	++yy_cp;
+	}
+}
+if (*yy_cp == 0) {
+isEnd = 1;
+	if (yy_accept[yy_current_state] && yy_cp == yy_last_accepting_cpos + 1)
+{
+	yy_act = yy_accept[yy_current_state];
+	result = findAction(yy_act);
+}
+else 
+{
+	printf("ERROR DETECTED IN INPUT FILE !");
+	correct = 0;
+}
+}
+return result;
 }
 int findAction(int action)
 {
@@ -17056,36 +17053,36 @@ break;
 return -1;
 }
 char* getCharPtr(char* fileName){
-	char* cp=NULL;
-	FILE *fp;
-	fp=fopen(fileName,"r");
-	if(fp==NULL)
-	{
-		printf("can't open file");
-		exit(0);
-	}
-	fseek(fp,0,SEEK_END);
-	int flen = ftell(fp);
-	cp = (char *)malloc(flen + 1);
-	if (cp == NULL)
-	{
-		fclose(fp);
-		return 0;
-	}
-	rewind(fp);
-	memset(cp,0,flen+1);
-	fread(cp, sizeof(char), flen, fp);
-	cp[flen] = 0; 
-	return cp;
+char* cp=NULL;
+FILE *fp;
+fp=fopen(fileName,"r");
+if(fp==NULL)
+{
+printf("can't open file");
+exit(0);
+}
+fseek(fp,0,SEEK_END);
+int flen = ftell(fp);
+cp = (char *)malloc(flen + 1);
+if (cp == NULL)
+{
+fclose(fp);
+	return 0;
+}
+rewind(fp);
+memset(cp,0,flen+1);
+fread(cp, sizeof(char), flen, fp);
+cp[flen] = 0; 
+return cp;
 }
 void comment(){
-	char c,prev=0;
-	while(++yy_cp!=0)
-	{
-		c=*yy_cp;
-		if(c=='/'&&prev=='*')
-		return;
-		prev=c;
-	}
-	printf("ERROR:unterminated comment!");
+char c,prev=0;
+while(++yy_cp!=0)
+{
+c=*yy_cp;
+if(c=='/'&&prev=='*')
+return;
+prev=c;
+}
+printf("ERROR:unterminated comment!");
 }

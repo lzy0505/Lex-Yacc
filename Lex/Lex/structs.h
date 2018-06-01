@@ -2,6 +2,8 @@
 #ifndef  _STRUCTS_H
 #define  _STRUCTS_H
 
+#define LEX_TEST 0
+#define YACC_TEST 1
 #include "stdafx.h" 
 using std::vector;
 using std::string;

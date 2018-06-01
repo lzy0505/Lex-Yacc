@@ -40,8 +40,6 @@ void dfa_to_array(const DFA& dfa,vector<pair<int*,int> >& arrays, vector<Rules>&
 		next[i] = -1;
 	}
 
-
-
 	for (int i = 0; i < dfa.statesVec.size(); i++) {
 		base[dfa.statesVec[i].number] = i * (set_size+1);
 		for (auto it = dfa.statesVec[i].exEdgesMap.begin(); it != dfa.statesVec[i].exEdgesMap.end(); it++) {

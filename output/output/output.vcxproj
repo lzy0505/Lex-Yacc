@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lex.c" />
-    <ClCompile Include="y.tab.c" />
+    <ClInclude Include="y.tab.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="y.tab.h" />
+    <ClCompile Include="lex_test.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

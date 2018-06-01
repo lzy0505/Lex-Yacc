@@ -12,12 +12,18 @@ static void print_array(string name, int size, const int *value, ofstream& out);
 
 
 /*生成.c文件,arrays为包含多个相关数组的容器，endVec为终态对应的动作*/
-int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector<string>& part1, vector<string>& part4)
+int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector<string>& part1, vector<string>& part4,int startState,int mode)
 {
 
 	ofstream out;
-	out.open("lex.c", ios::out);
-
+	if (mode == 0)
+	{
+		out.open("lex_test.c", ios::out);
+	}
+	if (mode == 1)
+	{
+		out.open("lex.c", ios::out);
+	}
 	/*首先判断size的大小是否为4*/
 	if (arrays.size() != 4)
 	{
@@ -29,6 +35,7 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "#include\"stdlib.h\"" << endl;
 	out << "#include\"y.tab.h\"" << endl;
 	out << "#include<string.h>" << endl;
+	out << "#define START_STATE " << startState << endl;
 	/*依次输出P1和P4*/
 	for (int i = 0; i < part1.size(); i++)
 	{
@@ -43,10 +50,7 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "int findAction(int action);" << endl; /*函数声明*/
 	//out << "void addToken(int token);" << endl; /*将token加入Token序列*/
 	out << "void comment();" << endl; /*comment函数，啥都不做*/
-	//out << "void getTokens(unsigned num,int* _tokens);" << endl; /*得到Token序列*/
-	//out << "unsigned tokenNum=0;" << endl; /*已存储的Token个数*/
-	//out << "unsigned arraySize=0;" << endl; /*存储数组tokens的大小*/
-	//out << "int* tokens = NULL;" << endl;
+	
 
 
 	/*依次输出ec表,base表,next表,accept表*/
@@ -63,12 +67,13 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	}
 
 	/*定义若干变量*/
-	out << " int yy_current_state = 0;" << endl;
-	out << " int yy_last_accepting_state = 0;" << endl;
+	out << " int yy_current_state = START_STATE;" << endl;
+	out << " int yy_last_accepting_state = -1;" << endl;
 	out << " char *yy_cp = NULL;" << endl;
 	out << " char *yy_last_accepting_cpos = NULL;" << endl;
 	out << " int yy_act = 0;" << endl;
 	out << " int isEnd=0;" << endl;
+	out << "int correct=1;" << endl;
 
 
 	/*一些初始化动作*/
@@ -78,72 +83,106 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "yy_cp=getCharPtr(fileName);" << endl;
 	out << "}" << endl;
 
+	if (mode == YACC_TEST)
+	{
+		out << "int yy_lex()" << endl;
+		out << "{" << endl;
+	}
+	if (mode == LEX_TEST)
+	{
+		out << "int main(int argc,char** argv)" << endl;
+		out << "{" << endl;
+		out << "if(argc==2)" << endl;
+		out << "{" << endl;
+		out << "lex_init(argv[1]);" << endl;
+		out << "}" << endl;
+		out << "else{" << endl;
+		out << "printf(\"ERROR: invalid argument!\\n\");" << endl;
+		out << "}" << endl;
 
-	out << "int yy_lex()" << endl;
-	out << "{" << endl;
+	}
 
-	out << "if(isEnd==1)" << endl;
+	
+
+	out << "if (isEnd&&correct)" << endl;
 	out << "{" << endl;
-	out << "return -1;" << endl;
+	out << "	return -1;" << endl;
+	out << "}" << endl;
+	out << "else if (isEnd && !correct)" << endl;
+	out << "{" << endl;
+	out << "	return -2;" << endl;
+	out << "}" << endl;
+	out << "int result = 0;" << endl;
+	out << "while (*yy_cp != 0) {" << endl;
+	out << "	register int yy_c = yy_ec[(int)*yy_cp];" << endl;
+	out << "	if (yy_accept[yy_current_state])" << endl;
+	out << "	{" << endl;
+	out << "	yy_last_accepting_state = yy_current_state;" << endl;
+	out << "	yy_last_accepting_cpos = yy_cp;" << endl;
+	out << "	}" << endl;
+	out << "	if (yy_next[yy_base[yy_current_state] + yy_c] == -1 && yy_last_accepting_state != -1)" << endl;
+	out << "	{" << endl;
+	out << "	yy_current_state = yy_last_accepting_state;" << endl;
+	out << "	yy_cp = yy_last_accepting_cpos;" << endl;
+	out << "	yy_act = yy_accept[yy_current_state];" << endl;
+	out << "	result = findAction(yy_act);" << endl;
+	if (mode == YACC_TEST)
+	{
+	out << "	if (result != -1)" << endl;
+	out << "	{" << endl;
+	out << "	yy_current_state = START_STATE;" << endl;
+	out << "	yy_last_accepting_state = -1;" << endl;
+	out << "	++yy_cp;" << endl;
+	out << "	yy_current_state = yy_next[yy_base[yy_current_state] + yy_c];" << endl;
+	out << "	break;" << endl;
+	out << "	}" << endl;
+	out << "	if (result == -1)" << endl;
+	out << "	{" << endl;
+	out << "	yy_current_state = START_STATE;" << endl;
+	out << "	yy_last_accepting_state = -1;" << endl;
+	out << "	++yy_cp;" << endl;
+	out << "	yy_current_state = yy_next[yy_base[yy_current_state] + yy_c];" << endl;
+	out << "	continue;" << endl;
+	out << "	}" << endl;
+	}
+	else if (mode == LEX_TEST)
+	{	
+	out<<"		printf(\" \");"<<endl;
+	out << "	yy_current_state = START_STATE;" << endl;
+	out << "	yy_last_accepting_state = -1;" << endl;
+	out << "	++yy_cp;" << endl;
+	out << "	yy_current_state = yy_next[yy_base[yy_current_state] + yy_c];" << endl;
+	out << "	continue;" << endl;
+
+	}
+
+	out << "	}" << endl;
+	out << "	if (yy_next[yy_base[yy_current_state] + yy_c] == -1 && yy_last_accepting_state == -1)" << endl;
+	out << "{" << endl;
+	out << "	printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
+	out << "	}" << endl;
+	out << "if (yy_next[yy_base[yy_current_state] + yy_c] != -1) " << endl;
+	out << "{" << endl;
+	out << "		yy_current_state = yy_next[yy_base[yy_current_state] + yy_c];" << endl;
+	out << "	++yy_cp;" << endl;
+	out << "	}" << endl;
+	out << "}" << endl;
+	out << "if (*yy_cp == 0) {" << endl;
+	out << "isEnd = 1;" << endl;
+	out << "	if (yy_accept[yy_current_state] && yy_cp == yy_last_accepting_cpos + 1)" << endl;
+	out << "{" << endl;
+	out << "	yy_act = yy_accept[yy_current_state];" << endl;
+	out << "	result = findAction(yy_act);" << endl;
 	out << "}" << endl;
 
-
-	out << "int result=0;" << endl;
-	out << "int foundToken=0;" << endl;
-	/*状态跳转部分*/
-	out << "while(*yy_cp!=0&&foundToken==0){" << endl;	/*若不为字符串结束符'\0'且没有找到Token*/
-	out << "register int yy_c = yy_ec[(int)*yy_cp];" << endl; /*当前读取字符对应的列号*/
-	out << "if(yy_accept[yy_current_state])" << endl;
+	out << "else " << endl;
 	out << "{" << endl;
-	out << "yy_last_accepting_state=yy_current_state;" << endl;
-	out << "yy_last_accepting_cpos=yy_cp;" << endl;
-	out << "}" << endl;
-	out << "if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state!=-1)" << endl;/*当找不到下一个状态时，回退*/
-	out << "{" << endl;
-	out << "yy_current_state=yy_last_accepting_state;" << endl;
-	out << "yy_cp=yy_last_accepting_cpos;" << endl;
-	out << "yy_act=yy_accept[yy_current_state];" << endl;
-	out << "result=findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
-	out << "if(result!=-1)" << endl;
-	out << "{" << endl;
-	out << "foundToken=1;" << endl;
-	out << "yy_current_state=0;" << endl; /*将状态置为0*/
-	out << "yy_last_accepting_state=-1;" << endl;
-	out << "++yy_cp;" << endl;
-	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
-	out << "break;" << endl;
-	out << "}" << endl;
-	out << "if(result==-1)" << endl;
-	out << "{" << endl;
-	out << "yy_current_state=0;" << endl; /*将状态置为0*/
-	out << "yy_last_accepting_state=-1;" << endl;
-	out << "++yy_cp;" << endl;
-	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
-	out << "continue;" << endl;
-	out << "}" << endl;
+	out << "	printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
+	out << "	correct = 0;" << endl;
 	out << "}" << endl;
 
-	out << "if(yy_next[yy_base[yy_current_state]+yy_c]==-1&&yy_last_accepting_state==-1)" << endl;
-	out << "{" << endl;
-	out << "printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
 	out << "}" << endl;
 
-	out << "if(yy_next[yy_base[yy_current_state]+yy_c]!=-1) " << endl;
-	out << "{" << endl;
-	out << "yy_current_state=yy_next[yy_base[yy_current_state]+yy_c];" << endl;
-	out << "++yy_cp;" << endl;
-	out << "}" << endl;
-	out << "}" << endl;
-
-	out << "if(yy_last_accepting_cpos==yy_cp-1&&foundToken==0)" << endl;
-	out << "{" << endl;
-	out << "yy_act=yy_accept[yy_current_state];" << endl;
-	out << "result=findAction(yy_act);" << endl;/*调用int findAction(int action)来返回Action*/
-	out << "isEnd=1;" << endl;
-	out << "}" << endl;
-	out << "else{" << endl;
-	out << "printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
-	out << "}" << endl;
 	out << "return result;" << endl;
 	out << "}" << endl;/*lex_mian函数结束*/
   

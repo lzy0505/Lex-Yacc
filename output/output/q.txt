@@ -1,13 +1,15 @@
-int main(int argn,char** argv){
-int i=argv[1];
-switch(i)
-{
-case 0:
-printf("ZERO");break;
-case 1:
-printf("ONE");break;
-default:
-printf("DEFAULT");break;
+int main(){
+	int a=3;
+	double b=2;
+	int c=a+(int)b;
+	printf("%d",c);
+	return 0;
 }
-return 0;
+
+int main(){
+	int a=3;
+	double b=2;
+	int c=a+(int)b;
+	printf("%d",c);
+	return 0;
 }

@@ -1,0 +1,7 @@
+int main(){
+	int a=3;
+	double b=2;
+	int c=a+(int)b;
+	printf("%d",c);
+	return 0;
+}

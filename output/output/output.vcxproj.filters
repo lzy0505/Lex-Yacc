@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="y.tab.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="lex.c">
       <Filter>Source Files</Filter>
     </ClCompile>

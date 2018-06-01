@@ -29,6 +29,7 @@ typedef struct LRItem {
 	}
 }LRItem;
 
+
 namespace std {
 
 	template<>
@@ -49,7 +50,6 @@ typedef struct {
 
 typedef struct {
 	int startState = 0;
-	unordered_multimap<int, int> reducableStatesMap;//<状态号，产生式编号>
 	vector<LRState > statesVec;//存储所有的LRState
 }LRDFA;
 

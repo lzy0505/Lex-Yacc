@@ -16,13 +16,15 @@ extern map<int, pair<int, int> > indexMap;
 extern ProducerVec producerVec;
 extern ProducerVecStr producerVecStr;
 extern map<string, int> tokensMap;
+extern LRDFA lrdfa;
 
-void cfg_to_lrdfa(LRDFA & lrdfa) {
+
+void cfg_to_lrdfa() {
 	LRState I0;
 	LRItem initProducer;
 	int stateNumCounter = 0;
 	initProducer.predictiveSymbol=-2;//-2 stands for $R
-	initProducer.gramarInt = producerVec.size() - 1;
+	initProducer.gramarInt = 1;
 	I0.LRItemsSet.insert(initProducer);
 	epsilon_clousure(I0.LRItemsSet);
 	I0.numberInt = stateNumCounter++;

@@ -6,9 +6,10 @@
 using namespace std;
 // TODO : 赵某
 extern vector<pair<void*, int> > table_vec;
-extern vector<string> tokensVec;
-extern map<string, int> tokensDefineMap;
 extern vector<string> productions_vec;
+extern map<string, int> tokensDefineMap;
+extern int boundTInt;
+
 void print_array(string name, int size, void *value, ofstream& out);
 void generate_files() {
 	/*第一部分y.tab.h*/
@@ -16,13 +17,12 @@ void generate_files() {
 	out.open("y.tab.h", ios::out);
 	out << "#ifndef Y_TAB_H" << endl;
 	out << "#define Y_TAB_H" << endl;
-	map<string, int>::iterator it;
-	it = tokensDefineMap.begin();
-	while(it!= tokensDefineMap.end())
+
+	for (const auto &p:tokensDefineMap)
 	{
 
-		out << "#define  " << it->first <<"    "<< it->second<< endl;
-		it++;
+		out << "#define  " << p.first <<"    "<< p.second << endl;
+
 	}
 	
 	out << "#endif" << endl;
@@ -38,9 +38,13 @@ void generate_files() {
 	{
 		cout << "ERROR: can't open file y.tab.c !" << endl;
 	}
-	out << "include<stdio.h>" << endl;
-	out << "include<stdlib.h>" << endl;
-	out << "include<assert.h>" << endl;
+	out << "#include <stdio.h>" << endl;
+	out << "#include <stdlib.h>" << endl;
+	out << "#include <assert.h>" << endl;
+
+	out << "#define TERMINATED_SYMBOL "<< boundTInt << endl;
+
+
 	/*声明函数*/
 	//out << "int getOneToken(int& token);" << endl;
 	//out << "int nextToken();" << endl;
@@ -146,20 +150,22 @@ void generate_files() {
 	out << "static char* yy_productions[]=" << endl;
 	out << "{" << endl;
 
-
-	for (int i = 0; i < productions_vec.size()-1; i++)
+	int i = 0;
+	for (const auto & e: productions_vec)
 	{
 
-		out << "\"" << productions_vec[i] << "\"" << ", ";
+		out << "\"" << e << "\"" << ", ";
+		++i;
 		if (i % 5 == 0)
 		{
 			out << endl;
 		}
+		if (i == productions_vec.size() - 1) break;
 	}
 	
 	/*最后一个元素没得逗号*/
 
-	out << "\"" << productions_vec[productions_vec.size()-1] << "\"" << endl << "}" << endl;
+	out << "\"" << productions_vec[i] << "\"" << endl << "};" << endl;
 
 
 
@@ -169,93 +175,113 @@ void generate_files() {
 	out << "{" << endl;
 
 	/*调用lex_main*/
-	out << "lex_init(\"q.txt\");" << endl;
+	out << "	lex_init(\"q.txt\");" << endl;
 
 
 
 	/*创建两个栈，状态栈和符号栈*/
 
-	out << "Struct Stack stateStack;" << endl;
-	out << "Struct Stack symbolStack;" << endl;
-	out << "StackInit(&stateStack);" << endl;
-	out << "StackInit(&symbolStack);" << endl;
+	out << "	struct Stack stateStack;" << endl;
+	out << "	struct Stack symbolStack;" << endl;
+	out << "	StackInit(&stateStack);" << endl;
+	out << "	StackInit(&symbolStack);" << endl;
 
 	/*将初始状态和终结符压到两个栈中*/
-	out << "StackPush(&stateStack,0);" << endl;
-	out << "StackPush(&symbolStack,-2);" << endl;/*符号栈压入$*/
-	out << "int token=0;" << endl; /*存放每次读取的token*/
-	out << "int item=0;" << endl;  /*存放转移表的表项*/
-	out << "int producerStart=0;" << endl; /*存放产生式开始坐标*/
-	out << "int producerLength=0;" << endl; /*存放产生式的长度*/
+	out << "	StackPush(&stateStack,1);" << endl;
+	out << "	StackPush(&symbolStack,TERMINATED_SYMBOL+1);" << endl;/*符号栈压入$*/
+	out << "	int token=0;" << endl; /*存放每次读取的token*/
+	out << "	int item=0;" << endl;  /*存放转移表的表项*/
+	out << "	int vt=0;" << endl;  /*存放终结符编号*/
+	out << "	int producerStart=0;" << endl; /*存放产生式开始坐标*/
+	out << "	int producerLength=0;" << endl; /*存放产生式的长度*/
 	/*token读取函数yy_lex(); */
-	out << "token=yy_lex();" << endl;
-	
+	out << "	token=yy_lex();" << endl;
+	out << "	if (token < 0) {" << endl;
+	out << "		printf(\"ERROR: cant find token in the file.\\n\");" << endl;
+	out << "		return -1;" << endl;
+	out << "	}	else {" << endl;
+	out << "		vt = yy_map_vec[token];" << endl;
+	out << "	}" << endl;
+
 	/*接下来就重复作一些事情就完事了*/
 
-	out << "do{" << endl;
+	out << "	do{" << endl;
 	/*第一步，查表，看看移进还是归约*/
-	out << "item=yy_next[ yy_base[StackTop(&stateStack)]+token" << endl;
+	out << "		int top;" << endl;
+	out << "		StackTop(&stateStack,&top);" << endl;
 
-	/*如果是accept状态*/
-	out << "if(item==0)" << endl;
-	out << "{" << endl;
-	out << "prinf(\"accepted!\");"<<endl;
-	out << "}" << endl;
+	out << "		item=yy_next[yy_base[top]+ vt];" << endl;
     
 	/*如果是移进*/
-	out << "if(item>0)" << endl;
-	out << "{" << endl;
-	out << "StackPush(&symbolStack,token);" << endl;
-	out << "StackPush(&stateStack,item);" << endl;
+	out << "		if(item>0)" << endl;
+	out << "		{" << endl;
+	out << "			StackPush(&stateStack,item);" << endl;
+	out << "			StackPush(&symbolStack,vt);" << endl;
 	/*token指针指向下一个*/
-	out << "if((token=yy_lex())==-1)" << endl;
-	out << "break;" << endl;
-	out << "}" << endl;
+	out << "			token = yy_lex();" << endl;
+	out << "			if (token == -2) {" << endl;
+	out << "				printf(\"ERROR: reached the end of file.\\n\");" << endl;
+	out << "				break;" << endl;
+	out << "			}" << endl;
+	out << "			else if (token == -1) {//$" << endl;
+	out << "				vt = TERMINATED_SYMBOL + 1;" << endl;
+	out << "			}" << endl;
+	out << "			else {" << endl;
+	out << "				vt = yy_map_vec[token];" << endl;
+	out << "			}" << endl;
+	out << "			continue;" << endl;
+	out << "		}" << endl;
 
 	/*如果是归约*/
-	out << "if(item<0)" << endl;
-	out << "{" << endl;
-	out << "producerStart=index[2*(-item)];" << endl;
-	out << "producerLength=index[2*(-item)+1];" << endl;
-	out << "int check=1;" << endl; /*check用于检查栈顶元素和产生式右边是否一致*/
-	out << "int reverseIndex=producerStart+producerLenght-1;" << endl;/*反向索引*/
+	out << "		else if(item<0)" << endl;
+	out << "		{" << endl;
+	out << "			if(item == -1){" << endl;
+	out << "				printf(\"finish!\\n\");" << endl;
+	out << "				break;" << endl;
+	out << "			}" << endl;
+	out << "			producerStart=yy_index[2*(-item)];" << endl;
+	out << "			producerLength=yy_index[2*(-item)+1];" << endl;
+	out << "			int reverseIndex=producerStart+producerLength-1;" << endl;/*反向索引*/
 	
-	out << "int stackTopItem=0;" << endl;
+	out << "			int stackTopItem=0;" << endl;
 	/*弹出产生式右边个数量的状态和符号*/
-	out << "for(int i=reverseIndex;i>producerStart;i--)" << endl;
-	out << "{" << endl;
-	out << "if(StackPop(&stateStack,&stackTopItem)==0)" << endl;
-	out << "{" << endl;
+	out << "			for(int i=reverseIndex;i>producerStart;i--)" << endl;
+	out << "			{" << endl;
+	out << "				if(StackPop(&stateStack,&stackTopItem)==0)" << endl;
+	out << "				{" << endl;
 	
-	out << "prinf(\"ERROR:STACK EMPTY!\");" << endl;
-	out << "check=0;" << endl;
-	out << "return;" << endl;
-	out << "}" << endl;
+	out << "					printf(\"ERROR:STACK EMPTY!\");" << endl;
+	out << "					return -1;" << endl;
+	out << "				}" << endl;
 
-	out << "if(StackPop(&symbolStack,&stackTopItem)==0)" << endl;
-	out << "{" << endl;
-	out << "prinf(\"ERROR:STACK EMPTY!\");" << endl;
-	out << "check=0;" << endl;
-	out << "return;" << endl;
-	out << "}" << endl;
+	out << "				if(StackPop(&symbolStack,&stackTopItem)==0)" << endl;
+	out << "				{" << endl;
+	out << "					printf(\"ERROR:STACK EMPTY!\");" << endl;
+	out << "					return -1;" << endl;
+	out << "				}" << endl;
 
-	out << "if(yy_producer_data[i]!=stackTopItem)" << endl;
-	out << "{" << endl;
-	out << "prinf(\"ERROR:SYNTAX ERROR!\");" << endl;
-	out << "check=0;" << endl;
-	out << "}" << endl;
+	out << "				if(yy_producer_data[i]!=stackTopItem)" << endl;
+	out << "				{" << endl;
+	out << "					printf(\"ERROR:SYNTAX ERROR!\");" << endl;
+	out << "					return -1;" << endl;
+	out << "				}" << endl;
 
-	out << "}" << endl;
-	out << "if(check==1)" << endl;
-	out << "{" << endl;
+	out << "			}" << endl;
 
 	/*将产生式左侧的符号压入符号栈以及GOTO(当前栈顶状态，产生式左侧符号)压入状态栈*/
-	out << "StackPush(&symbolStack,yy_producer_data[producerStart]);" << endl;
-	out << "item=yy_next[ yy_base[StackTop(&stateStack)]+yy_producer_data[producerStart]]" << endl;
-	out << "StackPush(&stateSatck,item);" << endl;
-	out << "printf(\"%s\\n\",yy_tokens[(-item)])" << endl;
-	out << "}" << endl;
-	out << "}while(token!=-1);" << endl;
+	out << "			printf(\"%s\\n\",yy_productions[-(item+2)]);" << endl;
+	out << "			StackPush(&symbolStack,yy_producer_data[producerStart]);" << endl;
+	out << "			int top;" << endl;
+	out << "			StackTop(&stateStack, &top);" << endl;
+	out << "			item = yy_next[yy_base[top] + yy_producer_data[producerStart]+1];" << endl;
+	out << "			StackPush(&stateStack,item);" << endl;
+	out << "		}" << endl;
+	out << "		else{" << endl;
+	out << "			printf(\"ERROR:SYNTAX ERROR!\");" << endl;
+	out << "			return -1;" << endl;
+	out << "		}" << endl;
+	out << "	}while(1);" << endl;
+	out << "	return 0;" << endl;
 	out << "}" << endl;
 	/*
 	out << "int getOneToken(int& token)" << endl;

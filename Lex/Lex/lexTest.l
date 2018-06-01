@@ -1,6 +1,8 @@
 %{
 #include <stdio.h>
 
+
+void comment();
 %}
 
 D			[0-9]
@@ -12,8 +14,13 @@ FS			(f|F|l|L)
 IS          ((u|U)|(u|U)?(l|L|ll|LL)|(l|L|ll|LL)(u|U))
 
 %%
-"/*"			comment();
-"//"[^\n]*      comment();
+"/*"			{
+	 comment();
+	 printf("MULTI_LINE_COMMENT");
+	}
+"//"[^\n]*      {
+	 printf("SINGLE_LINE_COMMENT");
+	}
 
 
 "auto"			{ 
@@ -23,7 +30,7 @@ IS          ((u|U)|(u|U)?(l|L|ll|LL)|(l|L|ll|LL)(u|U))
 	 printf("BOOL"); 
 	}
 "break"			{ 
-	printf("BREAK"); 
+	 printf("BREAK"); 
 	}
 "case"			{ 
 	 printf("CASE"); 
@@ -88,8 +95,8 @@ IS          ((u|U)|(u|U)?(l|L|ll|LL)|(l|L|ll|LL)(u|U))
 "restrict"		{ 
 	 printf("RESTRICT"); 
 	}
-"printf"		{ 
-	 printf("printf"); 
+"return"		{ 
+	 printf("RETURN"); 
 	}
 "short"			{ 
 	 printf("SHORT"); 
@@ -256,7 +263,7 @@ L?\"(\\.|[^\\"\n])*\"	{
 	 printf("("); 
 	}
 ")"			{ 
-	 printf(')'); 
+	 printf(")"); 
 	}
 ("["|"<:")		{ 
 	 printf("["); 
@@ -308,15 +315,24 @@ L?\"(\\.|[^\\"\n])*\"	{
 	}
 
 [ \t\v\n\f]		{
-
+	printf("SPACE");
 } 
 .			{
-
+	printf("ERROR!");
 }
 
 %%
 
-int yywrap(void)
-{
-	printf ("1");
+void comment(){
+	char c,prev=0;
+	while(++yy_cp!=0)
+	{
+		c=*yy_cp;
+		if(c=='/'&&prev=='*'){
+			++yy_cp;
+			return;
+		}	
+		prev=c;
+	}
+	printf("ERROR: unterminated comment!");
 }

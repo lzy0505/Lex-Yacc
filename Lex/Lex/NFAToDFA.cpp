@@ -33,7 +33,7 @@ void nfa_to_dfa(const NFA &nfa, DFA &dfa) {
 	while (!unExamedDFAStates.empty()) {//还有没有处理的新DFA状态
 		int nowStateNum = unExamedDFAStates.front();//取出一个要处理的状态的编号
 		unExamedDFAStates.pop();
-		cout  << "POP a state. ("<< c++ <<")" << endl;
+		//cout  << "POP a state. ("<< c++ <<")" << endl;
 		for (const char& c : edgeSet) {
 			/*cout << "CHECK edge " << c << " ." << endl;*/
 			unordered_set<int> tempSet;

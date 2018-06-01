@@ -8,6 +8,7 @@ int open_and_read_yacc_file(const string& fileName, vector<string> &tokensVec, v
 	if (!in)
 	{
 		cout << "ERROR: Can't open Yacc file!" << endl;
+		return 1;
 	}
 	string str;
 	int i = 0;//表示statement中第几行

@@ -18,6 +18,7 @@ int read_and_parse_lex(string filePath,map<string,string>& m,vector<Rules>& vRul
 	if (!in)
 	{
 		cout << "Open lex.l failed!" << endl;
+		return 1;
 	}
 	string line;	//用来存储每行的字符串
 	enum State{beforePart1,Part1,Part2,Part3,Part4};	//用来指示当前读写指针所处部分

@@ -171,11 +171,20 @@ void generate_files() {
 
 	/*main()函数部分*/
 
-	out << "int main(int argc,char **argv)" << endl;
+	out << "int main(int argc,char** argv)" << endl;
 	out << "{" << endl;
+	out << "	if(argc==2)" << endl;
+	out << "	{" << endl;
+	out << "		lex_init(argv[1]);" << endl;
+	out << "	}" << endl;
+	out << "	else{" << endl;
+	out << "		printf(\"ERROR: invalid argument!\\n\");" << endl;
+	out << "		return -1;" << endl;
+	out << "	}" << endl;
+
 
 	/*调用lex_main*/
-	out << "	lex_init(\"q.txt\");" << endl;
+	//out << "	lex_init(\"q.txt\");" << endl;
 
 
 

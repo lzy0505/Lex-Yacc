@@ -64,14 +64,21 @@ bool scan(const vector<DFAstate> & statesVec) {//一次只分裂一个集合！
 		if (s.size() == 1) continue;
 		else {
 			auto &standard = statesVec[*(s.begin())];//找一个作为基准
-			for (const auto &p : standard.exEdgesMap) {//遍历基准状态的所有边
+			for (const auto &c : ALLSET) {//遍历基准状态的所有边
 				for (const auto &i : s) {//检查集合每一个状态
 					const auto & state = statesVec[i];
-					auto findIt = state.exEdgesMap.find(p.first);//找一找这条边
-					if (findIt == state.exEdgesMap.end()) {//找不到
+					//先看看边数一不一样多
+					auto findStateIt = state.exEdgesMap.find(c);//找一找这条边
+					auto findStandardIt = standard.exEdgesMap.find(c);//找一找这条边
+					if (findStateIt == state.exEdgesMap.end() && findStandardIt != standard.exEdgesMap.end()) {//有一个找不到
 						flag = true;
 						newSet.insert(i);
-					}else if (*(statesSetsMap.find(p.second)) != *(statesSetsMap.find(findIt->second))) {//找到了但是目的状态不同
+					}
+					else if ((findStateIt != state.exEdgesMap.end()) && (findStandardIt == standard.exEdgesMap.end())) {//有一个找不到
+						flag = true;
+						newSet.insert(i);
+					}
+					else if (*(statesSetsMap.find(findStandardIt->second)) != *(statesSetsMap.find(findStateIt->second))) {//都找到了但是目的状态不同
 						flag = true;
 						newSet.insert(i);
 					}

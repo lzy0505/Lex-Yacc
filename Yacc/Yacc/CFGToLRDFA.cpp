@@ -33,13 +33,13 @@ void cfg_to_lrdfa() {
 	unhandledStates.push(0);
 	map<int, unordered_set<LRItem> > newStateMap;
 	while (!unhandledStates.empty()) {
-		cout << "remain"<< unhandledStates .size()<<"\n";
+		//cout << "remain"<< unhandledStates .size()<<"\n";
 		int top = unhandledStates.front();
 		unhandledStates.pop();
 		newStateMap.clear();
-		cout << "SUBSET\n";
+		//cout << "SUBSET\n";
 		subset_construct(lrdfa.statesVec[top].LRItemsSet, newStateMap);
-		cout << "EPSILON\n";
+		//cout << "EPSILON\n";
 		for (auto & p : newStateMap) {
 			epsilon_clousure(p.second);
 			int edgeToInt = -1;
@@ -52,7 +52,7 @@ void cfg_to_lrdfa() {
 			}
 			if (edgeToInt == -1)//不存在要新建状态了
 			{
-				cout << "NEW STATE: "<<stateNumCounter << "\n";
+				//cout << "NEW STATE: "<<stateNumCounter << "\n";
 				LRState newState;
 				lrdfa.statesVec.push_back(newState);
 				edgeToInt = stateNumCounter;

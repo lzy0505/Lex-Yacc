@@ -75,7 +75,6 @@ void first_operation() {
 	for (int symbol = -1; symbol <= boundNInt; ++symbol) {
 		firstSet.clear();
 		stackSet.clear();
-		cout << symbol << endl;
 		first_symbol(firstSet, symbol, stackSet);
 		firstMap.emplace(symbol, firstSet);
 	}

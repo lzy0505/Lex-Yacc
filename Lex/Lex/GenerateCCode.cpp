@@ -18,7 +18,7 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	ofstream out;
 	if (mode == 0)
 	{
-		out.open("lex_test.c", ios::out);
+		out.open("lex.c", ios::out);
 	}
 	if (mode == 1)
 	{
@@ -33,17 +33,13 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "#define _CRT_SECURE_NO_WARNINGS" << endl; 
 	out << "#include\"stdio.h\"" << endl;
 	out << "#include\"stdlib.h\"" << endl;
-	out << "#include\"y.tab.h\"" << endl;
+
 	out << "#include<string.h>" << endl;
 	out << "#define START_STATE " << startState << endl;
 	/*依次输出P1和P4*/
 	for (int i = 0; i < part1.size(); i++)
 	{
 		out << part1[i] << endl;
-	}
-	for (int i = 0; i < part4.size(); i++)
-	{
-		out << part4[i] << endl;
 	}
 
 	out << "char* getCharPtr(char* fileName);" << endl;
@@ -98,8 +94,8 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 		out << "}" << endl;
 		out << "else{" << endl;
 		out << "printf(\"ERROR: invalid argument!\\n\");" << endl;
+		out << "return -1;" << endl;
 		out << "}" << endl;
-
 	}
 
 	
@@ -160,6 +156,10 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "	if (yy_next[yy_base[yy_current_state] + yy_c] == -1 && yy_last_accepting_state == -1)" << endl;
 	out << "{" << endl;
 	out << "	printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
+	if (mode == LEX_TEST)
+	{
+		out << "	return -1;" << endl;
+	}
 	out << "	}" << endl;
 	out << "if (yy_next[yy_base[yy_current_state] + yy_c] != -1) " << endl;
 	out << "{" << endl;
@@ -179,11 +179,20 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "{" << endl;
 	out << "	printf(\"ERROR DETECTED IN INPUT FILE !\");" << endl;
 	out << "	correct = 0;" << endl;
+	if (mode == LEX_TEST)
+	{
+		out << "	return -1;" << endl;
+	}
 	out << "}" << endl;
 
 	out << "}" << endl;
-
-	out << "return result;" << endl;
+	if (mode == LEX_TEST)
+	{
+		out << "	return 0;" << endl;
+	}
+	else {
+		out << "	return result;" << endl;
+	}
 	out << "}" << endl;/*lex_mian函数结束*/
   
 	/*int findAction(int action)函数*/
@@ -233,37 +242,12 @@ int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vect
 	out << "cp[flen] = 0; " << endl;/* 字符串结束标志 */
 	out << "return cp;" << endl;
 	out << "}" << endl;
-	/*
-	out << "void addToken(int token){" << endl; 
-	out << "if(tokenNum>=arraySize)" << endl;
-	out << "{" << endl;
-	out << "tokens=(int*)realloc(tokens,sizeof(int)*(arraySize+100));" << endl;
-	out << "arraySize=arraySize+100;" << endl;
-	out << "}" << endl;
-	out << "tokens[tokenNum]=token;" << endl;
-	out << "++tokenNum;" << endl;
-	out << "}" << endl;
-	*/
-	/*getTokens()函数用于Yacc得到Token序列*/
-	/*
-	out << "void getTokens(unsigned& num,int* _tokens){" << endl; 
-	out << "num=tokenNum;" << endl;
-	out << "_tokens=tokens;" << endl;
-	out << "}" << endl;
-	*/
-	/*comment函数*/
-	out << "void comment(){" << endl; 
-	out << "char c,prev=0;" << endl;
-	out << "while(++yy_cp!=0)" << endl;
-	out << "{" << endl;
-	out << "c=*yy_cp;" << endl;
-	out << "if(c=='/'&&prev=='*')" << endl;
-	out << "return;" << endl;
-	out << "prev=c;" << endl;
-	out << "}" << endl;
-	out << "printf(\"ERROR:unterminated comment!\");" << endl;
-	out << "}" << endl;
 
+	
+	for (int i = 0; i < part4.size(); i++)
+	{
+		out << part4[i] << endl;
+	}
 
 	out.close();
 	return 0;

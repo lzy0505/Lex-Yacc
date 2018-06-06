@@ -64,7 +64,7 @@ void re_to_suffix(vector<Rules>& rules) {
 			else if (now == '`' && (i + 1 == pattern.size())) {
 				q.push(now);
 			}
-			//如果是自己定义的一些哈批转义字符，直接传给正确队列
+			//如果是自己定义的一些转义字符，直接传给正确队列
 			else if (now == '`' && (pattern[i + 1] == '(' || pattern[i + 1] == ')'
 				|| pattern[i + 1] == '|' || pattern[i + 1] == '.' || pattern[i + 1] == '*' )){
 				q.push(now);

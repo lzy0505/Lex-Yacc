@@ -13,9 +13,9 @@ using std::unordered_map;
 using std::unordered_multimap;
 
 typedef vector<pair<string, vector<string> > > ProducerVecStr;//字符版本，用做显示<左，右>
-//typedef multimap<int, pair<int, vector<int> > > ProducerMuiltiMap;//便于查找<左非终结符<产生式编号，右>>
+
 typedef vector<pair<int, vector<int> > > ProducerVec;//<左，右>
-//typedef multimap<int, vector<int> > ProducerMuiltiMap;//便于查找<左非终结符<产生式编号，右>>
+
 
 typedef struct LRItem {
 	int positionInt = 0;

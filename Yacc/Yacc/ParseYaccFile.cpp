@@ -2,7 +2,10 @@
 #include"structs.h"
 using namespace std;
 
-int open_and_read_yacc_file(const string& fileName, vector<string> &tokensVec, vector<unordered_set<string>>&left, string& start, ProducerVecStr &producerVecStr, vector<string>& funcVec){
+
+vector<string> funcVec;
+
+int open_and_read_yacc_file(const string& fileName, vector<string> &tokensVec, vector<unordered_set<string>>&left, string& start, ProducerVecStr &producerVecStr){
 	ifstream in;
 	in.open(fileName, ios::in);
 	if (!in)

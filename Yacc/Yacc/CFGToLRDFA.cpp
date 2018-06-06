@@ -14,8 +14,6 @@ void first_string(unordered_set<int>& inputSet, const vector<int>& symbols);
 extern int boundTInt, boundNInt;
 extern map<int, pair<int, int> > indexMap;
 extern ProducerVec producerVec;
-extern ProducerVecStr producerVecStr;
-extern map<string, int> tokensMap;
 extern LRDFA lrdfa;
 
 

@@ -8,8 +8,6 @@ static void print_array(string name, int size, const int *value, ofstream& out);
 /*pl(),单行输出函数*/
 
 
-// TODO 赵：开始状态不是0 ，是dfa.startState
-
 
 /*生成.c文件,arrays为包含多个相关数组的容器，endVec为终态对应的动作*/
 int generate_c_code(vector<pair<int*, int>>& arrays, vector<Rules>& endVec, vector<string>& part1, vector<string>& part4,int startState,int mode)

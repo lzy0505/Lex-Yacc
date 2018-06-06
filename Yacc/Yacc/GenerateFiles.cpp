@@ -4,11 +4,12 @@
 #include<iomanip>
 
 using namespace std;
-// TODO : ÕÔÄ³
+
 extern vector<pair<void*, int> > table_vec;
 extern vector<string> productions_vec;
 extern map<string, int> tokensDefineMap;
 extern int boundTInt;
+extern vector<string> funcVec;
 
 void print_array(string name, int size, void *value, ofstream& out);
 void generate_files() {
@@ -43,6 +44,11 @@ void generate_files() {
 	out << "#include <assert.h>" << endl;
 
 	out << "#define TERMINATED_SYMBOL "<< boundTInt << endl;
+
+
+	for (const auto &s : funcVec) {
+		out << s<<endl;
+	}
 
 
 	/*ÉùÃ÷º¯Êý*/
